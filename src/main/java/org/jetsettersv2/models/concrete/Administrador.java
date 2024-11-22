@@ -126,7 +126,7 @@ public class Administrador extends Empleado {
     }
 
 
-    // <<<<<<<ASIGNAR TRIPULACION A UN VUELO>>>>>>>
+//     <<<<<<<ASIGNAR TRIPULACION A UN VUELO>>>>>>>
 
 //    public void asignarTripulacionVuelo(String idVuelo, Persona tripulante) throws ElementoNoEncontradoException {
 //        RegistroDeVuelo vuelo = null;
@@ -183,6 +183,26 @@ public class Administrador extends Empleado {
     }
 
     // <<<<<<<BAJA FLOTA>>>>>>>
+
+    public void bajaFlota(Avion avion) throws ElementoNoEncontradoException {
+        boolean encontrado = false;
+
+        // Recorre la lista de aviones y elimina el avión si se encuentra
+        for (Avion avion1 : gestionAviones.getLista()) {
+            if (avion1.equals(avion)) {
+                gestionAviones.eliminarElemento(avion1, "");
+                encontrado = true;
+                System.out.println("El avión ha sido dado de baja.");
+                break;
+            }
+        }
+
+        // Si el avión no se encontró, lanza una excepción
+        if (!encontrado) {
+            throw new ElementoNoEncontradoException("No se ha encontrado el avión solicitado.");
+        }
+    }
+
 
 
     // <<<<MODIFICAR FLOTA>>>>>
@@ -268,21 +288,18 @@ public class Administrador extends Empleado {
 
     //    <<<<<<<<<<<<<<<<VER RESERVAS >>>>>>>>>>>>>>>>>
     public List<Reserva> verCollectionReservas() {
-
         return gestionReservas.getLista();
     }
 
     //    <<<<<<<<<<<<<<<<VER PASAJEROS >>>>>>>>>>>>>>>>>
     public List<Pasajero> verCollectionPasajeros() {
-
         return gestionPasajeros.getLista();
     }
 
 
     //    <<<<<<<<<<<<<<<<IMPRIMIR >>>>>>>>>>>>>>>>>
 
-    public void imprimir ()
-    {
+    public void imprimir () {
         super.imprimir();
         System.out.println("Turno....................:" + this.turno);
     }
