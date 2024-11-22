@@ -43,7 +43,7 @@ public class MenuLogin {
 
         System.out.println("1. Iniciar Sesion");
         System.out.println("2. Registrarse");
-        System.out.println("3. Continuar sin iniciar sesion");
+        System.out.println("3. Ver Vuelos (Continuar sin iniciar sesion)");
         System.out.println("\n");
         System.out.println("0. Ingresar como Administrador");
 

@@ -12,24 +12,9 @@ public enum Aeropuerto {
     USH("USH", "Aeropuerto Internacional Malvinas Argentinas", "Ushuaia"),
     CRD("CRD", "Aeropuerto Internacional General Enrique Mosconi", "Comodoro Rivadavia"),
     TUC("TUC", "Aeropuerto Internacional Teniente Benjamín Matienzo", "San Miguel de Tucumán"),
-    JUJ("JUJ", "Aeropuerto Internacional Gobernador Horacio Guzmán", "San Salvador de Jujuy"),
     FTE("FTE", "Aeropuerto Internacional Comandante Armando Tola", "El Calafate"),
     NQN("NQN", "Aeropuerto Internacional Presidente Perón", "Neuquén"),
-    RGL("RGL", "Aeropuerto Internacional Piloto Civil Norberto Fernández", "Río Gallegos"),
-    PSS("PSS", "Aeropuerto Internacional Libertador General José de San Martín", "Posadas"),
-    AFA("AFA", "Aeropuerto Suboficial Ayudante Santiago Germano", "San Rafael"),
-    RCU("RCU", "Aeropuerto Área Material Río Cuarto", "Río Cuarto"),
-    VDM("VDM", "Aeropuerto Gobernador Edgardo Castello", "Viedma"),
-    RGA("RGA", "Aeropuerto Internacional Gobernador Ramón Trejo Noel", "Río Grande"),
-    RES("RES", "Aeropuerto Internacional Resistencia", "Resistencia"),
-    CNQ("CNQ", "Aeropuerto Internacional Doctor Fernando Piragine Niveyro", "Corrientes"),
-    IGR("IGR", "Aeropuerto Internacional Cataratas del Iguazú", "Puerto Iguazú"),
-    BHI("BHI", "Aeropuerto Comandante Espora", "Bahía Blanca"),
-    SDE("SDE", "Aeropuerto Vicecomodoro Ángel de la Paz Aragonés", "Santiago del Estero"),
-    PMY("PMY", "Aeropuerto El Tehuelche", "Puerto Madryn"),
-    CTC("CTC", "Aeropuerto Coronel Felipe Varela", "Catamarca"),
-    VVI("VVI", "Aeropuerto Internacional General Enrique Mosconi", "Villa Mercedes"),
-    FMA("FMA", "Aeropuerto Formosa", "Formosa");
+    RGL("RGL", "Aeropuerto Internacional Piloto Civil Norberto Fernández", "Río Gallegos");
 
     private String codigo;
     private String nombre;
