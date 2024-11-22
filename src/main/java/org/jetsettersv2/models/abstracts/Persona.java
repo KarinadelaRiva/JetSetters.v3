@@ -121,7 +121,7 @@ public abstract class Persona {
         System.out.println("Pasaporte............................: " + this.pasaporte);
         System.out.println("Telefono.............................: " + this.telefono);
         System.out.println("<<..........Direccion..............>>: ");
-        //direccion.imprimir();
+        direccion.mostrar();
     }
 
     // <<<<<<<TO STRING>>>>>>>
@@ -172,15 +172,15 @@ public abstract class Persona {
         this.telefono = scanner.nextLine().trim();
     }
 
-//    public void solicitarDireccion() {
-//        Direccion nuevaDireccion = new Direccion();
-//        nuevaDireccion.solicitarCalle();
-//        nuevaDireccion.solicitarNumero();
-//        nuevaDireccion.solicitarCiudad();
-//        nuevaDireccion.solicitarCodigoPostal();
-//        nuevaDireccion.solicitarPais();
-//        this.direccion = nuevaDireccion;
-//    }
+    public void solicitarDireccion() {
+        Direccion nuevaDireccion = new Direccion();
+        nuevaDireccion.solicitarCalle();
+        nuevaDireccion.solicitarNumero();
+        nuevaDireccion.solicitarCiudad();
+        nuevaDireccion.solicitarCodigoPostal();
+        nuevaDireccion.solicitarPais();
+        this.direccion = nuevaDireccion;
+    }
 
 
     public void solicitarEmail() {
@@ -225,10 +225,12 @@ public abstract class Persona {
     }
         // <<<<<<<INICIO DE SESION>>>>>>>
 
-    public Persona iniciarSesion() throws LoginException {
+    public static Persona iniciarSesion(ArrayListGeneric<Persona> personas) throws LoginException {
 
-        ArrayListGeneric<Persona> personas = new ArrayListGeneric<>();
-        personas.copiarLista(getJsonToList(JacksonUtil.PATH_RESOURCES + JacksonUtil.PATH_PERSONAS, Persona.class));
+        Scanner scanner = new Scanner(System.in);
+
+//        ArrayListGeneric<Persona> personas = new ArrayListGeneric<>();
+//        personas.copiarLista(getJsonToList(JacksonUtil.PATH_RESOURCES + JacksonUtil.PATH_PERSONAS, Persona.class));
 
         System.out.print("Ingrese su email: ");
         String email = scanner.nextLine().trim();
@@ -257,7 +259,30 @@ public abstract class Persona {
         return personaEncontrada; // Devuelve la persona logueada
     }
 
+    // <<<<<<<MODIFICAR DATOS>>>>>>>
 
+    public void modificarDatos(String atributo, String nuevoValor) {
+
+        switch (atributo.toLowerCase()) {
+            case "nombre":
+                this.nombre(nuevoValor);
+                break;
+            case "apellido":
+                this.apellido(nuevoValor) ;
+                break;
+            case "dni":
+                this.dni(nuevoValor);
+                break;
+            case "pasaporte":
+                this.pasaporte(nuevoValor);
+                break;
+            case "telefono":
+                this.telefono(nuevoValor);
+                break;
+            default:
+                System.out.println("Atributo no reconocido.");
+        }
+    }
 
 
 

@@ -9,6 +9,13 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.scene.text.Font;
 import javafx.scene.control.Label;
+import org.jetsettersv2.menus.menuUsuario;
+import org.jetsettersv2.models.abstracts.Persona;
+import org.jetsettersv2.models.concrete.Direccion;
+import org.jetsettersv2.models.concrete.UsuarioCliente;
+
+import static org.jetsettersv2.menus.menuUsuario.mostrarMenuUsuario;
+
 public class AirlineLandingPage extends Application {
 
     @Override
@@ -56,6 +63,26 @@ public class AirlineLandingPage extends Application {
     }
 
     public static void main(String[] args) {
-        launch(args);
+        //launch(args);
+        //menuUsuario menuUsuario = new menuUsuario();
+
+        Direccion direccion = new Direccion()
+                .calle("Calle Falsa")
+                .numero(123)
+                .ciudad("Springfield")
+                .codigoPostal("12345")
+                .pais("EE.UU.");
+
+        UsuarioCliente usuario = (UsuarioCliente) new UsuarioCliente()
+                .nombre("carla")
+                .apellido("perex")
+                .dni("lalal")
+                .pasaporte("asasda")
+                .telefono("asdasdsa")
+                .email("sadasd")
+                .direccion(direccion)
+                .password("asdasda");
+
+        mostrarMenuUsuario(usuario);
     }
 }
