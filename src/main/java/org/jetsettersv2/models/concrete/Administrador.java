@@ -4,6 +4,8 @@ import org.jetsettersv2.collections.ArrayListGeneric;
 import org.jetsettersv2.enums.TurnoEmpleado;
 import org.jetsettersv2.exceptions.ElementoNoEncontradoException;
 import org.jetsettersv2.models.abstracts.Empleado;
+import org.jetsettersv2.models.abstracts.Persona;
+import org.jetsettersv2.models.abstracts.PersonalAereo;
 import org.jetsettersv2.utilities.Fecha;
 
 import java.util.List;
@@ -78,38 +80,31 @@ public class Administrador extends Empleado {
         return this;
     }
 
-    // <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<METODOS>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-
-    // <<<<<<<VER COLLECTION>>>>>>>
-
-    public List<Vuelo> verCollectionVuelos() {
-        return gestionVuelos.getLista();
-    }
-
-    public List<Reserva> verCollectionReservas() {
-        return gestionReservas.getLista();
-    }
-
-    public List<UsuarioCliente> verCollectionUsuarios() {
-        return gestionUsuarios.getLista();
-    }
-
-    public List<Pasajero> verCollectionPasajeros() {
-        return gestionPasajeros.getLista();
-    }
-
-    public List <Ruta> verCollectionRuta(){return gestionRutas.getLista();}
-
-    public List <Avion> verCollectionAvion () { return gestionAviones.getLista();}
+    // <--------------------------------------METODOS------------------------------------------->
 
 
 //    <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<VUELOS>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
-    // <<<<<<<AÑADIR VUELOS>>>>>>>
+    // <<<<<<<VER VUELOS>>>>>>>
+    public List<Vuelo> verCollectionVuelos() {
+        return gestionVuelos.getLista();
+    }
 
+    // <<<<<<<AÑADIR VUELOS>>>>>>>
     public void añadirVuelosCollection(Vuelo vuelo) {
+
         gestionVuelos.agregarElemento(vuelo);
     }
+
+    // <<<<<<<BUSCAR VUELO>>>>>>>
+    public Vuelo buscarVuelo(String nroVuelo) throws ElementoNoEncontradoException {
+        for (Vuelo vuelo : gestionVuelos.getLista()) {
+            if (vuelo.getNroVuelo().equals(nroVuelo)) {
+                return vuelo;
+            }
+        }throw new ElementoNoEncontradoException("Vuelo con ID " + nroVuelo + " no encontrado.");
+    }
+
 
     // <<<<<<<REPROGRAMAR VUELOS>>>>>>>
 
@@ -161,8 +156,13 @@ public class Administrador extends Empleado {
 
     //    <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<RUTA>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
+    // <<<<<<<VER RUTA>>>>>>>
+    public List <Ruta> verCollectionRuta(){
+        return gestionRutas.getLista();}
+
     // <<<<<<<AÑADIR RUTA>>>>>>>
     public void añadirRutasCollection (Ruta ruta) {
+
         gestionRutas.agregarElemento(ruta);
     }
 
@@ -172,18 +172,114 @@ public class Administrador extends Empleado {
 
     //    <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<FLOTA>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
+    // <<<<<<<VER FLOTA>>>>>>>
+    public List <Avion> verCollectionAvion () {
+        return gestionAviones.getLista();}
+
+    // <<<<<<<ALTA FLOTA>>>>>>>
+    public void altaFlota(Avion avion) {
+        gestionAviones.agregarElemento(avion);
+        System.out.println("El avión ha sido dado de alta.");
+    }
+
+    // <<<<<<<BAJA FLOTA>>>>>>>
+
+
+    // <<<<MODIFICAR FLOTA>>>>>
+
+    public void modificarFlota(String matricula, String atributo, Object nuevoValor) throws ElementoNoEncontradoException {
+        Avion avionModificado = null;
+
+        for (Avion avion : gestionAviones.getLista()) {
+            if (avion.getMatricula().equals(matricula)) {
+                switch (atributo.toLowerCase()) {
+                    case "1.modelo":
+                        if (nuevoValor instanceof String) {
+                            avion.setModelo((String) nuevoValor);
+                        }
+                        break;
+                    case "2.capacidad para Tripulantes":
+                        if (nuevoValor instanceof Integer) {
+                            avion.setCapacidadTripulantes((Integer) nuevoValor);
+                        }
+                        break;
+                    case "3.capacidad para Pasajeros":
+                        if (nuevoValor instanceof Integer) {
+                            avion.setCapacidadPasajeros((Integer) nuevoValor);
+                        }
+                        break;
+                    case "4.capacidad de Equipaje":
+                        if (nuevoValor instanceof Integer) {
+                            avion.setCapacidadEquipaje((Integer) nuevoValor);
+                        }
+                        break;
+                    default:
+                        throw new IllegalArgumentException("Atributo no válido: " + atributo);
+                }
+                avionModificado = avion;
+                break;
+            }
+        }
+
+        if (avionModificado == null) {
+            throw new ElementoNoEncontradoException("El avión con Matricula " + matricula + " no ha sido encontrado.");
+        }
+
+        System.out.println("El avión con Matricula " + matricula + " ha sido modificado.");
+    }
+
+
 
     //    <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<PERSONAL>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
-    //    <<<<<<<<<<<<<<<<ELIMINAR TRIPULANTE>>>>>>>>>>>>>>>>
+    // <<<<<<<ALTA PERSONAL (TRIPULANTE)>>>>>>>
+    public void altaPersonal(){
+
+    }
+
+    //    <<<<<<<<<<<<<<<<ELIMINAR PERSONAL (TRIPULANTE)>>>>>>>>>>>>>>>>
 
 
 
 
     //    <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<ADMINISTRADOR>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
-    //    <<<<<<<<<<<<<<<<ASIGNAR / ELIMINAR ADMINISTRADOR>>>>>>>>>>>>>>>>>
+    //    <<<<<<<<<<<<<<<<ASIGNAR ADMINISTRADOR >>>>>>>>>>>>>>>>>
 
+
+    //   <<<<<<<<<<<<<<<<ELIMINAR ADMINISTRADOR>>>>>>>>>>>>>>>>>
+
+
+
+
+
+
+    //    <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< USUARIOS>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+    //    <<<<<<<<<<<<<<<<VER USUARIOS >>>>>>>>>>>>>>>>>
+    public List<UsuarioCliente> verCollectionUsuarios() {
+        return gestionUsuarios.getLista();
+    }
+
+
+
+
+    //    <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<OTROS METODOS>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+    //    <<<<<<<<<<<<<<<<VER RESERVAS >>>>>>>>>>>>>>>>>
+    public List<Reserva> verCollectionReservas() {
+
+        return gestionReservas.getLista();
+    }
+
+    //    <<<<<<<<<<<<<<<<VER PASAJEROS >>>>>>>>>>>>>>>>>
+    public List<Pasajero> verCollectionPasajeros() {
+
+        return gestionPasajeros.getLista();
+    }
+
+
+    //    <<<<<<<<<<<<<<<<IMPRIMIR >>>>>>>>>>>>>>>>>
 
     public void imprimir ()
     {
