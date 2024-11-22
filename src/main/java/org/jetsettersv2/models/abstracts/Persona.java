@@ -1,9 +1,14 @@
 package org.jetsettersv2.models.abstracts;
 
+import org.jetsettersv2.collections.ArrayListGeneric;
+import org.jetsettersv2.exceptions.LoginException;
 import org.jetsettersv2.models.concrete.Direccion;
+import org.jetsettersv2.utilities.JacksonUtil;
 
 import java.util.Scanner;
 import java.util.UUID;
+
+import static org.jetsettersv2.utilities.JacksonUtil.getJsonToList;
 
 public abstract class Persona {
 
@@ -217,6 +222,39 @@ public abstract class Persona {
                 System.out.println("Contraseña inválida. Por favor, asegúrese de cumplir los requisitos.");
             }
        }
+    }
+        // <<<<<<<INICIO DE SESION>>>>>>>
+
+    public Persona iniciarSesion() throws LoginException {
+
+        ArrayListGeneric<Persona> personas = new ArrayListGeneric<>();
+        personas.copiarLista(getJsonToList(JacksonUtil.PATH_RESOURCES + JacksonUtil.PATH_PERSONAS, Persona.class));
+
+        System.out.print("Ingrese su email: ");
+        String email = scanner.nextLine().trim();
+
+        // Buscar persona por email
+        Persona personaEncontrada = null;
+        for (Persona p : personas) {
+            if (p.getEmail().equals(email)) {
+                personaEncontrada = p;
+                break;
+            }
+        }
+
+        if (personaEncontrada == null) {
+            throw new LoginException("El email ingresado no está registrado.");
+        }
+
+        System.out.print("Ingrese su contraseña: ");
+        String password = scanner.nextLine().trim();
+
+        if (!personaEncontrada.getPassword().equals(password)) {
+            throw new LoginException("La contraseña es incorrecta.");
+        }
+
+        System.out.println("Inicio de sesión exitoso. Bienvenido, " + personaEncontrada.getNombre() + "!");
+        return personaEncontrada; // Devuelve la persona logueada
     }
 
 
