@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class JacksonUtil {
-    public static final String PATH_RESOURCES = System.getProperty("user.dir") + "/src/main/resources/org.jetsettersv2";
+    public static final String PATH_RESOURCES = System.getProperty("user.dir") + "/src/main/resources";
     public static final String PATH_FLOTA = "/aviones.json";
     public static final String PATH_VUELOS = "/vuelos.json";
     public static final String PATH_USUARIOSCLIENTE = "/usuarioscliente.json";
