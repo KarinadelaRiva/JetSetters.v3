@@ -286,6 +286,13 @@ public class Administrador extends Empleado {
 
     //    <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<OTROS METODOS>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
+    //    <<<<<<<<<<<<<<<<VER PERFIL >>>>>>>>>>>>>>>>>
+
+    public void verPerfil() {
+        System.out.println("Ver Perfil de Usuario:");
+        super.imprimir();
+    }
+
     //    <<<<<<<<<<<<<<<<VER RESERVAS >>>>>>>>>>>>>>>>>
     public List<Reserva> verCollectionReservas() {
         return gestionReservas.getLista();
