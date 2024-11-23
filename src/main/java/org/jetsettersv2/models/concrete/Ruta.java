@@ -38,7 +38,7 @@ public class Ruta {
         return distanciaKM;
     }
 
-    public Duration getDuración() {
+    public Duration getDuracion() {
         return duracion; // retorna la duración en segundos
     }
 
@@ -56,7 +56,7 @@ public class Ruta {
         this.distanciaKM = distanciaKM;
     }
 
-    public void setDuración(Duration duracion) {
+    public void setDuracion(Duration duracion) {
         this.duracion = duracion;
     }
 
@@ -83,15 +83,12 @@ public class Ruta {
     }
 
     // <<<<<<<TO STRING>>>>>>>
-
     @Override
     public String toString() {
-        return "Ruta{" +
-                "origen=" + origen +
-                ", destino=" + destino +
-                ", distanciaKM=" + distanciaKM +
-                ", duración=" + duracion +
-                '}';
+        return "Origen...............................: " + origen + "\n" +
+                "Destino..............................: " + destino + "\n" +
+                "Distancia............................: " + distanciaKM + " km\n" +
+                "Duración.............................: " + duracion.toHours() + " horas";
     }
 
     // <<<<<<<EQUALS>>>>>>>

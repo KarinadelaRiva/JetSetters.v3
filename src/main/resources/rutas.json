@@ -1,0 +1,56 @@
+[
+  {
+    "origen": "EZE",
+    "destino": "COR",
+    "distanciaKM": 695,
+    "duracion": "PT1H20M"
+  },
+  {
+    "origen": "AEP",
+    "destino": "MDZ",
+    "distanciaKM": 985,
+    "duracion": "PT1H50M"
+  },
+  {
+    "origen": "ROS",
+    "destino": "SLA",
+    "distanciaKM": 1100,
+    "duracion": "PT2H"
+  },
+  {
+    "origen": "BRC",
+    "destino": "USH",
+    "distanciaKM": 1450,
+    "duracion": "PT2H30M"
+  },
+  {
+    "origen": "FTE",
+    "destino": "RGL",
+    "distanciaKM": 280,
+    "duracion": "PT45M"
+  },
+  {
+    "origen": "MDZ",
+    "destino": "AEP",
+    "distanciaKM": 670,
+    "duracion": "PT1H15M"
+  },
+  {
+    "origen": "EZE",
+    "destino": "TUC",
+    "distanciaKM": 860,
+    "duracion": "PT1H40M"
+  },
+  {
+    "origen": "NQN",
+    "destino": "REL",
+    "distanciaKM": 760,
+    "duracion": "PT1H20M"
+  },
+  {
+    "origen": "AEP",
+    "destino": "CRD",
+    "distanciaKM": 450,
+    "duracion": "PT1H"
+  }
+]
