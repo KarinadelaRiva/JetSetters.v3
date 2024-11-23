@@ -101,12 +101,12 @@ public class Direccion {
     //Metodos propios
     //Mostrar direccion:
     public void mostrar(){
-        System.out.println("<<< Direccion >>>");
-        System.out.println("Calle........................: " + this.calle);
-        System.out.println("Numero.......................: " + this.numero);
-        System.out.println("Ciudad.......................: " + this.ciudad);
-        System.out.println("Codigo postal................: " + this.codigoPostal);
-        System.out.println("Pais.........................: " + this.pais);
+        System.out.println("Direccion: ");
+        System.out.println("    Calle....................: " + this.calle);
+        System.out.println("    Numero...................: " + this.numero);
+        System.out.println("    Ciudad...................: " + this.ciudad);
+        System.out.println("    Codigo postal............: " + this.codigoPostal);
+        System.out.println("    Pais.....................: " + this.pais);
     }
 
     //Solicitar calle
