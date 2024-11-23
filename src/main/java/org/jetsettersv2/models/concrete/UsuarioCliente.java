@@ -3,6 +3,7 @@ package org.jetsettersv2.models.concrete;
 import org.jetsettersv2.collections.ArrayListGeneric;
 import org.jetsettersv2.models.abstracts.Persona;
 
+
 import java.util.ArrayList;
 
 public class UsuarioCliente extends Persona {
@@ -26,13 +27,4 @@ public class UsuarioCliente extends Persona {
         return this;
     }
 
-    public  Reserva hacerReserva(){
-        Reserva reserva = new Reserva();
-        System.out.println("Reserva realizada");
-        return reserva;
-    }
-
-
-//+RealizarCheckIn() : Pasajero;
-//+RegistrarEquipaje() : Equipaje
 }

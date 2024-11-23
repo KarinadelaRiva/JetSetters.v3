@@ -6,7 +6,7 @@ import org.jetsettersv2.utilities.Fecha;
 public class Reserva {
     //Atributos
     private Fecha fechaReserva;
-    private Pasajero pasajero;
+    private UsuarioCliente usuarioLogueado;
     private Vuelo vuelo;
     private EstadoReserva estadoReserva;
     private String numeroReserva;
@@ -32,17 +32,14 @@ public class Reserva {
     }
 
     //-------------------------------------------------------------
-    public Pasajero getPasajero() {
-        return pasajero;
+
+
+    public UsuarioCliente getUsuarioLogueado() {
+        return usuarioLogueado;
     }
 
-    public Reserva pasajero(Pasajero pasajero) {
-        this.pasajero = pasajero;
-        return this;
-    }
-
-    public void setPasajero(Pasajero pasajero) {
-        this.pasajero = pasajero;
+    public void setUsuarioLogueado(UsuarioCliente usuarioLogueado) {
+        this.usuarioLogueado = usuarioLogueado;
     }
 
     //-------------------------------------------------------------
@@ -92,7 +89,7 @@ public class Reserva {
     public String toString() {
         return "Reserva: " + '\n' +
                 "Fecha Reserva: " + fechaReserva + '\n' +
-                "Pasajero: " + pasajero + '\n' +
+                "Pasajero: " + usuarioLogueado + '\n' +
                 "Vuelo: " + vuelo + '\n' +
                 "Estado Reserva: " + estadoReserva + '\n' +
                 "Numero Reserva: " + numeroReserva + '\n';
@@ -103,11 +100,12 @@ public class Reserva {
     public void mostrar(){
         System.out.println("<<< Reserva >>>");
         System.out.println("Fecha de reserva.............: " + this.fechaReserva);
-        System.out.println("Pasajero.....................: " + this.pasajero);
+        System.out.println("Pasajero.....................: " + this.usuarioLogueado);
         System.out.println("Vuelo........................: " + this.vuelo);
         System.out.println("Estado de reserva............: " + this.estadoReserva);
         System.out.println("Numero de reserva............: " + this.numeroReserva);
 }
+
 
 }
 

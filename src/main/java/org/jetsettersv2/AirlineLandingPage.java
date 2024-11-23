@@ -9,12 +9,11 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.scene.text.Font;
 import javafx.scene.control.Label;
-import org.jetsettersv2.menus.menuUsuario;
 import org.jetsettersv2.models.abstracts.Persona;
 import org.jetsettersv2.models.concrete.Direccion;
 import org.jetsettersv2.models.concrete.UsuarioCliente;
 
-import static org.jetsettersv2.menus.menuUsuario.mostrarMenuUsuario;
+
 
 public class AirlineLandingPage extends Application {
 
@@ -83,6 +82,6 @@ public class AirlineLandingPage extends Application {
                 .direccion(direccion)
                 .password("asdasda");
 
-        mostrarMenuUsuario(usuario);
+
     }
 }
