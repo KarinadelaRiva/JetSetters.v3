@@ -2,19 +2,26 @@ package org.jetsettersv2.menus;
 
 import org.jetsettersv2.collections.ArrayListGeneric;
 import org.jetsettersv2.exceptions.LoginException;
+import org.jetsettersv2.models.concrete.Administrador;
 import org.jetsettersv2.models.concrete.Direccion;
 import org.jetsettersv2.models.concrete.UsuarioCliente;
+import org.jetsettersv2.models.concrete.Vuelo;
+import org.jetsettersv2.utilities.Fecha;
 
 import java.util.Scanner;
 
+import static org.jetsettersv2.menus.menuUsuario.mostrarMenuUsuario;
+import static org.jetsettersv2.utilities.Fecha.fechaActual;
 import static org.jetsettersv2.utilities.JacksonUtil.*;
 
 public class MenuLogin {
     private static final Scanner scanner = new Scanner(System.in);
     private static UsuarioCliente usuarioLogueado = new UsuarioCliente();
+    private static Administrador adminLogueado = new Administrador();
 
     public static void login() {
         ArrayListGeneric<UsuarioCliente> usuarios = new ArrayListGeneric<>();
+        ArrayListGeneric<Administrador> empleados = new ArrayListGeneric<>();
         int opcion;
         do {
             System.out.println("\nBienvenido a JetSetters!\n");
@@ -22,15 +29,17 @@ public class MenuLogin {
             switch (opcion) {
                 case 1:
                     usuarioLogueado = inicioSesionUsuario(usuarios);
+                    mostrarMenuUsuario(usuarioLogueado);
                     break;
                 case 2:
                     registrarUsuario(usuarios);
                     break;
                 case 3:
-                    System.out.println("Continuar sin iniciar sesion");
+                    verVuelosSinLogin();
                     break;
                 case 4:
-                    System.out.println("Ingresar como Administrador");
+                    adminLogueado = inicioSesionAdmin(empleados);
+                    System.out.println("LLAMAR AL MENU ADMINISTRADORES ACÁ");
                     break;
                 case 0:
                     System.out.println("Adios " + usuarioLogueado.getNombre() + ", esperamos verte pronto!");
@@ -81,8 +90,6 @@ public class MenuLogin {
     }
 
     public static UsuarioCliente iniciaUsuario(ArrayListGeneric<UsuarioCliente> usuarios) throws LoginException {
-
-        Scanner scanner = new Scanner(System.in);
 
         System.out.print("Ingrese su email: ");
         String email = scanner.nextLine().trim();
@@ -206,4 +213,76 @@ public class MenuLogin {
         return nuevoUsuario;
     }
 
+    public static Administrador inicioSesionAdmin(ArrayListGeneric<Administrador> admins){
+        Administrador logueado = new Administrador();
+
+        try{
+            admins.copiarLista(getJsonToList(PATH_RESOURCES + PATH_USUARIOSEMPLEADOS, Administrador.class));
+        } catch (Exception e) {
+            System.err.println("Error al leer el archivo JSON: " + e.getMessage());
+        }
+
+        try {
+            logueado = iniciaAdministrador(admins);
+            System.out.println("Datos del usuario logueado: " + logueado.getNombre() + " - " + logueado.getEmail());
+        } catch (LoginException e) {
+            System.out.println("Error: " + e.getMessage());
+        }
+        return logueado;
+    }
+
+    public static Administrador iniciaAdministrador(ArrayListGeneric<Administrador> admins) throws LoginException {
+
+        System.out.print("Ingrese su email: ");
+        String email = scanner.nextLine().trim();
+
+        // Buscar persona por email
+        Administrador userEncontrado = new Administrador();
+        userEncontrado = null;
+        for (Administrador u : admins) {
+            if (u.getEmail().trim().equals(email)) {
+                userEncontrado = u;
+                break;
+            }
+        }
+
+        if (userEncontrado == null) {
+            throw new LoginException("El email ingresado no está registrado.");
+        }
+
+        System.out.print("Ingrese su contraseña: ");
+        String password = scanner.nextLine().trim();
+
+        if (!userEncontrado.getPassword().equals(password)) {
+            throw new LoginException("La contraseña es incorrecta.");
+        }
+
+        System.out.println("Inicio de sesión exitoso. Bienvenido, " + userEncontrado.getNombre() + "!");
+        return userEncontrado; // Devuelve la persona logueada
+    }
+
+    public static void verVuelosSinLogin(){
+        // pasar a un arraylist el json de vuelos, y mostrar los vuelos de los proximos dos meses
+        ArrayListGeneric<Vuelo> Vuelos = new ArrayListGeneric<>();
+
+        Fecha fechaLimite = fechaActual();
+        fechaLimite.sumarDias(60);
+
+        try{
+            Vuelos.copiarLista(getJsonToList(PATH_RESOURCES + PATH_VUELOS, Vuelo.class));
+        } catch (Exception e) {
+            System.err.println("Error al leer el archivo JSON: " + e.getMessage());
+        }
+
+        System.out.println("Vuelos disponibles en los próximos dos meses: ");
+        for (Vuelo v : Vuelos) {
+            if ((v.getFechaSalida().esIgualA(fechaActual()) || v.getFechaSalida().esDespuesDe(fechaActual())) &&
+                    v.getFechaSalida().esAntesDe(fechaLimite)) {
+                System.out.println("Vuelo: " + v.getNroVuelo());
+                System.out.println("Fecha de salida: " + v.getFechaSalida().obtenerFecha());
+                System.out.println("Hora de salida: " + v.getHoraSalida());
+                System.out.println("Ruta: " + v.getRuta().getOrigen() + " - " + v.getRuta().getDestino());
+            }
+        }
+    }
 }
