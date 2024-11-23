@@ -1,16 +1,12 @@
 package org.jetsettersv2.menus;
 
-import com.fasterxml.jackson.core.type.TypeReference;
 import org.jetsettersv2.collections.ArrayListGeneric;
 import org.jetsettersv2.exceptions.LoginException;
-import org.jetsettersv2.models.abstracts.Persona;
 import org.jetsettersv2.models.concrete.Direccion;
 import org.jetsettersv2.models.concrete.UsuarioCliente;
 
-import java.util.List;
 import java.util.Scanner;
 
-import static org.jetsettersv2.models.abstracts.Persona.iniciarSesion;
 import static org.jetsettersv2.utilities.JacksonUtil.*;
 
 public class MenuLogin {
@@ -209,6 +205,5 @@ public class MenuLogin {
         } while (opcion!=0);
         return nuevoUsuario;
     }
-
 
 }
