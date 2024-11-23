@@ -204,10 +204,9 @@ public abstract class Persona {
     }
 
     public void solicitarPassword() {
-
         // Requisitos de la contraseña:
         // Al menos una letra mayúscula, una minúscula, un número, un carácter especial y longitud mínima de 8
-        String regex = "^(?=.[A-Z])(?=.[a-z])(?=.\\d)(?=.[@$!%?&])[A-Za-z\\d@$!%?&]{8,}$";
+        String regex = "^(?=.*[A-Z])(?=.*[a-z])(?=.*\\d)(?=.*[@$!%?&])[A-Za-z\\d@$!%?&]{8,}$";
         boolean contraseñaValida = false;
 
         while (!contraseñaValida) {
@@ -221,8 +220,9 @@ public abstract class Persona {
             } else {
                 System.out.println("Contraseña inválida. Por favor, asegúrese de cumplir los requisitos.");
             }
-       }
+        }
     }
+
         // <<<<<<<INICIO DE SESION>>>>>>>
 
     public static Persona iniciarSesion(ArrayListGeneric<Persona> personas) throws LoginException {
