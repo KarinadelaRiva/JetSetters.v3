@@ -1,1 +1,28 @@
-[]
+[ {
+  "idPersona" : "cc657f7b-7473-4709-9f53-f15097ed31e4",
+  "nombre" : "Super",
+  "apellido" : "Administrador",
+  "dni" : "11111111",
+  "pasaporte" : "111111111",
+  "telefono" : "2231111111",
+  "direccion" : {
+    "calle" : "",
+    "numero" : 0,
+    "ciudad" : "",
+    "codigoPostal" : "",
+    "pais" : ""
+  },
+  "email" : "administrador@gmail.com",
+  "password" : "Admin*123",
+  "legajo" : "A0001",
+  "fechaAlta" : {
+    "fecha" : "2024-11-23"
+  },
+  "fechaBaja" : null,
+  "activo" : true,
+  "gestionVuelos" : null,
+  "gestionReservas" : null,
+  "gestionUsuarios" : null,
+  "gestionPasajeros" : null,
+  "gestionRutas" : null
+} ]

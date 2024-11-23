@@ -28,8 +28,11 @@ public class MenuPersonal {
                     pausarConTecla();
                     break;
                 case 2:
-                    System.out.println("\n--Ver Nomina de Empleados--");
-
+                    try {
+                        subMenuVerEmpleados();
+                    } catch (LeerJsonException e) {
+                        System.err.println(e.getMessage());
+                    }
                     pausarConTecla();
                     break;
                 case 3:
@@ -39,16 +42,6 @@ public class MenuPersonal {
                     break;
                 case 4:
                     System.out.println("\n--Baja de Empleado--");
-
-                    pausarConTecla();
-                    break;
-                case 5:
-                    System.out.println("\n--Designar nuevo administrador--");
-
-                    pausarConTecla();
-                    break;
-                case 6:
-                    System.out.println("\n--Quitar derechos administrador--");
 
                     pausarConTecla();
                     break;
@@ -64,17 +57,156 @@ public class MenuPersonal {
         }while (opcion != 0);
     }
 
-
-    public static int opcionesMenuPersonal() {
+    public static int opcionesMenuPersonal(){
+        int opcion;
         System.out.println("1. Alta Nuevo Empleado");
         System.out.println("2. Ver Nomina de Empleados");
         System.out.println("3. Modificar datos de un Empleado");
         System.out.println("4. Baja de Empleado");
-        System.out.println("5. Designar nuevo administrador");
-        System.out.println("6. Quitar derechos administrador");
         System.out.println("0. Volver");
         System.out.print("\nSeleccione una opción: ");
-        return scanner.nextInt();
+        opcion = scanner.nextInt();
+        scanner.nextLine(); // Consumir salto de línea
+        return opcion;
+    }
+
+    public static void subMenuVerEmpleados() throws LeerJsonException{
+
+
+        ArrayListGeneric<Administrador> admins = new ArrayListGeneric<>();
+        ArrayListGeneric<TripulacionTecnica> tripTecnica = new ArrayListGeneric<>();
+        ArrayListGeneric<TripulacionCabina> tripCabina = new ArrayListGeneric<>();
+
+        try{
+            admins.copiarLista(getJsonToList(PATH_RESOURCES + PATH_ADMINISTRADORES, Administrador.class));
+        } catch (Exception e) {
+            throw new LeerJsonException("Error al leer el archivo JSON Administradores: " + e.getMessage());
+        }
+
+        try{
+            tripTecnica.copiarLista(getJsonToList(PATH_RESOURCES + PATH_TRIPULACIONTECNICA, TripulacionTecnica.class));
+        } catch (Exception e) {
+            throw new LeerJsonException("Error al leer el archivo JSON Tripulacion Tecnica");
+        }
+
+        try{
+            tripCabina.copiarLista(getJsonToList(PATH_RESOURCES + PATH_TRIPULACIONCABINA, TripulacionCabina.class));
+        } catch (Exception e) {
+            throw new LeerJsonException("Error al leer el archivo JSON Tripulacion Cabina");
+        }
+
+        int opcion;
+        do {
+            System.out.println("\n      Ver Nomina de Empleados\n");
+            System.out.println("1. Ver solo empleados activos");
+            System.out.println("2. Ver todos los empleados");
+            System.out.println("0. Volver");
+            System.out.print("\nSeleccione una opción: ");
+            opcion = scanner.nextInt();
+            scanner.nextLine(); // Consumir salto de línea
+
+            switch (opcion) {
+                case 1:
+                    System.out.println("\n--Ver solo empleados activos--");
+                    mostrarEmpleadosActivos(admins, tripCabina, tripTecnica);
+                    pausarConTecla();
+                    break;
+                case 2:
+                    System.out.println("\n--Ver todos los empleados--");
+                    mostrarTodosLosEmpleados(admins, tripCabina, tripTecnica);
+                    pausarConTecla();
+                    break;
+                case 0:
+                    System.out.println("\n--Volver--");
+                    break;
+                default:
+                    System.out.println("Opcion no valida");
+                    pausarConTecla();
+                    break;
+            }
+        }while (opcion != 0);
+    }
+
+    public static void mostrarTodosLosEmpleados( ArrayListGeneric<Administrador> admins, ArrayListGeneric<TripulacionCabina> tripCabina, ArrayListGeneric<TripulacionTecnica> tripTecnica){
+
+        System.out.println("\n--Administradores--");
+        for (Administrador admin : admins) {
+            admin.imprimir();
+        }
+
+        System.out.println("\n--Tripulantes de Cabina--");
+        for (TripulacionCabina tc : tripCabina) {
+            tc.imprimir();
+        }
+
+        System.out.println("\n--Tripulantes Tecnicos--");
+        for (TripulacionTecnica tt : tripTecnica) {
+            tt.imprimir();
+        }
+
+    }
+
+    public static void mostrarEmpleadosActivos(ArrayListGeneric<Administrador> admins, ArrayListGeneric<TripulacionCabina> tripCabina, ArrayListGeneric<TripulacionTecnica> tripTecnica){
+
+        System.out.println("\n--Administradores--");
+        for (Administrador admin : admins) {
+            if (admin.isActivo()) {
+                admin.imprimir();
+            }
+        }
+
+        System.out.println("\n--Tripulantes de Cabina--");
+        for (TripulacionCabina tc : tripCabina) {
+            if (tc.isActivo()) {
+                tc.imprimir();
+            }
+        }
+
+        System.out.println("\n--Tripulantes Tecnicos--");
+        for (TripulacionTecnica tt : tripTecnica) {
+            if (tt.isActivo()) {
+                tt.imprimir();
+            }
+        }
+    }
+
+    public static void subMenuModificarEmpleado(){
+        int opcion;
+        do {
+            System.out.println("\n      Modificar datos de un Empleado\n");
+            System.out.println("1. Modificar datos de un Administrador");
+            System.out.println("2. Modificar datos de un Tripulante de Cabina");
+            System.out.println("3. Modificar datos de un Tripulante Técnico");
+            System.out.println("0. Volver");
+            System.out.print("\nSeleccione una opción: ");
+            opcion = scanner.nextInt();
+            scanner.nextLine(); // Consumir salto de línea
+
+            switch (opcion) {
+                case 1:
+                    System.out.println("\n--Modificar datos de un Administrador--");
+                    //modificarAdmin();
+                    pausarConTecla();
+                    break;
+                case 2:
+                    System.out.println("\n--Modificar datos de un Tripulante de Cabina--");
+                    //modificarTCabina();
+                    pausarConTecla();
+                    break;
+                case 3:
+                    System.out.println("\n--Modificar datos de un Tripulante Técnico--");
+                    //modificarTTecnico();
+                    pausarConTecla();
+                    break;
+                case 0:
+                    System.out.println("\n--Volver--");
+                    break;
+                default:
+                    System.out.println("Opcion no valida");
+                    pausarConTecla();
+                    break;
+            }
+        }while (opcion != 0);
     }
 
     public static void registrarEmpleado(ArrayListGeneric<Administrador> admins, ArrayListGeneric<TripulacionCabina> tCabina, ArrayListGeneric<TripulacionTecnica> tTecnica){
