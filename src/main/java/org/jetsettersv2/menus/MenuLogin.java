@@ -42,6 +42,7 @@ public class MenuLogin {
                     pausarConTecla();
                     break;
                 case 2:
+                    System.out.println("\n--Registro--");
                     registrarUsuario(usuarios);
                     pausarConTecla();
                     break;
@@ -50,6 +51,7 @@ public class MenuLogin {
                     pausarConTecla();
                     break;
                 case 4:
+                    System.out.println("\n--Iniciar Sesion--");
                     try{
                         adminLogueado = inicioSesionAdmin(empleados);
                         System.out.println("LLAMAR AL MENU ADMINISTRADORES ACÁ");
@@ -244,7 +246,7 @@ public class MenuLogin {
         Administrador logueado = new Administrador();
 
         try{
-            admins.copiarLista(getJsonToList(PATH_RESOURCES + PATH_USUARIOSEMPLEADOS, Administrador.class));
+            admins.copiarLista(getJsonToList(PATH_RESOURCES + PATH_ADMINISTRADORES, Administrador.class));
         } catch (Exception e) {
             System.err.println("Error al leer el archivo JSON: " + e.getMessage());
         }
