@@ -11,6 +11,7 @@ module org.jetsettersv2.demo1 {
     requires eu.hansolo.tilesfx;
     requires com.almasb.fxgl.all;
     requires com.fasterxml.jackson.databind;
+    requires com.fasterxml.jackson.datatype.jsr310;
 
     opens org.jetsettersv2 to javafx.fxml;
     exports org.jetsettersv2;
