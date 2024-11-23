@@ -10,8 +10,6 @@ public class Vuelo {
     private Fecha fechaSalida;
     private Fecha horaSalida;
     private RegistroDeVuelo registroDeVuelo;
-    private ArrayListGeneric<Reserva> reservas;
-    private ArrayListGeneric<CheckIn> CheckIns;
 
     // <<<<<<<METODOS IMPRESION>>>>>>>
 
@@ -24,12 +22,12 @@ public class Vuelo {
         System.out.println("Hora de salida.......................: " + this.horaSalida);
     }
 
-    public void imprimirReservas(){
-        System.out.println("Reservas.............................: ");
-        for (Reserva reserva : this.reservas) {
-            reserva.mostrar();
-        }
-    }
+//    public void imprimirReservas(){
+//        System.out.println("Reservas.............................: ");
+//        for (Reserva reserva : this.reservas) {
+//            reserva.mostrar();
+//        }
+//    }
 
     /*
     public void imprimirCheckInsRealizados(){
@@ -87,13 +85,6 @@ public class Vuelo {
         return registroDeVuelo;
     }
 
-    public ArrayListGeneric<Reserva> getReservas() {
-        return reservas;
-    }
-
-    public ArrayListGeneric<CheckIn> getCheckIns() {
-        return CheckIns;
-    }
 
     // <<<<<<<SETTERS>>>>>>>
 
@@ -121,13 +112,6 @@ public class Vuelo {
         this.registroDeVuelo = registroDeVuelo;
     }
 
-    public void setReservas(ArrayListGeneric<Reserva> reservas) {
-        this.reservas = reservas;
-    }
-
-    public void setCheckIns(ArrayListGeneric<CheckIn> CheckIns) {
-        this.CheckIns = CheckIns;
-    }
 
     // <<<<<<<BUILDERS>>>>>>>
 
@@ -161,15 +145,6 @@ public class Vuelo {
         return this;
     }
 
-    public Vuelo reservas(ArrayListGeneric<Reserva> reservas) {
-        this.reservas = reservas;
-        return this;
-    }
-
-    public Vuelo CheckIns(ArrayListGeneric<CheckIn> CheckIns) {
-        this.CheckIns = CheckIns;
-        return this;
-    }
 
     // <<<<<<<TO STRING>>>>>>>
 
@@ -182,8 +157,6 @@ public class Vuelo {
                 ", fechaSalida=" + fechaSalida +
                 ", horaSalida=" + horaSalida +
                 ", registroDeVuelo=" + registroDeVuelo +
-                ", reservas=" + reservas +
-                ", CheckIns=" + CheckIns +
                 '}';
     }
 

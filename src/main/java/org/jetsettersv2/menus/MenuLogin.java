@@ -15,6 +15,7 @@ import static org.jetsettersv2.menus.menuUsuario.mostrarMenuUsuario;
 import static org.jetsettersv2.utilities.Fecha.fechaActual;
 import static org.jetsettersv2.utilities.JacksonUtil.*;
 
+
 public class MenuLogin {
     private static final Scanner scanner = new Scanner(System.in);
     private static UsuarioCliente usuarioLogueado = new UsuarioCliente();
