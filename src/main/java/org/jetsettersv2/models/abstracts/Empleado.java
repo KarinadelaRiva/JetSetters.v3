@@ -1,12 +1,15 @@
 package org.jetsettersv2.models.abstracts;
 
+import org.jetsettersv2.collections.ArrayListGeneric;
+import org.jetsettersv2.models.concrete.Administrador;
+import org.jetsettersv2.models.concrete.TripulacionCabina;
+import org.jetsettersv2.models.concrete.TripulacionTecnica;
 import org.jetsettersv2.utilities.Fecha;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public abstract class Empleado extends Persona{
-    private static int contadorLegajos = 1;
 
     private String legajo;
     private Fecha fechaAlta;
@@ -15,12 +18,20 @@ public abstract class Empleado extends Persona{
 
 
     public Empleado() {
-        this.legajo = generarLegajo(); // Genera el legajo automáticamente
+
     }
 
-    private static String generarLegajo() {
-        return String.format("L%04d", contadorLegajos++);
+    public Empleado legajo(char letraInicial, int numeroLegajo) {
+        if (numeroLegajo < 0 || numeroLegajo > 9999) {
+            throw new IllegalArgumentException("El número de legajo debe estar entre 0 y 9999.");
+        }
+        if (!Character.isLetter(letraInicial)) {
+            throw new IllegalArgumentException("La letra inicial debe ser un carácter alfabético.");
+        }
+        this.legajo = String.format("%c%04d", Character.toUpperCase(letraInicial), numeroLegajo);
+        return this;
     }
+
 
     public String getLegajo() {
         return legajo;
@@ -68,6 +79,75 @@ public abstract class Empleado extends Persona{
             System.out.println("Situación...............: Inactivo");
         }
         System.out.println();
+    }
+
+    public void asignarLegajoAdmin(ArrayListGeneric<Administrador> admins) {
+        int maxNumero = 0;
+
+        // Encontrar el número más alto entre los legajos existentes
+        for (Administrador empleado : admins) {
+            if (empleado != null && empleado.getLegajo() != null) {
+                String legajoActual = empleado.getLegajo();
+                if (legajoActual.charAt(0) == 'A') {
+                    int numero = Integer.parseInt(legajoActual.substring(1));
+                    if (numero > maxNumero) {
+                        maxNumero = numero;
+                    }
+                }
+            }
+        }
+        // Asignar el siguiente número disponible
+        int siguienteNumero = maxNumero + 1;
+        if (siguienteNumero > 9999) {
+            throw new IllegalStateException("No hay números de legajo disponibles para la letra " + 'A');
+        }
+        this.legajo = String.format("%c%04d", 'A', siguienteNumero);
+    }
+
+    public void asignarLegajoTCabina(ArrayListGeneric<TripulacionCabina> empleados) {
+        int maxNumero = 0;
+
+        // Encontrar el número más alto entre los legajos existentes
+        for (TripulacionCabina empleado : empleados) {
+            if (empleado != null && empleado.getLegajo() != null) {
+                String legajoActual = empleado.getLegajo();
+                if (legajoActual.charAt(0) == 'C') {
+                    int numero = Integer.parseInt(legajoActual.substring(1));
+                    if (numero > maxNumero) {
+                        maxNumero = numero;
+                    }
+                }
+            }
+        }
+        // Asignar el siguiente número disponible
+        int siguienteNumero = maxNumero + 1;
+        if (siguienteNumero > 9999) {
+            throw new IllegalStateException("No hay números de legajo disponibles para la letra " + 'C');
+        }
+        this.legajo = String.format("%c%04d", 'C', siguienteNumero);
+    }
+
+    public void asignarLegajoTTecnica(ArrayListGeneric<TripulacionTecnica> empleados) {
+        int maxNumero = 0;
+
+        // Encontrar el número más alto entre los legajos existentes
+        for (TripulacionTecnica empleado : empleados) {
+            if (empleado != null && empleado.getLegajo() != null) {
+                String legajoActual = empleado.getLegajo();
+                if (legajoActual.charAt(0) == 'T') {
+                    int numero = Integer.parseInt(legajoActual.substring(1));
+                    if (numero > maxNumero) {
+                        maxNumero = numero;
+                    }
+                }
+            }
+        }
+        // Asignar el siguiente número disponible
+        int siguienteNumero = maxNumero + 1;
+        if (siguienteNumero > 9999) {
+            throw new IllegalStateException("No hay números de legajo disponibles para la letra " + 'T');
+        }
+        this.legajo = String.format("%c%04d", 'T', siguienteNumero);
     }
 
     @Override

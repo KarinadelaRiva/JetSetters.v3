@@ -120,7 +120,6 @@ public abstract class Persona {
         System.out.println("DNI..................................: " + this.dni);
         System.out.println("Pasaporte............................: " + this.pasaporte);
         System.out.println("Telefono.............................: " + this.telefono);
-        System.out.println("<<..........Direccion..............>>: ");
         direccion.mostrar();
     }
 

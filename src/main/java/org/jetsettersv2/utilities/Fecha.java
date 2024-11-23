@@ -9,6 +9,11 @@ public class Fecha {
 
     private static final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 
+    // Nuevo getter para Jackson
+    public String getFecha() {
+        return this.fecha.format(formatter);
+    }
+
     // Constructor sin parámetros (fecha actual)
     public Fecha() {
         this.fecha = LocalDate.now();
