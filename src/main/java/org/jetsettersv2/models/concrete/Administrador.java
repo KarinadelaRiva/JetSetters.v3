@@ -1,18 +1,14 @@
 package org.jetsettersv2.models.concrete;
 
 import org.jetsettersv2.collections.ArrayListGeneric;
-import org.jetsettersv2.enums.TurnoEmpleado;
 import org.jetsettersv2.exceptions.ElementoNoEncontradoException;
 import org.jetsettersv2.models.abstracts.Empleado;
-import org.jetsettersv2.models.abstracts.Persona;
-import org.jetsettersv2.models.abstracts.PersonalAereo;
 import org.jetsettersv2.utilities.Fecha;
 
 import java.util.List;
 
 public class Administrador extends Empleado {
 
-    private TurnoEmpleado turno;
     private ArrayListGeneric<Vuelo> gestionVuelos;
     private ArrayListGeneric<Reserva> gestionReservas;
     private ArrayListGeneric<UsuarioCliente> gestionUsuarios;
@@ -25,15 +21,6 @@ public class Administrador extends Empleado {
     }
 
     // <<<<<<<GETTERS Y SETTERS>>>>>>>
-
-    public TurnoEmpleado getTurno() {
-        return turno;
-    }
-
-    public Administrador turno(TurnoEmpleado turno) {
-        this.turno = turno;
-        return this;
-    }
 
     public ArrayListGeneric<Pasajero> getGestionPasajeros() {
         return gestionPasajeros;
@@ -102,28 +89,55 @@ public class Administrador extends Empleado {
             if (vuelo.getNroVuelo().equals(nroVuelo)) {
                 return vuelo;
             }
-        }throw new ElementoNoEncontradoException("Vuelo con ID " + nroVuelo + " no encontrado.");
+        }throw new ElementoNoEncontradoException("Vuelo con numero " + nroVuelo + " no encontrado.");
     }
 
 
     // <<<<<<<REPROGRAMAR VUELOS>>>>>>>
 
-    public void reprogramarVuelos(Fecha fechaOriginal, Fecha nuevaFecha) throws ElementoNoEncontradoException {
+    public void reprogramarVuelos (String atributo, Fecha nuevoValor) {
         boolean vueloReprogramado = false;
 
         for (Vuelo vuelo : gestionVuelos.getLista()) {
-            if (vuelo.getFechaSalida().equals(fechaOriginal)) {
-                vuelo.setFechaSalida(nuevaFecha);
-                vueloReprogramado = true;
-            }
-        }
+            if (vuelo.getFechaSalida().equals(nuevoValor)) {
 
-        if (!vueloReprogramado) {
+
+                switch (atributo.toLowerCase()) {
+                    case "Fecha de salida":
+                        vuelo.fechaSalida(nuevoValor);
+                        break;
+                    case "Horario de salida":
+                        vuelo.horaSalida(nuevoValor);
+                        break;
+                    default:
+                        System.out.println("Atributo no reconocido.");
+                        vueloReprogramado = true;
+                }
+            }
+        }if (!vueloReprogramado) {
             throw new ElementoNoEncontradoException("No se encontraron vuelos con la fecha original especificada.");
         }
 
-        System.out.println("Se reprogramaron los vuelos de la fecha " + fechaOriginal + " a " + nuevaFecha);
+        System.out.println("Se reprogramaron los vuelos exitosamente");
     }
+
+
+//    public void reprogramarVuelos(Fecha fechaOriginal, Fecha nuevaFecha) throws ElementoNoEncontradoException {
+//        boolean vueloReprogramado = false;
+//
+//        for (Vuelo vuelo : gestionVuelos.getLista()) {
+//            if (vuelo.getFechaSalida().equals(fechaOriginal)) {
+//                vuelo.setFechaSalida(nuevaFecha);
+//                vueloReprogramado = true;
+//            }
+//        }
+//
+//        if (!vueloReprogramado) {
+//            throw new ElementoNoEncontradoException("No se encontraron vuelos con la fecha original especificada.");
+//        }
+//
+//        System.out.println("Se reprogramaron los vuelos de la fecha " + fechaOriginal + " a " + nuevaFecha);
+//    }
 
 
 //     <<<<<<<ASIGNAR TRIPULACION A UN VUELO>>>>>>>
@@ -308,13 +322,18 @@ public class Administrador extends Empleado {
 
     public void imprimir () {
         super.imprimir();
-        System.out.println("Turno....................:" + this.turno);
     }
 
     @Override
     public String toString() {
-        return "PersonalTierra{" +
-                ", turno=" + turno +
+        return "Administrador{" +
+                "gestionVuelos=" + gestionVuelos +
+                ", gestionReservas=" + gestionReservas +
+                ", gestionUsuarios=" + gestionUsuarios +
+                ", gestionPasajeros=" + gestionPasajeros +
+                ", gestionRutas=" + gestionRutas +
+                ", gestionAviones=" + gestionAviones +
                 '}';
     }
 }
+
