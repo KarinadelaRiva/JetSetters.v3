@@ -24,12 +24,25 @@ public class MenuLogin {
         ArrayListGeneric<Administrador> empleados = new ArrayListGeneric<>();
         int opcion;
         do {
-            System.out.println("\nBienvenido a JetSetters!\n");
+            usuarioLogueado = null;
+            adminLogueado = null;
+
+            System.out.println("\n      Bienvenid@ a JetSetters!\n");
             opcion = opcionesLogin();
             switch (opcion) {
                 case 1:
-                    usuarioLogueado = inicioSesionUsuario(usuarios);
-                    mostrarMenuUsuario(usuarioLogueado);
+                    System.out.println("\n--Iniciar Sesion--");
+                    try{
+                        usuarioLogueado = inicioSesionUsuario(usuarios);
+                        mostrarMenuUsuario(usuarioLogueado);
+                    }catch (Exception e){
+                        System.out.println("Error al iniciar sesion: " + e.getMessage());
+                    }
+
+//                    usuarioLogueado = inicioSesionUsuario(usuarios);
+//                    if (usuarioLogueado != null) {
+//                        mostrarMenuUsuario(usuarioLogueado);
+//                    }
                     break;
                 case 2:
                     registrarUsuario(usuarios);
@@ -39,7 +52,9 @@ public class MenuLogin {
                     break;
                 case 4:
                     adminLogueado = inicioSesionAdmin(empleados);
-                    System.out.println("LLAMAR AL MENU ADMINISTRADORES ACÁ");
+                    if(adminLogueado != null) {
+                        System.out.println("LLAMAR AL MENU ADMINISTRADORES ACÁ");
+                    }
                     break;
                 case 0:
                     System.out.println("Adios " + usuarioLogueado.getNombre() + ", esperamos verte pronto!");
@@ -56,9 +71,9 @@ public class MenuLogin {
 
         System.out.println("1. Iniciar Sesion");
         System.out.println("2. Registrarse");
-        System.out.println("3. Ver Vuelos (Continuar sin iniciar sesion)");
+        System.out.println("3. Ver proximos vuelos");
         System.out.println("4. Ingresar como Administrador");
-        System.out.println("0. Salir");
+        System.out.println("0. Salir\n");
 
         while (opcion < 0 || opcion > 4) {
             try {
@@ -71,7 +86,7 @@ public class MenuLogin {
         return opcion;
     }
 
-    public static UsuarioCliente inicioSesionUsuario(ArrayListGeneric<UsuarioCliente> usuarios){
+    public static UsuarioCliente inicioSesionUsuario(ArrayListGeneric<UsuarioCliente> usuarios) throws LoginException{
         UsuarioCliente logueado = new UsuarioCliente();
 
         try{
@@ -82,41 +97,46 @@ public class MenuLogin {
         
         try {
             logueado = iniciaUsuario(usuarios);
-            System.out.println("Datos del usuario logueado: " + logueado.getNombre() + " - " + logueado.getEmail());
+            System.out.println("\nDatos del usuario logueado: " + logueado.getNombre() + " - " + logueado.getEmail());
         } catch (LoginException e) {
-            System.out.println("Error: " + e.getMessage());
+            throw new LoginException("\nContraseña y/o email incorrectos.");
         }
         return logueado;
     }
 
     public static UsuarioCliente iniciaUsuario(ArrayListGeneric<UsuarioCliente> usuarios) throws LoginException {
-
+        // Solicitar el email
         System.out.print("Ingrese su email: ");
         String email = scanner.nextLine().trim();
 
-        // Buscar persona por email
-        UsuarioCliente userEncontrado = new UsuarioCliente();
-        userEncontrado = null;
+        // Buscar usuario por email
+        UsuarioCliente usuarioEncontrado = null;
         for (UsuarioCliente u : usuarios) {
-            if (u.getEmail().trim().equals(email)) {
-                userEncontrado = u;
+            if (u.getEmail().trim().equalsIgnoreCase(email)) { // Compara sin importar mayúsculas/minúsculas
+                usuarioEncontrado = u;
                 break;
             }
         }
 
-        if (userEncontrado == null) {
+        // Verificar si el usuario fue encontrado
+        if (usuarioEncontrado == null) {
             throw new LoginException("El email ingresado no está registrado.");
         }
 
+        // Solicitar la contraseña
         System.out.print("Ingrese su contraseña: ");
         String password = scanner.nextLine().trim();
 
-        if (!userEncontrado.getPassword().equals(password)) {
-            throw new LoginException("La contraseña es incorrecta.");
+        // Verificar la contraseña
+        if (!usuarioEncontrado.getPassword().equals(password)) {
+            throw new LoginException("La contraseña ingresada es incorrecta.");
         }
 
-        System.out.println("Inicio de sesión exitoso. Bienvenido, " + userEncontrado.getNombre() + "!");
-        return userEncontrado; // Devuelve la persona logueada
+        // Si todo es correcto, se muestra un mensaje de bienvenida
+        System.out.println("\nInicio de sesión exitoso. Bienvenido, " + usuarioEncontrado.getNombre() + "!");
+
+        // Retornar el usuario logueado
+        return usuarioEncontrado;
     }
 
     public static void registrarUsuario(ArrayListGeneric<UsuarioCliente> usuarios){
@@ -213,7 +233,7 @@ public class MenuLogin {
         return nuevoUsuario;
     }
 
-    public static Administrador inicioSesionAdmin(ArrayListGeneric<Administrador> admins){
+    public static Administrador inicioSesionAdmin(ArrayListGeneric<Administrador> admins) throws LoginException{
         Administrador logueado = new Administrador();
 
         try{
@@ -226,39 +246,44 @@ public class MenuLogin {
             logueado = iniciaAdministrador(admins);
             System.out.println("Datos del usuario logueado: " + logueado.getNombre() + " - " + logueado.getEmail());
         } catch (LoginException e) {
-            System.out.println("Error: " + e.getMessage());
+            throw new LoginException("\nContraseña y/o email incorrectos.");
         }
         return logueado;
     }
 
     public static Administrador iniciaAdministrador(ArrayListGeneric<Administrador> admins) throws LoginException {
-
+        // Solicitar el email
         System.out.print("Ingrese su email: ");
         String email = scanner.nextLine().trim();
 
-        // Buscar persona por email
-        Administrador userEncontrado = new Administrador();
-        userEncontrado = null;
-        for (Administrador u : admins) {
-            if (u.getEmail().trim().equals(email)) {
-                userEncontrado = u;
+        // Buscar administrador por email
+        Administrador administradorEncontrado = null;
+        for (Administrador a : admins) {
+            if (a.getEmail().trim().equalsIgnoreCase(email)) { // Compara sin importar mayúsculas/minúsculas
+                administradorEncontrado = a;
                 break;
             }
         }
 
-        if (userEncontrado == null) {
-            throw new LoginException("El email ingresado no está registrado.");
+        // Verificar si el administrador fue encontrado
+        if (administradorEncontrado == null) {
+            throw new LoginException("\nEl email ingresado no está registrado.");
         }
 
+        // Solicitar la contraseña
         System.out.print("Ingrese su contraseña: ");
         String password = scanner.nextLine().trim();
 
-        if (!userEncontrado.getPassword().equals(password)) {
-            throw new LoginException("La contraseña es incorrecta.");
+        // Verificar la contraseña
+        if (!administradorEncontrado.getPassword().equals(password)) {
+            throw new LoginException("\nLa contraseña ingresada es incorrecta.");
         }
 
-        System.out.println("Inicio de sesión exitoso. Bienvenido, " + userEncontrado.getNombre() + "!");
-        return userEncontrado; // Devuelve la persona logueada
+        // Si todo es correcto, se muestra un mensaje de bienvenida
+        System.out.println("\nInicio de sesión exitoso. Bienvenido, " + administradorEncontrado.getNombre() + "!");
+
+        // Retornar el administrador logueado
+        return administradorEncontrado;
     }
 
     public static void verVuelosSinLogin(){
