@@ -12,12 +12,10 @@ public abstract class Empleado extends Persona{
     private Fecha fechaAlta;
     private Fecha fechaBaja = null;
     private boolean activo;
-    private List<String> idiomas;
 
 
     public Empleado() {
         this.legajo = generarLegajo(); // Genera el legajo automáticamente
-        this.idiomas= new ArrayList<>();
     }
 
     private static String generarLegajo() {
@@ -56,23 +54,19 @@ public abstract class Empleado extends Persona{
         return this;
     }
 
-    public List<String> getIdiomas() {
-        return idiomas;
-    }
-
-    public Empleado idiomas(List<String> idiomas) {
-        this.idiomas = idiomas;
-        return this;
-    }
-
     public void imprimir ()
     {
-//        super.imprimir();
         System.out.println("Legajo..................:" + this.legajo);
+        super.imprimir();
         System.out.println("Fecha de alta...........:" + this.fechaAlta);
-        System.out.println("Fecha de baja...........:" + this.fechaBaja);
-        System.out.println("Activo..................:" + this.activo);
-        System.out.println("Idionas.................:" + this.idiomas);
+        if(this.fechaBaja != null){
+            System.out.println("Fecha de baja...........:" + this.fechaBaja);
+        }
+        if(this.activo){
+            System.out.println("Situación...............: Activo");
+        }else{
+            System.out.println("Situación...............: Inactivo");
+        }
         System.out.println();
     }
 
@@ -83,7 +77,6 @@ public abstract class Empleado extends Persona{
                 ", fechaAlta=" + fechaAlta +
                 ", fechaBaja=" + fechaBaja +
                 ", activo=" + activo +
-                ", idiomas=" + idiomas +
                 '}';
     }
 }
