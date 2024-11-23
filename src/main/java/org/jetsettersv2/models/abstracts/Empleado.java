@@ -6,26 +6,28 @@ import java.util.ArrayList;
 import java.util.List;
 
 public abstract class Empleado extends Persona{
+    private static int contadorLegajos = 1;
 
     private String legajo;
     private Fecha fechaAlta;
-    private Fecha fechaBaja;
+    private Fecha fechaBaja = null;
     private boolean activo;
     private List<String> idiomas;
 
 
     public Empleado() {
+        this.legajo = generarLegajo(); // Genera el legajo automáticamente
         this.idiomas= new ArrayList<>();
+    }
+
+    private static String generarLegajo() {
+        return String.format("L%04d", contadorLegajos++);
     }
 
     public String getLegajo() {
         return legajo;
     }
 
-    public Empleado legajo(String legajo) {
-        this.legajo = legajo;
-        return this;
-    }
 
     public Fecha getFechaAlta() {
         return fechaAlta;

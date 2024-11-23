@@ -14,7 +14,9 @@ public class JacksonUtil {
     public static final String PATH_FLOTA = "/aviones.json";
     public static final String PATH_VUELOS = "/vuelos.json";
     public static final String PATH_USUARIOSCLIENTE = "/usuariosClientes.json";
-    public static final String PATH_USUARIOSEMPLEADOS = "/usuariosempleados.json";
+    public static final String PATH_ADMINISTRADORES = "/administradores.json";
+    public static final String PATH_TRIPULACIONCABINA = "/tripulacioncabina.json";
+    public static final String PATH_TRIPULACIONTECNICA = "/tripulaciontecnica.json";
     public static final String PATH_RUTAS = "/rutas.json";
     public static final String PATH_RESERVAS = "/reservas.json";
 

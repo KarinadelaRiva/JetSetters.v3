@@ -1,17 +1,187 @@
 [ {
-  "idPersona" : "4f2a703a-fec6-4ac7-8c3e-1613e42ddf9f",
-  "nombre" : "Karina",
-  "apellido" : "de la Riva",
+  "idPersona" : "00b08eda-0953-4044-b217-a48f24089d02",
+  "nombre" : "Karinaa",
+  "apellido" : "De la Riva",
   "dni" : "40478020",
-  "pasaporte" : "40478020",
-  "telefono" : "2235606166",
+  "pasaporte" : "P40478020",
+  "telefono" : "+542235606166",
   "direccion" : {
-    "calle" : "corrientes",
+    "calle" : "jpr",
     "numero" : 1531,
-    "ciudad" : "mdp",
+    "ciudad" : "Mdp",
     "codigoPostal" : "7600",
-    "pais" : "arg"
+    "pais" : "Arg"
   },
   "email" : "karina@gmail.com",
   "password" : "Karina@123"
-} ]
+},
+  {
+    "idPersona": "a5d6ef6b-8e8f-4e80-91a9-45d33714f4cd",
+    "nombre": "Karina",
+    "apellido": "Pérez",
+    "dni": "34567890",
+    "pasaporte": "A12345678",
+    "telefono": "+541234567890",
+    "direccion": {
+      "calle": "Corrientes",
+      "numero": 1234,
+      "ciudad": "Buenos Aires",
+      "codigoPostal": "1000",
+      "pais": "Arg"
+    },
+    "email": "karina.perez@example.com",
+    "password": "Karina@123"
+  },
+  {
+    "idPersona": "cfd77618-86a4-4b76-a51a-e1926bd2d542",
+    "nombre": "Lucas",
+    "apellido": "Gómez",
+    "dni": "12345678",
+    "pasaporte": "B98765432",
+    "telefono": "+549876543210",
+    "direccion": {
+      "calle": "San Martín",
+      "numero": 567,
+      "ciudad": "Mendoza",
+      "codigoPostal": "5500",
+      "pais": "Arg"
+    },
+    "email": "lucas.gomez@example.com",
+    "password": "Lucas@456"
+  },
+  {
+    "idPersona": "85e469df-4f75-4a37-bfa7-74e5a8fc6f09",
+    "nombre": "María",
+    "apellido": "López",
+    "dni": "23456789",
+    "pasaporte": "C76543210",
+    "telefono": "+541112223334",
+    "direccion": {
+      "calle": "Belgrano",
+      "numero": 890,
+      "ciudad": "Rosario",
+      "codigoPostal": "2000",
+      "pais": "Arg"
+    },
+    "email": "maria.lopez@example.com",
+    "password": "Maria@789"
+  },
+  {
+    "idPersona": "657fea2d-f318-4a3e-a55b-c0a9eb9b3c5c",
+    "nombre": "Sofía",
+    "apellido": "Ruiz",
+    "dni": "98765432",
+    "pasaporte": "D23456789",
+    "telefono": "+542233445566",
+    "direccion": {
+      "calle": "Mitre",
+      "numero": 456,
+      "ciudad": "Córdoba",
+      "codigoPostal": "5000",
+      "pais": "Arg"
+    },
+    "email": "sofia.ruiz@example.com",
+    "password": "Sofia@1234"
+  },
+  {
+    "idPersona": "f43577e9-901b-45ab-b212-5ab81471e412",
+    "nombre": "Luis",
+    "apellido": "Torres",
+    "dni": "34512345",
+    "pasaporte": "E87654321",
+    "telefono": "+5492233445566",
+    "direccion": {
+      "calle": "Rivadavia",
+      "numero": 789,
+      "ciudad": "Buenos Aires",
+      "codigoPostal": "1400",
+      "pais": "Arg"
+    },
+    "email": "luis.torres@example.com",
+    "password": "Luis@567"
+  },
+  {
+    "idPersona": "ae1e0a0d-d1a3-4c13-936d-364187aa4fd7",
+    "nombre": "Ana",
+    "apellido": "Martínez",
+    "dni": "12398745",
+    "pasaporte": "F65432109",
+    "telefono": "+541155667788",
+    "direccion": {
+      "calle": "Lavalle",
+      "numero": 321,
+      "ciudad": "Mdp",
+      "codigoPostal": "7600",
+      "pais": "Arg"
+    },
+    "email": "ana.martinez@example.com",
+    "password": "Ana@890"
+  },
+  {
+    "idPersona": "3d2f3fcd-3429-49a9-92e7-f32787fcf7d6",
+    "nombre": "Camila",
+    "apellido": "Fernández",
+    "dni": "45678912",
+    "pasaporte": "G54321098",
+    "telefono": "+5491123456789",
+    "direccion": {
+      "calle": "Castelli",
+      "numero": 654,
+      "ciudad": "Rosario",
+      "codigoPostal": "2000",
+      "pais": "Arg"
+    },
+    "email": "camila.fernandez@example.com",
+    "password": "Camila@123"
+  },
+  {
+    "idPersona": "b6d9e125-2baf-4406-b73e-417e08c2614f",
+    "nombre": "José",
+    "apellido": "Rodríguez",
+    "dni": "67891234",
+    "pasaporte": "H43210987",
+    "telefono": "+542912345678",
+    "direccion": {
+      "calle": "Alberdi",
+      "numero": 789,
+      "ciudad": "Córdoba",
+      "codigoPostal": "5000",
+      "pais": "Arg"
+    },
+    "email": "jose.rodriguez@example.com",
+    "password": "Jose@890"
+  },
+  {
+    "idPersona": "65fc91e5-98ad-499c-b8a2-d13ef2d7a407",
+    "nombre": "Francisco",
+    "apellido": "Hernández",
+    "dni": "78901234",
+    "pasaporte": "I32109876",
+    "telefono": "+541234567891",
+    "direccion": {
+      "calle": "Sarmiento",
+      "numero": 987,
+      "ciudad": "Mendoza",
+      "codigoPostal": "5500",
+      "pais": "Arg"
+    },
+    "email": "francisco.hernandez@example.com",
+    "password": "Francisco@567"
+  },
+  {
+    "idPersona": "42d4e7a8-03f9-49ef-a1f6-cd3db52abf95",
+    "nombre": "Santiago",
+    "apellido": "García",
+    "dni": "89012345",
+    "pasaporte": "J21098765",
+    "telefono": "+5412233445566",
+    "direccion": {
+      "calle": "JPR",
+      "numero": 654,
+      "ciudad": "Buenos Aires",
+      "codigoPostal": "1600",
+      "pais": "Arg"
+    },
+    "email": "santiago.garcia@example.com",
+    "password": "Santiago@456"
+  } ]
