@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.function.Predicate;
 
 public class ArrayListGeneric<T> extends ArrayList<T> {
-    private final List<T> lista;
+    private final ArrayList<T> lista;
 
     public ArrayListGeneric() {
         this.lista = new ArrayList<>();
@@ -17,7 +17,7 @@ public class ArrayListGeneric<T> extends ArrayList<T> {
         this.lista = new ArrayList<>(dim);
     }
 
-    public List<T> getLista() {
+    public ArrayList<T> getLista() {
         return lista;
     }
 
@@ -25,10 +25,9 @@ public class ArrayListGeneric<T> extends ArrayList<T> {
         this.lista.add(elemento);
     }
 
-    public void copiarLista(List<T> origen){
-        for (T elemento : origen){
-            this.agregarElemento(elemento);
-        }
+    public void copiarLista(ArrayList<T> origen){
+        this.clear(); // Limpia la lista actual antes de copiar
+        this.addAll(origen);
     }
 
     public void mostrarLista(){
@@ -58,8 +57,8 @@ public class ArrayListGeneric<T> extends ArrayList<T> {
         throw new ElementoNoEncontradoException(mensajeException);
     }
 
-    public List<T> filtrarListaElementos(Predicate<T> criterio, String mensajeException) {
-        List<T> resultado = new ArrayList<>();
+    public ArrayList<T> filtrarListaElementos(Predicate<T> criterio, String mensajeException) {
+        ArrayList<T> resultado = new ArrayList<>();
 
         for (T elemento : lista) {
             if (criterio.test(elemento)) {

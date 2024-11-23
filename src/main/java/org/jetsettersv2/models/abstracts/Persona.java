@@ -142,34 +142,87 @@ public abstract class Persona {
     // <<<<<<<REGISTRO>>>>>>>
 
     public void solicitarNombre() {
-        System.out.print("Ingrese el nombre: ");
-        this.nombre = scanner.nextLine().trim();
+        boolean nombreValido = false;
+        while (!nombreValido) {
+            System.out.print("Ingrese el nombre: ");
+            this.nombre = scanner.nextLine().trim();
+
+            // Validar que el nombre solo contenga letras y espacios
+            if (this.nombre.matches("[a-zA-ZÁÉÍÓÚáéíóúÑñ\\s]+")) {
+                nombreValido = true; // El nombre es válido
+            } else {
+                System.out.println("El nombre solo puede contener letras y espacios. Intente nuevamente.");
+            }
+        }
     }
 
     public void solicitarApellido() {
-        System.out.print("Ingrese el apellido: ");
-        this.apellido = scanner.nextLine().trim();
+        boolean apellidoValido = false;
+        while (!apellidoValido) {
+            System.out.print("Ingrese el apellido: ");
+            this.apellido = scanner.nextLine().trim();
+
+            // Validar que el apellido solo contenga letras y espacios
+            if (this.apellido.matches("[a-zA-ZÁÉÍÓÚáéíóúÑñ\\s]+")) {
+                apellidoValido = true; // El apellido es válido
+            } else {
+                System.out.println("El apellido solo puede contener letras y espacios. Intente nuevamente.");
+            }
+        }
     }
 
     public void solicitarDni() {
-        System.out.print("Ingrese el DNI (solo números): ");
-        String input = scanner.nextLine().trim();
-        if (input.matches("\\d+")) {
-            this.dni = input;
-        } else {
-            System.out.println("DNI inválido. Intente nuevamente.");
-            solicitarDni();
+        boolean dniValido = false;
+
+        while (!dniValido) {
+            System.out.print("Ingrese el DNI (número entre 1,000,000 y 100,000,000): ");
+            String input = scanner.nextLine().trim();
+
+            // Validar que el DNI sea numérico y esté en el rango permitido
+            if (input.matches("\\d+")) { // Verificar que sean solo números
+                long dniNumero = Long.parseLong(input); // Convertir a número
+                if (dniNumero >= 1_000_000 && dniNumero <= 100_000_000) {
+                    this.dni = input; // Asignar el DNI válido
+                    dniValido = true; // Salir del bucle
+                } else {
+                    System.out.println("El DNI debe estar entre 1,000,000 y 100,000,000.");
+                }
+            } else {
+                System.out.println("El DNI solo puede contener números. Intente nuevamente.");
+            }
         }
     }
 
     public void solicitarPasaporte() {
-        System.out.print("Ingrese el número de pasaporte: ");
-        this.pasaporte = scanner.nextLine().trim();
+        boolean pasaporteValido = false;
+
+        while (!pasaporteValido) {
+            System.out.print("Ingrese el número de pasaporte: ");
+            this.pasaporte = scanner.nextLine().trim();
+
+            // Validar formato del pasaporte: comienza con letra opcional, seguido de números (8-9 caracteres)
+            if (this.pasaporte.matches("[A-Z]?[0-9]{8,9}")) {
+                pasaporteValido = true; // El pasaporte es válido
+            } else {
+                System.out.println("Número de pasaporte inválido. Debe tener entre 8 y 9 caracteres y puede comenzar con una letra.");
+            }
+        }
     }
 
     public void solicitarTelefono() {
-        System.out.print("Ingrese el teléfono (incluyendo código de área): ");
-        this.telefono = scanner.nextLine().trim();
+        boolean telefonoValido = false;
+
+        while (!telefonoValido) {
+            System.out.print("Ingrese el teléfono (incluyendo código de área): ");
+            this.telefono = scanner.nextLine().trim();
+
+            // Validar el formato del teléfono
+            if (this.telefono.matches("\\+?\\d{10,15}")) {
+                telefonoValido = true; // El teléfono es válido
+            } else {
+                System.out.println("Número de teléfono inválido. Debe contener entre 10 y 15 dígitos, y puede incluir un '+' al inicio.");
+            }
+        }
     }
 
     public void solicitarDireccion() {
@@ -204,10 +257,9 @@ public abstract class Persona {
     }
 
     public void solicitarPassword() {
-
         // Requisitos de la contraseña:
         // Al menos una letra mayúscula, una minúscula, un número, un carácter especial y longitud mínima de 8
-        String regex = "^(?=.[A-Z])(?=.[a-z])(?=.\\d)(?=.[@$!%?&])[A-Za-z\\d@$!%?&]{8,}$";
+        String regex = "^(?=.*[A-Z])(?=.*[a-z])(?=.*\\d)(?=.*[@$!%?&])[A-Za-z\\d@$!%?&]{8,}$";
         boolean contraseñaValida = false;
 
         while (!contraseñaValida) {
@@ -221,16 +273,14 @@ public abstract class Persona {
             } else {
                 System.out.println("Contraseña inválida. Por favor, asegúrese de cumplir los requisitos.");
             }
-       }
+        }
     }
+
         // <<<<<<<INICIO DE SESION>>>>>>>
 
     public static Persona iniciarSesion(ArrayListGeneric<Persona> personas) throws LoginException {
 
         Scanner scanner = new Scanner(System.in);
-
-//        ArrayListGeneric<Persona> personas = new ArrayListGeneric<>();
-//        personas.copiarLista(getJsonToList(JacksonUtil.PATH_RESOURCES + JacksonUtil.PATH_PERSONAS, Persona.class));
 
         System.out.print("Ingrese su email: ");
         String email = scanner.nextLine().trim();
@@ -262,22 +312,41 @@ public abstract class Persona {
     // <<<<<<<MODIFICAR DATOS>>>>>>>
 
     public void modificarDatos(String atributo, String nuevoValor) {
-
         switch (atributo.toLowerCase()) {
             case "nombre":
-                this.nombre(nuevoValor);
+                if (nuevoValor.matches("[a-zA-ZÁÉÍÓÚáéíóúÑñ\\s]+")) {
+                    this.nombre = nuevoValor.trim();
+                } else {
+                    System.out.println("El nombre solo puede contener letras y espacios.");
+                }
                 break;
             case "apellido":
-                this.apellido(nuevoValor) ;
+                if (nuevoValor.matches("[a-zA-ZÁÉÍÓÚáéíóúÑñ\\s]+")) {
+                    this.apellido = nuevoValor.trim();
+                } else {
+                    System.out.println("El apellido solo puede contener letras y espacios.");
+                }
                 break;
             case "dni":
-                this.dni(nuevoValor);
+                if (nuevoValor.matches("\\d+") && nuevoValor.length() >= 7 && nuevoValor.length() <= 8) {
+                    this.dni = nuevoValor.trim();
+                } else {
+                    System.out.println("El DNI debe contener solo números y tener entre 7 y 8 dígitos.");
+                }
                 break;
             case "pasaporte":
-                this.pasaporte(nuevoValor);
+                if (nuevoValor.matches("[A-Z]?[0-9]{8,9}")) {
+                    this.pasaporte = nuevoValor.trim();
+                } else {
+                    System.out.println("Número de pasaporte inválido. Debe tener entre 8 y 9 caracteres y puede comenzar con una letra.");
+                }
                 break;
             case "telefono":
-                this.telefono(nuevoValor);
+                if (nuevoValor.matches("\\+?\\d{10,15}")) {
+                    this.telefono = nuevoValor.trim();
+                } else {
+                    System.out.println("Número de teléfono inválido. Debe contener entre 10 y 15 dígitos y puede incluir un '+' al inicio.");
+                }
                 break;
             default:
                 System.out.println("Atributo no reconocido.");

@@ -14,4 +14,11 @@ module org.jetsettersv2.demo1 {
 
     opens org.jetsettersv2 to javafx.fxml;
     exports org.jetsettersv2;
+    opens org.jetsettersv2.models.abstracts to com.fasterxml.jackson.databind;
+    opens org.jetsettersv2.models.concrete to com.fasterxml.jackson.databind;
+    opens org.jetsettersv2.menus to com.fasterxml.jackson.databind;
+    opens org.jetsettersv2.collections to com.fasterxml.jackson.databind;
+    opens org.jetsettersv2.enums to com.fasterxml.jackson.databind;
+    opens org.jetsettersv2.exceptions to com.fasterxml.jackson.databind;
+    opens org.jetsettersv2.utilities to com.fasterxml.jackson.databind;
 }

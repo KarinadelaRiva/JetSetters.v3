@@ -1,0 +1,17 @@
+[ {
+  "idPersona" : "4f2a783a-fec6-4ac7-8c3e-1593e42ddf9f",
+  "nombre" : "Florencia",
+  "apellido" : "Diaz",
+  "dni" : "34589154",
+  "pasaporte" : "34589154",
+  "telefono" : "4823054",
+  "direccion" : {
+    "calle" : "corrientes",
+    "numero" : 1531,
+    "ciudad" : "mdp",
+    "codigoPostal" : "7600",
+    "pais" : "arg"
+  },
+  "email" : "admin@gmail.com",
+  "password" : "Admin@123"
+} ]

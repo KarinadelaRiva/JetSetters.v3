@@ -1,0 +1,17 @@
+[ {
+  "idPersona" : "4f2a703a-fec6-4ac7-8c3e-1613e42ddf9f",
+  "nombre" : "Karina",
+  "apellido" : "de la Riva",
+  "dni" : "40478020",
+  "pasaporte" : "40478020",
+  "telefono" : "2235606166",
+  "direccion" : {
+    "calle" : "corrientes",
+    "numero" : 1531,
+    "ciudad" : "mdp",
+    "codigoPostal" : "7600",
+    "pais" : "arg"
+  },
+  "email" : "karina@gmail.com",
+  "password" : "Karina@123"
+} ]
