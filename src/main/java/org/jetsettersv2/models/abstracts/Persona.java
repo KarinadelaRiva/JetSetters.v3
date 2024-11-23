@@ -259,7 +259,7 @@ public abstract class Persona {
     public void solicitarPassword() {
         // Requisitos de la contraseña:
         // Al menos una letra mayúscula, una minúscula, un número, un carácter especial y longitud mínima de 8
-        String regex = "^(?=.*[A-Z])(?=.*[a-z])(?=.*\\d)(?=.*[@$!%?&])[A-Za-z\\d@$!%?&]{8,}$";
+        String regex = "^(?=.*[A-Z])(?=.*[a-z])(?=.*\\d)(?=.*[-_*@$!%?&])[A-Za-z\\d-_*@$!%?&]{8,}$";
         boolean contraseñaValida = false;
 
         while (!contraseñaValida) {

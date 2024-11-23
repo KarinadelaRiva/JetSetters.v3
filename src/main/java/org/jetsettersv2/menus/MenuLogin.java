@@ -8,6 +8,7 @@ import org.jetsettersv2.models.concrete.UsuarioCliente;
 import org.jetsettersv2.models.concrete.Vuelo;
 import org.jetsettersv2.utilities.Fecha;
 
+import java.io.IOException;
 import java.util.Scanner;
 
 import static org.jetsettersv2.menus.menuUsuario.mostrarMenuUsuario;
@@ -38,29 +39,35 @@ public class MenuLogin {
                     }catch (Exception e){
                         System.out.println("Error al iniciar sesion: " + e.getMessage());
                     }
-
-//                    usuarioLogueado = inicioSesionUsuario(usuarios);
-//                    if (usuarioLogueado != null) {
-//                        mostrarMenuUsuario(usuarioLogueado);
-//                    }
+                    pausarConTecla();
                     break;
                 case 2:
                     registrarUsuario(usuarios);
+                    pausarConTecla();
                     break;
                 case 3:
                     verVuelosSinLogin();
+                    pausarConTecla();
                     break;
                 case 4:
-                    adminLogueado = inicioSesionAdmin(empleados);
-                    if(adminLogueado != null) {
+                    try{
+                        adminLogueado = inicioSesionAdmin(empleados);
                         System.out.println("LLAMAR AL MENU ADMINISTRADORES ACÁ");
+                    }catch (Exception e){
+                        System.out.println("Error al iniciar sesion: " + e.getMessage());
                     }
+                    pausarConTecla();
                     break;
                 case 0:
-                    System.out.println("Adios " + usuarioLogueado.getNombre() + ", esperamos verte pronto!");
+                    if(usuarioLogueado != null || adminLogueado != null){
+                        System.out.println("\nAdios " + usuarioLogueado.getNombre() + "! Esperamos verte pronto!");
+                    } else {
+                        System.out.println("\nAdios! Esperamos verte pronto!");
+                    }
                     break;
                 default:
                     System.out.println("Opcion no valida");
+                    pausarConTecla();
                     break;
             }
         }while (opcion != 0);
@@ -310,4 +317,16 @@ public class MenuLogin {
             }
         }
     }
+
+    public static void pausarConTecla() {
+        System.out.println("\nPresione cualquier tecla para volver al menú anterior...");
+        try {
+            if (System.in.available() == 0) { // Verifica si hay entrada disponible
+                System.in.read(); // Captura una sola tecla
+            }
+        } catch (IOException e) {
+            System.out.println("Error al pausar: " + e.getMessage());
+        }
+    }
+
 }
