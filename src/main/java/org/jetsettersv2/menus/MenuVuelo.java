@@ -16,10 +16,8 @@ import static org.jetsettersv2.utilities.JacksonUtil.*;
 public class MenuVuelo {
 
     private static final Scanner scanner = new Scanner(System.in);
-    public static void mostrarMenuVuelo(Vuelo vuelo, Administrador  admin) {
+    public static void mostrarMenuVuelo() {
         Scanner scanner = new Scanner(System.in);
-        Administrador adminMenu = new Administrador();
-        adminMenu = admin;
 
         int opcion;
 

@@ -10,6 +10,7 @@ import static org.jetsettersv2.menus.MenuFlota.menuFlota;
 import static org.jetsettersv2.menus.MenuPersonal.buscarPosAdminElementoPorLegajo;
 import static org.jetsettersv2.menus.MenuPersonal.menuPersonal;
 import static org.jetsettersv2.menus.MenuRutas.menuRutas;
+import static org.jetsettersv2.menus.MenuVuelo.mostrarMenuVuelo;
 import static org.jetsettersv2.utilities.JacksonUtil.*;
 
 public class MenuAdmin {
@@ -32,7 +33,7 @@ public class MenuAdmin {
 
         switch (opcion) {
             case 1 -> gestionarPerfil(admin);
-            case 2 -> gestionarVuelos();
+            case 2 -> mostrarMenuVuelo();
             case 3 -> menuRutas();
             case 4 -> menuFlota();
             case 5 -> menuPersonal();
@@ -128,31 +129,6 @@ private static void gestionarPerfil(Administrador admin) {
 
     }
 
-}
-
-private static void gestionarVuelos() {
-    Scanner scanner = new Scanner(System.in);
-    int opcionVuelos;
-
-    do {
-        System.out.println("\nGestión de Vuelos:");
-        System.out.println("1. Programar vuelo nuevo");
-        System.out.println("2. Reprogramar vuelo existente");
-        System.out.println("3. Asignar tripulación");
-        System.out.println("4. Ver vuelos -> Ver todo");
-        System.out.println("5. Volver al menú principal");
-        System.out.print("Seleccione una opción: ");
-        opcionVuelos = scanner.nextInt();
-
-        switch (opcionVuelos) {
-            case 1 -> System.out.println("Programando vuelo nuevo...");
-            case 2 -> System.out.println("Reprogramando vuelo existente...");
-            case 3 -> System.out.println("Asignando tripulación...");
-            case 4 -> System.out.println("Mostrando todos los vuelos...");
-            case 5 -> System.out.println("Volviendo al menú anterior...");
-            default -> System.out.println("Opción inválida. Intente nuevamente.");
-        }
-    } while (opcionVuelos != 5);
 }
 
 }
