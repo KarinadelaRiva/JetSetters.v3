@@ -127,31 +127,31 @@ public class Administrador extends Empleado {
 //     <<<<<<<ASIGNAR TRIPULACION A UN VUELO>>>>>>>
 
 
-    public void asignarTripulacionVuelo(String nroVuelo, TripulacionCabina tripulante) throws ElementoNoEncontradoException {
-        // Busco el vuelo con el número indicado
-        Vuelo vuelo = null;
-        for (Vuelo v : gestionVuelos.getLista()) {
-            if (v.getNroVuelo().equals(nroVuelo)) {
-                vuelo = v;
-                break;
-            }
-        }
-
-        // Si no se encuentra el vuelo, lanzo excepción
-        if (vuelo == null) {
-            throw new ElementoNoEncontradoException("El vuelo con número " + nroVuelo + " no ha sido encontrado.");
-        }
-
-        // Verifico si el tripulante ya está asignado al vuelo
-        if (vuelo.registroDeVuelo(new RegistroDeVuelo()).equals(tripulante)) {
-            System.out.println("El tripulante " + tripulante.getNombre() + " ya está asignado al vuelo con número " + nroVuelo + ".");
-            return;
-        }
-
-        // Asigno el tripulante al vuelo
-        vuelo.getRegistroDeVuelo().agregarTripulanteCabina(tripulante);
-        System.out.println("El tripulante " + tripulante.getNombre() + " ha sido asignado al vuelo con número " + nroVuelo + ".");
-    }
+//    public void asignarTripulacionVuelo(String nroVuelo, TripulacionCabina tripulante) throws ElementoNoEncontradoException {
+//        // Busco el vuelo con el número indicado
+//        Vuelo vuelo = null;
+//        for (Vuelo v : gestionVuelos.getLista()) {
+//            if (v.getNroVuelo().equals(nroVuelo)) {
+//                vuelo = v;
+//                break;
+//            }
+//        }
+//
+//        // Si no se encuentra el vuelo, lanzo excepción
+//        if (vuelo == null) {
+//            throw new ElementoNoEncontradoException("El vuelo con número " + nroVuelo + " no ha sido encontrado.");
+//        }
+//
+//        // Verifico si el tripulante ya está asignado al vuelo
+//        if (vuelo.registroDeVuelo(new RegistroDeVuelo()).equals(tripulante)) {
+//            System.out.println("El tripulante " + tripulante.getNombre() + " ya está asignado al vuelo con número " + nroVuelo + ".");
+//            return;
+//        }
+//
+//        // Asigno el tripulante al vuelo
+//        vuelo.getRegistroDeVuelo().agregarTripulanteCabina(tripulante);
+//        System.out.println("El tripulante " + tripulante.getNombre() + " ha sido asignado al vuelo con número " + nroVuelo + ".");
+//    }
 
 
 
