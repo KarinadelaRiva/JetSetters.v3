@@ -10,6 +10,8 @@ import org.jetsettersv2.utilities.Fecha;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import static org.jetsettersv2.menus.MenuCheckIn.mostrarSubmenuCheckIn;
+import static org.jetsettersv2.menus.MenuReserva.mostrarMenuReservas;
 import static org.jetsettersv2.utilities.JacksonUtil.*;
 
 public class menuUsuario{
@@ -24,7 +26,8 @@ public class menuUsuario{
             System.out.println("1. PERFIL (ver/modificar)");
             System.out.println("2. MIS RESERVAS");
             System.out.println("3. BUSCAR VUELO Y HACER RESERVA");
-            System.out.println("4. MIS VUELOS");
+            System.out.println("4. HACER CHECK-IN");
+            System.out.println("5. MIS VUELOS");
             System.out.println("0. CERRAR SESIÓN");
             System.out.print("Seleccione una opción: ");
             opcion = scanner.nextInt();
@@ -33,8 +36,9 @@ public class menuUsuario{
             switch (opcion) {
                 case 1 -> subMenuGestionarPerfilUsuario(logueado);
                 case 2 -> mostrarReservas(logueado);
-                case 3 -> buscarVuelo();
-//                case 4 -> mostrarVuelos(logueado);
+                case 3 -> mostrarMenuReservas(logueado);
+                case 4 -> mostrarSubmenuCheckIn(logueado);
+                case 5 -> mostrarVuelos(logueado);
                 case 0 -> System.out.println(" ");
                 default -> System.out.println("Opción inválida. Intente nuevamente.");
             }
@@ -169,38 +173,34 @@ public class menuUsuario{
 
     }
 
-    private static void buscarVuelo() {
-        // Lógica para buscar un vuelo y hacer una reserva
-        System.out.println("Buscando vuelos o realizando una reserva...");
-    }
 
-//    private static void mostrarVuelos(UsuarioCliente logueado) {
-//        ArrayListGeneric<Reserva> reservas = new ArrayListGeneric<>();
-//        Fecha hoy = new Fecha();
-//        try{
-//            reservas.copiarLista(getJsonToList(PATH_RESOURCES + PATH_RESERVAS, Reserva.class));
-//        } catch (Exception e) {
-//            System.err.println("Error al leer el archivo JSON: " + e.getMessage());
-//        }
-//
-//        //mostrar vuelos pendientes de salida con el check in realizado
-//        for (Reserva reserva : reservas) {
-//            if ((reserva.getVuelo().getFechaSalida().esDespuesDe(hoy) || (reserva.getVuelo().getFechaSalida().esIgualA(hoy))
-//                    && (reserva.getUsuarioLogueado().getIdPersona().equals(logueado.getIdPersona()))
-//                    && (reserva.getCheckIn().getEstadoCheck()))) {
-//                System.out.println("\nVuelos pendientes de salida: ");
-//                reserva.getVuelo().imprimirDatosVuelo();
-//            }
-//        }
-//
-//        //mostrar vuelos pasados con el check in realizado
-//        for (Reserva reserva : reservas) {
-//            if ((reserva.getVuelo().getFechaSalida().esAntesDe(hoy))
-//                    && (reserva.getUsuarioLogueado().getIdPersona().equals(logueado.getIdPersona()))
-//                    && (reserva.getCheckIn().getEstadoCheck())) {
-//                System.out.println("\nVuelos pasados: ");
-//                reserva.mostrar();
-//            }
-//        }
-//    }
+    private static void mostrarVuelos(UsuarioCliente logueado) {
+        ArrayListGeneric<Reserva> reservas = new ArrayListGeneric<>();
+        Fecha hoy = new Fecha();
+        try{
+            reservas.copiarLista(getJsonToList(PATH_RESOURCES + PATH_RESERVAS, Reserva.class));
+        } catch (Exception e) {
+            System.err.println("Error al leer el archivo JSON: " + e.getMessage());
+        }
+
+        //mostrar vuelos pendientes de salida con el check in realizado
+        for (Reserva reserva : reservas) {
+            if ((reserva.getVuelo().getFechaSalida().esDespuesDe(hoy) || (reserva.getVuelo().getFechaSalida().esIgualA(hoy))
+                    && (reserva.getUsuarioLogueado().getIdPersona().equals(logueado.getIdPersona()))
+                    && (reserva.getCheckIn().getEstadoCheck()))) {
+                System.out.println("\nVuelos pendientes de salida: ");
+                reserva.getVuelo().imprimirDatosVuelo();
+            }
+        }
+
+        //mostrar vuelos pasados con el check in realizado
+        for (Reserva reserva : reservas) {
+            if ((reserva.getVuelo().getFechaSalida().esAntesDe(hoy))
+                    && (reserva.getUsuarioLogueado().getIdPersona().equals(logueado.getIdPersona()))
+                    && (reserva.getCheckIn().getEstadoCheck())) {
+                System.out.println("\nVuelos pasados: ");
+                reserva.mostrar();
+            }
+        }
+    }
 }

@@ -247,15 +247,15 @@ public class MenuVuelo {
 
             // Agregar cada tripulante de la lista
             for (RegistroDeVuelo registroDeVuelo1 : registroDeVuelos) {
-                if (avion.etLista().size() < avion.getCapacidadTripulanteCabina()) {
-                    registroTripulanteCabina.agregarElemento(tripulante);
-                    System.out.println("Tripulante " + tripulante.getNombre() + " agregado correctamente.");
-                } else {
-                    throw new CapacidadExcedidaException("No se pueden agregar más tripulantes de cabina. Capacidad máxima alcanzada.");
-                }
+//                if (avion.etLista().size() < avion.getCapacidadTripulanteCabina()) {
+//                    registroTripulanteCabina.agregarElemento(tripulante);
+//                    System.out.println("Tripulante " + tripulante.getNombre() + " agregado correctamente.");
+//                } else {
+//                    throw new CapacidadExcedidaException("No se pueden agregar más tripulantes de cabina. Capacidad máxima alcanzada.");
+//                }
             }
         } catch (Exception e) {
-            throw new LeerJsonException("Error al leer o procesar el archivo JSON: " + e.getMessage(), e);
+//            throw new LeerJsonException("Error al leer o procesar el archivo JSON: " + e.getMessage(), e);
         }
     }
 

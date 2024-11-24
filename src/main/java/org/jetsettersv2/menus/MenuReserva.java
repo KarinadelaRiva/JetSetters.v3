@@ -16,7 +16,7 @@ public class MenuReserva {
 
     private static Scanner scanner = new Scanner(System.in);
 
-    public void mostrarMenuReservas(UsuarioCliente usuarioLogueado) {
+    public static void mostrarMenuReservas(UsuarioCliente usuarioLogueado) {
 
         ArrayListGeneric<Vuelo> vuelosDisponibles = new ArrayListGeneric<>(); // Lista de vuelos
         ArrayListGeneric<Reserva> reservas = new ArrayListGeneric<>();
@@ -62,7 +62,7 @@ public class MenuReserva {
         }
     }
 
-    private void mostrarVuelosDisponibles(ArrayListGeneric<Vuelo> vuelosDisponibles ) {
+    private static void mostrarVuelosDisponibles(ArrayListGeneric<Vuelo> vuelosDisponibles ) {
         System.out.println("\n--- Vuelos Disponibles ---");
         for (int i = 0; i < vuelosDisponibles.size(); i++) {
             Vuelo vuelo = vuelosDisponibles.get(i);
@@ -72,7 +72,7 @@ public class MenuReserva {
         }
     }
 
-    private void crearReserva( ArrayListGeneric<Vuelo> vuelosDisponibles, UsuarioCliente usuarioLogueado) {
+    private static void crearReserva( ArrayListGeneric<Vuelo> vuelosDisponibles, UsuarioCliente usuarioLogueado) {
 
         ArrayListGeneric<Reserva> reservas = new ArrayListGeneric<>();
 
@@ -124,7 +124,7 @@ public class MenuReserva {
 
     }
 
-    private String generarNumeroReserva() {
+    private static String generarNumeroReserva() {
         return "RES-" + System.currentTimeMillis(); // Generar un número único
     }
 }

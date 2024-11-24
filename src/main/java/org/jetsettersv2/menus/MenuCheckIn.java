@@ -13,7 +13,7 @@ import static org.jetsettersv2.utilities.JacksonUtil.*;
 
 public class MenuCheckIn {
 
-    public void mostrarSubmenuCheckIn(UsuarioCliente usuarioLogueado) {
+    public static void mostrarSubmenuCheckIn(UsuarioCliente usuarioLogueado) {
         Scanner scanner = new Scanner(System.in);
 
         ArrayListGeneric<Reserva> reservas = new ArrayListGeneric<>();
@@ -50,7 +50,7 @@ public class MenuCheckIn {
         }
     }
 
-    private void realizarCheckIn(UsuarioCliente usuarioLogueado) {
+    private static void realizarCheckIn(UsuarioCliente usuarioLogueado) {
 
         ArrayListGeneric<Reserva> reservas = new ArrayListGeneric<>();
 
@@ -84,7 +84,7 @@ public class MenuCheckIn {
         }
     }
 
-    private void mostrarEstadoCheckIn(UsuarioCliente usuarioLogueado, ArrayListGeneric<Reserva> reservas) {
+    private static void mostrarEstadoCheckIn(UsuarioCliente usuarioLogueado, ArrayListGeneric<Reserva> reservas) {
         for (Reserva reserva : reservas) {
             if (reserva.getUsuarioLogueado().equals(usuarioLogueado)) {
                 CheckIn checkIn = reserva.getCheckIn();
