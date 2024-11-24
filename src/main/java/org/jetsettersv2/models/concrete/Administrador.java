@@ -124,51 +124,35 @@ public class Administrador extends Empleado {
     }
 
 
-//    public void reprogramarVuelos(Fecha fechaOriginal, Fecha nuevaFecha) throws ElementoNoEncontradoException {
-//        boolean vueloReprogramado = false;
-//
-//        for (Vuelo vuelo : gestionVuelos.getLista()) {
-//            if (vuelo.getFechaSalida().equals(fechaOriginal)) {
-//                vuelo.setFechaSalida(nuevaFecha);
-//                vueloReprogramado = true;
-//            }
-//        }
-//
-//        if (!vueloReprogramado) {
-//            throw new ElementoNoEncontradoException("No se encontraron vuelos con la fecha original especificada.");
-//        }
-//
-//        System.out.println("Se reprogramaron los vuelos de la fecha " + fechaOriginal + " a " + nuevaFecha);
-//    }
-
-
 //     <<<<<<<ASIGNAR TRIPULACION A UN VUELO>>>>>>>
 
 
-//    public void asignarTripulacionVuelo(String idVuelo, RegistroDeVuelo tripulante) throws ElementoNoEncontradoException {
-//        RegistroDeVuelo vuelo = null;
-//
-//        for (RegistroDeVuelo empleado : gestionTripulantes.getLista()) {
-//            if (empleado.registroTripulanteCabina().equals()) {
-//                vuelo = empleado;
-//                break;
-//            }
-//        }
-//
-//        if (vuelo == null) {
-//            throw new ElementoNoEncontradoException("El Vuelo con ID " + idVuelo + " no ha sido encontrado.");
-//        }
-//
-//        // Verifico si el tripulante ya está asignado
-//        if (vuelo.getTripulacion().contains(tripulante)) {
-//            System.out.println("El tripulante ya está asignado a este vuelo.");
-//            return;
-//        }
-//
-//        // Si no esta en el vuelo asigno el tripulante
-//        vuelo.getTripulacion().add(tripulante);
-//        System.out.println("El tripulante " + tripulante.getNombre() + " ha sido asignado al vuelo con ID " + idVuelo);
-//    }
+    public void asignarTripulacionVuelo(String nroVuelo, TripulacionCabina tripulante) throws ElementoNoEncontradoException {
+        // Busco el vuelo con el número indicado
+        Vuelo vuelo = null;
+        for (Vuelo v : gestionVuelos.getLista()) {
+            if (v.getNroVuelo().equals(nroVuelo)) {
+                vuelo = v;
+                break;
+            }
+        }
+
+        // Si no se encuentra el vuelo, lanzo excepción
+        if (vuelo == null) {
+            throw new ElementoNoEncontradoException("El vuelo con número " + nroVuelo + " no ha sido encontrado.");
+        }
+
+        // Verifico si el tripulante ya está asignado al vuelo
+        if (vuelo.registroDeVuelo(new RegistroDeVuelo()).equals(tripulante)) {
+            System.out.println("El tripulante " + tripulante.getNombre() + " ya está asignado al vuelo con número " + nroVuelo + ".");
+            return;
+        }
+
+        // Asigno el tripulante al vuelo
+        vuelo.getRegistroDeVuelo().agregarTripulanteCabina(tripulante);
+        System.out.println("El tripulante " + tripulante.getNombre() + " ha sido asignado al vuelo con número " + nroVuelo + ".");
+    }
+
 
 
     //    <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<RUTA>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
@@ -273,20 +257,6 @@ public class Administrador extends Empleado {
     public void altaPersonal(){
 
     }
-
-    //    <<<<<<<<<<<<<<<<ELIMINAR PERSONAL (TRIPULANTE)>>>>>>>>>>>>>>>>
-
-
-
-
-    //    <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<ADMINISTRADOR>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-
-    //    <<<<<<<<<<<<<<<<ASIGNAR ADMINISTRADOR >>>>>>>>>>>>>>>>>
-
-
-    //   <<<<<<<<<<<<<<<<ELIMINAR ADMINISTRADOR>>>>>>>>>>>>>>>>>
-
-
 
 
 
