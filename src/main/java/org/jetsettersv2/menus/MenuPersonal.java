@@ -263,9 +263,9 @@ public class MenuPersonal {
         int opcion;
         do {
             System.out.println("\n      Baja de Empleado\n");
-            System.out.println("1. Dar de baja a un Administrador");
-            System.out.println("2. Dar de baja a un Tripulante de Cabina");
-            System.out.println("3. Dar de baja a un Tripulante Técnico");
+            System.out.println("1. Dar de baja/recuperar a un Administrador");
+            System.out.println("2. Dar de baja/recuperar a un Tripulante de Cabina");
+            System.out.println("3. Dar de baja/recuperar a un Tripulante Técnico");
             System.out.println("0. Volver");
             System.out.print("\nSeleccione una opción: ");
             opcion = scanner.nextInt();
@@ -337,6 +337,7 @@ public class MenuPersonal {
                             System.out.println("El administrador ya está inactivo.");
                         } else {
                             admins.get(posAdmin).activo(false);
+                            admins.get(posAdmin).fechaBaja(new Fecha());
                             try {
                                 writeListToJsonFile(admins, PATH_RESOURCES + PATH_ADMINISTRADORES);
                                 System.out.println("Baja exitosa.");
@@ -350,6 +351,7 @@ public class MenuPersonal {
                             System.out.println("El administrador ya está activo.");
                         } else {
                             admins.get(posAdmin).activo(true);
+                            admins.get(posAdmin).fechaBaja(null);
                             try {
                                 writeListToJsonFile(admins, PATH_RESOURCES + PATH_ADMINISTRADORES);
                                 System.out.println("Recuperación exitosa. El administrador ahora está activo.");
@@ -402,6 +404,7 @@ public class MenuPersonal {
                             System.out.println("El Tripulante de Cabina ya está inactivo.");
                         } else {
                             tCabina.get(posTC).activo(false);
+                            tCabina.get(posTC).fechaBaja(new Fecha());
                             try {
                                 writeListToJsonFile(tCabina, PATH_RESOURCES + PATH_TRIPULACIONCABINA);
                                 System.out.println("Baja exitosa.");
@@ -415,6 +418,7 @@ public class MenuPersonal {
                             System.out.println("El Tripulante de Cabina ya está activo.");
                         } else {
                             tCabina.get(posTC).activo(true);
+                            tCabina.get(posTC).fechaBaja(null);
                             try {
                                 writeListToJsonFile(tCabina, PATH_RESOURCES + PATH_TRIPULACIONCABINA);
                                 System.out.println("Recuperación exitosa. El Tripulante de Cabina ahora está activo.");
@@ -469,6 +473,7 @@ public class MenuPersonal {
                             System.out.println("El Tripulante de Cabina ya está inactivo.");
                         } else {
                             tTecnico.get(posTT).activo(false);
+                            tTecnico.get(posTT).fechaBaja(new Fecha());
                             try {
                                 writeListToJsonFile(tTecnico, PATH_RESOURCES + PATH_TRIPULACIONCABINA);
                                 System.out.println("Baja exitosa.");
@@ -482,6 +487,7 @@ public class MenuPersonal {
                             System.out.println("El Tripulante de Cabina ya está activo.");
                         } else {
                             tTecnico.get(posTT).activo(true);
+                            tTecnico.get(posTT).fechaBaja(null);
                             try {
                                 writeListToJsonFile(tTecnico, PATH_RESOURCES + PATH_TRIPULACIONCABINA);
                                 System.out.println("Recuperación exitosa. El Tripulante de Cabina ahora está activo.");
