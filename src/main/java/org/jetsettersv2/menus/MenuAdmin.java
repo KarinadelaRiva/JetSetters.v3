@@ -1,11 +1,16 @@
 package org.jetsettersv2.menus;
+import org.jetsettersv2.models.concrete.Administrador;
 import org.jetsettersv2.models.concrete.Ruta;
 import org.jetsettersv2.collections.ArrayListGeneric;
 
 import java.util.Scanner;
 
+import static org.jetsettersv2.menus.MenuFlota.menuFlota;
+import static org.jetsettersv2.menus.MenuPersonal.menuPersonal;
+import static org.jetsettersv2.menus.MenuRutas.menuRutas;
+
 public class MenuAdmin {
-    public static void mostrarMenuAdmin() {
+    public static void mostrarMenuAdmin(Administrador admin) {
 
     ArrayListGeneric<Ruta> rutas = new ArrayListGeneric<>();
     Scanner scanner = new Scanner(System.in);
@@ -23,11 +28,11 @@ public class MenuAdmin {
         opcion = scanner.nextInt();
 
         switch (opcion) {
-            case 1 -> gestionarPerfil();
+            case 1 -> gestionarPerfil(admin);
             case 2 -> gestionarVuelos();
-            case 3 -> MenuRutas.menuRutas();
-           // case 4 -> gestionarFlota();
-          //  case 5 -> gestionarPersonal();
+            case 3 -> menuRutas();
+            case 4 -> menuFlota();
+            case 5 -> menuPersonal();
             case 6 -> System.out.println("Sesión cerrada. Volviendo al menú principal...");
             default -> System.out.println("Opción inválida. Intente nuevamente.");
         }
@@ -36,7 +41,7 @@ public class MenuAdmin {
         scanner.close();
 }
 
-private static void gestionarPerfil() {
+private static void gestionarPerfil(Administrador admin) {
     System.out.println("\nGestión de Perfil:");
     // Aquí puedes agregar opciones para ver o modificar el perfil
 }

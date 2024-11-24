@@ -11,6 +11,7 @@ import org.jetsettersv2.utilities.Fecha;
 import java.io.IOException;
 import java.util.Scanner;
 
+import static org.jetsettersv2.menus.MenuAdmin.mostrarMenuAdmin;
 import static org.jetsettersv2.menus.menuUsuario.mostrarMenuUsuario;
 import static org.jetsettersv2.utilities.Fecha.fechaActual;
 import static org.jetsettersv2.utilities.JacksonUtil.*;
@@ -54,7 +55,7 @@ public class MenuLogin {
                     System.out.println("\n--Iniciar Sesion--");
                     try{
                         adminLogueado = inicioSesionAdmin(empleados);
-                        System.out.println("LLAMAR AL MENU ADMINISTRADORES ACÁ");
+                        mostrarMenuAdmin(adminLogueado);
                     }catch (Exception e){
                         System.out.println("Error al iniciar sesion: " + e.getMessage());
                     }

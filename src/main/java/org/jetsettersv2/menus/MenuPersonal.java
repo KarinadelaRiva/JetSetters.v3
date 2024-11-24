@@ -14,7 +14,7 @@ import static org.jetsettersv2.utilities.JacksonUtil.*;
 public class MenuPersonal {
     private static final Scanner scanner = new Scanner(System.in);
 
-    public static void menuPersonal(/*Administrador admin*/) {
+    public static void menuPersonal() {
         ArrayListGeneric<Administrador> admins = new ArrayListGeneric<>();
         ArrayListGeneric<TripulacionTecnica> tripTecnica = new ArrayListGeneric<>();
         ArrayListGeneric<TripulacionCabina> tripCabina = new ArrayListGeneric<>();

@@ -61,7 +61,7 @@ public class MenuVuelo {
             String ruta = scanner.nextLine();
 
             System.out.print("Ingrese la fecha de salida (YYYY-MM-DD): ");
-            admin.añadirVuelosCollection();
+            //admin.añadirVuelosCollection();
 
 
             System.out.print("Ingrese la hora de salida (HH:MM): ");
@@ -150,7 +150,7 @@ public class MenuVuelo {
 
                  // Asume un constructor de Persona
                 TripulacionCabina tripulante = new TripulacionCabina();
-                admin.asignarTripulacionVuelo(nroVuelo, tripulante);
+                //admin.asignarTripulacionVuelo(nroVuelo, tripulante);
 
                 System.out.println("Tripulación asignada con éxito.");
             } catch (ElementoNoEncontradoException e) {

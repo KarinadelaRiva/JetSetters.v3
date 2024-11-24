@@ -19,6 +19,7 @@ import org.jetsettersv2.models.concrete.Direccion;
 import org.jetsettersv2.models.concrete.Ruta;
 import org.jetsettersv2.models.concrete.UsuarioCliente;
 
+import static org.jetsettersv2.menus.MenuLogin.login;
 import static org.jetsettersv2.menus.menuUsuario.mostrarMenuUsuario;
 
 public class AirlineLandingPage {
@@ -69,6 +70,6 @@ public class AirlineLandingPage {
 */
     public static void main(String[] args) {
         //launch(args);
-
+        login();
     }
 }
