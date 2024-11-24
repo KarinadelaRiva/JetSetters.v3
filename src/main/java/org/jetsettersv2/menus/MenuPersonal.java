@@ -45,12 +45,15 @@ public class MenuPersonal {
                     pausarConTecla();
                     break;
                 case 4:
-                    System.out.println("\n--Baja de Empleado--");
-
+                    try {
+                        subMenuBajaEmpleado();
+                    } catch (LeerJsonException e) {
+                        System.err.println(e.getMessage());
+                    }
                     pausarConTecla();
                     break;
                 case 0:
-                    System.out.println("\n--Volver--");
+                    System.out.println("\n");
 
                     break;
                 default:
@@ -66,7 +69,7 @@ public class MenuPersonal {
         System.out.println("1. Alta Nuevo Empleado");
         System.out.println("2. Ver Nomina de Empleados");
         System.out.println("3. Modificar datos de un Empleado");
-        System.out.println("4. Baja de Empleado");
+        System.out.println("4. Dar de baja/ recuperar un Empleado");
         System.out.println("0. Volver");
         System.out.print("\nSeleccione una opción: ");
         opcion = scanner.nextInt();
@@ -110,7 +113,7 @@ public class MenuPersonal {
                     }
                     break;
                 case 0:
-                    System.out.println("Volver");
+                    System.out.println(" ");
                     break;
                 default:
                     System.out.println("\npción inválida. Intente nuevamente.");
@@ -163,7 +166,7 @@ public class MenuPersonal {
                     pausarConTecla();
                     break;
                 case 0:
-                    System.out.println("\n--Volver--");
+                    System.out.println("\n ");
                     break;
                 default:
                     System.out.println("Opcion no valida");
@@ -224,7 +227,7 @@ public class MenuPersonal {
                     pausarConTecla();
                     break;
                 case 0:
-                    System.out.println("\n--Volver--");
+                    System.out.println("\n ");
                     break;
                 default:
                     System.out.println("Opcion no valida");
@@ -234,7 +237,29 @@ public class MenuPersonal {
         }while (opcion != 0);
     }
 
-    public static void subMenuBajaEmpleado(){
+    public static void subMenuBajaEmpleado() throws LeerJsonException{
+        ArrayListGeneric<Administrador> admins = new ArrayListGeneric<>();
+        ArrayListGeneric<TripulacionTecnica> tripTecnica = new ArrayListGeneric<>();
+        ArrayListGeneric<TripulacionCabina> tripCabina = new ArrayListGeneric<>();
+
+        try{
+            admins.copiarLista(getJsonToList(PATH_RESOURCES + PATH_ADMINISTRADORES, Administrador.class));
+        } catch (Exception e) {
+            throw new LeerJsonException("Error al leer el archivo JSON Administradores: " + e.getMessage());
+        }
+
+        try{
+            tripTecnica.copiarLista(getJsonToList(PATH_RESOURCES + PATH_TRIPULACIONTECNICA, TripulacionTecnica.class));
+        } catch (Exception e) {
+            throw new LeerJsonException("Error al leer el archivo JSON Tripulacion Tecnica");
+        }
+
+        try{
+            tripCabina.copiarLista(getJsonToList(PATH_RESOURCES + PATH_TRIPULACIONCABINA, TripulacionCabina.class));
+        } catch (Exception e) {
+            throw new LeerJsonException("Error al leer el archivo JSON Tripulacion Cabina");
+        }
+
         int opcion;
         do {
             System.out.println("\n      Baja de Empleado\n");
@@ -249,21 +274,21 @@ public class MenuPersonal {
             switch (opcion) {
                 case 1:
                     System.out.println("\n--Dar de baja a un Administrador--");
-                    //bajaAdmin();
+                    bajaAdmin(admins);
                     pausarConTecla();
                     break;
                 case 2:
                     System.out.println("\n--Dar de baja a un Tripulante de Cabina--");
-                    //bajaTCabina();
+                    bajaTripulanteCabina(tripCabina);
                     pausarConTecla();
                     break;
                 case 3:
                     System.out.println("\n--Dar de baja a un Tripulante Técnico--");
-                    //bajaTTecnico();
+                    bajaTripulanteTecnico(tripTecnica);
                     pausarConTecla();
                     break;
                 case 0:
-                    System.out.println("\n--Volver--");
+                    System.out.println("\n ");
                     break;
                 default:
                     System.out.println("Opcion no valida");
@@ -271,6 +296,211 @@ public class MenuPersonal {
                     break;
             }
         }while (opcion != 0);
+    }
+
+    public static void bajaAdmin(ArrayListGeneric<Administrador> admins) {
+        int numeroLegajo;
+        System.out.print("Ingrese el NUMERO de legajo del Administrador: ");
+        numeroLegajo = scanner.nextInt();
+        scanner.nextLine(); // Consumir salto de línea
+
+        String legajo = String.format("A%04d", numeroLegajo);
+
+        // Validación para evitar que se dé de baja el administrador principal con legajo A0001
+        if (legajo.equals("A0001")) {
+            System.out.println("No se puede dar de baja al administrador principal con legajo A0001.");
+            return;
+        }
+
+        int posAdmin = -1;
+        try {
+            posAdmin = buscarPosAdminElementoPorLegajo(legajo, admins);
+            admins.get(posAdmin).imprimir();
+        } catch (Exception e) {
+            System.err.println(e.getMessage());
+        }
+
+        if (posAdmin != -1) {
+            int opcion;
+            do {
+                System.out.println("\n      Opciones para el Administrador\n");
+                System.out.println("1. Dar de baja empleado activo");
+                System.out.println("2. Recuperar empleado inactivo");
+                System.out.println("0. Volver");
+                System.out.print("\nSeleccione una opción: ");
+                opcion = scanner.nextInt();
+                scanner.nextLine(); // Consumir salto de línea
+
+                switch (opcion) {
+                    case 1:
+                        if (!admins.get(posAdmin).isActivo()) {
+                            System.out.println("El administrador ya está inactivo.");
+                        } else {
+                            admins.get(posAdmin).activo(false);
+                            try {
+                                writeListToJsonFile(admins, PATH_RESOURCES + PATH_ADMINISTRADORES);
+                                System.out.println("Baja exitosa.");
+                            } catch (Exception e) {
+                                System.err.println("Error al escribir el archivo JSON: " + e.getMessage());
+                            }
+                        }
+                        break;
+                    case 2:
+                        if (admins.get(posAdmin).isActivo()) {
+                            System.out.println("El administrador ya está activo.");
+                        } else {
+                            admins.get(posAdmin).activo(true);
+                            try {
+                                writeListToJsonFile(admins, PATH_RESOURCES + PATH_ADMINISTRADORES);
+                                System.out.println("Recuperación exitosa. El administrador ahora está activo.");
+                            } catch (Exception e) {
+                                System.err.println("Error al escribir el archivo JSON: " + e.getMessage());
+                            }
+                        }
+                        break;
+                    case 0:
+                        System.out.println(" ");
+                        break;
+                    default:
+                        System.out.println("\nOpción no válida.");
+                        break;
+                }
+            } while (opcion != 0);
+        }
+    }
+
+    public static void bajaTripulanteCabina(ArrayListGeneric<TripulacionCabina> tCabina) {
+        int numeroLegajo;
+        System.out.print("Ingrese el NUMERO de legajo del Tripulante de Cabina: ");
+        numeroLegajo = scanner.nextInt();
+        scanner.nextLine(); // Consumir salto de línea
+
+        String legajo = String.format("C%04d", numeroLegajo);
+
+        int posTC= -1;
+        try {
+            posTC = buscarPosTCabinaElementoPorLegajo(legajo, tCabina);
+            tCabina.get(posTC).imprimir();
+        } catch (Exception e) {
+            System.err.println(e.getMessage());
+        }
+
+        if (posTC != -1) {
+            int opcion;
+            do {
+                System.out.println("\n      Opciones para el Tripulante de Cabina\n");
+                System.out.println("1. Dar de baja empleado activo");
+                System.out.println("2. Recuperar empleado inactivo");
+                System.out.println("0. Volver");
+                System.out.print("\nSeleccione una opción: ");
+                opcion = scanner.nextInt();
+                scanner.nextLine(); // Consumir salto de línea
+
+                switch (opcion) {
+                    case 1:
+                        if (!tCabina.get(posTC).isActivo()) {
+                            System.out.println("El Tripulante de Cabina ya está inactivo.");
+                        } else {
+                            tCabina.get(posTC).activo(false);
+                            try {
+                                writeListToJsonFile(tCabina, PATH_RESOURCES + PATH_TRIPULACIONCABINA);
+                                System.out.println("Baja exitosa.");
+                            } catch (Exception e) {
+                                System.err.println("Error al escribir el archivo JSON: " + e.getMessage());
+                            }
+                        }
+                        break;
+                    case 2:
+                        if (tCabina.get(posTC).isActivo()) {
+                            System.out.println("El Tripulante de Cabina ya está activo.");
+                        } else {
+                            tCabina.get(posTC).activo(true);
+                            try {
+                                writeListToJsonFile(tCabina, PATH_RESOURCES + PATH_TRIPULACIONCABINA);
+                                System.out.println("Recuperación exitosa. El Tripulante de Cabina ahora está activo.");
+                            } catch (Exception e) {
+                                System.err.println("Error al escribir el archivo JSON: " + e.getMessage());
+                            }
+                        }
+                        break;
+                    case 0:
+                        System.out.println(" ");
+                        break;
+                    default:
+                        System.out.println("\nOpción no válida.");
+                        break;
+                }
+            } while (opcion != 0);
+        }
+
+
+    }
+
+    public static void bajaTripulanteTecnico(ArrayListGeneric<TripulacionTecnica> tTecnico) {
+        int numeroLegajo;
+        System.out.print("Ingrese el NUMERO de legajo del Tripulante Tecnico: ");
+        numeroLegajo = scanner.nextInt();
+        scanner.nextLine(); // Consumir salto de línea
+
+        String legajo = String.format("T%04d", numeroLegajo);
+
+        int posTT= -1;
+        try {
+            posTT = buscarPosTTecnicoElementoPorLegajo(legajo, tTecnico);
+            tTecnico.get(posTT).imprimir();
+        } catch (Exception e) {
+            System.err.println(e.getMessage());
+        }
+
+        if (posTT != -1) {
+            int opcion;
+            do {
+                System.out.println("\n      Opciones para el Tripulante de Cabina\n");
+                System.out.println("1. Dar de baja empleado activo");
+                System.out.println("2. Recuperar empleado inactivo");
+                System.out.println("0. Volver");
+                System.out.print("\nSeleccione una opción: ");
+                opcion = scanner.nextInt();
+                scanner.nextLine(); // Consumir salto de línea
+
+                switch (opcion) {
+                    case 1:
+                        if (!tTecnico.get(posTT).isActivo()) {
+                            System.out.println("El Tripulante de Cabina ya está inactivo.");
+                        } else {
+                            tTecnico.get(posTT).activo(false);
+                            try {
+                                writeListToJsonFile(tTecnico, PATH_RESOURCES + PATH_TRIPULACIONCABINA);
+                                System.out.println("Baja exitosa.");
+                            } catch (Exception e) {
+                                System.err.println("Error al escribir el archivo JSON: " + e.getMessage());
+                            }
+                        }
+                        break;
+                    case 2:
+                        if (tTecnico.get(posTT).isActivo()) {
+                            System.out.println("El Tripulante de Cabina ya está activo.");
+                        } else {
+                            tTecnico.get(posTT).activo(true);
+                            try {
+                                writeListToJsonFile(tTecnico, PATH_RESOURCES + PATH_TRIPULACIONCABINA);
+                                System.out.println("Recuperación exitosa. El Tripulante de Cabina ahora está activo.");
+                            } catch (Exception e) {
+                                System.err.println("Error al escribir el archivo JSON: " + e.getMessage());
+                            }
+                        }
+                        break;
+                    case 0:
+                        System.out.println(" ");
+                        break;
+                    default:
+                        System.out.println("\nOpción no válida.");
+                        break;
+                }
+            } while (opcion != 0);
+        }
+
+
     }
 
     public static int buscarPosAdminElementoPorLegajo(String legajo, ArrayListGeneric<Administrador> admins) throws ElementoNoEncontradoException {
