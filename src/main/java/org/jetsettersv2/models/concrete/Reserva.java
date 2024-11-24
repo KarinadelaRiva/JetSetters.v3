@@ -10,6 +10,7 @@ public class Reserva {
     private Vuelo vuelo;
     private EstadoReserva estadoReserva;
     private String numeroReserva;
+    private CheckIn checkIn;
 
     //Constructor
     public Reserva() {
@@ -84,6 +85,23 @@ public class Reserva {
         this.numeroReserva = numeroReserva;
     }
 
+    //-------------------------------------------------------------
+
+
+    public CheckIn getCheckIn() {
+        return checkIn;
+    }
+
+    public Reserva setCheckIn(Fecha fechaReserva ) {
+
+        CheckIn checkInNuevo = new CheckIn()
+                .estadoCheck(false)
+                .fechaCheck(null);
+
+        this.checkIn = checkInNuevo;
+        return this;
+    }
+
     //toString
     @Override
     public String toString() {
@@ -104,6 +122,7 @@ public class Reserva {
         System.out.println("Vuelo........................: " + this.vuelo);
         System.out.println("Estado de reserva............: " + this.estadoReserva);
         System.out.println("Numero de reserva............: " + this.numeroReserva);
+        System.out.println("CheckIn estado............: " + this.checkIn.getEstadoCheck());
 }
 
 
