@@ -69,29 +69,6 @@ public class AirlineLandingPage {
 */
     public static void main(String[] args) {
         //launch(args);
-        //menuUsuario menuUsuario = new menuUsuario();
-
-//        Direccion direccion = new Direccion()
-//                .calle("Calle Falsa")
-//                .numero(123)
-//                .ciudad("Springfield")
-//                .codigoPostal("12345")
-//                .pais("EE.UU.");
-//
-//        UsuarioCliente usuario = (UsuarioCliente) new UsuarioCliente()
-//                .nombre("carla")
-//                .apellido("perex")
-//                .dni("lalal")
-//                .pasaporte("asasda")
-//                .telefono("asdasdsa")
-//                .email("sadasd")
-//                .direccion(direccion)
-//                .password("asdasda");
-//
-//        mostrarMenuUsuario(usuario);
-        ArrayListGeneric<Ruta> rutas = new ArrayListGeneric<>();
-        MenuRutas.menuRutas(rutas);
-
 
     }
 }
