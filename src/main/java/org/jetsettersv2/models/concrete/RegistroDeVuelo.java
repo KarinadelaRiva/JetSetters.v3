@@ -9,6 +9,7 @@ import org.jetsettersv2.models.abstracts.Persona;
 public class RegistroDeVuelo {
     //Atributos
     private Avion avion;
+    private CheckIn checkIn;
     private ArrayListGeneric<TripulacionCabina> registroTripulanteCabina;
     private ArrayListGeneric<TripulacionTecnica> registroTripulacionTecnica;
     private ArrayListGeneric<Pasajero>registroPasajeros;
@@ -31,6 +32,21 @@ public class RegistroDeVuelo {
 
     public void setAvion(Avion avion) {
         this.avion = avion;
+    }
+
+    //--------------------------------------------------------------------
+
+    public CheckIn getCheckIn() {
+        return checkIn;
+    }
+
+    public RegistroDeVuelo checkIn(CheckIn checkIn) {
+        this.checkIn = checkIn;
+        return this;
+    }
+
+    public void setCheckIn(CheckIn checkIn) {
+        this.checkIn = checkIn;
     }
 
     //--------------------------------------------------------------------
@@ -110,34 +126,18 @@ public class RegistroDeVuelo {
     }
 
     // Agregar pasajero
-    /*Se agrega pasajero al avion solo si tiene el checkin en estado completado y si la capacidad del avion lo permiite.
-    El enum EstadoCheck deberia tener como estado COMPLETADO para poder realizarlo.*/
     public void agregarPasajero(Pasajero pasajero) throws CapacidadExcedidaException {
-        // Validar si el pasajero realizó el check-in
-        if (pasajero.getCheckIn().getEstadoCheck() != EstadoCheck.COMPLETAD0) {
-            System.out.println("No se puede agregar el pasajero porque no ha realizado el check-in.");
-            return;
+        if (checkIn == null || !checkIn.getEstadoCheck()) {
+            throw new IllegalStateException("No se puede agregar el pasajero porque no ha realizado el check-in.");
         }
 
-        // Validar capacidad
         if (registroPasajeros.getLista().size() >= avion.getCapacidadPasajeros()) {
             throw new CapacidadExcedidaException("No se pueden agregar más pasajeros. Capacidad máxima alcanzada.");
         }
 
-        // Agregar pasajero si cumple ambas condiciones
         registroPasajeros.agregarElemento(pasajero);
         System.out.println("Pasajero agregado exitosamente.");
     }
-
-    /*public void agregarPasajero(Pasajero pasajero) throws CapacidadExcedidaException {
-        //Valida capacidad
-        if (registroPasajeros.getLista().size() < avion.getCapacidadPasajeros()) {
-            registroPasajeros.agregarElemento(pasajero);
-        } else {
-            throw new CapacidadExcedidaException("No se pueden agregar más pasajeros. Capacidad máxima alcanzada.");
-        }
-        
-    }*/
 
     // Agregar equipaje
     public void agregarEquipaje(Equipaje equipaje) throws CapacidadExcedidaException {
@@ -147,7 +147,5 @@ public class RegistroDeVuelo {
             throw new CapacidadExcedidaException("No se puede agregar más equipaje. Capacidad máxima alcanzada.");
         }
     }
-
-    //Metodo realizar cheeckIn de la clase checkin
     
 }
