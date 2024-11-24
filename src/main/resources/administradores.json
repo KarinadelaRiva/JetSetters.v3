@@ -25,7 +25,7 @@
   "gestionUsuarios" : null,
   "gestionPasajeros" : null,
   "gestionRutas" : null
-}, {
+ }, {
   "idPersona": "a1d3e8f2-4c6b-45df-ae87-8c2e3e76a4df",
   "nombre": "Carlos",
   "apellido": "Pérez",
