@@ -1,6 +1,7 @@
 package org.jetsettersv2.models.concrete;
 
 import org.jetsettersv2.collections.ArrayListGeneric;
+import org.jetsettersv2.enums.EstadoCheck;
 import org.jetsettersv2.exceptions.CapacidadExcedidaException;
 import org.jetsettersv2.models.abstracts.Equipaje;
 import org.jetsettersv2.models.abstracts.Persona;
@@ -109,13 +110,34 @@ public class RegistroDeVuelo {
     }
 
     // Agregar pasajero
+    /*Se agrega pasajero al avion solo si tiene el checkin en estado completado y si la capacidad del avion lo permiite.
+    El enum EstadoCheck deberia tener como estado COMPLETADO para poder realizarlo.*/
     public void agregarPasajero(Pasajero pasajero) throws CapacidadExcedidaException {
+        // Validar si el pasajero realizó el check-in
+        if (pasajero.getCheckIn().getEstadoCheck() != EstadoCheck.COMPLETAD0) {
+            System.out.println("No se puede agregar el pasajero porque no ha realizado el check-in.");
+            return;
+        }
+
+        // Validar capacidad
+        if (registroPasajeros.getLista().size() >= avion.getCapacidadPasajeros()) {
+            throw new CapacidadExcedidaException("No se pueden agregar más pasajeros. Capacidad máxima alcanzada.");
+        }
+
+        // Agregar pasajero si cumple ambas condiciones
+        registroPasajeros.agregarElemento(pasajero);
+        System.out.println("Pasajero agregado exitosamente.");
+    }
+
+    /*public void agregarPasajero(Pasajero pasajero) throws CapacidadExcedidaException {
+        //Valida capacidad
         if (registroPasajeros.getLista().size() < avion.getCapacidadPasajeros()) {
             registroPasajeros.agregarElemento(pasajero);
         } else {
             throw new CapacidadExcedidaException("No se pueden agregar más pasajeros. Capacidad máxima alcanzada.");
         }
-    }
+        
+    }*/
 
     // Agregar equipaje
     public void agregarEquipaje(Equipaje equipaje) throws CapacidadExcedidaException {
@@ -126,4 +148,6 @@ public class RegistroDeVuelo {
         }
     }
 
+    //Metodo realizar cheeckIn de la clase checkin
+    
 }
