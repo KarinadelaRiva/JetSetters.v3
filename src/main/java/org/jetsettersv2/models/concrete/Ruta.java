@@ -11,8 +11,8 @@ public class Ruta {
     // <<<<<<<METODOS IMPRESION>>>>>>>
 
     public void imprimir() {
-        System.out.println("Origen...............................: " + (this.origen != null ? this.origen : "No especificado"));
-        System.out.println("Destino..............................: " + (this.destino != null ? this.destino : "No especificado"));
+        System.out.println("Origen...............................: " + this.origen);
+        System.out.println("Destino..............................: " + this.destino);
         System.out.println("Distancia............................: " + this.distanciaKM + " km");
         // Convertimos los segundos en horas, minutos y segundos
         long horas = duracion / 3600;
@@ -97,8 +97,8 @@ public class Ruta {
 
     @Override
     public String toString() {
-        return "Origen...............................: " + (origen != null ? origen : "No especificado") + "\n" +
-                "Destino..............................: " + (destino != null ? destino : "No especificado") + "\n" +
+        return "Origen...............................: " + this.origen + "\n" +
+                "Destino..............................: " + this.destino + "\n" +
                 "Distancia............................: " + distanciaKM + " km\n" +
                 "Duración.............................: " + duracion / 3600 + " horas " + (duracion % 3600) / 60 + " minutos " + duracion % 60 + " segundos\n" +
                 ".....................................";

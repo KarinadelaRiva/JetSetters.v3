@@ -12,10 +12,10 @@ public class Aeropuerto {
     private String ciudad;
 
     // Lista estática que contiene todos los aeropuertos
-    private static final List<Aeropuerto> aeropuertos = new ArrayList<>();
+    public static final List<Aeropuerto> aeropuertos = new ArrayList<>();
 
     // Constructor
-    private Aeropuerto(String codigo, String nombre, String ciudad) {
+    public Aeropuerto(String codigo, String nombre, String ciudad) {
         this.codigo = codigo;
         this.nombre = nombre;
         this.ciudad = ciudad;
@@ -37,7 +37,7 @@ public class Aeropuerto {
 
 
     // Método para confirmar si un aeropuerto existe
-    private boolean esCodigoValido(String codigo, List<Aeropuerto> aeropuertos) {
+    public boolean esCodigoValido(String codigo, List<Aeropuerto> aeropuertos) {
         for (Aeropuerto aeropuerto : aeropuertos) {
             if (aeropuerto.getCodigo().equalsIgnoreCase(codigo)) {
                 return true;
@@ -47,7 +47,7 @@ public class Aeropuerto {
     }
 
     // Método para buscar un aeropuerto por código
-    private Aeropuerto buscarAeropuertoPorCodigo(String codigo, List<Aeropuerto> aeropuertos) {
+    public Aeropuerto buscarAeropuertoPorCodigo(String codigo, List<Aeropuerto> aeropuertos) {
         for (Aeropuerto aeropuerto : aeropuertos) {
             if (aeropuerto.getCodigo().equalsIgnoreCase(codigo)) {
                 return aeropuerto;
