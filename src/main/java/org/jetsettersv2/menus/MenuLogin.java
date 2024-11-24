@@ -110,7 +110,7 @@ public class MenuLogin {
             logueado = iniciaUsuario(usuarios);
             System.out.println("\nDatos del usuario logueado: " + logueado.getNombre() + " - " + logueado.getEmail());
         } catch (LoginException e) {
-            throw new LoginException("\nContraseña y/o email incorrectos.");
+            throw new LoginException(e.getMessage());
         }
         return logueado;
     }

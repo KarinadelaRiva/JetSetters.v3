@@ -59,8 +59,7 @@ public class Aeropuerto {
     public String toString() {
         return "Código...............................: " + this.codigo + "\n" +
                 "Nombre...............................: " + this.nombre + "\n" +
-                "Ciudad...............................: " + this.ciudad + "\n" +
-                ".....................................";
+                "Ciudad...............................: " + this.ciudad;
     }
 
 }

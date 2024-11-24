@@ -115,17 +115,4 @@
   },
   "distanciaKM" : 450.0,
   "duracion" : 3600
-}, {
-  "origen" : {
-    "codigo" : "MDZ",
-    "nombre" : "Aeropuerto Internacional El Plumerillo",
-    "ciudad" : "Mendoza"
-  },
-  "destino" : {
-    "codigo" : "EZE",
-    "nombre" : "Aeropuerto Internacional Ministro Pistarini",
-    "ciudad" : "Buenos Aires"
-  },
-  "distanciaKM" : 2342.0,
-  "duracion" : 21322
-} ]
+}]
