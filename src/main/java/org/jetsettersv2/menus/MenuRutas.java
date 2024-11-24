@@ -119,11 +119,14 @@ public class MenuRutas {
         }while (!flag2);
 
             // Verificamos si la ruta ya existe
-            for (Ruta rutaExistente : rutas) {
-                if (rutaExistente.getOrigen().getCodigo().equals(nuevaRuta.getOrigen().getCodigo()) && rutaExistente.getDestino().getCodigo().equals(nuevaRuta.getDestino().getCodigo())) {
-                    throw new RutaDuplicadaException("La ruta entre " + nuevaRuta.getOrigen().getCodigo() + " y " + nuevaRuta.getDestino().getCodigo() + " ya ha sido registrada.");
-                }
+        for (Ruta rutaExistente : rutas) {
+            if (rutaExistente.getOrigen().getCodigo().equals(nuevaRuta.getOrigen().getCodigo()) &&
+                    rutaExistente.getDestino().getCodigo().equals(nuevaRuta.getDestino().getCodigo())) {
+                System.out.println("La ruta entre " + nuevaRuta.getOrigen().getCodigo() + " y " + nuevaRuta.getDestino().getCodigo() + " ya ha sido registrada.");
+                System.out.println("Regresando al menú principal...");
+                return; // Salir del método y regresar al menú principal
             }
+        }
 
 
 
