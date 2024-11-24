@@ -25,7 +25,7 @@ public class MenuAdmin {
         switch (opcion) {
             case 1 -> gestionarPerfil();
             case 2 -> gestionarVuelos();
-            case 3 -> MenuRutas.menuRutas(rutas);
+            case 3 -> MenuRutas.menuRutas();
            // case 4 -> gestionarFlota();
           //  case 5 -> gestionarPersonal();
             case 6 -> System.out.println("Sesión cerrada. Volviendo al menú principal...");

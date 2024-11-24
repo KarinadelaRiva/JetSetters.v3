@@ -1,19 +1,14 @@
 package org.jetsettersv2.menus;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 
+import org.jetsettersv2.exceptions.RutaDuplicadaException;
 import org.jetsettersv2.models.concrete.Aeropuerto;
-import java.time.Duration;
 
 import org.jetsettersv2.exceptions.ElementoNoEncontradoException;
 import org.jetsettersv2.exceptions.LeerJsonException;
 import org.jetsettersv2.models.concrete.Ruta;
 import org.jetsettersv2.collections.ArrayListGeneric;
-import org.jetsettersv2.utilities.JacksonUtil;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import java.io.File;
 
 import static org.jetsettersv2.utilities.JacksonUtil.*;
 
@@ -21,7 +16,7 @@ import static org.jetsettersv2.utilities.JacksonUtil.*;
 public class MenuRutas {
     private static final Scanner scanner = new Scanner(System.in);
 
-    public static void menuRutas(ArrayListGeneric<Ruta> rutas) {
+    public static void menuRutas() {
         int opcionRutas;
 
         do {
@@ -41,142 +36,132 @@ public class MenuRutas {
         } while (opcionRutas != 3);
     }
 
-    public static ArrayListGeneric<Ruta> cargarRutasDesdeJson(ArrayListGeneric<Ruta> rutas) throws LeerJsonException {
-        ArrayListGeneric<Ruta> rutasCargadas = new ArrayListGeneric<>();
-
-        try {
-            // Cargar rutas desde el archivo JSON y copiarlas a la lista
-            ArrayList<Ruta> listaRutas = getJsonToList(PATH_RESOURCES + PATH_RUTAS, Ruta.class);
-            rutasCargadas.copiarLista(listaRutas);  // Copiar las rutas a la lista
-
-            System.out.println("Rutas cargadas: " + rutasCargadas.size());
-
-        } catch (IOException e) {
-            System.err.println("Error al leer el archivo JSON: " + e.getMessage());
-            throw new LeerJsonException("Error al cargar las rutas desde el archivo JSON.");
-        }
-
-        return rutasCargadas;
-    }
-
-    public static ArrayListGeneric<Aeropuerto> cargarAEPDesdeJson(ArrayListGeneric<Aeropuerto> aeropuertos) throws LeerJsonException {
-        ArrayListGeneric<Aeropuerto> aeropuertosCargados = new ArrayListGeneric<>();
-
-        try {
-            // Cargar aeropuertos desde el archivo JSON y copiarlos a la lista
-            ArrayList<Aeropuerto> listaAeropuertos = getJsonToList(PATH_RESOURCES + PATH_AER, Aeropuerto.class);
-            aeropuertosCargados.copiarLista(listaAeropuertos);  // Copiar los aeropuertos a la lista
-
-            System.out.println("Aeropuertos cargados: " + aeropuertosCargados.size());
-
-        } catch (IOException e) {
-            System.err.println("Error al leer el archivo JSON: " + e.getMessage());
-            throw new LeerJsonException("Error al cargar los aeropuertos desde el archivo JSON.");
-        }
-
-        return aeropuertosCargados;
-    }
-
-    public static void mostrarRutas() {
+    public static void mostrarRutas() throws LeerJsonException {
         ArrayListGeneric<Ruta> rutas = new ArrayListGeneric<>();
 
         try {
-            // Cargar las rutas desde el archivo JSON
-            ArrayListGeneric<Ruta> rutasCargadas = cargarRutasDesdeJson(rutas);
-
-            // Verificar si la lista de rutas cargadas está vacía
-            if (rutasCargadas.isEmpty()) {
-                System.out.println("No hay rutas disponibles.");
-            } else {
-                System.out.println("\nListado de rutas:");
-                for (Ruta ruta : rutasCargadas) {
-                    ruta.imprimir(); // Llama al método imprimir de la clase Ruta
-                }
-            }
-        } catch (LeerJsonException e) {
-            System.err.println("Error al cargar las rutas: " + e.getMessage());
+            rutas.copiarLista(getJsonToList(PATH_RESOURCES + PATH_RUTAS, Ruta.class));
         } catch (Exception e) {
-            System.err.println("Se ha producido un error inesperado: " + e.getMessage());
+            throw new LeerJsonException("Error al leer el archivo JSON: " + e.getMessage());
         }
+
+        // Verificar si la lista de rutas cargadas está vacía
+        if (rutas.isEmpty()) {
+            System.out.println("No hay rutas disponibles.");
+        } else {
+            System.out.println("\nListado de rutas:");
+            for (Ruta ruta : rutas) {
+                ruta.imprimir(); // Llama al método imprimir de la clase Ruta
+            }
+        }
+
     }
 
-    public static void agregarRuta() throws ElementoNoEncontradoException {
+    public static void agregarRuta() throws ElementoNoEncontradoException, LeerJsonException,RutaDuplicadaException {
         Ruta nuevaRuta = new Ruta();
         ArrayListGeneric<Ruta> rutas = new ArrayListGeneric<>();
         ArrayListGeneric<Aeropuerto> aeropuertos = new ArrayListGeneric<>();
 
         try {
-            ArrayList<Ruta> rutasExistentes = getJsonToList(PATH_RESOURCES + PATH_RUTAS, Ruta.class);
-            if (rutasExistentes != null) {
-                rutas.copiarLista(rutasExistentes);
-            }
-
-            // Cargar aeropuertos desde JSON
-            aeropuertos = cargarAEPDesdeJson(aeropuertos);
-        } catch (ElementoNoEncontradoException e) {
-            System.err.println("No se pudieron cargar las rutas existentes: " + e.getMessage());
+            rutas.copiarLista(getJsonToList(PATH_RESOURCES + PATH_RUTAS, Ruta.class));
+            System.out.println("Rutas cargadas correctamente "+ rutas.size());
+        } catch (Exception e) {
+            throw new LeerJsonException("Error al leer el archivo JSON de rutas: " + e.getMessage());
         }
+
+
+        try {
+            aeropuertos.copiarLista(getJsonToList(PATH_RESOURCES + PATH_AER, Aeropuerto.class));
+            System.out.println("Aeropuertos cargados correctamente "+ aeropuertos.size());
+        } catch (Exception e) {
+            throw new LeerJsonException("Error al leer el archivo JSON de aeropuertos: " + e.getMessage());
+        }
+
 
         System.out.println("\nDefinir Nueva Ruta:");
-        System.out.print("Ingrese el aeropuerto de origen: ");
-        String aeropuertoOrigen = scanner.next().trim();
 
-        Aeropuerto origen = null;
-        for (Aeropuerto aep : aeropuertos) {
-            if (aep.getCodigo().equals(aeropuertoOrigen)) {
-                origen = aep;
-                break;
+        // Ingresar y validar aeropuerto de origen
+        boolean flag = false;
+        do {
+            System.out.print("Ingrese el código del aeropuerto de origen: ");
+            String codigoOrigen = scanner.next().trim();
+
+            for (Aeropuerto aeropuertoOrigen : aeropuertos) {
+                if (aeropuertoOrigen.getCodigo().equalsIgnoreCase(codigoOrigen)) {
+                    flag = true;
+                    nuevaRuta.setOrigen(aeropuertoOrigen);
+                }
             }
-        }
 
-        if (origen == null) {
-            throw new ElementoNoEncontradoException("El código del aeropuerto de origen no es válido.");
-        } else {
-            nuevaRuta.setOrigen(origen);
-        }
+        }while (!flag);
 
-        System.out.print("Ingrese el aeropuerto de destino: ");
-        String aeropuertoDestino = scanner.next().trim();
 
-        Aeropuerto destino = null;
-        for (Aeropuerto aep : aeropuertos) {
-            if (aep.getCodigo().equals(aeropuertoDestino)) {
-                destino = aep;
-                break;
+
+        // Ingresar y validar aeropuerto de destino
+
+        boolean flag2 = false;
+        do {
+            System.out.print("Ingrese el código del aeropuerto de destino: ");
+            String codigoDestino = scanner.next().trim();
+
+            for (Aeropuerto aeropuertoDestino : aeropuertos) {
+                if (aeropuertoDestino.getCodigo().equalsIgnoreCase(codigoDestino)) {
+                    flag2 = true;
+                    if (aeropuertoDestino.equals(nuevaRuta.getOrigen())) {
+                        System.out.println("El aeropuerto de destino no puede ser igual al de origen. Inténtelo de nuevo.");
+                        flag2 = false;
+                    } else {
+                        nuevaRuta.setDestino(aeropuertoDestino);
+                    }
+                }
             }
-        }
 
-        if (destino == null) {
-            throw new ElementoNoEncontradoException("El código del aeropuerto de destino no es válido.");
-        } else {
-            nuevaRuta.setDestino(destino);
-        }
+        }while (!flag2);
 
-        if (aeropuertoOrigen.equalsIgnoreCase(aeropuertoDestino)) {
-            throw new ElementoNoEncontradoException("El aeropuerto de origen y destino no pueden ser el mismo.");
-        }
+            // Verificamos si la ruta ya existe
+            for (Ruta rutaExistente : rutas) {
+                if (rutaExistente.getOrigen().getCodigo().equals(nuevaRuta.getOrigen().getCodigo()) && rutaExistente.getDestino().getCodigo().equals(nuevaRuta.getDestino().getCodigo())) {
+                    throw new RutaDuplicadaException("La ruta entre " + nuevaRuta.getOrigen().getCodigo() + " y " + nuevaRuta.getDestino().getCodigo() + " ya ha sido registrada.");
+                }
+            }
 
-        System.out.print("Ingrese la distancia en kilómetros: ");
-        double distanciaKM;
-        try {
-            distanciaKM = Double.parseDouble(scanner.next().trim());
-            nuevaRuta.setDistanciaKM(distanciaKM);
-        } catch (NumberFormatException e) {
-            throw new ElementoNoEncontradoException("La distancia debe ser un número entero válido.");
-        }
 
-        System.out.print("Ingrese la duración en segundos: ");
-        long duracion;
-        try {
-            duracion = Long.parseLong(scanner.next().trim());
-            nuevaRuta.setDuracion(duracion);
-        } catch (NumberFormatException e) {
-            throw new ElementoNoEncontradoException("La duración debe ser un número entero válido.");
-        }
 
+        // Ingresar y validar distancia
+        double distanciaKM = 0.0;
+        do {
+            try {
+                System.out.print("Ingrese la distancia en kilómetros: ");
+                distanciaKM = Double.parseDouble(scanner.next().trim());
+                if (distanciaKM <= 0) {
+                    System.out.println("La distancia debe ser mayor a 0. Inténtelo de nuevo.");
+                }
+            } catch (NumberFormatException e) {
+                System.out.println("La distancia debe ser un número válido. Inténtelo de nuevo.");
+                distanciaKM = -1; // Reiniciar distancia
+            }
+        } while (distanciaKM <= 0);
+        nuevaRuta.setDistanciaKM(distanciaKM);
+
+        // Ingresar y validar duración
+        long duracion = 0;
+        do {
+            try {
+                System.out.print("Ingrese la duración del vuelo en segundos: ");
+                duracion = Long.parseLong(scanner.next().trim());
+                if (duracion <= 0) {
+                    System.out.println("La duración debe ser mayor a 0. Inténtelo de nuevo.");
+                }
+            } catch (NumberFormatException e) {
+                System.out.println("La duración debe ser un número válido. Inténtelo de nuevo.");
+                duracion = -1; // Reiniciar duración
+            }
+        } while (duracion <= 0);
+        nuevaRuta.setDuracion(duracion);
+
+        // Agregar la nueva ruta a la lista y escribir en el archivo JSON
         rutas.agregarElemento(nuevaRuta);
-        rutas.mostrarLista();
-
+        rutas.add(nuevaRuta);
         try {
             writeListToJsonFile(rutas, PATH_RESOURCES + PATH_RUTAS);
             System.out.println("Ruta agregada exitosamente.");

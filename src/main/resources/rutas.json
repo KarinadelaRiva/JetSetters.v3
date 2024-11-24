@@ -1,41 +1,131 @@
 [ {
-  "origen" : "AEP",
-  "destino" : "MDZ",
+  "origen" : {
+    "codigo" : "EZE",
+    "nombre" : "Aeropuerto Internacional Ministro Pistarini",
+    "ciudad" : "Buenos Aires"
+  },
+  "destino" : {
+    "codigo" : "COR",
+    "nombre" : "Aeropuerto Internacional Ingeniero Ambrosio Taravella",
+    "ciudad" : "Córdoba"
+  },
+  "distanciaKM" : 695.0,
+  "duracion" : 4800
+}, {
+  "origen" : {
+    "codigo" : "AEP",
+    "nombre" : "Aeroparque Jorge Newbery",
+    "ciudad" : "Buenos Aires"
+  },
+  "destino" : {
+    "codigo" : "MDZ",
+    "nombre" : "Aeropuerto Internacional El Plumerillo",
+    "ciudad" : "Mendoza"
+  },
   "distanciaKM" : 985.0,
   "duracion" : 6600
 }, {
-  "origen" : "ROS",
-  "destino" : "SLA",
+  "origen" : {
+    "codigo" : "ROS",
+    "nombre" : "Aeropuerto Internacional Islas Malvinas",
+    "ciudad" : "Rosario"
+  },
+  "destino" : {
+    "codigo" : "SLA",
+    "nombre" : "Aeropuerto Internacional Martín Miguel de Güemes",
+    "ciudad" : "Salta"
+  },
   "distanciaKM" : 1100.0,
   "duracion" : 7200
 }, {
-  "origen" : "BRC",
-  "destino" : "USH",
+  "origen" : {
+    "codigo" : "BRC",
+    "nombre" : "Aeropuerto Internacional Teniente Luis Candelaria",
+    "ciudad" : "Bariloche"
+  },
+  "destino" : {
+    "codigo" : "USH",
+    "nombre" : "Aeropuerto Internacional Malvinas Argentinas",
+    "ciudad" : "Ushuaia"
+  },
   "distanciaKM" : 1450.0,
   "duracion" : 9000
 }, {
-  "origen" : "FTE",
-  "destino" : "RGL",
+  "origen" : {
+    "codigo" : "FTE",
+    "nombre" : "Aeropuerto Internacional Comandante Armando Tola",
+    "ciudad" : "El Calafate"
+  },
+  "destino" : {
+    "codigo" : "RGL",
+    "nombre" : "Aeropuerto Internacional Piloto Civil Norberto Fernández",
+    "ciudad" : "Río Gallegos"
+  },
   "distanciaKM" : 280.0,
   "duracion" : 2700
 }, {
-  "origen" : "MDZ",
-  "destino" : "AEP",
+  "origen" : {
+    "codigo" : "MDZ",
+    "nombre" : "Aeropuerto Internacional El Plumerillo",
+    "ciudad" : "Mendoza"
+  },
+  "destino" : {
+    "codigo" : "AEP",
+    "nombre" : "Aeroparque Jorge Newbery",
+    "ciudad" : "Buenos Aires"
+  },
   "distanciaKM" : 670.0,
   "duracion" : 4500
 }, {
-  "origen" : "EZE",
-  "destino" : "TUC",
+  "origen" : {
+    "codigo" : "EZE",
+    "nombre" : "Aeropuerto Internacional Ministro Pistarini",
+    "ciudad" : "Buenos Aires"
+  },
+  "destino" : {
+    "codigo" : "TUC",
+    "nombre" : "Aeropuerto Internacional Teniente Benjamín Matienzo",
+    "ciudad" : "Tucumán"
+  },
   "distanciaKM" : 860.0,
   "duracion" : 6000
 }, {
-  "origen" : "NQN",
-  "destino" : "REL",
+  "origen" : {
+    "codigo" : "NQN",
+    "nombre" : "Aeropuerto Presidente Perón",
+    "ciudad" : "Neuquén"
+  },
+  "destino" : {
+    "codigo" : "REL",
+    "nombre" : "Aeropuerto Almirante Marcos A. Zar",
+    "ciudad" : "Trelew"
+  },
   "distanciaKM" : 760.0,
   "duracion" : 4800
 }, {
-  "origen" : "AEP",
-  "destino" : "CRD",
+  "origen" : {
+    "codigo" : "AEP",
+    "nombre" : "Aeroparque Jorge Newbery",
+    "ciudad" : "Buenos Aires"
+  },
+  "destino" : {
+    "codigo" : "CRD",
+    "nombre" : "Aeropuerto General Enrique Mosconi",
+    "ciudad" : "Comodoro Rivadavia"
+  },
   "distanciaKM" : 450.0,
   "duracion" : 3600
+}, {
+  "origen" : {
+    "codigo" : "MDZ",
+    "nombre" : "Aeropuerto Internacional El Plumerillo",
+    "ciudad" : "Mendoza"
+  },
+  "destino" : {
+    "codigo" : "EZE",
+    "nombre" : "Aeropuerto Internacional Ministro Pistarini",
+    "ciudad" : "Buenos Aires"
+  },
+  "distanciaKM" : 2342.0,
+  "duracion" : 21322
 } ]

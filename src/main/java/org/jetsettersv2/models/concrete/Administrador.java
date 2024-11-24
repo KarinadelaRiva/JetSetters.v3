@@ -234,7 +234,7 @@ public class Administrador extends Empleado {
                         break;
                     case "2.capacidad para Tripulantes":
                         if (nuevoValor instanceof Integer) {
-                            avion.setCapacidadTripulantes((Integer) nuevoValor);
+                            //avion.setCapacidadTripulantes((Integer) nuevoValor);
                         }
                         break;
                     case "3.capacidad para Pasajeros":
