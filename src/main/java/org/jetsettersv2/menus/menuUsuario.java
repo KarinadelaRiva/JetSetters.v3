@@ -143,7 +143,7 @@ public class menuUsuario{
         for (Reserva reserva : reservas) {
             if ((reserva.getVuelo().getFechaSalida().esDespuesDe(hoy) || (reserva.getVuelo().getFechaSalida().esIgualA(hoy))
                     && (reserva.getPasajero().getIdPersona().equals(logueado.getIdPersona()))
-                    && (reserva.getCheckIn().isCheckInRealizado()))) {
+                    && (reserva.getCheckIn().getEstadoCheck()))) {
                 System.out.println("\nVuelos pendientes de salida: ");
                 reserva.getVuelo().imprimirDatosVuelo();
             }
@@ -153,7 +153,7 @@ public class menuUsuario{
         for (Reserva reserva : reservas) {
             if ((reserva.getVuelo().getFechaSalida().esAntesDe(hoy))
                     && (reserva.getPasajero().getIdPersona().equals(logueado.getIdPersona()))
-                    && (reserva.getCheckIn().isCheckInRealizado())) {
+                    && (reserva.getCheckIn().getEstadoCheck())) {
                 System.out.println("\nVuelos pasados: ");
                 reserva.mostrar();
             }

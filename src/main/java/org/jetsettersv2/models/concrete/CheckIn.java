@@ -1,12 +1,11 @@
 package org.jetsettersv2.models.concrete;
 
-import org.jetsettersv2.enums.EstadoCheck;
 import org.jetsettersv2.utilities.Fecha;
 
 public class CheckIn {
     //Atributos
     private Fecha fechaCheck;
-    private EstadoCheck estadoCheck;
+    private boolean estadoCheck;
 
     //Constructor
     public CheckIn() {
@@ -28,17 +27,15 @@ public class CheckIn {
     }
 
     //-------------------------------------------------------------
-    public EstadoCheck getEstadoCheck() {
+
+
+    public boolean getEstadoCheck() {
         return estadoCheck;
     }
 
-    public CheckIn estadoCheck(EstadoCheck estadoCheck) {
+    public CheckIn estadoCheck(boolean estadoCheck) {
         this.estadoCheck = estadoCheck;
         return this;
-    }
-
-    public void setEstadoCheck(EstadoCheck estadoCheck) {
-        this.estadoCheck = estadoCheck;
     }
 
     //toString
