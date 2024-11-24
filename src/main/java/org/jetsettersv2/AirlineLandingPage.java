@@ -90,7 +90,7 @@ public class AirlineLandingPage {
 //
 //        mostrarMenuUsuario(usuario);
         ArrayListGeneric<Ruta> rutas = new ArrayListGeneric<>();
-        MenuRutas.menuRutas(rutas);
+        MenuRutas.menuRutas();
 
 
     }
