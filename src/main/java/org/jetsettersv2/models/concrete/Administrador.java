@@ -15,6 +15,7 @@ public class Administrador extends Empleado {
     private ArrayListGeneric<Pasajero> gestionPasajeros;
     private ArrayListGeneric<Ruta> gestionRutas;
     private ArrayListGeneric <Avion> gestionAviones;
+    private ArrayListGeneric<RegistroDeVuelo> gestionTripulantes;
 
 
     public Administrador() {
@@ -142,12 +143,13 @@ public class Administrador extends Empleado {
 
 //     <<<<<<<ASIGNAR TRIPULACION A UN VUELO>>>>>>>
 
-//    public void asignarTripulacionVuelo(String idVuelo, Persona tripulante) throws ElementoNoEncontradoException {
+
+//    public void asignarTripulacionVuelo(String idVuelo, RegistroDeVuelo tripulante) throws ElementoNoEncontradoException {
 //        RegistroDeVuelo vuelo = null;
 //
-//        for (RegistroDeVuelo v : gestionVuelos.getLista()) {
-//            if (v.getIdRegistroDeVuelo().equals(idVuelo)) {
-//                vuelo = v;
+//        for (RegistroDeVuelo empleado : gestionTripulantes.getLista()) {
+//            if (empleado.registroTripulanteCabina().equals()) {
+//                vuelo = empleado;
 //                break;
 //            }
 //        }
