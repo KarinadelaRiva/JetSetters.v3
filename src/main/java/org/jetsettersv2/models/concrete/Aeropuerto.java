@@ -15,10 +15,7 @@ public class Aeropuerto {
     public static final List<Aeropuerto> aeropuertos = new ArrayList<>();
 
     // Constructor
-    public Aeropuerto(String codigo, String nombre, String ciudad) {
-        this.codigo = codigo;
-        this.nombre = nombre;
-        this.ciudad = ciudad;
+    public Aeropuerto() {
     }
 
     // Métodos getters
@@ -47,13 +44,14 @@ public class Aeropuerto {
     }
 
     // Método para buscar un aeropuerto por código
-    public Aeropuerto buscarAeropuertoPorCodigo(String codigo, List<Aeropuerto> aeropuertos) {
+    public boolean buscarAeropuertoPorCodigo(String codigo, List<Aeropuerto> aeropuertos) {
+        boolean aux = false;
         for (Aeropuerto aeropuerto : aeropuertos) {
-            if (aeropuerto.getCodigo().equalsIgnoreCase(codigo)) {
-                return aeropuerto;
+            if (aeropuerto.getCodigo().equalsIgnoreCase(codigo.toUpperCase().trim())) {
+                aux = true;
             }
         }
-        return null; // Debería manejarse de alguna forma si no se encuentra el aeropuerto
+        return aux;
     }
 
 
