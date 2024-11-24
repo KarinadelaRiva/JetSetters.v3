@@ -11,16 +11,18 @@ public class Ruta {
     // <<<<<<<METODOS IMPRESION>>>>>>>
 
     public void imprimir() {
-        System.out.println("Origen...............................: " + this.origen);
-        System.out.println("Destino..............................: " + this.destino);
+        System.out.println("Ruta "+this.origen.getCodigo()+"-"+this.destino.getCodigo());
+        System.out.println("Origen............................:" + this.origen.getCiudad());
+        System.out.println("Aeropuerto............................:" + this.origen.getNombre());
+        System.out.println("Destino............................:" + this.destino.getCiudad());
+        System.out.println("Aeropuerto............................:" + this.destino.getNombre());
         System.out.println("Distancia............................: " + this.distanciaKM + " km");
         // Convertimos los segundos en horas, minutos y segundos
         long horas = duracion / 3600;
         long minutos = (duracion % 3600) / 60;
         long segundos = duracion % 60;
-
         System.out.println("Duración.............................: " + horas + " horas " + minutos + " minutos " + segundos + " segundos");
-        System.out.println("------------------------------------" + "\n");
+        System.out.println("....................................."+ "\n");
     }
 
     // <<<<<<<CONSTRUCTORES>>>>>>>
@@ -97,11 +99,12 @@ public class Ruta {
 
     @Override
     public String toString() {
-        return "Origen...............................: " + this.origen + "\n" +
-                "Destino..............................: " + this.destino + "\n" +
+        return "....................................."+"\n"+
+                "Origen" +"\n"+ this.origen + "\n" +
+                "Destino" +"\n"+ this.destino + "\n" +
                 "Distancia............................: " + distanciaKM + " km\n" +
-                "Duración.............................: " + duracion / 3600 + " horas " + (duracion % 3600) / 60 + " minutos " + duracion % 60 + " segundos\n" +
-                ".....................................";
+                "Duración.............................: " + duracion / 3600 + " horas " + (duracion % 3600) / 60 + " minutos " + duracion % 60 + " segundos\n"+
+                "....................................."+ "\n";
     }
 
     // <<<<<<<EQUALS>>>>>>>

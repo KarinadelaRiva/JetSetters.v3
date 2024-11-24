@@ -200,10 +200,10 @@ public abstract class Persona {
             this.pasaporte = scanner.nextLine().trim();
 
             // Validar formato del pasaporte: comienza con letra opcional, seguido de números (8-9 caracteres)
-            if (this.pasaporte.matches("[A-Z]?[0-9]{8,9}")) {
+            if (this.pasaporte.matches("^[A-Z0-9]{1,2}[0-9]{6,9}$"))  {
                 pasaporteValido = true; // El pasaporte es válido
             } else {
-                System.out.println("Número de pasaporte inválido. Debe tener entre 8 y 9 caracteres y puede comenzar con una letra.");
+                System.out.println("\"Número de pasaporte inválido. Debe tener entre 8 y 11 caracteres, comenzar con una o dos letras, seguido de dígitos.\"");
             }
         }
     }
@@ -258,7 +258,7 @@ public abstract class Persona {
     public void solicitarPassword() {
         // Requisitos de la contraseña:
         // Al menos una letra mayúscula, una minúscula, un número, un carácter especial y longitud mínima de 8
-        String regex = "^(?=.*[A-Z])(?=.*[a-z])(?=.*\\d)(?=.*[-_*@$!%?&])[A-Za-z\\d-_*@$!%?&]{8,}$";
+        String regex = "^(?=.*[A-Z])(?=.*[a-z])(?=.*\\d)(?=.*[-_*%#@$!%?&])[A-Za-z\\d-_*%#@$!%?&]{8,}$";
         boolean contraseñaValida = false;
 
         while (!contraseñaValida) {
@@ -334,10 +334,10 @@ public abstract class Persona {
                 }
                 break;
             case "pasaporte":
-                if (nuevoValor.matches("[A-Z]?[0-9]{8,9}")) {
+                if(nuevoValor.matches("^[A-Z0-9]{1,2}[0-9]{6,9}$")){
                     this.pasaporte = nuevoValor.trim();
                 } else {
-                    System.out.println("Número de pasaporte inválido. Debe tener entre 8 y 9 caracteres y puede comenzar con una letra.");
+                    System.out.println("Número de pasaporte inválido. Debe tener entre 8 y 11 caracteres, comenzar con una o dos letras, seguido de dígitos.");
                 }
                 break;
             case "telefono":
