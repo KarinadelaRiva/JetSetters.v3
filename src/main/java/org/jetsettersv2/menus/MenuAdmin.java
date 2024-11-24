@@ -5,7 +5,7 @@ import org.jetsettersv2.collections.ArrayListGeneric;
 import java.util.Scanner;
 
 public class MenuAdmin {
-    public static void MenuAdmin() {
+    public static void mostrarMenuAdmin() {
 
     ArrayListGeneric<Ruta> rutas = new ArrayListGeneric<>();
     Scanner scanner = new Scanner(System.in);
@@ -66,10 +66,4 @@ private static void gestionarVuelos() {
     } while (opcionVuelos != 5);
 }
 
-
-
-
-
-
-
-}
+    }

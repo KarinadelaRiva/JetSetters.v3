@@ -9,15 +9,20 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.scene.text.Font;
 import javafx.scene.control.Label;
+import org.jetsettersv2.collections.ArrayListGeneric;
+import org.jetsettersv2.menus.MenuAdmin;
+import org.jetsettersv2.menus.MenuRutas;
 import org.jetsettersv2.menus.menuUsuario;
 import org.jetsettersv2.models.abstracts.Persona;
+import org.jetsettersv2.models.concrete.Aeropuerto;
 import org.jetsettersv2.models.concrete.Direccion;
+import org.jetsettersv2.models.concrete.Ruta;
 import org.jetsettersv2.models.concrete.UsuarioCliente;
 
 import static org.jetsettersv2.menus.menuUsuario.mostrarMenuUsuario;
 
-public class AirlineLandingPage extends Application {
-
+public class AirlineLandingPage {
+/*
     @Override
     public void start(Stage primaryStage) {
         // Título y estilo
@@ -61,28 +66,32 @@ public class AirlineLandingPage extends Application {
         primaryStage.setScene(scene);
         primaryStage.show();
     }
-
+*/
     public static void main(String[] args) {
         //launch(args);
         //menuUsuario menuUsuario = new menuUsuario();
 
-        Direccion direccion = new Direccion()
-                .calle("Calle Falsa")
-                .numero(123)
-                .ciudad("Springfield")
-                .codigoPostal("12345")
-                .pais("EE.UU.");
+//        Direccion direccion = new Direccion()
+//                .calle("Calle Falsa")
+//                .numero(123)
+//                .ciudad("Springfield")
+//                .codigoPostal("12345")
+//                .pais("EE.UU.");
+//
+//        UsuarioCliente usuario = (UsuarioCliente) new UsuarioCliente()
+//                .nombre("carla")
+//                .apellido("perex")
+//                .dni("lalal")
+//                .pasaporte("asasda")
+//                .telefono("asdasdsa")
+//                .email("sadasd")
+//                .direccion(direccion)
+//                .password("asdasda");
+//
+//        mostrarMenuUsuario(usuario);
+        ArrayListGeneric<Ruta> rutas = new ArrayListGeneric<>();
+        MenuRutas.menuRutas(rutas);
 
-        UsuarioCliente usuario = (UsuarioCliente) new UsuarioCliente()
-                .nombre("carla")
-                .apellido("perex")
-                .dni("lalal")
-                .pasaporte("asasda")
-                .telefono("asdasdsa")
-                .email("sadasd")
-                .direccion(direccion)
-                .password("asdasda");
 
-        mostrarMenuUsuario(usuario);
     }
 }

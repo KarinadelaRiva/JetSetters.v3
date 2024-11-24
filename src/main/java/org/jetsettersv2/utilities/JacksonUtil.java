@@ -19,6 +19,7 @@ public class JacksonUtil {
     public static final String PATH_TRIPULACIONTECNICA = "/tripulaciontecnica.json";
     public static final String PATH_RUTAS = "/rutas.json";
     public static final String PATH_RESERVAS = "/reservas.json";
+    public static final String PATH_AER = "/aeropuertos.json";
 
     private static final ObjectMapper objectMapper = new ObjectMapper();
 

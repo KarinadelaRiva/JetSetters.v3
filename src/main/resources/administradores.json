@@ -1,1 +1,41 @@
-[]
+[ {
+  "origen" : "AEP",
+  "destino" : "MDZ",
+  "distanciaKM" : 985.0,
+  "duracion" : 6600
+}, {
+  "origen" : "ROS",
+  "destino" : "SLA",
+  "distanciaKM" : 1100.0,
+  "duracion" : 7200
+}, {
+  "origen" : "BRC",
+  "destino" : "USH",
+  "distanciaKM" : 1450.0,
+  "duracion" : 9000
+}, {
+  "origen" : "FTE",
+  "destino" : "RGL",
+  "distanciaKM" : 280.0,
+  "duracion" : 2700
+}, {
+  "origen" : "MDZ",
+  "destino" : "AEP",
+  "distanciaKM" : 670.0,
+  "duracion" : 4500
+}, {
+  "origen" : "EZE",
+  "destino" : "TUC",
+  "distanciaKM" : 860.0,
+  "duracion" : 6000
+}, {
+  "origen" : "NQN",
+  "destino" : "REL",
+  "distanciaKM" : 760.0,
+  "duracion" : 4800
+}, {
+  "origen" : "AEP",
+  "destino" : "CRD",
+  "distanciaKM" : 450.0,
+  "duracion" : 3600
+} ]
