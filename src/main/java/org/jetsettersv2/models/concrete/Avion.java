@@ -5,7 +5,8 @@ import java.util.Objects;
 public class Avion implements Comparable<Avion>{
     private String modelo;
     private String matricula;
-    private int capacidadTripulantes;
+    private int capacidadTripulanteCabina;
+    private int capacidadTripulanteTecnico;
     private int capacidadPasajeros;
     private int capacidadEquipaje;
     private boolean enMantenimiento;
@@ -15,7 +16,8 @@ public class Avion implements Comparable<Avion>{
     public void imprimir(){
         System.out.println("Modelo...............................: " + this.modelo);
         System.out.println("Matricula............................: " + this.matricula);
-        System.out.println("Capacidad de tripulantes.............: " + this.capacidadTripulantes);
+        System.out.println("Capacidad de tripulante cabina.......: " + this.capacidadTripulanteCabina);
+        System.out.printf("Capacidad de tripulante tecnico.......: " + this.capacidadTripulanteTecnico);
         System.out.println("Capacidad de pasajeros...............: " + this.capacidadPasajeros);
         System.out.println("Capacidad de equipaje................: " + this.capacidadEquipaje);
         System.out.println("Estado disponibilidad................: " + this.imprimirMantenimiento());
@@ -44,9 +46,11 @@ public class Avion implements Comparable<Avion>{
         return matricula;
     }
 
-    public int getCapacidadTripulantes() {
-        return capacidadTripulantes;
+    public int getCapacidadTripulanteCabina() {
+        return capacidadTripulanteCabina;
     }
+
+    public int getCapacidadTripulanteTecnico() {return capacidadTripulanteTecnico; }
 
     public int getCapacidadPasajeros() {
         return capacidadPasajeros;
@@ -70,8 +74,12 @@ public class Avion implements Comparable<Avion>{
         this.matricula = matricula;
     }
 
-    public void setCapacidadTripulantes(int capacidadTripulantes) {
-        this.capacidadTripulantes = capacidadTripulantes;
+    public void setCapacidadTripulanteCabina(int capacidadTripulanteCabina) {
+        this.capacidadTripulanteCabina = capacidadTripulanteCabina;
+    }
+
+    public void setCapacidadTripulanteTecnico(int capacidadTripulanteTecnico) {
+        this.capacidadTripulanteTecnico = capacidadTripulanteTecnico;
     }
 
     public void setCapacidadPasajeros(int capacidadPasajeros) {
@@ -98,8 +106,13 @@ public class Avion implements Comparable<Avion>{
         return this;
     }
 
-    public Avion capacidadTripulantes(int capacidadTripulantes) {
-        this.capacidadTripulantes = capacidadTripulantes;
+    public Avion capacidadTripulantesCabina(int capacidadTripulanteCabina) {
+        this.capacidadTripulanteCabina = capacidadTripulanteCabina;
+        return this;
+    }
+
+    public Avion capacidadTripulantesTecnicos(int capacidadTripulanteTecnico) {
+        this.capacidadTripulanteTecnico = capacidadTripulanteTecnico;
         return this;
     }
 
@@ -125,7 +138,8 @@ public class Avion implements Comparable<Avion>{
         return "Avion{" +
                 "modelo='" + modelo + '\'' +
                 ", matricula='" + matricula + '\'' +
-                ", capacidadTripulantes=" + capacidadTripulantes +
+                ", capacidadTripulanteCabina=" + capacidadTripulanteCabina +
+                ", capacidadTripulanteTecnico=" + capacidadTripulanteTecnico +
                 ", capacidadPasajeros=" + capacidadPasajeros +
                 ", capacidadEquipaje=" + capacidadEquipaje +
                 ", enMantenimiento=" + enMantenimiento +
@@ -139,7 +153,8 @@ public class Avion implements Comparable<Avion>{
         if (this == o) return true;
         if (!(o instanceof Avion)) return false;
         Avion avion = (Avion) o;
-        return capacidadTripulantes == avion.capacidadTripulantes &&
+        return capacidadTripulanteCabina == avion.capacidadTripulanteCabina &&
+                capacidadTripulanteTecnico == avion.capacidadTripulanteTecnico &&
                 capacidadPasajeros == avion.capacidadPasajeros &&
                 capacidadEquipaje == avion.capacidadEquipaje &&
                 enMantenimiento == avion.enMantenimiento &&
@@ -149,7 +164,7 @@ public class Avion implements Comparable<Avion>{
 
     @Override
     public int hashCode() {
-        return Objects.hash(modelo, matricula, capacidadTripulantes, capacidadPasajeros, capacidadEquipaje, enMantenimiento);
+        return Objects.hash(modelo, matricula, capacidadTripulanteCabina, capacidadTripulanteTecnico ,capacidadPasajeros, capacidadEquipaje, enMantenimiento);
     }
 
     // <<<<<<<COMPARE TO>>>>>>>

@@ -2,13 +2,14 @@ package org.jetsettersv2.models.concrete;
 
 import org.jetsettersv2.collections.ArrayListGeneric;
 import org.jetsettersv2.utilities.Fecha;
+import org.jetsettersv2.utilities.Hora;
 
 public class Vuelo {
     private String nroVuelo;
     private Avion avion;
     private Ruta ruta;
     private Fecha fechaSalida;
-    private Fecha horaSalida;
+    private Hora horaSalida;
     private RegistroDeVuelo registroDeVuelo;
 
     // <<<<<<<METODOS IMPRESION>>>>>>>
@@ -77,7 +78,7 @@ public class Vuelo {
         return fechaSalida;
     }
 
-    public Fecha getHoraSalida() {
+    public Hora getHoraSalida() {
         return horaSalida;
     }
 
@@ -104,7 +105,7 @@ public class Vuelo {
         this.fechaSalida = fechaSalida;
     }
 
-    public void setHoraSalida(Fecha horaSalida) {
+    public void setHoraSalida(Hora horaSalida) {
         this.horaSalida = horaSalida;
     }
 
@@ -135,7 +136,7 @@ public class Vuelo {
         return this;
     }
 
-    public Vuelo horaSalida(Fecha horaSalida) {
+    public Vuelo horaSalida(Hora horaSalida) {
         this.horaSalida = horaSalida;
         return this;
     }

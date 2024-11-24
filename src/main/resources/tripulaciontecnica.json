@@ -1,1 +1,1402 @@
-[]
+[
+  {
+    "idPersona": "8371fc90-6a1c-451d-b6d4-7d4692530fb1",
+    "nombre": "Jorge",
+    "apellido": "Fernández",
+    "dni": "69838988",
+    "pasaporte": "Q64680206",
+    "telefono": "+548386075720",
+    "direccion": {
+      "calle": "San Martín",
+      "numero": 1366,
+      "ciudad": "La Plata",
+      "codigoPostal": "4139",
+      "pais": "Arg"
+    },
+    "email": "tripulacion720@example.com",
+    "password": "Pass@897",
+    "legajo": "T0001",
+    "fechaAlta": {
+      "fecha": "2021-05-05"
+    },
+    "fechaBaja": null,
+    "activo": true,
+    "tipoPersonal": "INGENIERO_DE_VUELO",
+    "horasVueloAcumuladas": 8090,
+    "nroLicencia": 169525,
+    "especialidad": "Mantenimiento",
+    "experiencia": 15
+  },
+  {
+    "idPersona": "26418e2a-24de-4514-9bb0-164bbb9598d3",
+    "nombre": "Roberto",
+    "apellido": "Gómez",
+    "dni": "47327354",
+    "pasaporte": "J38728244",
+    "telefono": "+547542207738",
+    "direccion": {
+      "calle": "Belgrano",
+      "numero": 5283,
+      "ciudad": "Córdoba",
+      "codigoPostal": "2884",
+      "pais": "Arg"
+    },
+    "email": "tripulacion358@example.com",
+    "password": "User@242",
+    "legajo": "T0002",
+    "fechaAlta": {
+      "fecha": "2004-01-24"
+    },
+    "fechaBaja": null,
+    "activo": true,
+    "tipoPersonal": "INGENIERO_DE_VUELO",
+    "horasVueloAcumuladas": 1726,
+    "nroLicencia": 333093,
+    "especialidad": "Sistemas de Navegación",
+    "experiencia": 36
+  },
+  {
+    "idPersona": "c9094d20-b2ff-4afe-a249-2f7b6ea54d3e",
+    "nombre": "Jorge",
+    "apellido": "Pérez",
+    "dni": "66128236",
+    "pasaporte": "A84494672",
+    "telefono": "+546963562286",
+    "direccion": {
+      "calle": "San Martín",
+      "numero": 1197,
+      "ciudad": "Mendoza",
+      "codigoPostal": "3606",
+      "pais": "Arg"
+    },
+    "email": "tripulacion618@example.com",
+    "password": "User@542",
+    "legajo": "T0003",
+    "fechaAlta": {
+      "fecha": "2007-07-15"
+    },
+    "fechaBaja": null,
+    "activo": true,
+    "tipoPersonal": "COPILOTO",
+    "horasVueloAcumuladas": 7195,
+    "nroLicencia": 167714,
+    "especialidad": "Sistemas de Navegación",
+    "experiencia": 35
+  },
+  {
+    "idPersona": "9d1e8573-fe8e-4a43-a12b-0a631499e11a",
+    "nombre": "Ana",
+    "apellido": "Pérez",
+    "dni": "32134747",
+    "pasaporte": "D45719151",
+    "telefono": "+544060562929",
+    "direccion": {
+      "calle": "Belgrano",
+      "numero": 6984,
+      "ciudad": "Rosario",
+      "codigoPostal": "7349",
+      "pais": "Arg"
+    },
+    "email": "tripulacion458@example.com",
+    "password": "Admin@714",
+    "legajo": "T0004",
+    "fechaAlta": {
+      "fecha": "2009-02-17"
+    },
+    "fechaBaja": null,
+    "activo": true,
+    "tipoPersonal": "INGENIERO_DE_VUELO",
+    "horasVueloAcumuladas": 2001,
+    "nroLicencia": 395140,
+    "especialidad": "Sistemas de Navegación",
+    "experiencia": 35
+  },
+  {
+    "idPersona": "36aab1c8-5697-4f2f-ba85-3071b19d4f61",
+    "nombre": "Roberto",
+    "apellido": "Fernández",
+    "dni": "29752905",
+    "pasaporte": "E42645186",
+    "telefono": "+544501386740",
+    "direccion": {
+      "calle": "Belgrano",
+      "numero": 5063,
+      "ciudad": "Córdoba",
+      "codigoPostal": "6991",
+      "pais": "Arg"
+    },
+    "email": "tripulacion752@example.com",
+    "password": "Admin@585",
+    "legajo": "T0005",
+    "fechaAlta": {
+      "fecha": "2008-03-25"
+    },
+    "fechaBaja": null,
+    "activo": true,
+    "tipoPersonal": "PILOTO",
+    "horasVueloAcumuladas": 6720,
+    "nroLicencia": 547606,
+    "especialidad": "Electrónica",
+    "experiencia": 17
+  },
+  {
+    "idPersona": "baf0f231-a86e-4d5a-8a50-db5f0338c74f",
+    "nombre": "Jorge",
+    "apellido": "Pérez",
+    "dni": "39846838",
+    "pasaporte": "L14367678",
+    "telefono": "+541293548055",
+    "direccion": {
+      "calle": "Belgrano",
+      "numero": 1910,
+      "ciudad": "Rosario",
+      "codigoPostal": "9380",
+      "pais": "Arg"
+    },
+    "email": "tripulacion835@example.com",
+    "password": "Pass@960",
+    "legajo": "T0006",
+    "fechaAlta": {
+      "fecha": "2010-09-19"
+    },
+    "fechaBaja": null,
+    "activo": true,
+    "tipoPersonal": "PILOTO",
+    "horasVueloAcumuladas": 7487,
+    "nroLicencia": 724217,
+    "especialidad": "Aeronáutica",
+    "experiencia": 40
+  },
+  {
+    "idPersona": "d1cc9d91-c7e6-4d2c-a0e2-194542629e2e",
+    "nombre": "Carlos",
+    "apellido": "Fernández",
+    "dni": "44971203",
+    "pasaporte": "L73334654",
+    "telefono": "+544665411285",
+    "direccion": {
+      "calle": "San Martín",
+      "numero": 9640,
+      "ciudad": "Mendoza",
+      "codigoPostal": "8942",
+      "pais": "Arg"
+    },
+    "email": "tripulacion226@example.com",
+    "password": "User@463",
+    "legajo": "T0007",
+    "fechaAlta": {
+      "fecha": "2002-09-23"
+    },
+    "fechaBaja": null,
+    "activo": true,
+    "tipoPersonal": "PILOTO",
+    "horasVueloAcumuladas": 192,
+    "nroLicencia": 192103,
+    "especialidad": "Sistemas de Navegación",
+    "experiencia": 11
+  },
+  {
+    "idPersona": "1afc4b34-7255-4902-9a0e-a8f8453e25bc",
+    "nombre": "Carlos",
+    "apellido": "Gómez",
+    "dni": "98714665",
+    "pasaporte": "A48047159",
+    "telefono": "+541560016470",
+    "direccion": {
+      "calle": "San Martín",
+      "numero": 9147,
+      "ciudad": "Rosario",
+      "codigoPostal": "8463",
+      "pais": "Arg"
+    },
+    "email": "tripulacion144@example.com",
+    "password": "Admin@605",
+    "legajo": "T0008",
+    "fechaAlta": {
+      "fecha": "2017-02-27"
+    },
+    "fechaBaja": null,
+    "activo": true,
+    "tipoPersonal": "PILOTO",
+    "horasVueloAcumuladas": 1381,
+    "nroLicencia": 492998,
+    "especialidad": "Sistemas de Navegación",
+    "experiencia": 15
+  },
+  {
+    "idPersona": "31ed9385-abe1-4356-8150-df8d85808329",
+    "nombre": "Roberto",
+    "apellido": "Gómez",
+    "dni": "86910184",
+    "pasaporte": "G19467974",
+    "telefono": "+543807564040",
+    "direccion": {
+      "calle": "San Martín",
+      "numero": 6609,
+      "ciudad": "La Plata",
+      "codigoPostal": "1127",
+      "pais": "Arg"
+    },
+    "email": "tripulacion959@example.com",
+    "password": "Admin@105",
+    "legajo": "T0009",
+    "fechaAlta": {
+      "fecha": "2002-12-15"
+    },
+    "fechaBaja": null,
+    "activo": true,
+    "tipoPersonal": "INGENIERO_DE_VUELO",
+    "horasVueloAcumuladas": 6489,
+    "nroLicencia": 844540,
+    "especialidad": "Aeronáutica",
+    "experiencia": 23
+  },
+  {
+    "idPersona": "556d50dd-0813-435d-9795-a54ea8cbb3a1",
+    "nombre": "Ana",
+    "apellido": "Pérez",
+    "dni": "57467460",
+    "pasaporte": "O75979327",
+    "telefono": "+548866733236",
+    "direccion": {
+      "calle": "Belgrano",
+      "numero": 563,
+      "ciudad": "Buenos Aires",
+      "codigoPostal": "4366",
+      "pais": "Arg"
+    },
+    "email": "tripulacion920@example.com",
+    "password": "Pass@539",
+    "legajo": "T0010",
+    "fechaAlta": {
+      "fecha": "2005-11-14"
+    },
+    "fechaBaja": null,
+    "activo": true,
+    "tipoPersonal": "PILOTO",
+    "horasVueloAcumuladas": 6675,
+    "nroLicencia": 691878,
+    "especialidad": "Aeronáutica",
+    "experiencia": 13
+  },
+  {
+    "idPersona": "b0c56e3e-5a14-4e4b-af07-2acd7746d9fd",
+    "nombre": "Carlos",
+    "apellido": "Fernández",
+    "dni": "21580283",
+    "pasaporte": "Q60931732",
+    "telefono": "+543608838763",
+    "direccion": {
+      "calle": "Rivadavia",
+      "numero": 7031,
+      "ciudad": "Córdoba",
+      "codigoPostal": "3495",
+      "pais": "Arg"
+    },
+    "email": "tripulacion298@example.com",
+    "password": "Pass@939",
+    "legajo": "T0011",
+    "fechaAlta": {
+      "fecha": "2020-02-24"
+    },
+    "fechaBaja": null,
+    "activo": true,
+    "tipoPersonal": "PILOTO",
+    "horasVueloAcumuladas": 7290,
+    "nroLicencia": 929508,
+    "especialidad": "Aeronáutica",
+    "experiencia": 37
+  },
+  {
+    "idPersona": "d6c7756a-3b0a-436e-b40b-9614dfcf54a4",
+    "nombre": "Jorge",
+    "apellido": "López",
+    "dni": "59604326",
+    "pasaporte": "G64649694",
+    "telefono": "+545621461378",
+    "direccion": {
+      "calle": "Corrientes",
+      "numero": 6748,
+      "ciudad": "La Plata",
+      "codigoPostal": "2548",
+      "pais": "Arg"
+    },
+    "email": "tripulacion222@example.com",
+    "password": "Pass@119",
+    "legajo": "T0012",
+    "fechaAlta": {
+      "fecha": "2003-07-06"
+    },
+    "fechaBaja": null,
+    "activo": true,
+    "tipoPersonal": "INGENIERO_DE_VUELO",
+    "horasVueloAcumuladas": 8416,
+    "nroLicencia": 229813,
+    "especialidad": "Electrónica",
+    "experiencia": 32
+  },
+  {
+    "idPersona": "25086633-4b94-4aed-aec0-1f0a7cb0fab6",
+    "nombre": "Carlos",
+    "apellido": "Martínez",
+    "dni": "52105209",
+    "pasaporte": "H48177750",
+    "telefono": "+544154114837",
+    "direccion": {
+      "calle": "Rivadavia",
+      "numero": 330,
+      "ciudad": "Mendoza",
+      "codigoPostal": "6535",
+      "pais": "Arg"
+    },
+    "email": "tripulacion757@example.com",
+    "password": "User@622",
+    "legajo": "T0013",
+    "fechaAlta": {
+      "fecha": "2008-03-09"
+    },
+    "fechaBaja": null,
+    "activo": true,
+    "tipoPersonal": "INGENIERO_DE_VUELO",
+    "horasVueloAcumuladas": 241,
+    "nroLicencia": 314367,
+    "especialidad": "Electrónica",
+    "experiencia": 5
+  },
+  {
+    "idPersona": "b74ae0cc-adb8-498f-ac95-060758457752",
+    "nombre": "Jorge",
+    "apellido": "López",
+    "dni": "63942585",
+    "pasaporte": "L87700724",
+    "telefono": "+542730831392",
+    "direccion": {
+      "calle": "Belgrano",
+      "numero": 6258,
+      "ciudad": "Buenos Aires",
+      "codigoPostal": "4047",
+      "pais": "Arg"
+    },
+    "email": "tripulacion872@example.com",
+    "password": "Pass@286",
+    "legajo": "T0014",
+    "fechaAlta": {
+      "fecha": "2016-01-19"
+    },
+    "fechaBaja": null,
+    "activo": true,
+    "tipoPersonal": "INGENIERO_DE_VUELO",
+    "horasVueloAcumuladas": 150,
+    "nroLicencia": 675948,
+    "especialidad": "Mantenimiento",
+    "experiencia": 37
+  },
+  {
+    "idPersona": "8ae591f1-5858-48fe-8845-2060494b5cde",
+    "nombre": "María",
+    "apellido": "Fernández",
+    "dni": "31735313",
+    "pasaporte": "Y97991889",
+    "telefono": "+545072895427",
+    "direccion": {
+      "calle": "Rivadavia",
+      "numero": 1940,
+      "ciudad": "Mendoza",
+      "codigoPostal": "4592",
+      "pais": "Arg"
+    },
+    "email": "tripulacion641@example.com",
+    "password": "Admin@555",
+    "legajo": "T0015",
+    "fechaAlta": {
+      "fecha": "2013-07-17"
+    },
+    "fechaBaja": null,
+    "activo": true,
+    "tipoPersonal": "PILOTO",
+    "horasVueloAcumuladas": 8530,
+    "nroLicencia": 454556,
+    "especialidad": "Sistemas de Navegación",
+    "experiencia": 32
+  },
+  {
+    "idPersona": "9fd0b435-c80c-4fd8-9dd1-93e8d931e419",
+    "nombre": "Jorge",
+    "apellido": "Pérez",
+    "dni": "32524932",
+    "pasaporte": "D94417449",
+    "telefono": "+543178280192",
+    "direccion": {
+      "calle": "Belgrano",
+      "numero": 1864,
+      "ciudad": "La Plata",
+      "codigoPostal": "8931",
+      "pais": "Arg"
+    },
+    "email": "tripulacion545@example.com",
+    "password": "Admin@109",
+    "legajo": "T0016",
+    "fechaAlta": {
+      "fecha": "2004-09-04"
+    },
+    "fechaBaja": null,
+    "activo": true,
+    "tipoPersonal": "COPILOTO",
+    "horasVueloAcumuladas": 2812,
+    "nroLicencia": 864431,
+    "especialidad": "Sistemas de Navegación",
+    "experiencia": 4
+  },
+  {
+    "idPersona": "487ce763-7616-4f24-8c36-ddf10dc520f8",
+    "nombre": "María",
+    "apellido": "Gómez",
+    "dni": "57455214",
+    "pasaporte": "K98862370",
+    "telefono": "+542345561145",
+    "direccion": {
+      "calle": "Rivadavia",
+      "numero": 5533,
+      "ciudad": "Córdoba",
+      "codigoPostal": "8568",
+      "pais": "Arg"
+    },
+    "email": "tripulacion60@example.com",
+    "password": "User@259",
+    "legajo": "T0017",
+    "fechaAlta": {
+      "fecha": "2001-11-15"
+    },
+    "fechaBaja": null,
+    "activo": true,
+    "tipoPersonal": "COPILOTO",
+    "horasVueloAcumuladas": 3285,
+    "nroLicencia": 964438,
+    "especialidad": "Mantenimiento",
+    "experiencia": 33
+  },
+  {
+    "idPersona": "9f14c983-bf71-4d60-8cf4-e13543fbae94",
+    "nombre": "Carlos",
+    "apellido": "López",
+    "dni": "48936123",
+    "pasaporte": "V15520852",
+    "telefono": "+547327848332",
+    "direccion": {
+      "calle": "Corrientes",
+      "numero": 755,
+      "ciudad": "Córdoba",
+      "codigoPostal": "7293",
+      "pais": "Arg"
+    },
+    "email": "tripulacion579@example.com",
+    "password": "User@118",
+    "legajo": "T0018",
+    "fechaAlta": {
+      "fecha": "2016-11-25"
+    },
+    "fechaBaja": null,
+    "activo": true,
+    "tipoPersonal": "PILOTO",
+    "horasVueloAcumuladas": 705,
+    "nroLicencia": 459247,
+    "especialidad": "Sistemas de Navegación",
+    "experiencia": 38
+  },
+  {
+    "idPersona": "7c826113-4d6d-4faf-984a-22b0a7e8e374",
+    "nombre": "Roberto",
+    "apellido": "Pérez",
+    "dni": "25659961",
+    "pasaporte": "V74242425",
+    "telefono": "+549106641846",
+    "direccion": {
+      "calle": "San Martín",
+      "numero": 8771,
+      "ciudad": "Buenos Aires",
+      "codigoPostal": "5499",
+      "pais": "Arg"
+    },
+    "email": "tripulacion250@example.com",
+    "password": "Pass@545",
+    "legajo": "T0019",
+    "fechaAlta": {
+      "fecha": "2023-11-28"
+    },
+    "fechaBaja": null,
+    "activo": true,
+    "tipoPersonal": "PILOTO",
+    "horasVueloAcumuladas": 7908,
+    "nroLicencia": 714531,
+    "especialidad": "Mantenimiento",
+    "experiencia": 27
+  },
+  {
+    "idPersona": "3237e49e-2f8a-4e0b-b4e2-11d9107ba756",
+    "nombre": "María",
+    "apellido": "Pérez",
+    "dni": "24432342",
+    "pasaporte": "Z67620531",
+    "telefono": "+542972822752",
+    "direccion": {
+      "calle": "Rivadavia",
+      "numero": 5008,
+      "ciudad": "Buenos Aires",
+      "codigoPostal": "2467",
+      "pais": "Arg"
+    },
+    "email": "tripulacion995@example.com",
+    "password": "Admin@333",
+    "legajo": "T0020",
+    "fechaAlta": {
+      "fecha": "2000-10-19"
+    },
+    "fechaBaja": null,
+    "activo": true,
+    "tipoPersonal": "INGENIERO_DE_VUELO",
+    "horasVueloAcumuladas": 2709,
+    "nroLicencia": 233610,
+    "especialidad": "Mantenimiento",
+    "experiencia": 2
+  },
+  {
+    "idPersona": "4ab2458a-566b-4ea6-81b6-720ecb6a1002",
+    "nombre": "María",
+    "apellido": "López",
+    "dni": "57141913",
+    "pasaporte": "U26443569",
+    "telefono": "+541922092183",
+    "direccion": {
+      "calle": "Rivadavia",
+      "numero": 5993,
+      "ciudad": "La Plata",
+      "codigoPostal": "4335",
+      "pais": "Arg"
+    },
+    "email": "tripulacion501@example.com",
+    "password": "Admin@221",
+    "legajo": "T0021",
+    "fechaAlta": {
+      "fecha": "2016-07-20"
+    },
+    "fechaBaja": null,
+    "activo": true,
+    "tipoPersonal": "COPILOTO",
+    "horasVueloAcumuladas": 9221,
+    "nroLicencia": 316092,
+    "especialidad": "Aeronáutica",
+    "experiencia": 12
+  },
+  {
+    "idPersona": "0af5e0c9-fe10-49b5-b383-f2d2ba4ef5c1",
+    "nombre": "Ana",
+    "apellido": "Pérez",
+    "dni": "91862567",
+    "pasaporte": "U21714251",
+    "telefono": "+546637312782",
+    "direccion": {
+      "calle": "Belgrano",
+      "numero": 6624,
+      "ciudad": "Rosario",
+      "codigoPostal": "7569",
+      "pais": "Arg"
+    },
+    "email": "tripulacion862@example.com",
+    "password": "User@646",
+    "legajo": "T0022",
+    "fechaAlta": {
+      "fecha": "2008-04-13"
+    },
+    "fechaBaja": null,
+    "activo": true,
+    "tipoPersonal": "INGENIERO_DE_VUELO",
+    "horasVueloAcumuladas": 5257,
+    "nroLicencia": 931364,
+    "especialidad": "Mantenimiento",
+    "experiencia": 12
+  },
+  {
+    "idPersona": "195472da-b812-4432-b489-c15718ff3567",
+    "nombre": "Ana",
+    "apellido": "López",
+    "dni": "98566227",
+    "pasaporte": "T30569206",
+    "telefono": "+541229170077",
+    "direccion": {
+      "calle": "Corrientes",
+      "numero": 6467,
+      "ciudad": "Buenos Aires",
+      "codigoPostal": "8491",
+      "pais": "Arg"
+    },
+    "email": "tripulacion676@example.com",
+    "password": "Pass@680",
+    "legajo": "T0023",
+    "fechaAlta": {
+      "fecha": "2019-06-03"
+    },
+    "fechaBaja": null,
+    "activo": true,
+    "tipoPersonal": "COPILOTO",
+    "horasVueloAcumuladas": 7769,
+    "nroLicencia": 272434,
+    "especialidad": "Sistemas de Navegación",
+    "experiencia": 4
+  },
+  {
+    "idPersona": "8a225ca4-df45-4f42-8c29-56faa2070745",
+    "nombre": "Jorge",
+    "apellido": "López",
+    "dni": "80636468",
+    "pasaporte": "Q78131413",
+    "telefono": "+546217241589",
+    "direccion": {
+      "calle": "Corrientes",
+      "numero": 5092,
+      "ciudad": "Mendoza",
+      "codigoPostal": "3821",
+      "pais": "Arg"
+    },
+    "email": "tripulacion318@example.com",
+    "password": "Admin@290",
+    "legajo": "T0024",
+    "fechaAlta": {
+      "fecha": "2003-12-04"
+    },
+    "fechaBaja": null,
+    "activo": true,
+    "tipoPersonal": "COPILOTO",
+    "horasVueloAcumuladas": 3384,
+    "nroLicencia": 155115,
+    "especialidad": "Aeronáutica",
+    "experiencia": 25
+  },
+  {
+    "idPersona": "957d2a13-e43d-40a3-a363-3c176504ea0e",
+    "nombre": "Carlos",
+    "apellido": "López",
+    "dni": "60677327",
+    "pasaporte": "A91561212",
+    "telefono": "+545222768638",
+    "direccion": {
+      "calle": "Mitre",
+      "numero": 4273,
+      "ciudad": "La Plata",
+      "codigoPostal": "7858",
+      "pais": "Arg"
+    },
+    "email": "tripulacion133@example.com",
+    "password": "Pass@305",
+    "legajo": "T0025",
+    "fechaAlta": {
+      "fecha": "2021-06-18"
+    },
+    "fechaBaja": null,
+    "activo": true,
+    "tipoPersonal": "PILOTO",
+    "horasVueloAcumuladas": 8206,
+    "nroLicencia": 100697,
+    "especialidad": "Aeronáutica",
+    "experiencia": 29
+  },
+  {
+    "idPersona": "adce3fa2-f772-4989-a148-3968294cd28b",
+    "nombre": "Roberto",
+    "apellido": "López",
+    "dni": "79133312",
+    "pasaporte": "M47868281",
+    "telefono": "+544348181622",
+    "direccion": {
+      "calle": "Rivadavia",
+      "numero": 2760,
+      "ciudad": "Mendoza",
+      "codigoPostal": "8356",
+      "pais": "Arg"
+    },
+    "email": "tripulacion694@example.com",
+    "password": "Admin@981",
+    "legajo": "T0026",
+    "fechaAlta": {
+      "fecha": "2000-01-20"
+    },
+    "fechaBaja": null,
+    "activo": true,
+    "tipoPersonal": "COPILOTO",
+    "horasVueloAcumuladas": 6291,
+    "nroLicencia": 620535,
+    "especialidad": "Mantenimiento",
+    "experiencia": 39
+  },
+  {
+    "idPersona": "ac351894-7161-4cc3-8f14-57d4bfeab84d",
+    "nombre": "Carlos",
+    "apellido": "Martínez",
+    "dni": "48366064",
+    "pasaporte": "D63739462",
+    "telefono": "+542345698999",
+    "direccion": {
+      "calle": "Corrientes",
+      "numero": 5894,
+      "ciudad": "Rosario",
+      "codigoPostal": "4837",
+      "pais": "Arg"
+    },
+    "email": "tripulacion276@example.com",
+    "password": "Pass@246",
+    "legajo": "T0027",
+    "fechaAlta": {
+      "fecha": "2003-03-01"
+    },
+    "fechaBaja": null,
+    "activo": true,
+    "tipoPersonal": "PILOTO",
+    "horasVueloAcumuladas": 2115,
+    "nroLicencia": 684536,
+    "especialidad": "Electrónica",
+    "experiencia": 8
+  },
+  {
+    "idPersona": "58d62f66-a07a-4c62-bb73-a5ea6673b6e4",
+    "nombre": "María",
+    "apellido": "López",
+    "dni": "55364597",
+    "pasaporte": "J54006140",
+    "telefono": "+541192620369",
+    "direccion": {
+      "calle": "Corrientes",
+      "numero": 8627,
+      "ciudad": "Rosario",
+      "codigoPostal": "7904",
+      "pais": "Arg"
+    },
+    "email": "tripulacion812@example.com",
+    "password": "Admin@393",
+    "legajo": "T0028",
+    "fechaAlta": {
+      "fecha": "2014-11-23"
+    },
+    "fechaBaja": null,
+    "activo": true,
+    "tipoPersonal": "INGENIERO_DE_VUELO",
+    "horasVueloAcumuladas": 2062,
+    "nroLicencia": 449801,
+    "especialidad": "Electrónica",
+    "experiencia": 28
+  },
+  {
+    "idPersona": "fdc15c63-f850-4534-bf72-a3bc6801929b",
+    "nombre": "Carlos",
+    "apellido": "López",
+    "dni": "13001688",
+    "pasaporte": "L29213289",
+    "telefono": "+547713816259",
+    "direccion": {
+      "calle": "Mitre",
+      "numero": 3139,
+      "ciudad": "Mendoza",
+      "codigoPostal": "8662",
+      "pais": "Arg"
+    },
+    "email": "tripulacion548@example.com",
+    "password": "Admin@325",
+    "legajo": "T0029",
+    "fechaAlta": {
+      "fecha": "2015-07-09"
+    },
+    "fechaBaja": null,
+    "activo": true,
+    "tipoPersonal": "COPILOTO",
+    "horasVueloAcumuladas": 9365,
+    "nroLicencia": 848250,
+    "especialidad": "Sistemas de Navegación",
+    "experiencia": 21
+  },
+  {
+    "idPersona": "2fdea597-08bb-426b-8b0b-664a0e37b196",
+    "nombre": "Ana",
+    "apellido": "Martínez",
+    "dni": "63343549",
+    "pasaporte": "B82847769",
+    "telefono": "+544279634782",
+    "direccion": {
+      "calle": "Rivadavia",
+      "numero": 3094,
+      "ciudad": "Buenos Aires",
+      "codigoPostal": "8729",
+      "pais": "Arg"
+    },
+    "email": "tripulacion835@example.com",
+    "password": "User@338",
+    "legajo": "T0030",
+    "fechaAlta": {
+      "fecha": "2022-11-19"
+    },
+    "fechaBaja": null,
+    "activo": true,
+    "tipoPersonal": "COPILOTO",
+    "horasVueloAcumuladas": 7812,
+    "nroLicencia": 202951,
+    "especialidad": "Aeronáutica",
+    "experiencia": 16
+  },
+  {
+    "idPersona": "69799898-ba26-4dde-be03-30453fda76f4",
+    "nombre": "Roberto",
+    "apellido": "López",
+    "dni": "48112517",
+    "pasaporte": "W89651610",
+    "telefono": "+545482961881",
+    "direccion": {
+      "calle": "Corrientes",
+      "numero": 9939,
+      "ciudad": "Mendoza",
+      "codigoPostal": "6482",
+      "pais": "Arg"
+    },
+    "email": "tripulacion807@example.com",
+    "password": "Admin@251",
+    "legajo": "T0031",
+    "fechaAlta": {
+      "fecha": "2021-12-21"
+    },
+    "fechaBaja": null,
+    "activo": true,
+    "tipoPersonal": "COPILOTO",
+    "horasVueloAcumuladas": 6308,
+    "nroLicencia": 744677,
+    "especialidad": "Aeronáutica",
+    "experiencia": 28
+  },
+  {
+    "idPersona": "66bdb238-6066-4a06-bc9e-8b63d8873e00",
+    "nombre": "Roberto",
+    "apellido": "Martínez",
+    "dni": "32587246",
+    "pasaporte": "Y74207891",
+    "telefono": "+546442589120",
+    "direccion": {
+      "calle": "Rivadavia",
+      "numero": 5013,
+      "ciudad": "Mendoza",
+      "codigoPostal": "3865",
+      "pais": "Arg"
+    },
+    "email": "tripulacion228@example.com",
+    "password": "User@512",
+    "legajo": "T0032",
+    "fechaAlta": {
+      "fecha": "2023-07-09"
+    },
+    "fechaBaja": null,
+    "activo": true,
+    "tipoPersonal": "INGENIERO_DE_VUELO",
+    "horasVueloAcumuladas": 7319,
+    "nroLicencia": 276981,
+    "especialidad": "Aeronáutica",
+    "experiencia": 16
+  },
+  {
+    "idPersona": "579c4ff3-6dce-4e88-b9ee-66bffb8111e8",
+    "nombre": "María",
+    "apellido": "López",
+    "dni": "89536240",
+    "pasaporte": "O37972397",
+    "telefono": "+546320685296",
+    "direccion": {
+      "calle": "Mitre",
+      "numero": 2962,
+      "ciudad": "Buenos Aires",
+      "codigoPostal": "4236",
+      "pais": "Arg"
+    },
+    "email": "tripulacion251@example.com",
+    "password": "Admin@936",
+    "legajo": "T0033",
+    "fechaAlta": {
+      "fecha": "2012-06-27"
+    },
+    "fechaBaja": null,
+    "activo": true,
+    "tipoPersonal": "INGENIERO_DE_VUELO",
+    "horasVueloAcumuladas": 6022,
+    "nroLicencia": 704086,
+    "especialidad": "Sistemas de Navegación",
+    "experiencia": 33
+  },
+  {
+    "idPersona": "b86a9469-3415-4d55-8ce3-4dee3e845dfd",
+    "nombre": "Jorge",
+    "apellido": "Martínez",
+    "dni": "70061594",
+    "pasaporte": "U78509392",
+    "telefono": "+546447695677",
+    "direccion": {
+      "calle": "Corrientes",
+      "numero": 2600,
+      "ciudad": "Córdoba",
+      "codigoPostal": "6951",
+      "pais": "Arg"
+    },
+    "email": "tripulacion723@example.com",
+    "password": "User@947",
+    "legajo": "T0034",
+    "fechaAlta": {
+      "fecha": "2015-11-04"
+    },
+    "fechaBaja": null,
+    "activo": true,
+    "tipoPersonal": "INGENIERO_DE_VUELO",
+    "horasVueloAcumuladas": 8738,
+    "nroLicencia": 118310,
+    "especialidad": "Sistemas de Navegación",
+    "experiencia": 40
+  },
+  {
+    "idPersona": "a04c08a4-9ae5-4d92-83bd-366c620bb2cb",
+    "nombre": "Carlos",
+    "apellido": "Martínez",
+    "dni": "69760916",
+    "pasaporte": "U39255162",
+    "telefono": "+547604316622",
+    "direccion": {
+      "calle": "Mitre",
+      "numero": 4336,
+      "ciudad": "Rosario",
+      "codigoPostal": "1977",
+      "pais": "Arg"
+    },
+    "email": "tripulacion268@example.com",
+    "password": "Admin@143",
+    "legajo": "T0035",
+    "fechaAlta": {
+      "fecha": "2001-11-28"
+    },
+    "fechaBaja": null,
+    "activo": true,
+    "tipoPersonal": "PILOTO",
+    "horasVueloAcumuladas": 9890,
+    "nroLicencia": 784726,
+    "especialidad": "Sistemas de Navegación",
+    "experiencia": 9
+  },
+  {
+    "idPersona": "172d360d-aa47-4c6c-8b09-f36ee7e51c8d",
+    "nombre": "Roberto",
+    "apellido": "López",
+    "dni": "23368804",
+    "pasaporte": "D14828505",
+    "telefono": "+541641542939",
+    "direccion": {
+      "calle": "Rivadavia",
+      "numero": 4348,
+      "ciudad": "Mendoza",
+      "codigoPostal": "1026",
+      "pais": "Arg"
+    },
+    "email": "tripulacion117@example.com",
+    "password": "Pass@511",
+    "legajo": "T0036",
+    "fechaAlta": {
+      "fecha": "2007-01-20"
+    },
+    "fechaBaja": null,
+    "activo": true,
+    "tipoPersonal": "INGENIERO_DE_VUELO",
+    "horasVueloAcumuladas": 6244,
+    "nroLicencia": 753445,
+    "especialidad": "Electrónica",
+    "experiencia": 35
+  },
+  {
+    "idPersona": "6f574513-7fa7-499e-9a86-0890e3349557",
+    "nombre": "Carlos",
+    "apellido": "Gómez",
+    "dni": "49353813",
+    "pasaporte": "I24420686",
+    "telefono": "+546734619956",
+    "direccion": {
+      "calle": "Mitre",
+      "numero": 3704,
+      "ciudad": "Rosario",
+      "codigoPostal": "3552",
+      "pais": "Arg"
+    },
+    "email": "tripulacion532@example.com",
+    "password": "User@730",
+    "legajo": "T0037",
+    "fechaAlta": {
+      "fecha": "2006-10-02"
+    },
+    "fechaBaja": null,
+    "activo": true,
+    "tipoPersonal": "PILOTO",
+    "horasVueloAcumuladas": 2732,
+    "nroLicencia": 820069,
+    "especialidad": "Aeronáutica",
+    "experiencia": 28
+  },
+  {
+    "idPersona": "043ca78f-2432-4068-8f1f-a751e2b6cc06",
+    "nombre": "Roberto",
+    "apellido": "Fernández",
+    "dni": "21226773",
+    "pasaporte": "N45835516",
+    "telefono": "+541863735352",
+    "direccion": {
+      "calle": "Mitre",
+      "numero": 6145,
+      "ciudad": "Mendoza",
+      "codigoPostal": "3580",
+      "pais": "Arg"
+    },
+    "email": "tripulacion670@example.com",
+    "password": "Pass@892",
+    "legajo": "T0038",
+    "fechaAlta": {
+      "fecha": "2012-10-08"
+    },
+    "fechaBaja": null,
+    "activo": true,
+    "tipoPersonal": "COPILOTO",
+    "horasVueloAcumuladas": 6592,
+    "nroLicencia": 701325,
+    "especialidad": "Mantenimiento",
+    "experiencia": 29
+  },
+  {
+    "idPersona": "24c3cac1-8483-49de-b1c6-7f146f0f9952",
+    "nombre": "María",
+    "apellido": "Gómez",
+    "dni": "72933253",
+    "pasaporte": "M75429611",
+    "telefono": "+546256194226",
+    "direccion": {
+      "calle": "Belgrano",
+      "numero": 5535,
+      "ciudad": "La Plata",
+      "codigoPostal": "5610",
+      "pais": "Arg"
+    },
+    "email": "tripulacion202@example.com",
+    "password": "Pass@678",
+    "legajo": "T0039",
+    "fechaAlta": {
+      "fecha": "2020-12-10"
+    },
+    "fechaBaja": null,
+    "activo": true,
+    "tipoPersonal": "COPILOTO",
+    "horasVueloAcumuladas": 7233,
+    "nroLicencia": 306578,
+    "especialidad": "Aeronáutica",
+    "experiencia": 34
+  },
+  {
+    "idPersona": "f1670a39-f2d1-47ff-8c4e-1be045424c4a",
+    "nombre": "Jorge",
+    "apellido": "Pérez",
+    "dni": "38054164",
+    "pasaporte": "H39610122",
+    "telefono": "+541107910084",
+    "direccion": {
+      "calle": "Corrientes",
+      "numero": 2508,
+      "ciudad": "Buenos Aires",
+      "codigoPostal": "1451",
+      "pais": "Arg"
+    },
+    "email": "tripulacion576@example.com",
+    "password": "User@923",
+    "legajo": "T0040",
+    "fechaAlta": {
+      "fecha": "2023-03-26"
+    },
+    "fechaBaja": null,
+    "activo": true,
+    "tipoPersonal": "PILOTO",
+    "horasVueloAcumuladas": 7376,
+    "nroLicencia": 603264,
+    "especialidad": "Sistemas de Navegación",
+    "experiencia": 23
+  },
+  {
+    "idPersona": "76ec10ff-9a3b-479c-b4d8-365e0d422ced",
+    "nombre": "Jorge",
+    "apellido": "Martínez",
+    "dni": "97933837",
+    "pasaporte": "Z86390969",
+    "telefono": "+547032870032",
+    "direccion": {
+      "calle": "Belgrano",
+      "numero": 4775,
+      "ciudad": "Córdoba",
+      "codigoPostal": "5973",
+      "pais": "Arg"
+    },
+    "email": "tripulacion701@example.com",
+    "password": "User@674",
+    "legajo": "T0041",
+    "fechaAlta": {
+      "fecha": "2011-10-24"
+    },
+    "fechaBaja": null,
+    "activo": true,
+    "tipoPersonal": "INGENIERO_DE_VUELO",
+    "horasVueloAcumuladas": 9854,
+    "nroLicencia": 171434,
+    "especialidad": "Aeronáutica",
+    "experiencia": 26
+  },
+  {
+    "idPersona": "862618d4-76e4-4cf6-ad7e-6a658b0d46b7",
+    "nombre": "Carlos",
+    "apellido": "Fernández",
+    "dni": "76825622",
+    "pasaporte": "F78082420",
+    "telefono": "+541717972302",
+    "direccion": {
+      "calle": "Rivadavia",
+      "numero": 1700,
+      "ciudad": "Mendoza",
+      "codigoPostal": "5624",
+      "pais": "Arg"
+    },
+    "email": "tripulacion204@example.com",
+    "password": "User@596",
+    "legajo": "T0042",
+    "fechaAlta": {
+      "fecha": "2014-08-21"
+    },
+    "fechaBaja": null,
+    "activo": true,
+    "tipoPersonal": "COPILOTO",
+    "horasVueloAcumuladas": 6938,
+    "nroLicencia": 155322,
+    "especialidad": "Electrónica",
+    "experiencia": 1
+  },
+  {
+    "idPersona": "1cbb82b3-2a0c-451e-9562-e46b92ffa4d9",
+    "nombre": "Roberto",
+    "apellido": "López",
+    "dni": "47497669",
+    "pasaporte": "M30148871",
+    "telefono": "+544996923494",
+    "direccion": {
+      "calle": "Rivadavia",
+      "numero": 4487,
+      "ciudad": "Buenos Aires",
+      "codigoPostal": "9678",
+      "pais": "Arg"
+    },
+    "email": "tripulacion106@example.com",
+    "password": "Admin@956",
+    "legajo": "T0043",
+    "fechaAlta": {
+      "fecha": "2010-05-07"
+    },
+    "fechaBaja": null,
+    "activo": true,
+    "tipoPersonal": "INGENIERO_DE_VUELO",
+    "horasVueloAcumuladas": 113,
+    "nroLicencia": 459767,
+    "especialidad": "Mantenimiento",
+    "experiencia": 35
+  },
+  {
+    "idPersona": "d269c182-07bf-4b19-b4af-c933ff46753a",
+    "nombre": "Roberto",
+    "apellido": "Pérez",
+    "dni": "88325390",
+    "pasaporte": "S62583626",
+    "telefono": "+549645037863",
+    "direccion": {
+      "calle": "Belgrano",
+      "numero": 7219,
+      "ciudad": "Rosario",
+      "codigoPostal": "1037",
+      "pais": "Arg"
+    },
+    "email": "tripulacion455@example.com",
+    "password": "User@752",
+    "legajo": "T0044",
+    "fechaAlta": {
+      "fecha": "2001-07-16"
+    },
+    "fechaBaja": null,
+    "activo": true,
+    "tipoPersonal": "PILOTO",
+    "horasVueloAcumuladas": 326,
+    "nroLicencia": 778064,
+    "especialidad": "Mantenimiento",
+    "experiencia": 38
+  },
+  {
+    "idPersona": "c2ac7de9-5b05-476b-85c1-993ae6d748ba",
+    "nombre": "Ana",
+    "apellido": "Gómez",
+    "dni": "88232246",
+    "pasaporte": "B86059683",
+    "telefono": "+546966224860",
+    "direccion": {
+      "calle": "Rivadavia",
+      "numero": 9597,
+      "ciudad": "Mendoza",
+      "codigoPostal": "4950",
+      "pais": "Arg"
+    },
+    "email": "tripulacion786@example.com",
+    "password": "User@947",
+    "legajo": "T0045",
+    "fechaAlta": {
+      "fecha": "2005-11-09"
+    },
+    "fechaBaja": null,
+    "activo": true,
+    "tipoPersonal": "COPILOTO",
+    "horasVueloAcumuladas": 148,
+    "nroLicencia": 896435,
+    "especialidad": "Aeronáutica",
+    "experiencia": 8
+  },
+  {
+    "idPersona": "d721e1d1-7b76-402a-b10f-9608abfc0e7a",
+    "nombre": "María",
+    "apellido": "López",
+    "dni": "55779790",
+    "pasaporte": "D28721176",
+    "telefono": "+543335016110",
+    "direccion": {
+      "calle": "Rivadavia",
+      "numero": 217,
+      "ciudad": "La Plata",
+      "codigoPostal": "7302",
+      "pais": "Arg"
+    },
+    "email": "tripulacion326@example.com",
+    "password": "Admin@806",
+    "legajo": "T0046",
+    "fechaAlta": {
+      "fecha": "2008-11-20"
+    },
+    "fechaBaja": null,
+    "activo": true,
+    "tipoPersonal": "PILOTO",
+    "horasVueloAcumuladas": 7546,
+    "nroLicencia": 233365,
+    "especialidad": "Electrónica",
+    "experiencia": 25
+  },
+  {
+    "idPersona": "04bbb1c6-5e09-4308-8ddb-3d466a8e021a",
+    "nombre": "Ana",
+    "apellido": "Pérez",
+    "dni": "18486219",
+    "pasaporte": "Q12610724",
+    "telefono": "+541637874512",
+    "direccion": {
+      "calle": "Belgrano",
+      "numero": 6517,
+      "ciudad": "Buenos Aires",
+      "codigoPostal": "1586",
+      "pais": "Arg"
+    },
+    "email": "tripulacion31@example.com",
+    "password": "User@636",
+    "legajo": "T0047",
+    "fechaAlta": {
+      "fecha": "2021-11-19"
+    },
+    "fechaBaja": null,
+    "activo": true,
+    "tipoPersonal": "INGENIERO_DE_VUELO",
+    "horasVueloAcumuladas": 2958,
+    "nroLicencia": 527950,
+    "especialidad": "Sistemas de Navegación",
+    "experiencia": 24
+  },
+  {
+    "idPersona": "544d6def-de22-4e24-b5d7-a027c9a7fccb",
+    "nombre": "Jorge",
+    "apellido": "Pérez",
+    "dni": "59136107",
+    "pasaporte": "G10236051",
+    "telefono": "+541418574059",
+    "direccion": {
+      "calle": "Mitre",
+      "numero": 365,
+      "ciudad": "La Plata",
+      "codigoPostal": "4103",
+      "pais": "Arg"
+    },
+    "email": "tripulacion734@example.com",
+    "password": "Admin@650",
+    "legajo": "T0048",
+    "fechaAlta": {
+      "fecha": "2018-02-13"
+    },
+    "fechaBaja": null,
+    "activo": true,
+    "tipoPersonal": "INGENIERO_DE_VUELO",
+    "horasVueloAcumuladas": 3836,
+    "nroLicencia": 952009,
+    "especialidad": "Sistemas de Navegación",
+    "experiencia": 13
+  },
+  {
+    "idPersona": "cff44d06-27c9-4c97-bc8e-aeaf5c570c92",
+    "nombre": "Ana",
+    "apellido": "Martínez",
+    "dni": "58461635",
+    "pasaporte": "C16797192",
+    "telefono": "+549688391337",
+    "direccion": {
+      "calle": "Rivadavia",
+      "numero": 1605,
+      "ciudad": "La Plata",
+      "codigoPostal": "4819",
+      "pais": "Arg"
+    },
+    "email": "tripulacion412@example.com",
+    "password": "User@321",
+    "legajo": "T0049",
+    "fechaAlta": {
+      "fecha": "2005-10-23"
+    },
+    "fechaBaja": null,
+    "activo": true,
+    "tipoPersonal": "PILOTO",
+    "horasVueloAcumuladas": 8914,
+    "nroLicencia": 479521,
+    "especialidad": "Electrónica",
+    "experiencia": 10
+  },
+  {
+    "idPersona": "9f57667e-d3d2-4919-8337-0099ddd921ca",
+    "nombre": "Roberto",
+    "apellido": "Pérez",
+    "dni": "42924978",
+    "pasaporte": "H16536408",
+    "telefono": "+543547926793",
+    "direccion": {
+      "calle": "Rivadavia",
+      "numero": 2566,
+      "ciudad": "Mendoza",
+      "codigoPostal": "2077",
+      "pais": "Arg"
+    },
+    "email": "tripulacion657@example.com",
+    "password": "User@363",
+    "legajo": "T0050",
+    "fechaAlta": {
+      "fecha": "2016-08-17"
+    },
+    "fechaBaja": null,
+    "activo": true,
+    "tipoPersonal": "COPILOTO",
+    "horasVueloAcumuladas": 3441,
+    "nroLicencia": 265065,
+    "especialidad": "Aeronáutica",
+    "experiencia": 7
+  }
+]

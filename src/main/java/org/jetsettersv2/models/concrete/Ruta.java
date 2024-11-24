@@ -1,27 +1,38 @@
 package org.jetsettersv2.models.concrete;
 
-import org.jetsettersv2.enums.Aeropuerto;
-
-import java.time.Duration;
+import org.jetsettersv2.models.concrete.Aeropuerto;
 
 public class Ruta {
     private Aeropuerto origen;
     private Aeropuerto destino;
     private double distanciaKM;
-    private Duration duracion; // Duración del vuelo en segundos
+    private long duracion; // Duración del vuelo en segundos
 
     // <<<<<<<METODOS IMPRESION>>>>>>>
 
-    public void imprimir(){
+    public void imprimir() {
         System.out.println("Origen...............................: " + this.origen);
         System.out.println("Destino..............................: " + this.destino);
         System.out.println("Distancia............................: " + this.distanciaKM + " km");
-        System.out.println("Duración.............................: " + this.duracion.toHours() + " horas");
+        // Convertimos los segundos en horas, minutos y segundos
+        long horas = duracion / 3600;
+        long minutos = (duracion % 3600) / 60;
+        long segundos = duracion % 60;
+
+        System.out.println("Duración.............................: " + horas + " horas " + minutos + " minutos " + segundos + " segundos");
+        System.out.println("------------------------------------" + "\n");
     }
 
-    // <<<<<<<CONSTRUCTORS>>>>>>>
+    // <<<<<<<CONSTRUCTORES>>>>>>>
 
     public Ruta() {
+    }
+
+    public Ruta(Aeropuerto origen, Aeropuerto destino, double distanciaKM, long duracion) {
+        this.origen = origen;
+        this.destino = destino;
+        this.distanciaKM = distanciaKM;
+        this.duracion = duracion;
     }
 
     // <<<<<<<GETTERS>>>>>>>
@@ -38,7 +49,7 @@ public class Ruta {
         return distanciaKM;
     }
 
-    public Duration getDuracion() {
+    public long getDuracion() {
         return duracion; // retorna la duración en segundos
     }
 
@@ -56,7 +67,7 @@ public class Ruta {
         this.distanciaKM = distanciaKM;
     }
 
-    public void setDuracion(Duration duracion) {
+    public void setDuracion(long duracion) {
         this.duracion = duracion;
     }
 
@@ -77,18 +88,20 @@ public class Ruta {
         return this;
     }
 
-    public Ruta duración(Duration duración) {
-        this.duracion = duración;
+    public Ruta duracion(long duracion) {
+        this.duracion = duracion;
         return this;
     }
 
     // <<<<<<<TO STRING>>>>>>>
+
     @Override
     public String toString() {
-        return "Origen...............................: " + origen + "\n" +
-                "Destino..............................: " + destino + "\n" +
+        return "Origen...............................: " + this.origen + "\n" +
+                "Destino..............................: " + this.destino + "\n" +
                 "Distancia............................: " + distanciaKM + " km\n" +
-                "Duración.............................: " + duracion.toHours() + " horas";
+                "Duración.............................: " + duracion / 3600 + " horas " + (duracion % 3600) / 60 + " minutos " + duracion % 60 + " segundos\n" +
+                ".....................................";
     }
 
     // <<<<<<<EQUALS>>>>>>>
@@ -101,9 +114,9 @@ public class Ruta {
         Ruta ruta = (Ruta) o;
 
         if (Double.compare(ruta.distanciaKM, distanciaKM) != 0) return false;
-        if (origen != ruta.origen) return false;
-        if (destino != ruta.destino) return false;
-        return duracion.equals(ruta.duracion);
+        if (!origen.equals(ruta.origen)) return false;
+        if (!destino.equals(ruta.destino)) return false;
+        return duracion == ruta.duracion;
     }
 
     // <<<<<<<HASHCODE>>>>>>>
@@ -112,12 +125,11 @@ public class Ruta {
     public int hashCode() {
         int result;
         long temp;
-        result = origen.hashCode();
-        result = 31 * result + destino.hashCode();
+        result = origen != null ? origen.hashCode() : 0;
+        result = 31 * result + (destino != null ? destino.hashCode() : 0);
         temp = Double.doubleToLongBits(distanciaKM);
         result = 31 * result + (int) (temp ^ (temp >>> 32));
-        result = 31 * result + duracion.hashCode();
+        result = 31 * result + Long.hashCode(duracion);
         return result;
     }
-
 }

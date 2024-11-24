@@ -1,11 +1,20 @@
 package org.jetsettersv2.menus;
+import org.jetsettersv2.exceptions.LeerJsonException;
+import org.jetsettersv2.models.concrete.Administrador;
 import org.jetsettersv2.models.concrete.Ruta;
 import org.jetsettersv2.collections.ArrayListGeneric;
 
 import java.util.Scanner;
 
+import static org.jetsettersv2.menus.MenuFlota.menuFlota;
+import static org.jetsettersv2.menus.MenuPersonal.buscarPosAdminElementoPorLegajo;
+import static org.jetsettersv2.menus.MenuPersonal.menuPersonal;
+import static org.jetsettersv2.menus.MenuRutas.menuRutas;
+import static org.jetsettersv2.menus.MenuVuelo.mostrarMenuVuelo;
+import static org.jetsettersv2.utilities.JacksonUtil.*;
+
 public class MenuAdmin {
-    public static void MenuAdmin() {
+    public static void mostrarMenuAdmin(Administrador admin) {
 
     ArrayListGeneric<Ruta> rutas = new ArrayListGeneric<>();
     Scanner scanner = new Scanner(System.in);
@@ -13,7 +22,7 @@ public class MenuAdmin {
 
         do {
         System.out.println("\nMenú Administrador:");
-        System.out.println("1. Gestionar Perfil");
+        System.out.println("1. Ver y Gestionar Perfil");
         System.out.println("2. Gestionar Vuelos");
         System.out.println("3. Gestionar Rutas");
         System.out.println("4. Gestionar Flota (Aviones)");
@@ -23,53 +32,103 @@ public class MenuAdmin {
         opcion = scanner.nextInt();
 
         switch (opcion) {
-            case 1 -> gestionarPerfil();
-            case 2 -> gestionarVuelos();
-            case 3 -> MenuRutas.menuRutas(rutas);
-           // case 4 -> gestionarFlota();
-          //  case 5 -> gestionarPersonal();
+            case 1 -> gestionarPerfil(admin);
+            case 2 -> mostrarMenuVuelo();
+            case 3 -> menuRutas();
+            case 4 -> menuFlota();
+            case 5 -> menuPersonal();
             case 6 -> System.out.println("Sesión cerrada. Volviendo al menú principal...");
             default -> System.out.println("Opción inválida. Intente nuevamente.");
         }
     } while (opcion != 6);
-
         scanner.close();
 }
 
-private static void gestionarPerfil() {
-    System.out.println("\nGestión de Perfil:");
-    // Aquí puedes agregar opciones para ver o modificar el perfil
-}
-
-private static void gestionarVuelos() {
+private static void gestionarPerfil(Administrador admin) {
     Scanner scanner = new Scanner(System.in);
-    int opcionVuelos;
+    System.out.println("\nGestión de Perfil:" );
+    String legajo = admin.getLegajo();
 
-    do {
-        System.out.println("\nGestión de Vuelos:");
-        System.out.println("1. Programar vuelo nuevo");
-        System.out.println("2. Reprogramar vuelo existente");
-        System.out.println("3. Asignar tripulación");
-        System.out.println("4. Ver vuelos -> Ver todo");
-        System.out.println("5. Volver al menú principal");
-        System.out.print("Seleccione una opción: ");
-        opcionVuelos = scanner.nextInt();
+    ArrayListGeneric<Administrador> admins = new ArrayListGeneric<>();
+    try{
+        admins.copiarLista(getJsonToList(PATH_RESOURCES + PATH_ADMINISTRADORES, Administrador.class));
+    } catch (Exception e) {
+        throw new LeerJsonException("Error al leer el archivo JSON Administradores: " + e.getMessage());
+    }
 
-        switch (opcionVuelos) {
-            case 1 -> System.out.println("Programando vuelo nuevo...");
-            case 2 -> System.out.println("Reprogramando vuelo existente...");
-            case 3 -> System.out.println("Asignando tripulación...");
-            case 4 -> System.out.println("Mostrando todos los vuelos...");
-            case 5 -> System.out.println("Volviendo al menú anterior...");
-            default -> System.out.println("Opción inválida. Intente nuevamente.");
+    int posAdmin = -1;
+    try{
+        posAdmin = buscarPosAdminElementoPorLegajo(legajo, admins);
+        admins.get(posAdmin).imprimir();
+    } catch (Exception e) {
+        System.err.println(e.getMessage());
+    }
+
+    if (posAdmin != -1) {
+        int opcion;
+        do {
+            System.out.println("\n      Modificar tus de un Administrador\n");
+            System.out.println("1. Modificar nombre");
+            System.out.println("2. Modificar apellido");
+            System.out.println("3. Modificar DNI");
+            System.out.println("4. Modificar pasaporte");
+            System.out.println("5. Modificar teléfono");
+            System.out.println("6. Modificar dirección");
+            System.out.println("7. Modificar Email");
+            System.out.println("8. Modificar Contraseña");
+            System.out.println("9. Mostrar datos nuevamente");
+            System.out.println("0. Guardar cambios y salir");
+            System.out.print("\nSeleccione una opción: ");
+            opcion = scanner.nextInt();
+            scanner.nextLine(); // Consumir salto de línea
+
+            switch (opcion) {
+                case 1:
+                    admins.get(posAdmin).solicitarNombre();
+                    break;
+                case 2:
+                    admins.get(posAdmin).solicitarApellido();
+                    break;
+                case 3:
+                    admins.get(posAdmin).solicitarDni();
+                    break;
+                case 4:
+                    admins.get(posAdmin).solicitarPasaporte();
+                    break;
+                case 5:
+                    admins.get(posAdmin).solicitarTelefono();
+                    break;
+                case 6:
+                    admins.get(posAdmin).solicitarDireccion();
+                    break;
+                case 7:
+                    admins.get(posAdmin).solicitarEmail();
+                    break;
+                case 8:
+                    admins.get(posAdmin).solicitarPassword();
+                    break;
+                case 9:
+                    System.out.println("\n----Datos ingresados:----");
+                    admins.get(posAdmin).imprimir();
+                    break;
+                case 0:
+                    System.out.println(" ");
+                    break;
+                default:
+                    System.out.println("Opcion no valida");
+                    break;
+            }
+        } while (opcion != 0);
+
+        try {
+            writeListToJsonFile(admins, PATH_RESOURCES + PATH_ADMINISTRADORES);
+            System.out.println("Modificación exitosa.");
+        } catch (Exception e) {
+            System.err.println("Error al escribir el archivo JSON: " + e.getMessage());
         }
-    } while (opcionVuelos != 5);
+
+    }
+
 }
-
-
-
-
-
-
 
 }

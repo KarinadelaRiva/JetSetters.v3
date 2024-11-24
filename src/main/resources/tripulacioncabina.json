@@ -1,1 +1,895 @@
-[]
+[
+  {
+    "idPersona": "8145293f-70fc-48a1-acdf-67eb747525dc",
+    "nombre": "Carlos",
+    "apellido": "García",
+    "dni": "28308833",
+    "pasaporte": "G19427405",
+    "telefono": "+5493440669066",
+    "direccion": {
+      "calle": "Rivadavia",
+      "numero": 5521,
+      "ciudad": "Mendoza",
+      "codigoPostal": "3505",
+      "pais": "Arg"
+    },
+    "email": "juan.garcía@example.com",
+    "password": "Juan*5229",
+    "legajo": "C0001",
+    "fechaAlta": {
+      "fecha": "2022-10-19"
+    },
+    "fechaBaja": null,
+    "activo": true,
+    "tipoPersonal": "SUPERVISOR_DE_CABINA",
+    "horasVueloAcumuladas": 6086,
+    "desempeño": "Satisfactorio",
+    "certificaciones": "Servicio al Cliente, Seguridad en Vuelo"
+  },
+  {
+    "idPersona": "5b166c11-8e1a-4e2f-bef3-97f7857cba88",
+    "nombre": "Ana",
+    "apellido": "Martínez",
+    "dni": "65489500",
+    "pasaporte": "N65279845",
+    "telefono": "+5499404778827",
+    "direccion": {
+      "calle": "Belgrano",
+      "numero": 8913,
+      "ciudad": "Tucumán",
+      "codigoPostal": "8942",
+      "pais": "Arg"
+    },
+    "email": "maría.lópez@example.com",
+    "password": "María*6353",
+    "legajo": "C0002",
+    "fechaAlta": {
+      "fecha": "2023-04-11"
+    },
+    "fechaBaja": null,
+    "activo": true,
+    "tipoPersonal": "AZAFATA",
+    "horasVueloAcumuladas": 235,
+    "desempeño": "A Mejorar",
+    "certificaciones": "Manejo de Emergencias, Seguridad en Vuelo"
+  },
+  {
+    "idPersona": "e0d8f97e-fd9e-4e31-ba93-23bea5d350d4",
+    "nombre": "Luis",
+    "apellido": "Fernández",
+    "dni": "38897213",
+    "pasaporte": "H39855002",
+    "telefono": "+5494289726406",
+    "direccion": {
+      "calle": "Mitre",
+      "numero": 9264,
+      "ciudad": "Buenos Aires",
+      "codigoPostal": "4309",
+      "pais": "Arg"
+    },
+    "email": "luis.martínez@example.com",
+    "password": "Luis*5201",
+    "legajo": "C0003",
+    "fechaAlta": {
+      "fecha": "2023-11-26"
+    },
+    "fechaBaja": null,
+    "activo": true,
+    "tipoPersonal": "AZAFATA",
+    "horasVueloAcumuladas": 1740,
+    "desempeño": "Satisfactorio",
+    "certificaciones": "Primeros Auxilios, Manejo de Emergencias"
+  },
+  {
+    "idPersona": "087835f8-a083-43b6-9bdc-c0cf0b34451b",
+    "nombre": "Lucía",
+    "apellido": "Martínez",
+    "dni": "42043515",
+    "pasaporte": "A23302262",
+    "telefono": "+5491172505324",
+    "direccion": {
+      "calle": "San Martín",
+      "numero": 6001,
+      "ciudad": "Córdoba",
+      "codigoPostal": "9869",
+      "pais": "Arg"
+    },
+    "email": "ana.rodríguez@example.com",
+    "password": "Ana*7756",
+    "legajo": "C0004",
+    "fechaAlta": {
+      "fecha": "2020-10-20"
+    },
+    "fechaBaja": null,
+    "activo": true,
+    "tipoPersonal": "AZAFATA",
+    "horasVueloAcumuladas": 6351,
+    "desempeño": "Satisfactorio",
+    "certificaciones": "Seguridad en Vuelo"
+  },
+  {
+    "idPersona": "1cebff01-077f-4d8c-b9fb-0e626c66c6fa",
+    "nombre": "Carlos",
+    "apellido": "Rodríguez",
+    "dni": "14172484",
+    "pasaporte": "V39746866",
+    "telefono": "+5494769159245",
+    "direccion": {
+      "calle": "San Martín",
+      "numero": 7986,
+      "ciudad": "Mendoza",
+      "codigoPostal": "9392",
+      "pais": "Arg"
+    },
+    "email": "sofía.gómez@example.com",
+    "password": "Sofía*8238",
+    "legajo": "C0006",
+    "fechaAlta": {
+      "fecha": "2020-01-07"
+    },
+    "fechaBaja": null,
+    "activo": true,
+    "tipoPersonal": "SUPERVISOR_DE_CABINA",
+    "horasVueloAcumuladas": 2463,
+    "desempeño": "Bueno",
+    "certificaciones": "Seguridad en Vuelo, Manejo de Emergencias"
+  },
+  {
+    "idPersona": "c3858b10-3012-48de-a4c3-22fe237260ae",
+    "nombre": "Diego",
+    "apellido": "García",
+    "dni": "41053616",
+    "pasaporte": "T97874194",
+    "telefono": "+5491862188331",
+    "direccion": {
+      "calle": "Belgrano",
+      "numero": 4962,
+      "ciudad": "Buenos Aires",
+      "codigoPostal": "9743",
+      "pais": "Arg"
+    },
+    "email": "carlos.fernández@example.com",
+    "password": "Carlos*4218",
+    "legajo": "C0007",
+    "fechaAlta": {
+      "fecha": "2021-09-07"
+    },
+    "fechaBaja": null,
+    "activo": false,
+    "tipoPersonal": "SUPERVISOR_DE_CABINA",
+    "horasVueloAcumuladas": 5555,
+    "desempeño": "A Mejorar",
+    "certificaciones": "Instructor, Primeros Auxilios, Manejo de Emergencias"
+  },
+  {
+    "idPersona": "9ff1c730-322b-46ab-b425-56f33f9dacfe",
+    "nombre": "Carlos",
+    "apellido": "Torres",
+    "dni": "87393736",
+    "pasaporte": "A58028372",
+    "telefono": "+5493970908180",
+    "direccion": {
+      "calle": "9 de Julio",
+      "numero": 4247,
+      "ciudad": "Rosario",
+      "codigoPostal": "1885",
+      "pais": "Arg"
+    },
+    "email": "lucía.sánchez@example.com",
+    "password": "Lucía*6534",
+    "legajo": "C0008",
+    "fechaAlta": {
+      "fecha": "2023-07-11"
+    },
+    "fechaBaja": null,
+    "activo": true,
+    "tipoPersonal": "AZAFATA",
+    "horasVueloAcumuladas": 6511,
+    "desempeño": "Satisfactorio",
+    "certificaciones": "Manejo de Emergencias, Primeros Auxilios, Seguridad en Vuelo"
+  },
+  {
+    "idPersona": "15732faa-09d4-4c54-8c4a-e196a5f5dd64",
+    "nombre": "Sofía",
+    "apellido": "Fernández",
+    "dni": "63259675",
+    "pasaporte": "F52839797",
+    "telefono": "+5493334980071",
+    "direccion": {
+      "calle": "Rivadavia",
+      "numero": 7016,
+      "ciudad": "Tucumán",
+      "codigoPostal": "2960",
+      "pais": "Arg"
+    },
+    "email": "diego.ramírez@example.com",
+    "password": "Diego*6816",
+    "legajo": "C0009",
+    "fechaAlta": {
+      "fecha": "2020-01-12"
+    },
+    "fechaBaja": null,
+    "activo": true,
+    "tipoPersonal": "AZAFATA",
+    "horasVueloAcumuladas": 1381,
+    "desempeño": "Bueno",
+    "certificaciones": "Manejo de Emergencias, Instructor"
+  },
+  {
+    "idPersona": "2408f084-3f8b-4b0a-a6a9-98d77762d5a3",
+    "nombre": "Valentina",
+    "apellido": "López",
+    "dni": "17317272",
+    "pasaporte": "Z61327382",
+    "telefono": "+5491414197491",
+    "direccion": {
+      "calle": "Belgrano",
+      "numero": 3595,
+      "ciudad": "Tucumán",
+      "codigoPostal": "1337",
+      "pais": "Arg"
+    },
+    "email": "valentina.torres@example.com",
+    "password": "Valentina*6764",
+    "legajo": "C0010",
+    "fechaAlta": {
+      "fecha": "2021-01-16"
+    },
+    "fechaBaja": null,
+    "activo": true,
+    "tipoPersonal": "SUPERVISOR_DE_CABINA",
+    "horasVueloAcumuladas": 9810,
+    "desempeño": "A Mejorar",
+    "certificaciones": "Servicio al Cliente"
+  },
+  {
+    "idPersona": "01a24511-9cbe-4e39-8c37-9af252a607a0",
+    "nombre": "María",
+    "apellido": "Ramírez",
+    "dni": "83115228",
+    "pasaporte": "P55582137",
+    "telefono": "+5491771160296",
+    "direccion": {
+      "calle": "Mitre",
+      "numero": 5684,
+      "ciudad": "Tucumán",
+      "codigoPostal": "3388",
+      "pais": "Arg"
+    },
+    "email": "maría.lópez@example.com",
+    "password": "María*4712",
+    "legajo": "C0012",
+    "fechaAlta": {
+      "fecha": "2022-06-12"
+    },
+    "fechaBaja": null,
+    "activo": true,
+    "tipoPersonal": "SUPERVISOR_DE_CABINA",
+    "horasVueloAcumuladas": 253,
+    "desempeño": "Satisfactorio",
+    "certificaciones": "Primeros Auxilios, Instructor, Manejo de Emergencias"
+  },
+  {
+    "idPersona": "fdf481b1-63df-4ac0-b493-f61725176cf1",
+    "nombre": "Luis",
+    "apellido": "Martínez",
+    "dni": "72802887",
+    "pasaporte": "P75932144",
+    "telefono": "+5491493618754",
+    "direccion": {
+      "calle": "Independencia",
+      "numero": 7620,
+      "ciudad": "La Plata",
+      "codigoPostal": "2283",
+      "pais": "Arg"
+    },
+    "email": "luis.martínez@example.com",
+    "password": "Luis*4718",
+    "legajo": "C0013",
+    "fechaAlta": {
+      "fecha": "2023-01-16"
+    },
+    "fechaBaja": null,
+    "activo": true,
+    "tipoPersonal": "SUPERVISOR_DE_CABINA",
+    "horasVueloAcumuladas": 3037,
+    "desempeño": "Bueno",
+    "certificaciones": "Instructor"
+  },
+  {
+    "idPersona": "fbf1de0d-e9e9-4de2-88c6-c7553a529e8b",
+    "nombre": "Valentina",
+    "apellido": "Ramírez",
+    "dni": "89670001",
+    "pasaporte": "A74551960",
+    "telefono": "+5492059083300",
+    "direccion": {
+      "calle": "Belgrano",
+      "numero": 433,
+      "ciudad": "La Plata",
+      "codigoPostal": "1997",
+      "pais": "Arg"
+    },
+    "email": "ana.rodríguez@example.com",
+    "password": "Ana*5349",
+    "legajo": "C0014",
+    "fechaAlta": {
+      "fecha": "2022-08-02"
+    },
+    "fechaBaja": null,
+    "activo": true,
+    "tipoPersonal": "SUPERVISOR_DE_CABINA",
+    "horasVueloAcumuladas": 9950,
+    "desempeño": "A Mejorar",
+    "certificaciones": "Seguridad en Vuelo"
+  },
+  {
+    "idPersona": "c84c5129-c0f3-454b-83ca-4ccbea55dd83",
+    "nombre": "Carlos",
+    "apellido": "López",
+    "dni": "12503267",
+    "pasaporte": "S90994672",
+    "telefono": "+5495117463269",
+    "direccion": {
+      "calle": "Independencia",
+      "numero": 2819,
+      "ciudad": "Mendoza",
+      "codigoPostal": "1616",
+      "pais": "Arg"
+    },
+    "email": "pedro.pérez@example.com",
+    "password": "Pedro*8949",
+    "legajo": "C0015",
+    "fechaAlta": {
+      "fecha": "2022-02-02"
+    },
+    "fechaBaja": null,
+    "activo": true,
+    "tipoPersonal": "SUPERVISOR_DE_CABINA",
+    "horasVueloAcumuladas": 9851,
+    "desempeño": "Bueno",
+    "certificaciones": "Servicio al Cliente"
+  },
+  {
+    "idPersona": "4170002e-0f06-4d1c-9bb4-97ec46234ba0",
+    "nombre": "Ana",
+    "apellido": "Torres",
+    "dni": "83823519",
+    "pasaporte": "R46050919",
+    "telefono": "+5498908854699",
+    "direccion": {
+      "calle": "Belgrano",
+      "numero": 3297,
+      "ciudad": "Córdoba",
+      "codigoPostal": "1007",
+      "pais": "Arg"
+    },
+    "email": "sofía.gómez@example.com",
+    "password": "Sofía*9923",
+    "legajo": "C0016",
+    "fechaAlta": {
+      "fecha": "2020-03-14"
+    },
+    "fechaBaja": null,
+    "activo": true,
+    "tipoPersonal": "SUPERVISOR_DE_CABINA",
+    "horasVueloAcumuladas": 6309,
+    "desempeño": "Bueno",
+    "certificaciones": "Seguridad en Vuelo, Manejo de Emergencias"
+  },
+  {
+    "idPersona": "4101cd17-b07e-417e-80c5-5ec9724105b1",
+    "nombre": "Diego",
+    "apellido": "Rodríguez",
+    "dni": "80106117",
+    "pasaporte": "T61904316",
+    "telefono": "+5498783732880",
+    "direccion": {
+      "calle": "Rivadavia",
+      "numero": 9527,
+      "ciudad": "Mendoza",
+      "codigoPostal": "7380",
+      "pais": "Arg"
+    },
+    "email": "lucía.sánchez@example.com",
+    "password": "Lucía*9953",
+    "legajo": "C0018",
+    "fechaAlta": {
+      "fecha": "2020-01-05"
+    },
+    "fechaBaja": null,
+    "activo": true,
+    "tipoPersonal": "SUPERVISOR_DE_CABINA",
+    "horasVueloAcumuladas": 9075,
+    "desempeño": "Muy Bueno",
+    "certificaciones": "Instructor, Seguridad en Vuelo"
+  },
+  {
+    "idPersona": "d10e8af2-80cc-4629-b922-9a0beb336b02",
+    "nombre": "Luis",
+    "apellido": "López",
+    "dni": "54018595",
+    "pasaporte": "T88232267",
+    "telefono": "+5497984140576",
+    "direccion": {
+      "calle": "Rivadavia",
+      "numero": 4365,
+      "ciudad": "Tucumán",
+      "codigoPostal": "1876",
+      "pais": "Arg"
+    },
+    "email": "diego.ramírez@example.com",
+    "password": "Diego*7596",
+    "legajo": "C0019",
+    "fechaAlta": {
+      "fecha": "2022-11-19"
+    },
+    "fechaBaja": null,
+    "activo": false,
+    "tipoPersonal": "SUPERVISOR_DE_CABINA",
+    "horasVueloAcumuladas": 6636,
+    "desempeño": "Satisfactorio",
+    "certificaciones": "Primeros Auxilios, Servicio al Cliente"
+  },
+  {
+    "idPersona": "651885b3-4c27-4f44-92c9-fa2a3c461cfd",
+    "nombre": "Luis",
+    "apellido": "Gómez",
+    "dni": "16965580",
+    "pasaporte": "P18114614",
+    "telefono": "+5493279768496",
+    "direccion": {
+      "calle": "Rivadavia",
+      "numero": 384,
+      "ciudad": "La Plata",
+      "codigoPostal": "7856",
+      "pais": "Arg"
+    },
+    "email": "juan.garcía@example.com",
+    "password": "Juan*1153",
+    "legajo": "C0021",
+    "fechaAlta": {
+      "fecha": "2020-04-08"
+    },
+    "fechaBaja": null,
+    "activo": true,
+    "tipoPersonal": "SUPERVISOR_DE_CABINA",
+    "horasVueloAcumuladas": 8153,
+    "desempeño": "Bueno",
+    "certificaciones": "Manejo de Emergencias, Instructor"
+  },
+  {
+    "idPersona": "9c45f1eb-ed9c-40bf-9082-dd7d41fa85da",
+    "nombre": "Pedro",
+    "apellido": "López",
+    "dni": "91148829",
+    "pasaporte": "U99140790",
+    "telefono": "+5497233964900",
+    "direccion": {
+      "calle": "Belgrano",
+      "numero": 8155,
+      "ciudad": "Córdoba",
+      "codigoPostal": "8616",
+      "pais": "Arg"
+    },
+    "email": "pedro.pérez@example.com",
+    "password": "Pedro*8463",
+    "legajo": "C0025",
+    "fechaAlta": {
+      "fecha": "2021-08-14"
+    },
+    "fechaBaja": null,
+    "activo": true,
+    "tipoPersonal": "SUPERVISOR_DE_CABINA",
+    "horasVueloAcumuladas": 9081,
+    "desempeño": "A Mejorar",
+    "certificaciones": "Seguridad en Vuelo, Instructor, Primeros Auxilios"
+  },
+  {
+    "idPersona": "e984bd6f-e7d2-439c-bf9a-1609a7146f60",
+    "nombre": "Juan",
+    "apellido": "López",
+    "dni": "37694776",
+    "pasaporte": "W17345429",
+    "telefono": "+5495901073811",
+    "direccion": {
+      "calle": "Rivadavia",
+      "numero": 4693,
+      "ciudad": "Tucumán",
+      "codigoPostal": "4081",
+      "pais": "Arg"
+    },
+    "email": "sofía.gómez@example.com",
+    "password": "Sofía*7346",
+    "legajo": "C0026",
+    "fechaAlta": {
+      "fecha": "2021-06-13"
+    },
+    "fechaBaja": null,
+    "activo": true,
+    "tipoPersonal": "SUPERVISOR_DE_CABINA",
+    "horasVueloAcumuladas": 5201,
+    "desempeño": "Excelente",
+    "certificaciones": "Seguridad en Vuelo"
+  },
+  {
+    "idPersona": "b4d5a5a4-0998-4602-ab08-7988b16f736d",
+    "nombre": "Diego",
+    "apellido": "López",
+    "dni": "56743502",
+    "pasaporte": "C56950888",
+    "telefono": "+5498043923386",
+    "direccion": {
+      "calle": "Sarmiento",
+      "numero": 8359,
+      "ciudad": "Rosario",
+      "codigoPostal": "5164",
+      "pais": "Arg"
+    },
+    "email": "carlos.fernández@example.com",
+    "password": "Carlos*8654",
+    "legajo": "C0027",
+    "fechaAlta": {
+      "fecha": "2021-11-10"
+    },
+    "fechaBaja": null,
+    "activo": true,
+    "tipoPersonal": "AZAFATA",
+    "horasVueloAcumuladas": 8854,
+    "desempeño": "Excelente",
+    "certificaciones": "Servicio al Cliente"
+  },
+  {
+    "idPersona": "20572b6c-7e01-46fb-adcd-cbadb386852f",
+    "nombre": "Diego",
+    "apellido": "Pérez",
+    "dni": "16780892",
+    "pasaporte": "C71634519",
+    "telefono": "+5499834006242",
+    "direccion": {
+      "calle": "9 de Julio",
+      "numero": 9949,
+      "ciudad": "La Plata",
+      "codigoPostal": "2866",
+      "pais": "Arg"
+    },
+    "email": "lucía.sánchez@example.com",
+    "password": "Lucía*2283",
+    "legajo": "C0028",
+    "fechaAlta": {
+      "fecha": "2022-07-21"
+    },
+    "fechaBaja": null,
+    "activo": true,
+    "tipoPersonal": "AZAFATA",
+    "horasVueloAcumuladas": 8392,
+    "desempeño": "Excelente",
+    "certificaciones": "Seguridad en Vuelo, Manejo de Emergencias, Instructor"
+  },
+  {
+    "idPersona": "8772b034-2dcc-4a08-bb63-86ef7a63dbeb",
+    "nombre": "Lucía",
+    "apellido": "Martínez",
+    "dni": "49925858",
+    "pasaporte": "L71870042",
+    "telefono": "+5493717094821",
+    "direccion": {
+      "calle": "Rivadavia",
+      "numero": 6038,
+      "ciudad": "Buenos Aires",
+      "codigoPostal": "8607",
+      "pais": "Arg"
+    },
+    "email": "valentina.torres@example.com",
+    "password": "Valentina*4933",
+    "legajo": "C0030",
+    "fechaAlta": {
+      "fecha": "2020-09-09"
+    },
+    "fechaBaja": null,
+    "activo": true,
+    "tipoPersonal": "AZAFATA",
+    "horasVueloAcumuladas": 2400,
+    "desempeño": "Muy Bueno",
+    "certificaciones": "Seguridad en Vuelo, Servicio al Cliente, Primeros Auxilios"
+  },
+  {
+    "idPersona": "41d68569-f4c9-40b3-8ccb-d06b1f1e0901",
+    "nombre": "Carlos",
+    "apellido": "Sánchez",
+    "dni": "53449836",
+    "pasaporte": "I24001548",
+    "telefono": "+5491987723820",
+    "direccion": {
+      "calle": "Belgrano",
+      "numero": 5183,
+      "ciudad": "Rosario",
+      "codigoPostal": "5277",
+      "pais": "Arg"
+    },
+    "email": "juan.garcía@example.com",
+    "password": "Juan*4951",
+    "legajo": "C0031",
+    "fechaAlta": {
+      "fecha": "2022-04-15"
+    },
+    "fechaBaja": null,
+    "activo": true,
+    "tipoPersonal": "AZAFATA",
+    "horasVueloAcumuladas": 9530,
+    "desempeño": "A Mejorar",
+    "certificaciones": "Primeros Auxilios, Seguridad en Vuelo, Servicio al Cliente"
+  },
+  {
+    "idPersona": "9804400a-5cfe-4556-8b90-de646172d1c3",
+    "nombre": "Diego",
+    "apellido": "García",
+    "dni": "48053627",
+    "pasaporte": "J14065010",
+    "telefono": "+5496522887824",
+    "direccion": {
+      "calle": "San Martín",
+      "numero": 5979,
+      "ciudad": "Rosario",
+      "codigoPostal": "7716",
+      "pais": "Arg"
+    },
+    "email": "maría.lópez@example.com",
+    "password": "María*8011",
+    "legajo": "C0032",
+    "fechaAlta": {
+      "fecha": "2023-07-16"
+    },
+    "fechaBaja": null,
+    "activo": true,
+    "tipoPersonal": "SUPERVISOR_DE_CABINA",
+    "horasVueloAcumuladas": 5982,
+    "desempeño": "Muy Bueno",
+    "certificaciones": "Seguridad en Vuelo, Manejo de Emergencias, Servicio al Cliente"
+  },
+  {
+    "idPersona": "6b820064-e5c3-4a97-8726-cfdca13921b1",
+    "nombre": "Pedro",
+    "apellido": "Gómez",
+    "dni": "60024370",
+    "pasaporte": "N88714824",
+    "telefono": "+5497066457829",
+    "direccion": {
+      "calle": "Independencia",
+      "numero": 9931,
+      "ciudad": "La Plata",
+      "codigoPostal": "3973",
+      "pais": "Arg"
+    },
+    "email": "ana.rodríguez@example.com",
+    "password": "Ana*8785",
+    "legajo": "C0034",
+    "fechaAlta": {
+      "fecha": "2021-05-18"
+    },
+    "fechaBaja": null,
+    "activo": true,
+    "tipoPersonal": "SUPERVISOR_DE_CABINA",
+    "horasVueloAcumuladas": 9674,
+    "desempeño": "Bueno",
+    "certificaciones": "Seguridad en Vuelo"
+  },
+  {
+    "idPersona": "d482efc4-678b-40ca-a0d7-758474ed2fd5",
+    "nombre": "Ana",
+    "apellido": "Ramírez",
+    "dni": "20334932",
+    "pasaporte": "X39781788",
+    "telefono": "+5492452590860",
+    "direccion": {
+      "calle": "Sarmiento",
+      "numero": 7890,
+      "ciudad": "La Plata",
+      "codigoPostal": "3468",
+      "pais": "Arg"
+    },
+    "email": "valentina.torres@example.com",
+    "password": "Valentina*9661",
+    "legajo": "C0040",
+    "fechaAlta": {
+      "fecha": "2023-07-03"
+    },
+    "fechaBaja": null,
+    "activo": true,
+    "tipoPersonal": "AZAFATA",
+    "horasVueloAcumuladas": 2846,
+    "desempeño": "Bueno",
+    "certificaciones": "Seguridad en Vuelo, Servicio al Cliente"
+  },
+  {
+    "idPersona": "2b271c50-1777-459b-9158-fcc799005ef2",
+    "nombre": "Juan",
+    "apellido": "López",
+    "dni": "48303942",
+    "pasaporte": "Z94451464",
+    "telefono": "+5494201810267",
+    "direccion": {
+      "calle": "Independencia",
+      "numero": 4047,
+      "ciudad": "Córdoba",
+      "codigoPostal": "8788",
+      "pais": "Arg"
+    },
+    "email": "juan.garcía@example.com",
+    "password": "Juan*3474",
+    "legajo": "C0041",
+    "fechaAlta": {
+      "fecha": "2023-09-10"
+    },
+    "fechaBaja": null,
+    "activo": true,
+    "tipoPersonal": "AZAFATA",
+    "horasVueloAcumuladas": 9928,
+    "desempeño": "Muy Bueno",
+    "certificaciones": "Seguridad en Vuelo, Manejo de Emergencias"
+  },
+  {
+    "idPersona": "d7ef9ce8-a4b8-4e51-84f4-d9ddc733dc81",
+    "nombre": "Juan",
+    "apellido": "Rodríguez",
+    "dni": "18816538",
+    "pasaporte": "C42839833",
+    "telefono": "+5497732074721",
+    "direccion": {
+      "calle": "Belgrano",
+      "numero": 950,
+      "ciudad": "Rosario",
+      "codigoPostal": "1112",
+      "pais": "Arg"
+    },
+    "email": "maría.lópez@example.com",
+    "password": "María*7380",
+    "legajo": "C0042",
+    "fechaAlta": {
+      "fecha": "2021-05-07"
+    },
+    "fechaBaja": null,
+    "activo": true,
+    "tipoPersonal": "AZAFATA",
+    "horasVueloAcumuladas": 2838,
+    "desempeño": "Satisfactorio",
+    "certificaciones": "Manejo de Emergencias, Seguridad en Vuelo, Instructor"
+  },
+  {
+    "idPersona": "f6887345-9667-4339-b0aa-032b7dff1aaf",
+    "nombre": "Sofía",
+    "apellido": "García",
+    "dni": "71908962",
+    "pasaporte": "U98699271",
+    "telefono": "+5492232477594",
+    "direccion": {
+      "calle": "Sarmiento",
+      "numero": 4852,
+      "ciudad": "Buenos Aires",
+      "codigoPostal": "4712",
+      "pais": "Arg"
+    },
+    "email": "luis.martínez@example.com",
+    "password": "Luis*3186",
+    "legajo": "C0043",
+    "fechaAlta": {
+      "fecha": "2023-01-01"
+    },
+    "fechaBaja": null,
+    "activo": true,
+    "tipoPersonal": "AZAFATA",
+    "horasVueloAcumuladas": 1288,
+    "desempeño": "Bueno",
+    "certificaciones": "Manejo de Emergencias, Seguridad en Vuelo"
+  },
+  {
+    "idPersona": "af3bd33f-94b1-4bf4-bf4f-80130488200f",
+    "nombre": "María",
+    "apellido": "Gómez",
+    "dni": "44483658",
+    "pasaporte": "N45839074",
+    "telefono": "+5492152156099",
+    "direccion": {
+      "calle": "Sarmiento",
+      "numero": 6136,
+      "ciudad": "Rosario",
+      "codigoPostal": "1149",
+      "pais": "Arg"
+    },
+    "email": "ana.rodríguez@example.com",
+    "password": "Ana*2900",
+    "legajo": "C0044",
+    "fechaAlta": {
+      "fecha": "2023-09-10"
+    },
+    "fechaBaja": null,
+    "activo": true,
+    "tipoPersonal": "SUPERVISOR_DE_CABINA",
+    "horasVueloAcumuladas": 6047,
+    "desempeño": "Satisfactorio",
+    "certificaciones": "Manejo de Emergencias, Primeros Auxilios"
+  },
+  {
+    "idPersona": "8dccc6c7-59a7-4d4c-8df8-c9e894f1ebc3",
+    "nombre": "Juan",
+    "apellido": "García",
+    "dni": "63063355",
+    "pasaporte": "W68280367",
+    "telefono": "+5494479405386",
+    "direccion": {
+      "calle": "Rivadavia",
+      "numero": 8879,
+      "ciudad": "Tucumán",
+      "codigoPostal": "2722",
+      "pais": "Arg"
+    },
+    "email": "sofía.gómez@example.com",
+    "password": "Sofía*4110",
+    "legajo": "C0046",
+    "fechaAlta": {
+      "fecha": "2023-09-03"
+    },
+    "fechaBaja": {
+      "fecha": "2021-12-06"
+    },
+    "activo": true,
+    "tipoPersonal": "AZAFATA",
+    "horasVueloAcumuladas": 1977,
+    "desempeño": "Excelente",
+    "certificaciones": "Manejo de Emergencias, Seguridad en Vuelo, Servicio al Cliente"
+  },
+  {
+    "idPersona": "31a016f7-11d0-47f7-9a1f-c28c68858973",
+    "nombre": "Lucía",
+    "apellido": "Martínez",
+    "dni": "19917634",
+    "pasaporte": "W56210733",
+    "telefono": "+5498236626767",
+    "direccion": {
+      "calle": "Independencia",
+      "numero": 3853,
+      "ciudad": "Buenos Aires",
+      "codigoPostal": "6285",
+      "pais": "Arg"
+    },
+    "email": "carlos.fernández@example.com",
+    "password": "Carlos*3999",
+    "legajo": "C0047",
+    "fechaAlta": {
+      "fecha": "2023-01-20"
+    },
+    "fechaBaja": null,
+    "activo": true,
+    "tipoPersonal": "AZAFATA",
+    "horasVueloAcumuladas": 5979,
+    "desempeño": "Excelente",
+    "certificaciones": "Seguridad en Vuelo"
+  },
+  {
+    "idPersona": "e468b8f1-3683-4851-8b3f-5aa4e0aff73c",
+    "nombre": "Pedro",
+    "apellido": "Sánchez",
+    "dni": "22118023",
+    "pasaporte": "P83761626",
+    "telefono": "+5496848247594",
+    "direccion": {
+      "calle": "Belgrano",
+      "numero": 312,
+      "ciudad": "Mendoza",
+      "codigoPostal": "2178",
+      "pais": "Arg"
+    },
+    "email": "valentina.torres@example.com",
+    "password": "Valentina*6228",
+    "legajo": "C0050",
+    "fechaAlta": {
+      "fecha": "2020-09-26"
+    },
+    "fechaBaja": null,
+    "activo": true,
+    "tipoPersonal": "SUPERVISOR_DE_CABINA",
+    "horasVueloAcumuladas": 9350,
+    "desempeño": "A Mejorar",
+    "certificaciones": "Servicio al Cliente, Manejo de Emergencias"
+  }
+]
