@@ -4,6 +4,7 @@ import org.jetsettersv2.collections.ArrayListGeneric;
 import org.jetsettersv2.exceptions.ElementoNoEncontradoException;
 import org.jetsettersv2.models.abstracts.Empleado;
 import org.jetsettersv2.utilities.Fecha;
+import org.jetsettersv2.utilities.Hora;
 
 import java.util.List;
 
@@ -96,7 +97,7 @@ public class Administrador extends Empleado {
 
     // <<<<<<<REPROGRAMAR VUELOS>>>>>>>
 
-    public void reprogramarVuelos (String atributo, Fecha nuevoValor) {
+    public void reprogramarVuelos (String atributo, Hora nuevoValor, Fecha nuevoValor2) {
         boolean vueloReprogramado = false;
 
         for (Vuelo vuelo : gestionVuelos.getLista()) {
@@ -105,7 +106,7 @@ public class Administrador extends Empleado {
 
                 switch (atributo.toLowerCase()) {
                     case "Fecha de salida":
-                        vuelo.fechaSalida(nuevoValor);
+                        vuelo.fechaSalida(nuevoValor2);
                         break;
                     case "Horario de salida":
                         vuelo.horaSalida(nuevoValor);
@@ -236,7 +237,7 @@ public class Administrador extends Empleado {
                         break;
                     case "2.capacidad para Tripulantes":
                         if (nuevoValor instanceof Integer) {
-                            avion.setCapacidadTripulantes((Integer) nuevoValor);
+                          //  avion.setCapacidadTripulantes((Integer) nuevoValor);
                         }
                         break;
                     case "3.capacidad para Pasajeros":

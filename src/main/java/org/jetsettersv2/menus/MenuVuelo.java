@@ -1,13 +1,16 @@
 package org.jetsettersv2.menus;
 import org.jetsettersv2.collections.ArrayListGeneric;
+import org.jetsettersv2.exceptions.ElementoNoEncontradoException;
 import org.jetsettersv2.exceptions.LeerJsonException;
 import org.jetsettersv2.models.concrete.*;
 import org.jetsettersv2.utilities.Fecha;
+import org.jetsettersv2.utilities.Hora;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import static org.jetsettersv2.menus.MenuLogin.pausarConTecla;
 import static org.jetsettersv2.utilities.JacksonUtil.*;
 
 public class MenuVuelo {
@@ -32,20 +35,49 @@ public class MenuVuelo {
             scanner.nextLine(); // Consumir salto de línea
 
             switch (opcion) {
-                case 1 -> programarVueloNuevo(adminMenu);
-                case 2 -> reprogramarVueloExistente(adminMenu);
-//                case 3 -> asignarTripulacion(scanner, admin);
-                case 4 -> verVuelos(adminMenu);
-                case 5 -> System.out.println("Saliendo...");
-                default -> System.out.println("Opción inválida. Intente nuevamente.");
+                case 1 :
+                    try{
+                        programarVueloNuevo();
+                    } catch (LeerJsonException e) {
+                        System.err.println("Error al programar el vuelo: " + e.getMessage());
+                    }
+                    pausarConTecla();
+                    break;
+                case 2:
+                    try {
+                        subMenuModificarVuelo();
+                    } catch (LeerJsonException e) {
+                        System.err.println("Error al reprogramar el vuelo: " + e.getMessage());
+                    }
+                    pausarConTecla();
+                    break;
+                case 3:
+                    //asignarTripulacion(scanner, admin);
+                    pausarConTecla();
+                    break;
+                case 4:
+                    verVuelos(adminMenu);
+                    pausarConTecla();
+                    break;
+                case 5:
+                    System.out.println(" ");
+                    break;
+                default :
+                    System.out.println("Opción inválida. Intente nuevamente.");
             }
         } while (opcion != 5);
 
     }
 
-    public static void programarVueloNuevo(Administrador admin) {
+    public static void programarVueloNuevo() throws LeerJsonException {
         Scanner scanner = new Scanner(System.in);
+        ArrayListGeneric<Vuelo> vuelos= new ArrayListGeneric<>();
 
+        try{
+            vuelos.copiarLista(getJsonToList(PATH_RESOURCES + PATH_VUELOS, Vuelo.class));
+        } catch (Exception e) {
+            throw new LeerJsonException("Error al leer el archivo JSON Vuelos");
+        }
 
         System.out.println("--- Programar Vuelo Nuevo ---");
         try {
@@ -66,43 +98,53 @@ public class MenuVuelo {
 
 
             Vuelo nuevoVuelo = new Vuelo();
-            admin.añadirVuelosCollection(nuevoVuelo);
+            vuelos.add(nuevoVuelo);
 
             System.out.println("¡Vuelo programado con éxito!");
         } catch (Exception e) {
             System.out.println("Error al programar el vuelo: " + e.getMessage());
         }
+
+        try {
+            writeListToJsonFile(vuelos, PATH_RESOURCES + PATH_VUELOS);
+            System.out.println("Vuelo programado con éxito.");
+        } catch (Exception e) {
+            System.err.println("Error al escribir el archivo JSON: " + e.getMessage());
+        }
+
     }
 
 
-    public static void reprogramarVueloExistente(Administrador admin) {
+    public static Vuelo reprogramarVueloExistente(Vuelo vuelo) {
         Scanner scanner = new Scanner(System.in);
-        Fecha fechaNueva = new Fecha();
-        fechaNueva = null;
+        Vuelo vueloModificado = vuelo;
+        String fechaNueva;
+        String horaNueva;
         int opcion;
 
         do {
             System.out.println("\nSubmenú - Modificar Datos:");
-            System.out.println("1. Modificar fecha de salida");
-            System.out.println("2. Modificar horario de salida");
-            System.out.println("6. Salir");
+            System.out.println("1. Modificar fecha y hora de salida");
+            System.out.println("0. Confirmar y Salir");
             System.out.print("Seleccione una opción: ");
             opcion = scanner.nextInt();
             scanner.nextLine(); // Consumir el salto de línea
             Fecha nuevoValor = new Fecha();
             switch (opcion) {
                 case 1 -> {
-                    System.out.print("Ingrese La nueva fecha de salida: ");
-                    admin.reprogramarVuelos("Fecha de salida",nuevoValor );
+                    System.out.print("Ingrese La nueva fecha de salida (AAAA-MM-DD): ");
+                    fechaNueva = scanner.nextLine();
+                    vueloModificado.setFechaSalida(new Fecha(fechaNueva));
+
+                    System.out.println("Ingrese La nueva hora de salida (HH:MM:SS)");
+                    horaNueva = scanner.nextLine();
+                    vueloModificado.setHoraSalida(new Hora(horaNueva));
                 }
-                case 2 -> {
-                    System.out.print("Ingrese el nuevo horario de salida: ");
-                    admin.reprogramarVuelos("Horario de salida", nuevoValor);
-                }
-                case 6 -> System.out.println("Saliendo del submenú...");
+                case 0 -> System.out.println(" ");
                 default -> System.out.println("Opción inválida. Intente nuevamente.");
             }
-        } while (opcion != 6);
+        } while (opcion != 0);
+        return vueloModificado;
     }
 
     public static ArrayListGeneric<Vuelo> cargarvuelosDesdeJson(ArrayListGeneric<Vuelo> vuelos) throws LeerJsonException {
@@ -123,48 +165,51 @@ public class MenuVuelo {
         return vuelosCargados;
     }
 
-    public static void subMenuModificarVuelo() throws LeerJsonException{
-        ArrayListGeneric<Administrador> admin = new ArrayListGeneric<>();
-        ArrayListGeneric<Vuelo> vuelo = new ArrayListGeneric<>();
-
-
-        try{
-            admin.copiarLista(getJsonToList(PATH_RESOURCES + PATH_ADMINISTRADORES, Administrador.class));
-        } catch (Exception e) {
-            throw new LeerJsonException("Error al leer el archivo JSON Administradores: " + e.getMessage());
+    public static int buscarPosVueloPorNroVuelo(String nroVuelo, ArrayListGeneric<Vuelo> vuelo) throws ElementoNoEncontradoException {
+        for (int i = 0; i < vuelo.size(); i++) {
+            if (vuelo.get(i).getNroVuelo().equals(nroVuelo)) {
+                return i;  // Retorna la posición del elemento si coincide el nro de vuelo
+            }
         }
+        throw new ElementoNoEncontradoException("No se encontró un Vuelo con el numero: " + nroVuelo);
+    }
+
+    public static void subMenuModificarVuelo() throws LeerJsonException{
+        String nroVueloBuscado;
+        ArrayListGeneric<Vuelo> vuelos= new ArrayListGeneric<>();
 
         try{
-            vuelo.copiarLista(getJsonToList(PATH_RESOURCES + PATH_VUELOS, Vuelo.class));
+            vuelos.copiarLista(getJsonToList(PATH_RESOURCES + PATH_VUELOS, Vuelo.class));
         } catch (Exception e) {
             throw new LeerJsonException("Error al leer el archivo JSON Vuelos");
         }
 
-            int opcion;
+        System.out.print("Ingrese el NUMERO de vuelo a modificar: ");
+        nroVueloBuscado = scanner.nextLine(); // Consumir salto de línea
 
-            do {
-                System.out.println("\nSubmenú - Modificar Datos de Vuelo:");
-                System.out.println("1. Modificar fecha de salida");
-                System.out.println("2. Modificar horario de salida");
-                System.out.println("6. Salir");
-                System.out.print("Seleccione una opción: ");
-                opcion = scanner.nextInt();
-                scanner.nextLine(); // Consumir el salto de línea
-                Fecha nuevoValor = new Fecha();
-                switch (opcion) {
-                    case 1 -> {
-                        System.out.print("Ingrese La nueva fecha de salida: ");
-                        reprogramarVueloExistente("Fecha de salida",nuevoValor );
-                    }
-                    case 2 -> {
-                        System.out.print("Ingrese el nuevo horario de salida: ");
-                        reprogramarVueloExistente(admin);
-                    }
-                    case 6 -> System.out.println("Saliendo del submenú...");
-                    default -> System.out.println("Opción inválida. Intente nuevamente.");
-                }
-            } while (opcion != 6);
+        System.out.println("Buscando vuelo numero: " + nroVueloBuscado);
+
+        int posVuelo = -1;
+        try{
+            posVuelo = buscarPosVueloPorNroVuelo(nroVueloBuscado,vuelos);
+            //vuelo.get(posVuelo).imprimir();
+        } catch (Exception e) {
+            System.err.println(e.getMessage());
         }
+
+        if (posVuelo != -1) {
+            Vuelo vueloModificado = reprogramarVueloExistente(vuelos.get(posVuelo));
+            vuelos.set(posVuelo, vueloModificado);
+            System.out.println("Vuelo modificado con éxito.");
+        }
+
+        try {
+            writeListToJsonFile(vuelos, PATH_RESOURCES + PATH_VUELOS);
+            System.out.println("Modificación exitosa.");
+        } catch (Exception e) {
+            System.err.println("Error al escribir el archivo JSON: " + e.getMessage());
+        }
+    }
 
 
     public static void mostrarvuelos() {
@@ -191,62 +236,8 @@ public class MenuVuelo {
     }
 
 
-
-//        public static void reprogramarVueloExistente (Administrador admin){
-//            Scanner scanner = new Scanner(System.in);
-//
-//            System.out.println("\n--- Reprogramar Vuelo Existente ---");
-//            try {
-//                System.out.print("Ingrese la fecha original del vuelo (YYYY-MM-DD): ");
-//                String fechaOriginalStr = scanner.nextLine();
-//                Fecha fechaOriginal = Fecha.fechaActual();
-//
-//                System.out.print("Ingrese la nueva fecha del vuelo (YYYY-MM-DD): ");
-//                String nuevaFechaStr = scanner.nextLine();
-//                Fecha nuevaFecha = Fecha.fechaActual();
-//
-//                admin.reprogramarVuelos(fechaOriginal, nuevaFecha);
-//
-//                System.out.println("Vuelo reprogramado exitosamente.");
-//            } catch (ElementoNoEncontradoException e) {
-//                System.out.println("Error: " + e.getMessage());
-//            } catch (Exception e) {
-//                System.out.println("Error inesperado: " + e.getMessage());
-//            }
-//        }
-
-//        private static void asignarTripulacion (Administrador admin){
-//            Scanner scanner = new Scanner(System.in);
-//
-//            System.out.println("\n--- Asignar Tripulación a Vuelo ---");
-//            try {
-//                System.out.print("Ingrese el numero del vuelo: ");
-//                String nroVuelo = scanner.nextLine();
-//
-//                System.out.print("Ingrese el nombre del tripulante: ");
-//                String nombreTripulante = scanner.nextLine();
-//
-//                System.out.print("Ingrese el Tipo del tripulante (piloto, azafata, etc.): ");
-//                TipoPersonalAereo tipoTripulante = null;
-//                boolean valido = false;
-//                String tipo = scanner.nextLine().toUpperCase(); // Convertir a mayúsculas para coincidir con el enum
-//                tipoTripulante = TipoPersonalAereo.valueOf(tipo); // Convertir el texto al enum
-//                valido = true;
-//
-//                 // Asume un constructor de Persona
-//                TripulacionCabina tripulante = new TripulacionCabina();
-//                admin.asignarTripulacionVuelo(nroVuelo, tripulante);
-//
-//                System.out.println("Tripulación asignada con éxito.");
-//            } catch (ElementoNoEncontradoException e) {
-//                System.out.println("Error: " + e.getMessage());
-//            } catch (Exception e) {
-//                System.out.println("Error inesperado: " + e.getMessage());
-//            }
-//        }
-
-        private static void verVuelos (Administrador admin) {
-            admin.verCollectionAvion().forEach(System.out::println);
+    private static void verVuelos (Administrador admin) {
+        admin.verCollectionAvion().forEach(System.out::println);
 
 
     }
