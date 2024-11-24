@@ -1,1 +1,55 @@
-[]
+[ {
+  "idPersona" : "cc657f7b-7473-4709-9f53-f15097ed31e4",
+  "nombre" : "Super",
+  "apellido" : "Administrador",
+  "dni" : "22222222",
+  "pasaporte" : "111111111",
+  "telefono" : "2231111111",
+  "direccion" : {
+    "calle" : "Corrientes",
+    "numero" : 159,
+    "ciudad" : null,
+    "codigoPostal" : "7600",
+    "pais" : "Arg"
+  },
+  "email" : "administrador@gmail.com",
+  "password" : "Admin*123",
+  "legajo" : "A0001",
+  "fechaAlta" : {
+    "fecha" : "2024-11-23"
+  },
+  "fechaBaja" : null,
+  "activo" : true,
+  "gestionVuelos" : null,
+  "gestionReservas" : null,
+  "gestionUsuarios" : null,
+  "gestionPasajeros" : null,
+  "gestionRutas" : null
+}, {
+  "idPersona" : "cdf57f7b-7473-4709-9f53-f19597ed31e4",
+  "nombre" : "Super",
+  "apellido" : "Administrador",
+  "dni" : "22222222",
+  "pasaporte" : "111111111",
+  "telefono" : "2231111111",
+  "direccion" : {
+    "calle" : "Corrientes",
+    "numero" : 159,
+    "ciudad" : null,
+    "codigoPostal" : "7600",
+    "pais" : "Arg"
+  },
+  "email" : "administrador@gmail.com",
+  "password" : "Admin*123",
+  "legajo" : "A0002",
+  "fechaAlta" : {
+    "fecha" : "2024-11-23"
+  },
+  "fechaBaja" : null,
+  "activo" : true,
+  "gestionVuelos" : null,
+  "gestionReservas" : null,
+  "gestionUsuarios" : null,
+  "gestionPasajeros" : null,
+  "gestionRutas" : null
+} ]
