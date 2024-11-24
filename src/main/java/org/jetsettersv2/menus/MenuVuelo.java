@@ -1,5 +1,6 @@
 package org.jetsettersv2.menus;
 import org.jetsettersv2.collections.ArrayListGeneric;
+import org.jetsettersv2.exceptions.CapacidadExcedidaException;
 import org.jetsettersv2.exceptions.ElementoNoEncontradoException;
 import org.jetsettersv2.exceptions.LeerJsonException;
 import org.jetsettersv2.exceptions.RutaDuplicadaException;
@@ -234,39 +235,30 @@ public class MenuVuelo {
             System.err.println("Se ha producido un error inesperado: " + e.getMessage());
         }
     }
-
-    public static void asignarTripulanteDesdeJson(String nroVuelo, String pathJson)
-            throws LeerJsonException, ElementoNoEncontradoException {
+    public void agregarTripulantesDesdeJson(String pathJson) throws CapacidadExcedidaException, LeerJsonException {
         try {
-            // Leer los datos del archivo JSON
-            List<TripulacionCabina> tripulantes = getJsonToList(pathJson, TripulacionCabina.class);
+            // Leer tripulantes desde el archivo JSON
+            List<RegistroDeVuelo> registroDeVuelos = getJsonToList(pathJson, RegistroDeVuelo.class);
 
-            // Verificar que la lista no esté vacía
-            if (tripulantes == null || tripulantes.isEmpty()) {
+            // Verificar si la lista está vacía
+            if (registroDeVuelos == null || registroDeVuelos.isEmpty()) {
                 throw new LeerJsonException("El archivo JSON no contiene datos de tripulación.");
             }
 
-            // Obtener la lista de vuelos
-            ArrayListGeneric<Vuelo> listaVuelos = gestionVuelos.getLista(); // Ajusta según tu implementación
-
-            // Buscar el vuelo correspondiente
-            Vuelo vuelo = MenuVuelo.buscarPosVueloPorNroVuelo(nroVuelo,listaVuelos);
-
-            // Asignar cada tripulante desde el JSON al vuelo
-            for (TripulacionCabina tripulante : tripulantes) {
-                if (vuelo.getRegistroDeVuelo().contieneTripulante(tripulante)) {
-                    System.out.println("El tripulante " + tripulante.getNombre() +
-                            " ya está asignado al vuelo " + nroVuelo + ".");
+            // Agregar cada tripulante de la lista
+            for (RegistroDeVuelo registroDeVuelo1 : registroDeVuelos) {
+                if (avion.etLista().size() < avion.getCapacidadTripulanteCabina()) {
+                    registroTripulanteCabina.agregarElemento(tripulante);
+                    System.out.println("Tripulante " + tripulante.getNombre() + " agregado correctamente.");
                 } else {
-                    vuelo.getRegistroDeVuelo().agregarTripulanteCabina(tripulante);
-                    System.out.println("El tripulante " + tripulante.getNombre() +
-                            " ha sido asignado al vuelo " + nroVuelo + ".");
+                    throw new CapacidadExcedidaException("No se pueden agregar más tripulantes de cabina. Capacidad máxima alcanzada.");
                 }
             }
         } catch (Exception e) {
-            throw new LeerJsonException("Error al procesar el archivo JSON de tripulación: " + e.getMessage(), e);
+            throw new LeerJsonException("Error al leer o procesar el archivo JSON: " + e.getMessage(), e);
         }
     }
+
 
 
 

@@ -1,1 +1,82 @@
-[]
+[
+  {
+    "modelo": "Boeing 737",
+    "matricula": "AB1234",
+    "capacidadTripulanteCabina": 6,
+    "capacidadTripulanteTecnico": 2,
+    "capacidadPasajeros": 180,
+    "capacidadEquipaje": 2000
+  },
+  {
+    "modelo": "Airbus A320",
+    "matricula": "CD5678",
+    "capacidadTripulanteCabina": 5,
+    "capacidadTripulanteTecnico": 2,
+    "capacidadPasajeros": 150,
+    "capacidadEquipaje": 1800
+  },
+  {
+    "modelo": "Boeing 747",
+    "matricula": "EF9101",
+    "capacidadTripulanteCabina": 10,
+    "capacidadTripulanteTecnico": 3,
+    "capacidadPasajeros": 400,
+    "capacidadEquipaje": 6000
+  },
+  {
+    "modelo": "Embraer 190",
+    "matricula": "GH2345",
+    "capacidadTripulanteCabina": 4,
+    "capacidadTripulanteTecnico": 2,
+    "capacidadPasajeros": 100,
+    "capacidadEquipaje": 1200
+  },
+  {
+    "modelo": "Cessna Citation X",
+    "matricula": "IJ6789",
+    "capacidadTripulanteCabina": 2,
+    "capacidadTripulanteTecnico": 2,
+    "capacidadPasajeros": 12,
+    "capacidadEquipaje": 500
+  },
+  {
+    "modelo": "Bombardier CRJ700",
+    "matricula": "KL3456",
+    "capacidadTripulanteCabina": 3,
+    "capacidadTripulanteTecnico": 2,
+    "capacidadPasajeros": 70,
+    "capacidadEquipaje": 1000
+  },
+  {
+    "modelo": "Boeing 787 Dreamliner",
+    "matricula": "MN7890",
+    "capacidadTripulanteCabina": 8,
+    "capacidadTripulanteTecnico": 4,
+    "capacidadPasajeros": 300,
+    "capacidadEquipaje": 5000
+  },
+  {
+    "modelo": "Airbus A350",
+    "matricula": "OP1234",
+    "capacidadTripulanteCabina": 7,
+    "capacidadTripulanteTecnico": 4,
+    "capacidadPasajeros": 320,
+    "capacidadEquipaje": 5500
+  },
+  {
+    "modelo": "Boeing 777",
+    "matricula": "QR5678",
+    "capacidadTripulanteCabina": 9,
+    "capacidadTripulanteTecnico": 3,
+    "capacidadPasajeros": 350,
+    "capacidadEquipaje": 5800
+  },
+  {
+    "modelo": "ATR 72",
+    "matricula": "ST9101",
+    "capacidadTripulanteCabina": 3,
+    "capacidadTripulanteTecnico": 2,
+    "capacidadPasajeros": 74,
+    "capacidadEquipaje": 900
+  }
+]
