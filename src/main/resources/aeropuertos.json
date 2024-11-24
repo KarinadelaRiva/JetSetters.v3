@@ -1,0 +1,72 @@
+[
+  {
+    "codigo": "EZE",
+    "nombre": "Aeropuerto Internacional Ministro Pistarini",
+    "ciudad": "Buenos Aires"
+  },
+  {
+    "codigo": "AEP",
+    "nombre": "Aeroparque Jorge Newbery",
+    "ciudad": "Buenos Aires"
+  },
+  {
+    "codigo": "COR",
+    "nombre": "Aeropuerto Internacional Ingeniero Ambrosio Taravella",
+    "ciudad": "Córdoba"
+  },
+  {
+    "codigo": "MDZ",
+    "nombre": "Aeropuerto Internacional El Plumerillo",
+    "ciudad": "Mendoza"
+  },
+  {
+    "codigo": "ROS",
+    "nombre": "Aeropuerto Internacional Rosario Islas Malvinas",
+    "ciudad": "Rosario"
+  },
+  {
+    "codigo": "SLA",
+    "nombre": "Aeropuerto Internacional Martín Miguel de Güemes",
+    "ciudad": "Salta"
+  },
+  {
+    "codigo": "BRC",
+    "nombre": "Aeropuerto Internacional Teniente Luis Candelaria",
+    "ciudad": "San Carlos de Bariloche"
+  },
+  {
+    "codigo": "REL",
+    "nombre": "Aeropuerto Internacional Almirante Marcos A. Zar",
+    "ciudad": "Trelew"
+  },
+  {
+    "codigo": "USH",
+    "nombre": "Aeropuerto Internacional Malvinas Argentinas",
+    "ciudad": "Ushuaia"
+  },
+  {
+    "codigo": "CRD",
+    "nombre": "Aeropuerto Internacional General Enrique Mosconi",
+    "ciudad": "Comodoro Rivadavia"
+  },
+  {
+    "codigo": "TUC",
+    "nombre": "Aeropuerto Internacional Teniente Benjamín Matienzo",
+    "ciudad": "San Miguel de Tucumán"
+  },
+  {
+    "codigo": "FTE",
+    "nombre": "Aeropuerto Internacional Comandante Armando Tola",
+    "ciudad": "El Calafate"
+  },
+  {
+    "codigo": "NQN",
+    "nombre": "Aeropuerto Internacional Presidente Perón",
+    "ciudad": "Neuquén"
+  },
+  {
+    "codigo": "RGL",
+    "nombre": "Aeropuerto Internacional Piloto Civil Norberto Fernández",
+    "ciudad": "Río Gallegos"
+  }
+]

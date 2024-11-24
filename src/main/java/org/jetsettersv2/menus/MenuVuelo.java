@@ -11,7 +11,7 @@ import org.jetsettersv2.utilities.Fecha;
 import org.jetsettersv2.models.concrete.Avion;
 
 import java.util.Scanner;
-
+/*
 public class MenuVuelo {
     public static void mostrarMenuVuelo(Vuelo vuelo) {
         Scanner scanner = new Scanner(System.in);
@@ -223,4 +223,4 @@ public class MenuVuelo {
 //            }
 
 
-
+*/
