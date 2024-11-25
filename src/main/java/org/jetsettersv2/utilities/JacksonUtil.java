@@ -1,6 +1,5 @@
 package org.jetsettersv2.utilities;
 
-import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
@@ -25,9 +24,6 @@ public class JacksonUtil {
 
     private static final ObjectMapper objectMapper = createObjectMapper();
 
-    /**
-     * Configura y retorna un ObjectMapper con las opciones necesarias para manejar JSON.
-     */
     private static ObjectMapper createObjectMapper() {
         ObjectMapper mapper = new ObjectMapper();
         // Registrar el módulo para manejo de fechas y tiempos de Java 8
@@ -41,15 +37,6 @@ public class JacksonUtil {
         return mapper;
     }
 
-    /**
-     * Lee un archivo JSON y lo convierte en una lista de objetos del tipo especificado.
-     *
-     * @param filePath Ruta del archivo JSON.
-     * @param clazz    Clase de los objetos dentro de la lista.
-     * @param <T>      Tipo genérico de los objetos.
-     * @return Lista de objetos deserializados.
-     * @throws IOException Si ocurre un error al leer o parsear el archivo.
-     */
     public static <T> ArrayList<T> getJsonToList(String filePath, Class<T> clazz) throws IOException {
         return objectMapper.readValue(
                 new File(filePath),
@@ -57,30 +44,6 @@ public class JacksonUtil {
         );
     }
 
-    /**
-     * Variante alternativa para convertir JSON a lista utilizando un TypeReference.
-     *
-     * @param filePath Ruta del archivo JSON.
-     * @param clazz    Clase de los objetos dentro de la lista.
-     * @param <T>      Tipo genérico de los objetos.
-     * @return Lista de objetos deserializados.
-     * @throws IOException Si ocurre un error al leer o parsear el archivo.
-     */
-    public static <T> ArrayList<T> getJsonToList2(String filePath, Class<T> clazz) throws IOException {
-        return objectMapper.readValue(
-                new File(filePath),
-                new TypeReference<ArrayList<T>>() {}
-        );
-    }
-
-    /**
-     * Escribe una lista de objetos en un archivo JSON con formato legible.
-     *
-     * @param list     Lista de objetos a serializar.
-     * @param filePath Ruta donde se escribirá el archivo JSON.
-     * @param <T>      Tipo genérico de los objetos.
-     * @throws IOException Si ocurre un error al escribir el archivo.
-     */
     public static <T> void writeListToJsonFile(ArrayListGeneric<T> list, String filePath) throws IOException {
         // Verificar si la lista tiene elementos
         if (list == null || list.isEmpty()) {

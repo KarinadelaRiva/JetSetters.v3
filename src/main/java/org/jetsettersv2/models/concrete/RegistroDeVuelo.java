@@ -1,10 +1,9 @@
 package org.jetsettersv2.models.concrete;
 
 import org.jetsettersv2.collections.ArrayListGeneric;
-import org.jetsettersv2.enums.EstadoCheck;
 import org.jetsettersv2.exceptions.CapacidadExcedidaException;
-import org.jetsettersv2.models.abstracts.Equipaje;
-import org.jetsettersv2.models.abstracts.Persona;
+
+
 
 public class RegistroDeVuelo {
     //Atributos
@@ -13,7 +12,7 @@ public class RegistroDeVuelo {
     private ArrayListGeneric<TripulacionCabina> registroTripulanteCabina;
     private ArrayListGeneric<TripulacionTecnica> registroTripulacionTecnica;
     private ArrayListGeneric<Pasajero>registroPasajeros;
-    private ArrayListGeneric<Equipaje>registroEquipaje;
+
 
     //Constructor
     public RegistroDeVuelo() {
@@ -92,18 +91,6 @@ public class RegistroDeVuelo {
     }
 
     //--------------------------------------------------------------------
-    public ArrayListGeneric<Equipaje> getRegistroEquipaje() {
-        return registroEquipaje;
-    }
-
-    public RegistroDeVuelo registroEquipaje(ArrayListGeneric<Equipaje> registroEquipaje) {
-        this.registroEquipaje = registroEquipaje;
-        return this;
-    }
-
-    public void setRegistroEquipaje(ArrayListGeneric<Equipaje> registroEquipaje) {
-        this.registroEquipaje = registroEquipaje;
-    }
 
     //Metodos propios
 
@@ -137,15 +124,6 @@ public class RegistroDeVuelo {
 
         registroPasajeros.agregarElemento(pasajero);
         System.out.println("Pasajero agregado exitosamente.");
-    }
-
-    // Agregar equipaje
-    public void agregarEquipaje(Equipaje equipaje) throws CapacidadExcedidaException {
-        if (registroEquipaje.getLista().size() < avion.getCapacidadEquipaje()) {
-            registroEquipaje.agregarElemento(equipaje);
-        } else {
-            throw new CapacidadExcedidaException("No se puede agregar más equipaje. Capacidad máxima alcanzada.");
-        }
     }
     
 }
