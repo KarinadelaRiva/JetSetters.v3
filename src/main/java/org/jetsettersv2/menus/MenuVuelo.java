@@ -16,6 +16,7 @@ import java.util.Scanner;
 
 import static org.jetsettersv2.menus.MenuLogin.pausarConTecla;
 import static org.jetsettersv2.menus.SubMenuAsignarTrip.gestionarTripulacion;
+import static org.jetsettersv2.utilities.Fecha.fechaActual;
 import static org.jetsettersv2.utilities.JacksonUtil.*;
 
 public class MenuVuelo {
@@ -33,7 +34,7 @@ public class MenuVuelo {
             System.out.println("2. Reprogramar vuelo existente");
             System.out.println("3. Asignar tripulación a vuelo");
             System.out.println("4. Ver vuelos");
-            System.out.println("5. Salir");
+            System.out.println("0. volver");
             System.out.print("Seleccione una opción: ");
             opcion = scanner.nextInt();
             scanner.nextLine(); // Consumir salto de línea
@@ -63,13 +64,13 @@ public class MenuVuelo {
                     mostrarvuelos();
                     pausarConTecla();
                     break;
-                case 5:
+                case 0:
                     System.out.println(" ");
                     break;
                 default:
                     System.out.println("Opción inválida. Intente nuevamente.");
             }
-        } while (opcion != 5);
+        } while (opcion != 0);
 
     }
 
@@ -163,22 +164,17 @@ public class MenuVuelo {
 
             // Obtener fecha válida
             do {
-                System.out.print("Ingrese la fecha de salida (YYYYMMDD): ");
+                System.out.print("Ingrese la fecha de salida (YYYY-MM-DD): ");
                 fechaSalida = scanner.nextLine().trim(); // Usar trim() para evitar espacios adicionales
 
-                try {
-                    // Parsear la fecha
-                    LocalDate fecha = LocalDate.parse(fechaSalida, formatter);
+                // Parsear la fecha
+                Fecha fecha = new Fecha(fechaSalida);
 
-                    // Validar que la fecha no sea del pasado
-                    if (fecha.isBefore(LocalDate.now())) {
-                        System.out.println("La fecha ingresada ya pasó. Por favor, ingrese una fecha futura o actual.");
-                    } else {
-                        fechaValida = true; // Fecha válida
-                        System.out.println("Fecha válida ingresada: " + fecha);
-                    }
-                } catch (DateTimeParseException e) {
-                    System.out.println("Formato inválido. Por favor, ingrese la fecha en formato yyyyMMdd.");
+                // Validar que la fecha no sea del pasado
+                if (fecha.esAntesDe(fechaActual())) {
+                    System.out.println("La fecha ingresada ya pasó. Por favor, ingrese una fecha futura o actual.");
+                } else {
+                    fechaValida = true; // Fecha válida
                 }
             } while (!fechaValida);
 
@@ -186,7 +182,7 @@ public class MenuVuelo {
             Fecha fechaObj = new Fecha(fechaSalida);
             nuevoVuelo.setFechaSalida(fechaObj);
 
-            System.out.println("Fecha de salida registrada: " + fechaSalida);
+            System.out.println("Fecha de salida registrada correctamente");
 
 
 
@@ -197,18 +193,19 @@ public class MenuVuelo {
                 System.out.print("Ingrese la hora de salida (HH:MM): ");
                 horaSalida = scanner.nextLine();
 
-                // Intentamos parsear la hora usando LocalTime
-                try {
-                    LocalTime.parse(horaSalida, DateTimeFormatter.ofPattern("HH:mm"));
-                    horaValida = true; // Si no lanza excepción, la hora es válida
-                } catch (DateTimeParseException e) {
-                    System.out.println("Formato inválido. Por favor, ingrese la hora en formato HH:MM.");
+                //Parsear la hora
+                Hora hora = new Hora(horaSalida);
+
+                if(hora == null){
+                    System.out.println("Hora inválida. Por favor, ingrese una hora válida.");
+                } else {
+                    horaValida = true;
                 }
             } while (!horaValida);
 
             // Una vez validada, asignamos la hora
-            Hora horaObj = new Hora(horaSalida); // Suponiendo que tienes una clase Hora
-            nuevoVuelo.setHoraSalida(horaObj);
+            Hora hora = new Hora(horaSalida);
+            nuevoVuelo.setHoraSalida(hora);
 
             System.out.println("Hora de salida registrada: " + horaSalida);
 
@@ -247,7 +244,7 @@ public class MenuVuelo {
                     fechaNueva = scanner.nextLine();
                     vueloModificado.setFechaSalida(new Fecha(fechaNueva));
 
-                    System.out.println("Ingrese La nueva hora de salida (HH:MM:SS)");
+                    System.out.println("Ingrese La nueva hora de salida (HH:MM)");
                     horaNueva = scanner.nextLine();
                     vueloModificado.setHoraSalida(new Hora(horaNueva));
                 }

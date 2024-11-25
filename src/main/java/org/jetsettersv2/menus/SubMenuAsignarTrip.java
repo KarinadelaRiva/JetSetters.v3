@@ -13,6 +13,7 @@ import org.jetsettersv2.models.concrete.Vuelo;
 import java.util.Scanner;
 
 import static org.jetsettersv2.menus.MenuLogin.pausarConTecla;
+import static org.jetsettersv2.menus.MenuVuelo.buscarPosVueloPorNroVuelo;
 import static org.jetsettersv2.utilities.JacksonUtil.*;
 
 public class SubMenuAsignarTrip {
@@ -31,7 +32,7 @@ public class SubMenuAsignarTrip {
         String nroVuelo = scanner.nextLine();
 
         try {
-            int posicion = buscarVueloPorNroVuelo(nroVuelo, vuelos);
+            int posicion = buscarPosVueloPorNroVuelo(nroVuelo, vuelos);
             vuelos.set(posicion, asignarTripulacion(vuelos.get(posicion)));
         } catch (ElementoNoEncontradoException e) {
             System.out.println(e.getMessage());
@@ -42,15 +43,6 @@ public class SubMenuAsignarTrip {
         } catch (Exception e) {
             System.err.println("Error al escribir el archivo JSON: " + e.getMessage());
         }
-    }
-
-    public static int buscarVueloPorNroVuelo(String nroVuelo, ArrayListGeneric<Vuelo> vuelos) throws ElementoNoEncontradoException {
-        for (int i = 0; i < vuelos.size(); i++) {
-            if (vuelos.get(i).getNroVuelo().equals(nroVuelo)) {
-                return i;  // Retorna la posición del elemento si coincide el legajo
-            }
-        }
-        throw new ElementoNoEncontradoException("No se encontró un vuelo con el número de vuelo ingresado.");
     }
 
     public static Vuelo asignarTripulacion(Vuelo vuelo) {

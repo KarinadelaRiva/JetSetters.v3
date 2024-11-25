@@ -27,7 +27,7 @@ public class MenuAdmin {
         System.out.println("3. Gestionar Rutas");
         System.out.println("4. Gestionar Flota (Aviones)");
         System.out.println("5. Gestionar Personal");
-        System.out.println("6. Cerrar Sesión");
+        System.out.println("0. Cerrar Sesión");
         System.out.print("Seleccione una opción: ");
         opcion = scanner.nextInt();
 
@@ -37,10 +37,10 @@ public class MenuAdmin {
             case 3 -> menuRutas();
             case 4 -> menuFlota();
             case 5 -> menuPersonal();
-            case 6 -> System.out.println("Sesión cerrada. Volviendo al menú principal...");
+            case 0 -> System.out.println("Sesión cerrada. Volviendo al menú principal...");
             default -> System.out.println("Opción inválida. Intente nuevamente.");
         }
-    } while (opcion != 6);
+    } while (opcion != 0);
         scanner.close();
 }
 

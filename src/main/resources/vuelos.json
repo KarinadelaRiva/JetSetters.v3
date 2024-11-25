@@ -1,1 +1,37 @@
-[]
+[ {
+  "nroVuelo" : "V001",
+  "avion" : {
+    "modelo" : "Airbus A320",
+    "matricula" : "CD5678",
+    "capacidadTripulanteCabina" : 5,
+    "capacidadTripulanteTecnico" : 2,
+    "capacidadPasajeros" : 150,
+    "capacidadEquipaje" : 1800,
+    "enMantenimiento" : false
+  },
+  "ruta" : {
+    "idRuta" : "AEPMDZ",
+    "origen" : {
+      "codigo" : "AEP",
+      "nombre" : "Aeroparque Jorge Newbery",
+      "ciudad" : "Buenos Aires"
+    },
+    "destino" : {
+      "codigo" : "MDZ",
+      "nombre" : "Aeropuerto Internacional El Plumerillo",
+      "ciudad" : "Mendoza"
+    },
+    "distanciaKM" : 985.0,
+    "duracion" : 6600
+  },
+  "fechaSalida" : {
+    "fecha" : "2025-06-01"
+  },
+  "horaSalida" : {
+    "hora" : "11:30:00"
+  },
+  "registroDeVuelo" : null,
+  "capacidadDePasajeros" : 0,
+  "capacidadTripulantesCabina" : 0,
+  "capacidadTripulantesTecnicos" : 0
+} ]

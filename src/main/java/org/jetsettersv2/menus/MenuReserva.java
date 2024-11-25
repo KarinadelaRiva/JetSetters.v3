@@ -66,9 +66,8 @@ public class MenuReserva {
         System.out.println("\n--- Vuelos Disponibles ---");
         for (int i = 0; i < vuelosDisponibles.size(); i++) {
             Vuelo vuelo = vuelosDisponibles.get(i);
-            System.out.printf("%d. %s - Fecha: %s - Origen: %s - Destino: %s\n",
-                    i + 1, vuelo.getNroVuelo(), vuelo.getFechaSalida().toString(), vuelo.getHoraSalida(),
-                    vuelo.getRuta());
+            System.out.printf("%d. %s - %s\n", i + 1, "Vuelo numero: " + vuelo.getNroVuelo() + "Fecha Salida: " + vuelo.getFechaSalida().toString());
+            System.out.printf("Origen: "+ vuelo.getRuta().getOrigen().getCiudad()+ "- Destino: %s\n", vuelo.getRuta().getDestino().getCiudad());
         }
     }
 

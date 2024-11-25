@@ -1,10 +1,13 @@
 package org.jetsettersv2.models.concrete;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import org.jetsettersv2.utilities.Fecha;
 
 public class CheckIn {
     //Atributos
-    private Fecha fechaCheck;
+    @JsonProperty("fechaCheck")
+    private Fecha fechaCheck; // Puede ser null según el JSON.
+
     private boolean estadoCheck;
 
     //Constructor
