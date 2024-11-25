@@ -54,7 +54,6 @@ public class MenuAdmin {
             default -> System.out.println("Opción inválida. Intente nuevamente.");
         }
     } while (opcion != 0);
-        scanner.close();
 }
 
 private static void gestionarPerfil(Administrador admin) {

@@ -8,7 +8,6 @@ import org.jetsettersv2.exceptions.CapacidadExcedidaException;
 public class RegistroDeVuelo {
     //Atributos
     private Avion avion;
-    private CheckIn checkIn;
     private ArrayListGeneric<TripulacionCabina> registroTripulanteCabina;
     private ArrayListGeneric<TripulacionTecnica> registroTripulacionTecnica;
     private ArrayListGeneric<UsuarioCliente>registroPasajeros;
@@ -50,21 +49,6 @@ public class RegistroDeVuelo {
 
     public void setAvion(Avion avion) {
         this.avion = avion;
-    }
-
-    //--------------------------------------------------------------------
-
-    public CheckIn getCheckIn() {
-        return checkIn;
-    }
-
-    public RegistroDeVuelo checkIn(CheckIn checkIn) {
-        this.checkIn = checkIn;
-        return this;
-    }
-
-    public void setCheckIn(CheckIn checkIn) {
-        this.checkIn = checkIn;
     }
 
     //--------------------------------------------------------------------

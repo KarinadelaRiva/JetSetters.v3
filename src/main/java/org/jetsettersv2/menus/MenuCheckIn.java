@@ -130,7 +130,7 @@ public class MenuCheckIn {
         // Actualizar la lista de reservas en el archivo
         try {
             writeListToJsonFile(reservas, PATH_RESOURCES + PATH_RESERVAS);
-            System.out.println("Reservas actualizadas exitosamente.");
+            //System.out.println("Reservas actualizadas exitosamente.");
         } catch (Exception e) {
             System.err.println("Error al escribir el archivo JSON: " + e.getMessage());
         }
@@ -138,7 +138,7 @@ public class MenuCheckIn {
         // Actualizar la lista de vuelos en el archivo
         try {
             writeListToJsonFile(vuelos, PATH_RESOURCES + PATH_VUELOS);
-            System.out.println("Vuelos actualizados exitosamente.");
+            //System.out.println("Vuelos actualizados exitosamente.");
         } catch (Exception e) {
             System.err.println("Error al escribir el archivo JSON: " + e.getMessage());
         }

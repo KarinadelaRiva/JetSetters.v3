@@ -42,7 +42,6 @@ public class MenuLogin {
                     }catch (Exception e){
                         System.out.println("Error al iniciar sesion: " + e.getMessage());
                     }
-                    pausarConTecla();
                     break;
                 case 2:
                     System.out.println("\n--Registro--");
@@ -61,7 +60,6 @@ public class MenuLogin {
                     }catch (Exception e){
                         System.out.println("Error al iniciar sesion: " + e.getMessage());
                     }
-                    pausarConTecla();
                     break;
                 case 0:
                     System.out.println("\nAdios! Esperamos verte pronto!");
@@ -252,7 +250,7 @@ public class MenuLogin {
 
         try {
             logueado = iniciaAdministrador(admins);
-            System.out.println("Datos del usuario logueado: " + logueado.getNombre() + " - " + logueado.getEmail());
+            //System.out.println("Datos del usuario logueado: " + logueado.getNombre() + " - " + logueado.getEmail());
         } catch (LoginException e) {
             throw new LoginException("\nContraseña y/o email incorrectos.");
         }

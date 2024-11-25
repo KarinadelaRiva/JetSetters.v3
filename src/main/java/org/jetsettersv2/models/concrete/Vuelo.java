@@ -16,8 +16,8 @@ public class Vuelo {
 
     public void imprimirDatosVuelo(){
         System.out.println("Número de vuelo......................: " + this.nroVuelo);
-        System.out.println("Avión................................: " + this.avion.getModelo() + " Matricula " + this.avion.getMatricula());
-        System.out.println("Ruta.................................: " + this.ruta.getOrigen() + " - " + this.ruta.getDestino());
+        System.out.println("Avión................................: " + this.avion.getModelo() + " - Matricula " + this.avion.getMatricula());
+        System.out.println("Ruta.................................: " + this.ruta.getOrigen().getCiudad() + " - " + this.ruta.getDestino().getCiudad());
         System.out.println("Fecha de salida......................: " + this.fechaSalida);
         System.out.println("Hora de salida.......................: " + this.horaSalida);
         System.out.println(" ");
