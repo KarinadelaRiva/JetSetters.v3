@@ -228,4 +228,180 @@
     } ],
     "registroPasajeros" : [ ]
   }
+}, {
+  "nroVuelo" : "V00000002",
+  "avion" : {
+    "modelo" : "Boeing 737",
+    "matricula" : "AB1234",
+    "capacidadTripulanteCabina" : 6,
+    "capacidadTripulanteTecnico" : 2,
+    "capacidadPasajeros" : 180,
+    "enMantenimiento" : false
+  },
+  "ruta" : {
+    "idRuta" : "ROSSLA",
+    "origen" : {
+      "codigo" : "ROS",
+      "nombre" : "Aeropuerto Internacional Islas Malvinas",
+      "ciudad" : "Rosario"
+    },
+    "destino" : {
+      "codigo" : "SLA",
+      "nombre" : "Aeropuerto Internacional Martín Miguel de Güemes",
+      "ciudad" : "Salta"
+    },
+    "distanciaKM" : 1100.0,
+    "duracion" : 7200
+  },
+  "fechaSalida" : {
+    "fecha" : "2024-12-30"
+  },
+  "horaSalida" : {
+    "hora" : "12:00"
+  },
+  "registroDeVuelo" : {
+    "avion" : {
+      "modelo" : "Boeing 737",
+      "matricula" : "AB1234",
+      "capacidadTripulanteCabina" : 6,
+      "capacidadTripulanteTecnico" : 2,
+      "capacidadPasajeros" : 180,
+      "enMantenimiento" : false
+    },
+    "registroTripulanteCabina" : [ ],
+    "registroTripulacionTecnica" : [ ],
+    "registroPasajeros" : [ ]
+  }
+}, {
+  "nroVuelo" : "V00000003",
+  "avion" : {
+    "modelo" : "Airbus A320",
+    "matricula" : "CD5678",
+    "capacidadTripulanteCabina" : 5,
+    "capacidadTripulanteTecnico" : 2,
+    "capacidadPasajeros" : 150,
+    "enMantenimiento" : false
+  },
+  "ruta" : {
+    "idRuta" : "MDZAEP",
+    "origen" : {
+      "codigo" : "MDZ",
+      "nombre" : "Aeropuerto Internacional El Plumerillo",
+      "ciudad" : "Mendoza"
+    },
+    "destino" : {
+      "codigo" : "AEP",
+      "nombre" : "Aeroparque Jorge Newbery",
+      "ciudad" : "Buenos Aires"
+    },
+    "distanciaKM" : 670.0,
+    "duracion" : 4500
+  },
+  "fechaSalida" : {
+    "fecha" : "2025-02-03"
+  },
+  "horaSalida" : {
+    "hora" : "15:00"
+  },
+  "registroDeVuelo" : {
+    "avion" : {
+      "modelo" : "Airbus A320",
+      "matricula" : "CD5678",
+      "capacidadTripulanteCabina" : 5,
+      "capacidadTripulanteTecnico" : 2,
+      "capacidadPasajeros" : 150,
+      "enMantenimiento" : false
+    },
+    "registroTripulanteCabina" : [ ],
+    "registroTripulacionTecnica" : [ ],
+    "registroPasajeros" : [ ]
+  }
+}, {
+  "nroVuelo" : "V00000004",
+  "avion" : {
+    "modelo" : "Embraer 190",
+    "matricula" : "GH2345",
+    "capacidadTripulanteCabina" : 4,
+    "capacidadTripulanteTecnico" : 2,
+    "capacidadPasajeros" : 100,
+    "enMantenimiento" : false
+  },
+  "ruta" : {
+    "idRuta" : "EZETUC",
+    "origen" : {
+      "codigo" : "EZE",
+      "nombre" : "Aeropuerto Internacional Ministro Pistarini",
+      "ciudad" : "Buenos Aires"
+    },
+    "destino" : {
+      "codigo" : "TUC",
+      "nombre" : "Aeropuerto Internacional Teniente Benjamín Matienzo",
+      "ciudad" : "Tucumán"
+    },
+    "distanciaKM" : 860.0,
+    "duracion" : 6000
+  },
+  "fechaSalida" : {
+    "fecha" : "2024-12-12"
+  },
+  "horaSalida" : {
+    "hora" : "20:00"
+  },
+  "registroDeVuelo" : {
+    "avion" : {
+      "modelo" : "Embraer 190",
+      "matricula" : "GH2345",
+      "capacidadTripulanteCabina" : 4,
+      "capacidadTripulanteTecnico" : 2,
+      "capacidadPasajeros" : 100,
+      "enMantenimiento" : false
+    },
+    "registroTripulanteCabina" : [ ],
+    "registroTripulacionTecnica" : [ ],
+    "registroPasajeros" : [ ]
+  }
+}, {
+  "nroVuelo" : "V00000005",
+  "avion" : {
+    "modelo" : "Bombardier CRJ700",
+    "matricula" : "KL3456",
+    "capacidadTripulanteCabina" : 3,
+    "capacidadTripulanteTecnico" : 2,
+    "capacidadPasajeros" : 70,
+    "enMantenimiento" : false
+  },
+  "ruta" : {
+    "idRuta" : "FTERGL",
+    "origen" : {
+      "codigo" : "FTE",
+      "nombre" : "Aeropuerto Internacional Comandante Armando Tola",
+      "ciudad" : "El Calafate"
+    },
+    "destino" : {
+      "codigo" : "RGL",
+      "nombre" : "Aeropuerto Internacional Piloto Civil Norberto Fernández",
+      "ciudad" : "Río Gallegos"
+    },
+    "distanciaKM" : 280.0,
+    "duracion" : 2700
+  },
+  "fechaSalida" : {
+    "fecha" : "2025-04-05"
+  },
+  "horaSalida" : {
+    "hora" : "21:00"
+  },
+  "registroDeVuelo" : {
+    "avion" : {
+      "modelo" : "Bombardier CRJ700",
+      "matricula" : "KL3456",
+      "capacidadTripulanteCabina" : 3,
+      "capacidadTripulanteTecnico" : 2,
+      "capacidadPasajeros" : 70,
+      "enMantenimiento" : false
+    },
+    "registroTripulanteCabina" : [ ],
+    "registroTripulacionTecnica" : [ ],
+    "registroPasajeros" : [ ]
+  }
 } ]

@@ -1,1 +1,73 @@
-[ ]
+[ {
+  "fechaReserva" : {
+    "fecha" : "2024-11-25"
+  },
+  "usuarioLogueado" : {
+    "idPersona" : "f4732130-ca76-4c9e-8fd8-55c0252df09e",
+    "nombre" : "Lucas",
+    "apellido" : "Torres",
+    "dni" : "90416716",
+    "pasaporte" : "P64558200",
+    "telefono" : "+548384318728",
+    "direccion" : {
+      "calle" : "San Martín",
+      "numero" : 3933,
+      "ciudad" : "Buenos Aires",
+      "codigoPostal" : "4421",
+      "pais" : "Arg"
+    },
+    "email" : "lucas.torres@email.com",
+    "password" : "Lucas@884",
+    "misReservas" : [ ]
+  },
+  "vuelo" : {
+    "nroVuelo" : "V00000005",
+    "avion" : {
+      "modelo" : "Bombardier CRJ700",
+      "matricula" : "KL3456",
+      "capacidadTripulanteCabina" : 3,
+      "capacidadTripulanteTecnico" : 2,
+      "capacidadPasajeros" : 70,
+      "enMantenimiento" : false
+    },
+    "ruta" : {
+      "idRuta" : "FTERGL",
+      "origen" : {
+        "codigo" : "FTE",
+        "nombre" : "Aeropuerto Internacional Comandante Armando Tola",
+        "ciudad" : "El Calafate"
+      },
+      "destino" : {
+        "codigo" : "RGL",
+        "nombre" : "Aeropuerto Internacional Piloto Civil Norberto Fernández",
+        "ciudad" : "Río Gallegos"
+      },
+      "distanciaKM" : 280.0,
+      "duracion" : 2700
+    },
+    "fechaSalida" : {
+      "fecha" : "2025-04-05"
+    },
+    "horaSalida" : {
+      "hora" : "21:00"
+    },
+    "registroDeVuelo" : {
+      "avion" : {
+        "modelo" : "Bombardier CRJ700",
+        "matricula" : "KL3456",
+        "capacidadTripulanteCabina" : 3,
+        "capacidadTripulanteTecnico" : 2,
+        "capacidadPasajeros" : 70,
+        "enMantenimiento" : false
+      },
+      "registroTripulanteCabina" : [ ],
+      "registroTripulacionTecnica" : [ ],
+      "registroPasajeros" : [ ]
+    }
+  },
+  "numeroReserva" : "RES-1732573971411",
+  "checkIn" : {
+    "estadoCheck" : false,
+    "fechaCheck" : null
+  }
+} ]
