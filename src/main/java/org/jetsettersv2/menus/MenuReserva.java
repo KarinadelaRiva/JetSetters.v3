@@ -52,6 +52,14 @@ public class MenuReserva {
             System.err.println("Error al leer el archivo JSON: " + e.getMessage());
         }
 
+        ArrayListGeneric<Reserva> reservas = new ArrayListGeneric<>();
+
+        try{
+            reservas.copiarLista(getJsonToList(PATH_RESOURCES + PATH_RESERVAS, Reserva.class));
+        } catch (Exception e) {
+            System.err.println("Error al leer el archivo JSON: " + e.getMessage());
+        }
+
         if(vuelos.isEmpty()){
             System.out.println("No hay vuelos disponibles.");
             return;
@@ -60,7 +68,16 @@ public class MenuReserva {
         System.out.println("\n--- Vuelos Disponibles ---");
         for (int i = 0; i < vuelos.size(); i++) {
             Vuelo vuelo = vuelos.get(i);
-            if(!vuelo.getFechaSalida().esAntesDe(fechaActual()) && vuelo.getRegistroDeVuelo().getRegistroPasajeros().size() < vuelo.getAvion().getCapacidadPasajeros()){
+
+            //Cuento las reservas del vuelo
+            int contadorReservas = 0;
+            for (Reserva reserva : reservas) {
+                if (reserva.getVuelo().getNroVuelo().equals(vuelo.getNroVuelo())) {
+                    contadorReservas++;
+                }
+            }
+
+            if(!vuelo.getFechaSalida().esAntesDe(fechaActual()) && contadorReservas < vuelo.getAvion().getCapacidadPasajeros()){
                 System.out.printf("%d. Vuelo número: %s - Fecha Salida: %s\n",
                         i + 1,
                         vuelo.getNroVuelo(),
@@ -102,9 +119,17 @@ public class MenuReserva {
 
         Vuelo vueloSeleccionado = vuelosDisponibles.get(seleccion - 1);
 
+        //Cuento las reservas del vuelo
+        int contadorReservas = 0;
+        for (Reserva reserva : reservas) {
+            if (reserva.getVuelo().getNroVuelo().equals(vueloSeleccionado.getNroVuelo())) {
+                contadorReservas++;
+            }
+        }
+
         // Crear la reserva
         Fecha hoy = new Fecha();
-        if(vueloSeleccionado.getRegistroDeVuelo().getRegistroPasajeros().size() >= vueloSeleccionado.getAvion().getCapacidadPasajeros()){
+        if(contadorReservas >= vueloSeleccionado.getAvion().getCapacidadPasajeros()){
             System.out.println("El vuelo seleccionado ya no tiene cupo disponible.");
             return;
         }
@@ -116,7 +141,6 @@ public class MenuReserva {
         nuevaReserva.setEstadoReserva(EstadoReserva.PENDIENTE); // Suponiendo un estado inicial
         nuevaReserva.setNumeroReserva(generarNumeroReserva());
         nuevaReserva.setCheckIn(vueloSeleccionado.getFechaSalida());
-
 
         System.out.println("Reserva creada exitosamente:");
         System.out.printf("Vuelo: %s\nFecha: %s\nPasajero: %s\nNúmero de reserva: %s\n",
