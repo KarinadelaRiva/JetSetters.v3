@@ -20,6 +20,11 @@ public class CheckIn {
         return fechaCheck;
     }
 
+    public CheckIn setEstadoCheck(boolean estadoCheck) {
+        this.estadoCheck = estadoCheck;
+        return this;
+    }
+
     public CheckIn fechaCheck(Fecha fechaCheck) {
         this.fechaCheck = fechaCheck;
         return this;

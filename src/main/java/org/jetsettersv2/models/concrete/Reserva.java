@@ -1,6 +1,5 @@
 package org.jetsettersv2.models.concrete;
 
-import org.jetsettersv2.enums.EstadoReserva;
 import org.jetsettersv2.utilities.Fecha;
 
 public class Reserva {
@@ -8,7 +7,6 @@ public class Reserva {
     private Fecha fechaReserva;
     private UsuarioCliente usuarioLogueado;
     private Vuelo vuelo;
-    private EstadoReserva estadoReserva;
     private String numeroReserva;
     private CheckIn checkIn;
 
@@ -58,20 +56,6 @@ public class Reserva {
     }
 
     //-------------------------------------------------------------
-    public EstadoReserva getEstadoReserva() {
-        return estadoReserva;
-    }
-
-    public Reserva estadoReserva(EstadoReserva estadoReserva) {
-        this.estadoReserva = estadoReserva;
-        return this;
-    }
-
-    public void setEstadoReserva(EstadoReserva estadoReserva) {
-        this.estadoReserva = estadoReserva;
-    }
-
-    //-------------------------------------------------------------
     public String getNumeroReserva() {
         return numeroReserva;
     }
@@ -109,7 +93,7 @@ public class Reserva {
                 "Fecha Reserva: " + fechaReserva + '\n' +
                 "Pasajero: " + usuarioLogueado + '\n' +
                 "Vuelo: " + vuelo + '\n' +
-                "Estado Reserva: " + estadoReserva + '\n' +
+                //"Estado Reserva: " + estadoReserva + '\n' +
                 "Numero Reserva: " + numeroReserva + '\n';
     }
 
@@ -120,7 +104,6 @@ public class Reserva {
         System.out.println("Nombre Pasajero..............: " + this.usuarioLogueado.getNombre());
         System.out.println("DNI Pasajero.................: " + this.usuarioLogueado.getDni());
         System.out.println("Vuelo........................: " + this.vuelo.getNroVuelo());
-        System.out.println("Estado de reserva............: " + this.estadoReserva);
         System.out.println("Numero de reserva............: " + this.numeroReserva);
         System.out.println("CheckIn estado...............: " + this.checkIn.imprimirEstadoCheckIn());
     }

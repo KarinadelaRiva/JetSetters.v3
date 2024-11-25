@@ -145,7 +145,7 @@ public class menuUsuario{
                     usuarios.get(posUsuario).modificarDatos("telefono", nuevoValor);
                 }
                 case 6 -> {
-                    String nuevoValor = null;
+                    String nuevoValor = "a";
                     usuarios.get(posUsuario).modificarDatos("direccion", nuevoValor);
                 }
                 case 0 -> {
@@ -210,9 +210,9 @@ public class menuUsuario{
 
         //mostrar vuelos pendientes de salida con el check in realizado
         for (Reserva reserva : reservas) {
-            if ((reserva.getVuelo().getFechaSalida().esDespuesDe(hoy) || (reserva.getVuelo().getFechaSalida().esIgualA(hoy))
+            if ((reserva.getVuelo().getFechaSalida().esDespuesDe(hoy) || (reserva.getVuelo().getFechaSalida().esIgualA(hoy)))
                     && (reserva.getUsuarioLogueado().getIdPersona().equals(logueado.getIdPersona()))
-                    && (reserva.getCheckIn().getEstadoCheck()))) {
+                    && (reserva.getCheckIn().getEstadoCheck())) {
                 System.out.println("\nVuelos pendientes de salida: ");
                 reserva.getVuelo().imprimirDatosVuelo();
             }
