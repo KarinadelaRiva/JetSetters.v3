@@ -74,17 +74,28 @@ public class MenuLogin {
     }
 
     public static int opcionesLogin() {
-        int opcion;
+        int opcion = -1; // Inicializamos con un valor inválido
+        boolean entradaValida = false;
 
-        System.out.println("1. Iniciar Sesion");
-        System.out.println("2. Registrarse");
-        System.out.println("3. Ver proximos vuelos");
-        System.out.println("4. Ingresar como Administrador");
-        System.out.println("0. Salir\n");
+        do {
+            System.out.println("1. Iniciar Sesion");
+            System.out.println("2. Registrarse");
+            System.out.println("3. Ver proximos vuelos");
+            System.out.println("4. Ingresar como Administrador");
+            System.out.println("0. Salir\n");
 
-        printColoredTitle("Ingrese una opcion: ");
-        opcion = scanner.nextInt();
-        scanner.nextLine(); // Consumir salto de línea
+            System.out.print("Ingrese una opcion: ");
+            try {
+                opcion = Integer.parseInt(scanner.nextLine()); // Convertimos la entrada a entero
+                if (opcion >= 0 && opcion <= 4) {
+                    entradaValida = true; // Entrada válida
+                } else {
+                    System.out.println("Por favor, ingrese un número entre 0 y 4.");
+                }
+            } catch (NumberFormatException e) {
+                System.out.println("Entrada inválida. Por favor, ingrese solo números.");
+            }
+        } while (!entradaValida); // Continuamos hasta obtener una entrada válida
 
         return opcion;
     }
