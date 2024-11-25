@@ -14,6 +14,7 @@ import java.util.Scanner;
 import static org.jetsettersv2.menus.MenuLogin.pausarConTecla;
 import static org.jetsettersv2.menus.SubMenuAsignarTrip.gestionarTripulacion;
 import static org.jetsettersv2.utilities.JacksonUtil.*;
+import static org.jetsettersv2.utilities.Tipografias.*;
 
 public class MenuVuelo {
 
@@ -25,13 +26,13 @@ public class MenuVuelo {
         int opcion;
 
         do {
-            System.out.println("\nMenú de Gestión de Vuelos:");
+            printTitulo("\nMenú de Gestión de Vuelos:", 30);
             System.out.println("1. Programar vuelo nuevo");
             System.out.println("2. Reprogramar vuelo existente");
             System.out.println("3. Asignar tripulación a vuelo");
             System.out.println("4. Ver vuelos");
             System.out.println("0. Volver");
-            System.out.print("Seleccione una opción: ");
+            printColoredTitle("Seleccione una opción: ");
             opcion = scanner.nextInt();
             scanner.nextLine(); // Consumir salto de línea
 

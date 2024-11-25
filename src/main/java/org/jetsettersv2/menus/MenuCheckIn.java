@@ -8,6 +8,7 @@ import java.util.Scanner;
 
 import static org.jetsettersv2.menus.MenuLogin.pausarConTecla;
 import static org.jetsettersv2.utilities.JacksonUtil.*;
+import static org.jetsettersv2.utilities.Tipografias.*;
 
 public class MenuCheckIn {
 
@@ -23,12 +24,12 @@ public class MenuCheckIn {
         }
 
         while (true) {
-            System.out.println("\n--- Submenú de Check-In ---");
+            printTitulo("\n--- Submenú de Check-In ---", 30);
             System.out.println("1. Realizar check-in");
             System.out.println("2. Mostrar estado del check-in");
             System.out.println("0. Volver");
 
-            System.out.print("Elige una opción: ");
+            printColoredTitle("Elige una opción: ");
             int opcion = scanner.nextInt();
             scanner.nextLine(); // Limpiar buffer
 

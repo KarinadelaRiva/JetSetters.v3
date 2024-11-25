@@ -14,6 +14,7 @@ import java.util.Scanner;
 import static org.jetsettersv2.menus.MenuLogin.pausarConTecla;
 import static org.jetsettersv2.menus.MenuVuelo.buscarPosVueloPorNroVuelo;
 import static org.jetsettersv2.utilities.JacksonUtil.*;
+import static org.jetsettersv2.utilities.Tipografias.*;
 
 public class SubMenuAsignarTrip {
     private static final Scanner scanner = new Scanner(System.in);
@@ -52,7 +53,7 @@ public class SubMenuAsignarTrip {
         int opcion;
 
         do {
-            System.out.println("\nMenú de Gestion Tripulación:");
+            printTitulo("\nMenú de Gestion Tripulación:", 30);
             System.out.println("1. Asignar piloto a vuelo");
             System.out.println("2. Asignar azafata a vuelo");
             System.out.println("3. Asignar otro tipo de tripulante tecnico a vuelo");
@@ -60,7 +61,7 @@ public class SubMenuAsignarTrip {
             System.out.println("5. Ver tripulación asignada de un vuelo");
             System.out.println("6. Retirar tripulación de un vuelo");
             System.out.println("0. Salir");
-            System.out.print("Seleccione una opción: ");
+            printColoredTitle("Seleccione una opción: ");
             opcion = scanner.nextInt();
             scanner.nextLine(); // Consumir salto de línea
 

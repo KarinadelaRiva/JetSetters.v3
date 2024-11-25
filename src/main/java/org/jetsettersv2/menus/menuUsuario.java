@@ -11,6 +11,7 @@ import java.util.Scanner;
 import static org.jetsettersv2.menus.MenuCheckIn.mostrarSubmenuCheckIn;
 import static org.jetsettersv2.menus.MenuReserva.mostrarMenuReservas;
 import static org.jetsettersv2.utilities.JacksonUtil.*;
+import static org.jetsettersv2.utilities.Tipografias.*;
 
 public class menuUsuario{
     private static final Scanner scanner = new Scanner(System.in);
@@ -20,14 +21,14 @@ public class menuUsuario{
 
         int opcion;
         do {
-            System.out.println("\nMenú Usuario:");
+            printTitulo("\nMenú Usuario:", 30);
             System.out.println("1. PERFIL (ver/modificar)");
             System.out.println("2. MIS RESERVAS");
             System.out.println("3. BUSCAR VUELO Y HACER RESERVA");
             System.out.println("4. HACER CHECK-IN");
             System.out.println("5. MIS VUELOS");
             System.out.println("0. CERRAR SESIÓN");
-            System.out.print("Seleccione una opción: ");
+            printColoredTitle("Seleccione una opción: ");
             opcion = scanner.nextInt();
             scanner.nextLine(); // Consumir salto de línea
 

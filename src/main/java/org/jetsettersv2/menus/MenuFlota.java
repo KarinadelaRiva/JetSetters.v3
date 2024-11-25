@@ -9,6 +9,7 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 import static org.jetsettersv2.utilities.JacksonUtil.*;
+import static org.jetsettersv2.utilities.Tipografias.*;
 
 public class MenuFlota {
     private static final Scanner scanner = new Scanner(System.in);
@@ -41,14 +42,14 @@ public class MenuFlota {
 
     public static int mostrarMenuFlota() {
         int opcion;
-        System.out.println("\nMenú de Gestión de Flota:");
+        printTitulo("\nMenú de Gestión de Flota:", 30);
         System.out.println("1. Ver flota");
         System.out.println("2. Agregar avión");
         System.out.println("3. Modificar datos de avión");
         System.out.println("4. Eliminar avión");
         System.out.println("0. Volver");
         System.out.print("Seleccione una opción: ");
-        System.out.print("\nSeleccione una opción: ");
+        printColoredTitle("\nSeleccione una opción: ");
         opcion = scanner.nextInt();
         scanner.nextLine(); // Consumir salto de línea
         return opcion;

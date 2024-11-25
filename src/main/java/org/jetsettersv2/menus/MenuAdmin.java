@@ -12,6 +12,7 @@ import static org.jetsettersv2.menus.MenuPersonal.menuPersonal;
 import static org.jetsettersv2.menus.MenuRutas.menuRutas;
 import static org.jetsettersv2.menus.MenuVuelo.mostrarMenuVuelo;
 import static org.jetsettersv2.utilities.JacksonUtil.*;
+import static org.jetsettersv2.utilities.Tipografias.*;
 
 public class MenuAdmin {
     public static void mostrarMenuAdmin(Administrador admin) {
@@ -19,14 +20,14 @@ public class MenuAdmin {
     int opcion;
 
         do {
-        System.out.println("\nMenú Administrador:");
+        printTitulo("\nMenú Administrador:", 30);
         System.out.println("1. Ver y Gestionar Perfil");
         System.out.println("2. Gestionar Vuelos");
         System.out.println("3. Gestionar Rutas");
         System.out.println("4. Gestionar Flota (Aviones)");
         System.out.println("5. Gestionar Personal");
         System.out.println("0. Cerrar Sesión");
-        System.out.print("Seleccione una opción: ");
+        printColoredTitle("Seleccione una opción: ");
         opcion = scanner.nextInt();
 
         switch (opcion) {

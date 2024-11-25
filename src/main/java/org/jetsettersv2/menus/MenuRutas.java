@@ -11,6 +11,7 @@ import org.jetsettersv2.models.concrete.Ruta;
 import org.jetsettersv2.collections.ArrayListGeneric;
 
 import static org.jetsettersv2.utilities.JacksonUtil.*;
+import static org.jetsettersv2.utilities.Tipografias.*;
 
 
 public class MenuRutas {
@@ -20,11 +21,11 @@ public class MenuRutas {
         int opcionRutas;
 
         do {
-            System.out.println("\nGestión de Rutas:");
+            printTitulo("\nGestión de Rutas:", 30);
             System.out.println("1. Ver rutas");
             System.out.println("2. Definir nueva ruta");
             System.out.println("3. Volver al menú principal");
-            System.out.print("Seleccione una opción: ");
+            printColoredTitle("Seleccione una opción: ");
             opcionRutas = scanner.nextInt();
 
             switch (opcionRutas) {

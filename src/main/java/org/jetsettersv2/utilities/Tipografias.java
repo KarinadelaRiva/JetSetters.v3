@@ -21,10 +21,14 @@ public class Tipografias {
     public static void printTituloEstrella(String title) {
         String line = "*".repeat(title.length() + 6);
         System.out.println(line);
-        System.out.println("*  " + title + "  *");
+        printColoredTitle(title);
         System.out.println(line);
     }
 
-    // Uso
-    // printBanner("Performance Testing");
+    public static void printColoredTitle(String title) {
+        String reset = "\u001B[0m";
+        String bold = "\u001B[1m";
+        String color = "\u001B[36m";
+        System.out.println(bold + color + title.toUpperCase() + reset);
+    }
 }
