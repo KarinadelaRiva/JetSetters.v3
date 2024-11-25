@@ -51,12 +51,12 @@ public class Direccion {
     }
 
     public Direccion ciudad(String ciudad) {
-        ciudad = ciudad;
+        this.ciudad = ciudad;
         return this;
     }
 
     public void setCiudad(String ciudad) {
-        ciudad = ciudad;
+        this.ciudad = ciudad;
     }
 
     //-------------------------------------------------------------
