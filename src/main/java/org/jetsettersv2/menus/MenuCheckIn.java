@@ -114,9 +114,14 @@ public class MenuCheckIn {
 
         // Realizar el check-in para la reserva seleccionada
         Reserva reservaSeleccionada = reservasPendientes.get(opcion - 1);
-        CheckIn checkInSeleccionado = reservaSeleccionada.getCheckIn();
-        checkInSeleccionado.setFechaCheck(new Fecha()); // Fecha actual
-        checkInSeleccionado.estadoCheck(true);
+
+        //recorrer el array de reservas y almacenar el checkin en la reserva seleccionada
+        for(int i=0; i<reservas.size(); i++){
+            if(reservas.get(i).getNumeroReserva().equals(reservaSeleccionada.getNumeroReserva())){
+                reservas.get(i).getCheckIn().setEstadoCheck(true);
+                reservas.get(i).getCheckIn().setFechaCheck(new Fecha());
+            }
+        }
 
         // Agregar al pasajero a la lista de pasajeros del vuelo
         for (Vuelo vuelo : vuelos) {
@@ -130,7 +135,7 @@ public class MenuCheckIn {
         // Actualizar la lista de reservas en el archivo
         try {
             writeListToJsonFile(reservas, PATH_RESOURCES + PATH_RESERVAS);
-            //System.out.println("Reservas actualizadas exitosamente.");
+            System.out.println("Reservas actualizadas exitosamente.");
         } catch (Exception e) {
             System.err.println("Error al escribir el archivo JSON: " + e.getMessage());
         }
@@ -149,7 +154,7 @@ public class MenuCheckIn {
             if (reserva.getUsuarioLogueado().getIdPersona().equals(usuarioLogueado.getIdPersona())) {
                 CheckIn checkIn = reserva.getCheckIn();
                 if (checkIn != null) {
-                    System.out.println("Estado del Check-In: " + (checkIn.getEstadoCheck() ? "Realizado" : "Pendiente"));
+                    System.out.println("Nro Vuelo: " + reserva.getVuelo().getNroVuelo() + " - Estado del Check-In: " + (checkIn.getEstadoCheck() ? "Realizado" : "Pendiente"));
                     if (checkIn.getEstadoCheck()) {
                         System.out.println("Fecha del Check-In: " + checkIn.getFechaCheck());
                     }

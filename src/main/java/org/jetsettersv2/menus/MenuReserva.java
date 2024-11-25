@@ -1,7 +1,6 @@
 package org.jetsettersv2.menus;
 
 import org.jetsettersv2.collections.ArrayListGeneric;
-import org.jetsettersv2.enums.EstadoReserva;
 import org.jetsettersv2.models.concrete.UsuarioCliente;
 import org.jetsettersv2.models.concrete.Vuelo;
 import org.jetsettersv2.models.concrete.Reserva;
@@ -22,7 +21,7 @@ public class MenuReserva {
             System.out.println("\n--- Submenú de Reservas ---");
             System.out.println("1. Mostrar vuelos disponibles");
             System.out.println("2. Seleccionar vuelo y crear reserva");
-            System.out.println("3. Salir");
+            System.out.println("0. Volver");
 
             System.out.print("Elige una opción: ");
             int opcion = scanner.nextInt();
@@ -35,8 +34,8 @@ public class MenuReserva {
                 case 2:
                     crearReserva(usuarioLogueado);
                     break;
-                case 3:
-                    System.out.println("Saliendo del submenú...");
+                case 0:
+                    System.out.println(" ");
                     return;
                 default:
                     System.out.println("Opción no válida. Inténtalo de nuevo.");
@@ -138,7 +137,6 @@ public class MenuReserva {
         nuevaReserva.setVuelo(vueloSeleccionado);
         nuevaReserva.setFechaReserva(hoy);
         nuevaReserva.setUsuarioLogueado(usuarioLogueado);
-        nuevaReserva.setEstadoReserva(EstadoReserva.PENDIENTE); // Suponiendo un estado inicial
         nuevaReserva.setNumeroReserva(generarNumeroReserva());
         nuevaReserva.setCheckIn(vueloSeleccionado.getFechaSalida());
 
