@@ -53,7 +53,15 @@ public class CheckIn {
     public void mostrar(){
         System.out.println("<<< CheckIn >>>");
         System.out.println("Fecha de checkIn.............: " + this.fechaCheck);
-        System.out.println("Estado  de checkIn...........: " + this.estadoCheck);
+        System.out.println("Estado  de checkIn...........: " + this.imprimirEstadoCheckIn());
+    }
+
+    public String imprimirEstadoCheckIn(){
+        if(this.estadoCheck){
+            return "Realizado";
+        }else{
+            return "Pendiente";
+        }
     }
 
 }

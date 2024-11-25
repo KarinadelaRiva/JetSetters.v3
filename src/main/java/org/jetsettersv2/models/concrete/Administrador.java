@@ -13,7 +13,7 @@ public class Administrador extends Empleado {
     private ArrayListGeneric<Vuelo> gestionVuelos;
     private ArrayListGeneric<Reserva> gestionReservas;
     private ArrayListGeneric<UsuarioCliente> gestionUsuarios;
-    private ArrayListGeneric<Pasajero> gestionPasajeros;
+    private ArrayListGeneric<UsuarioCliente> gestionPasajeros;
     private ArrayListGeneric<Ruta> gestionRutas;
     private ArrayListGeneric <Avion> gestionAviones;
     private ArrayListGeneric<RegistroDeVuelo> gestionTripulantes;
@@ -24,11 +24,11 @@ public class Administrador extends Empleado {
 
     // <<<<<<<GETTERS Y SETTERS>>>>>>>
 
-    public ArrayListGeneric<Pasajero> getGestionPasajeros() {
+    public ArrayListGeneric<UsuarioCliente> getGestionPasajeros() {
         return gestionPasajeros;
     }
 
-    public Administrador gestionPasajeros(ArrayListGeneric<Pasajero> gestionPasajeros) {
+    public Administrador gestionPasajeros(ArrayListGeneric<UsuarioCliente> gestionPasajeros) {
         this.gestionPasajeros = gestionPasajeros;
         return this;
     }

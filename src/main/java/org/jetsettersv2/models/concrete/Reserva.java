@@ -116,14 +116,16 @@ public class Reserva {
     //Metodos propios
     //Mostrar reserva
     public void mostrar(){
-        System.out.println("<<< Reserva >>>");
         System.out.println("Fecha de reserva.............: " + this.fechaReserva);
-        System.out.println("Pasajero.....................: " + this.usuarioLogueado);
-        System.out.println("Vuelo........................: " + this.vuelo);
+        System.out.println("Nombre Pasajero..............: " + this.usuarioLogueado.getNombre());
+        System.out.println("DNI Pasajero.................: " + this.usuarioLogueado.getDni());
+        System.out.println("Vuelo........................: " + this.vuelo.getNroVuelo());
         System.out.println("Estado de reserva............: " + this.estadoReserva);
         System.out.println("Numero de reserva............: " + this.numeroReserva);
-        System.out.println("CheckIn estado............: " + this.checkIn.getEstadoCheck());
-}
+        System.out.println("CheckIn estado...............: " + this.checkIn.imprimirEstadoCheckIn());
+    }
+
+
 
 
 }

@@ -60,7 +60,7 @@
   "estadoReserva" : "PENDIENTE",
   "numeroReserva" : "RES-1732507117379",
   "checkIn" : {
-    "fechaCheck" : null,
-    "estadoCheck" : false
+    "estadoCheck" : false,
+    "fechaCheck" : null
   }
 } ]

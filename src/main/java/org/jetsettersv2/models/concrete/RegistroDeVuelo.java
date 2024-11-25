@@ -11,7 +11,7 @@ public class RegistroDeVuelo {
     private CheckIn checkIn;
     private ArrayListGeneric<TripulacionCabina> registroTripulanteCabina;
     private ArrayListGeneric<TripulacionTecnica> registroTripulacionTecnica;
-    private ArrayListGeneric<Pasajero>registroPasajeros;
+    private ArrayListGeneric<UsuarioCliente>registroPasajeros;
 
 
     //Constructor
@@ -77,16 +77,16 @@ public class RegistroDeVuelo {
     }
 
     //--------------------------------------------------------------------
-    public ArrayListGeneric<Pasajero> getRegistroPasajeros() {
+    public ArrayListGeneric<UsuarioCliente> getRegistroPasajeros() {
         return registroPasajeros;
     }
 
-    public RegistroDeVuelo registroPasajeros(ArrayListGeneric<Pasajero> registroPasajeros) {
+    public RegistroDeVuelo registroPasajeros(ArrayListGeneric<UsuarioCliente> registroPasajeros) {
         this.registroPasajeros = registroPasajeros;
         return this;
     }
 
-    public void setRegistroPasajeros(ArrayListGeneric<Pasajero> registroPasajeros) {
+    public void setRegistroPasajeros(ArrayListGeneric<UsuarioCliente> registroPasajeros) {
         this.registroPasajeros = registroPasajeros;
     }
 
@@ -113,7 +113,7 @@ public class RegistroDeVuelo {
     }
 
     // Agregar pasajero
-    public void agregarPasajero(Pasajero pasajero) throws CapacidadExcedidaException {
+    public void agregarPasajero(UsuarioCliente pasajero) throws CapacidadExcedidaException {
         if (checkIn == null || !checkIn.getEstadoCheck()) {
             throw new IllegalStateException("No se puede agregar el pasajero porque no ha realizado el check-in.");
         }

@@ -108,7 +108,7 @@ public class MenuLogin {
         
         try {
             logueado = iniciaUsuario(usuarios);
-            System.out.println("\nDatos del usuario logueado: " + logueado.getNombre() + " - " + logueado.getEmail());
+            //System.out.println("\nDatos del usuario logueado: " + logueado.getNombre() + " - " + logueado.getEmail());
         } catch (LoginException e) {
             throw new LoginException(e.getMessage());
         }

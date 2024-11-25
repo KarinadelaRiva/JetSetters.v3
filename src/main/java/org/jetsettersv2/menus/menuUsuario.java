@@ -1,5 +1,6 @@
 package org.jetsettersv2.menus;
 
+import org.controlsfx.control.tableview2.filter.filtereditor.SouthFilter;
 import org.jetsettersv2.collections.ArrayListGeneric;
 import org.jetsettersv2.exceptions.ElementoNoEncontradoException;
 import org.jetsettersv2.models.concrete.Reserva;
@@ -74,6 +75,7 @@ public class menuUsuario{
         System.out.print("Seleccione una opción: ");
         int subOpcion = scanner.nextInt();
         scanner.nextLine(); // Consumir salto de línea
+        System.out.println(" ");
 
         if (subOpcion == 1) {
             verPerfil(usuarios.get(posUsuario)); // Llamar al método para ver perfil
@@ -111,7 +113,8 @@ public class menuUsuario{
             System.out.println("3. Modificar DNI");
             System.out.println("4. Modificar pasaporte");
             System.out.println("5. Modificar teléfono");
-            System.out.println("0. Salir");
+            System.out.println("6. Modificar dirección");
+            System.out.println("0. Salir y guardar cambios");
             System.out.print("Seleccione una opción: ");
             opcion = scanner.nextInt();
             scanner.nextLine(); // Consumir el salto de línea
@@ -142,15 +145,39 @@ public class menuUsuario{
                     String nuevoValor = scanner.nextLine();
                     usuarios.get(posUsuario).modificarDatos("telefono", nuevoValor);
                 }
-                case 0 -> System.out.println("Salir y guardar cambios.");
+                case 6 -> {
+                    String nuevoValor = null;
+                    usuarios.get(posUsuario).modificarDatos("direccion", nuevoValor);
+                }
+                case 0 -> {
+                    try {
+                        writeListToJsonFile(usuarios, PATH_RESOURCES + PATH_USUARIOSCLIENTE);
+                    } catch (Exception e) {
+                        System.err.println("Error al escribir el archivo JSON: " + e.getMessage());
+                    }
+                    System.out.println("Cambios guardados.");
+                }
                 default -> System.out.println("Opción inválida. Intente nuevamente.");
             }
         } while (opcion != 0);
     }
 
     private static void verPerfil(UsuarioCliente logueado) {
-        logueado.verPerfil();
-        System.out.println("Mostrando perfil del usuario...");
+
+        ArrayListGeneric<UsuarioCliente> usuarios = new ArrayListGeneric<>();
+        try{
+            usuarios.copiarLista(getJsonToList(PATH_RESOURCES + PATH_USUARIOSCLIENTE, UsuarioCliente.class));
+        } catch (Exception e) {
+            System.err.println("Error al leer el archivo JSON: " + e.getMessage());
+        }
+
+        int posUsuario = -1;
+        try {
+            posUsuario = buscarPosUsuarioElementoPorLegajo(logueado.getIdPersona(), usuarios);
+        } catch (ElementoNoEncontradoException e) {
+            System.err.println("Error al buscar el usuario: " + e.getMessage());
+        }
+        usuarios.get(posUsuario).verPerfil();
     }
 
     private static void mostrarReservas(UsuarioCliente logueado) {
@@ -162,10 +189,11 @@ public class menuUsuario{
             System.err.println("Error al leer el archivo JSON: " + e.getMessage());
         }
 
+        System.out.println("\nReservas pendientes: ");
         for (Reserva reserva : reservas) {
             if ((reserva.getVuelo().getFechaSalida().esDespuesDe(hoy) || (reserva.getVuelo().getFechaSalida().esIgualA(hoy)) && (reserva.getUsuarioLogueado().getIdPersona().equals(logueado.getIdPersona())))) {
-                System.out.println("\nReservas pendientes: ");
                 reserva.mostrar();
+                System.out.println(" ");
             }
         }
 

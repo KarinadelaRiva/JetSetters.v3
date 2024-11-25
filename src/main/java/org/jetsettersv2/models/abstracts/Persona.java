@@ -110,12 +110,12 @@ public abstract class Persona {
     // <<<<<<<METODOS IMPRESION>>>>>>>
 
     public void imprimir(){
-        System.out.println("ID ..................................: " + this.idPersona);
-        System.out.println("Nombre...............................: " + this.nombre);
-        System.out.println("Apellido.............................: " + this.apellido);
-        System.out.println("DNI..................................: " + this.dni);
-        System.out.println("Pasaporte............................: " + this.pasaporte);
-        System.out.println("Telefono.............................: " + this.telefono);
+        System.out.println("ID ..........................: " + this.idPersona);
+        System.out.println("Nombre.......................: " + this.nombre);
+        System.out.println("Apellido.....................: " + this.apellido);
+        System.out.println("DNI..........................: " + this.dni);
+        System.out.println("Pasaporte....................: " + this.pasaporte);
+        System.out.println("Telefono.....................: " + this.telefono);
         direccion.mostrar();
     }
 
@@ -275,18 +275,18 @@ public abstract class Persona {
 
     // <<<<<<<MODIFICAR DATOS>>>>>>>
 
-    public void modificarDatos(String atributo, String nuevoValor) {
+    public Persona modificarDatos(String atributo, String nuevoValor) {
         switch (atributo.toLowerCase()) {
             case "nombre":
                 if (nuevoValor.matches("[a-zA-ZÁÉÍÓÚáéíóúÑñ\\s]+")) {
-                    this.nombre = nuevoValor.trim();
+                    this.nombre = formatearString(nuevoValor.trim());
                 } else {
                     System.out.println("El nombre solo puede contener letras y espacios.");
                 }
                 break;
             case "apellido":
                 if (nuevoValor.matches("[a-zA-ZÁÉÍÓÚáéíóúÑñ\\s]+")) {
-                    this.apellido = nuevoValor.trim();
+                    this.apellido = formatearString(nuevoValor.trim());
                 } else {
                     System.out.println("El apellido solo puede contener letras y espacios.");
                 }
@@ -312,9 +312,19 @@ public abstract class Persona {
                     System.out.println("Número de teléfono inválido. Debe contener entre 10 y 15 dígitos y puede incluir un '+' al inicio.");
                 }
                 break;
+            case "direccion":
+                nuevoValor = nuevoValor.trim().toLowerCase();
+                this.direccion.solicitarPais();
+                this.direccion.solicitarCiudad();
+                this.direccion.solicitarCalle();
+                this.direccion.solicitarNumero();
+                this.direccion.solicitarCodigoPostal();
+                break;
             default:
                 System.out.println("Atributo no reconocido.");
         }
+
+        return this;
     }
 
     private String formatearString(String entrada) {
