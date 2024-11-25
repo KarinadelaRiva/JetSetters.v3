@@ -6,17 +6,13 @@ import org.jetsettersv2.models.concrete.*;
 import org.jetsettersv2.utilities.Fecha;
 import org.jetsettersv2.utilities.Hora;
 import java.io.IOException;
-import java.time.LocalDate;
-import java.time.LocalTime;
-import java.time.format.DateTimeFormatter;
-import java.time.format.DateTimeParseException;
+
 import java.util.ArrayList;
 import java.util.Scanner;
 
 
 import static org.jetsettersv2.menus.MenuLogin.pausarConTecla;
 import static org.jetsettersv2.menus.SubMenuAsignarTrip.gestionarTripulacion;
-import static org.jetsettersv2.utilities.Fecha.fechaActual;
 import static org.jetsettersv2.utilities.JacksonUtil.*;
 
 public class MenuVuelo {
@@ -156,26 +152,25 @@ public class MenuVuelo {
             } while (flag2);
 
             String fechaSalida;
-            boolean fechaValida = false;
-
-            // Formateador de fecha estricto
-            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyyMMdd");
-
-            // Obtener fecha válida
             do {
                 System.out.print("Ingrese la fecha de salida (YYYY-MM-DD): ");
-                fechaSalida = scanner.nextLine().trim(); // Usar trim() para evitar espacios adicionales
+                fechaSalida = scanner.nextLine().trim();
 
-                // Parsear la fecha
-                Fecha fecha = new Fecha(fechaSalida);
+                try {
+                    // Intentar parsear la fecha
+                    Fecha fecha = new Fecha(fechaSalida);
 
-                // Validar que la fecha no sea del pasado
-                if (fecha.esAntesDe(fechaActual())) {
-                    System.out.println("La fecha ingresada ya pasó. Por favor, ingrese una fecha futura o actual.");
-                } else {
-                    fechaValida = true; // Fecha válida
+                    // Validar que la fecha no sea del pasado
+                    if (fecha.esAntesDe(Fecha.fechaActual())) {
+                        System.out.println("La fecha ingresada ya pasó. Por favor, ingrese una fecha futura o actual.");
+                    } else {
+                        System.out.println("Fecha válida ingresada: " + fecha.obtenerFecha());
+                        break; // Salir del bucle si la fecha es válida
+                    }
+                } catch (Exception e) {
+                    System.out.println("Fecha inválida. Por favor, ingrese una fecha en el formato YYYY-MM-DD.");
                 }
-            } while (!fechaValida);
+            } while (true);
 
             // Una vez validada, asignamos la fecha
             Fecha fechaObj = new Fecha(fechaSalida);
@@ -183,24 +178,20 @@ public class MenuVuelo {
 
             System.out.println("Fecha de salida registrada correctamente");
 
-
-
             String horaSalida;
-            boolean horaValida = false;
 
             do {
-                System.out.print("Ingrese la hora de salida (HH:MM): ");
-                horaSalida = scanner.nextLine();
+                System.out.print("Ingrese la hora de salida (HH:mm): ");
+                horaSalida = scanner.nextLine().trim();
 
-                //Parsear la hora
-                Hora hora = new Hora(horaSalida);
-
-                if(hora == null){
-                    System.out.println("Hora inválida. Por favor, ingrese una hora válida.");
-                } else {
-                    horaValida = true;
+                try {
+                    Hora hora = new Hora(horaSalida);
+                    System.out.println("Hora válida ingresada: " + hora.obtenerHora());
+                    break; // Salimos del bucle si la hora es válida
+                } catch (Exception e) {
+                    System.out.println("Hora inválida. Por favor, ingrese una hora en el formato HH:mm.");
                 }
-            } while (!horaValida);
+            } while (true);
 
             // Una vez validada, asignamos la hora
             Hora hora = new Hora(horaSalida);
@@ -236,7 +227,6 @@ public class MenuVuelo {
             System.out.print("Seleccione una opción: ");
             opcion = scanner.nextInt();
             scanner.nextLine(); // Consumir el salto de línea
-            Fecha nuevoValor = new Fecha();
             switch (opcion) {
                 case 1 -> {
                     System.out.print("Ingrese La nueva fecha de salida (AAAA-MM-DD): ");
@@ -254,8 +244,7 @@ public class MenuVuelo {
         return vueloModificado;
     }
 
-    public static ArrayListGeneric<Vuelo> cargarvuelosDesdeJson(ArrayListGeneric<Vuelo> vuelos) throws
-            LeerJsonException {
+    public static ArrayListGeneric<Vuelo> cargarvuelosDesdeJson( ) throws LeerJsonException {
         ArrayListGeneric<Vuelo> vuelosCargados = new ArrayListGeneric<>();
 
         try {
@@ -322,11 +311,10 @@ public class MenuVuelo {
 
 
     public static void mostrarvuelos() {
-        ArrayListGeneric<Vuelo> vuelos = new ArrayListGeneric<>();
 
         try {
             // Cargar los vuelos desde el archivo JSON
-            ArrayListGeneric<Vuelo> vuelosCargados = cargarvuelosDesdeJson(vuelos);
+            ArrayListGeneric<Vuelo> vuelosCargados = cargarvuelosDesdeJson();
 
             // Verificar si la lista de vuelos cargados está vacía
             if (vuelosCargados.isEmpty()) {
@@ -334,11 +322,12 @@ public class MenuVuelo {
             } else {
                 System.out.println("\nListado de vuelos:");
                 for (Vuelo vuelo : vuelosCargados) {
-                    vuelo.toString(); // Llama al método imprimir de la clase vuelo
+                    vuelo.imprimirDatosVuelo(); // Llama al método imprimir de la clase vuelo
+                    vuelo.getRegistroDeVuelo().imprimirRegistroDeVuelo();
                 }
             }
         } catch (LeerJsonException e) {
-            System.err.println("Error al cargar loa vuelos: " + e.getMessage());
+            System.err.println("Error al cargar los vuelos: " + e.getMessage());
         } catch (Exception e) {
             System.err.println("Se ha producido un error inesperado: " + e.getMessage());
         }

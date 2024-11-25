@@ -228,14 +228,20 @@ public class MenuFlota {
                                 System.out.println("Error: debe ingresar 's' para sí o 'n' para no.");
                             }
                         } while (!enMantenimientoInput.equals("s") && !enMantenimientoInput.equals("n"));
-                        flota.get(posAvion).setEnMantenimiento(enMantenimientoInput.equals("s"));
+                        if (enMantenimientoInput.equals("s")) {
+                            flota.get(posAvion).setEnMantenimiento(true);
+                            System.out.println("El avión está en mantenimiento.");
+                        } else {
+                            flota.get(posAvion).setEnMantenimiento(false);
+                            System.out.println("El avión no está en mantenimiento.");
+                        }
                         break;
                     case 8:
                         System.out.println("\n----Datos ingresados:----");
                         flota.get(posAvion).imprimir(); // Método que imprime los detalles del avión
                         break;
                     case 0:
-                        System.out.println("Guardando cambios y saliendo...");
+                        System.out.println(" ");
                         break;
                     default:
                         System.out.println("Opción no válida.");
@@ -255,7 +261,7 @@ public class MenuFlota {
 
     public static void agregarAvionAFlota(){
         ArrayListGeneric<Avion> flota = new ArrayListGeneric<>();
-        boolean entradaValida = false;
+        boolean entradaValida;
         int capacidadTripulantes = 0;
         int capacidadTripulanteTecnico = 0;
         int capacidadPasajeros = 0;
@@ -366,7 +372,7 @@ public class MenuFlota {
             if (entrada.equalsIgnoreCase("s")) {
                 enMantenimiento = true;
             } else if (entrada.equalsIgnoreCase("n")) {
-                enMantenimiento = false;
+                System.out.println(" ");
             } else {
                 System.out.println("Entrada inválida. Debe ingresar 's' para sí o 'n' para no.");
                 entradaValida = false;

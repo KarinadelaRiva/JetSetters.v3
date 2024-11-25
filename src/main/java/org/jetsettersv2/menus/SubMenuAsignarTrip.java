@@ -5,7 +5,6 @@ import org.jetsettersv2.enums.TipoPersonalAereo;
 import org.jetsettersv2.exceptions.CapacidadExcedidaException;
 import org.jetsettersv2.exceptions.ElementoNoEncontradoException;
 import org.jetsettersv2.exceptions.LeerJsonException;
-import org.jetsettersv2.models.concrete.Administrador;
 import org.jetsettersv2.models.concrete.TripulacionCabina;
 import org.jetsettersv2.models.concrete.TripulacionTecnica;
 import org.jetsettersv2.models.concrete.Vuelo;
@@ -65,9 +64,7 @@ public class SubMenuAsignarTrip {
                 case 1:
                     try {
                         vuelo = asignarPiloto(vuelo);
-                    } catch (LeerJsonException e) {
-                        System.out.println(e.getMessage());
-                    } catch (CapacidadExcedidaException e ) {
+                    } catch (RuntimeException e) {
                         System.out.println(e.getMessage());
                     }
                     pausarConTecla();
@@ -75,9 +72,7 @@ public class SubMenuAsignarTrip {
                 case 2:
                     try {
                         vuelo = asignarAzafata(vuelo);
-                    } catch (LeerJsonException e) {
-                        System.out.println(e.getMessage());
-                    } catch (CapacidadExcedidaException e ) {
+                    } catch (RuntimeException e) {
                         System.out.println(e.getMessage());
                     }
                     pausarConTecla();
@@ -85,9 +80,7 @@ public class SubMenuAsignarTrip {
                 case 3:
                     try {
                         vuelo = asignarOtroTripulanteTecnico(vuelo);
-                    } catch (LeerJsonException e) {
-                        System.out.println(e.getMessage());
-                    } catch (CapacidadExcedidaException e ) {
+                    } catch (RuntimeException e) {
                         System.out.println(e.getMessage());
                     }
                     pausarConTecla();
@@ -95,9 +88,7 @@ public class SubMenuAsignarTrip {
                 case 4:
                     try {
                         vuelo = asignarOtroTripulanteCabina(vuelo);
-                    } catch (LeerJsonException e) {
-                        System.out.println(e.getMessage());
-                    } catch (CapacidadExcedidaException e ) {
+                    } catch (RuntimeException e) {
                         System.out.println(e.getMessage());
                     }
                     pausarConTecla();
@@ -180,7 +171,7 @@ public class SubMenuAsignarTrip {
 
         for (TripulacionCabina tripulacionCabina : tripCabina) {
             if (tripulacionCabina.getTipoPersonal().equals(TipoPersonalAereo.AZAFATA)
-                    && !vuelo.getRegistroDeVuelo().getRegistroTripulacionTecnica().contains(tripulacionCabina)) {
+                    && !vuelo.getRegistroDeVuelo().getRegistroTripulanteCabina().contains(tripulacionCabina)) {
                 System.out.println("Legajo: " + tripulacionCabina.getLegajo() + " - Nombre: " + tripulacionCabina.getNombre());
             }
         }
@@ -197,7 +188,7 @@ public class SubMenuAsignarTrip {
                     azafataAsignada = tripulante;
                     flag = 1;
                     break;
-                } else if (vuelo.getRegistroDeVuelo().getRegistroTripulacionTecnica().contains(tripulante)){
+                } else if (vuelo.getRegistroDeVuelo().getRegistroTripulanteCabina().contains(tripulante)){
                     System.out.println("Tripulante ya asignado a este vuelo");
                     flag = 0;
                 } else {
@@ -339,19 +330,19 @@ public class SubMenuAsignarTrip {
 
             switch (opcion) {
                 case 1:
-                    retirarPiloto(vuelo);
+                    vuelo = retirarPiloto(vuelo);
                     pausarConTecla();
                     break;
                 case 2:
-                    retirarAzafata(vuelo);
+                    vuelo = retirarAzafata(vuelo);
                     pausarConTecla();
                     break;
                 case 3:
-                    retirarOtroTripulanteTecnico(vuelo);
+                    vuelo = retirarOtroTripulanteTecnico(vuelo);
                     pausarConTecla();
                     break;
                 case 4:
-                    retirarOtroTripulanteCabina(vuelo);
+                    vuelo = retirarOtroTripulanteCabina(vuelo);
                     pausarConTecla();
                     break;
                 case 0:
@@ -366,7 +357,7 @@ public class SubMenuAsignarTrip {
     }
 
     public static Vuelo retirarPiloto(Vuelo vuelo) {
-        TripulacionTecnica pilotoRetirado = new TripulacionTecnica();
+        TripulacionTecnica pilotoRetirado;
         pilotoRetirado = null;
         ArrayListGeneric<TripulacionTecnica> tripTecnica = new ArrayListGeneric<>();
         try {

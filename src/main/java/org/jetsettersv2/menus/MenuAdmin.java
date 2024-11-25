@@ -1,12 +1,12 @@
 package org.jetsettersv2.menus;
 import org.jetsettersv2.exceptions.LeerJsonException;
 import org.jetsettersv2.models.concrete.Administrador;
-import org.jetsettersv2.models.concrete.Ruta;
 import org.jetsettersv2.collections.ArrayListGeneric;
 
 import java.util.Scanner;
 
 import static org.jetsettersv2.menus.MenuFlota.menuFlota;
+import static org.jetsettersv2.menus.MenuLogin.pausarConTecla;
 import static org.jetsettersv2.menus.MenuPersonal.buscarPosAdminElementoPorLegajo;
 import static org.jetsettersv2.menus.MenuPersonal.menuPersonal;
 import static org.jetsettersv2.menus.MenuRutas.menuRutas;
@@ -15,8 +15,6 @@ import static org.jetsettersv2.utilities.JacksonUtil.*;
 
 public class MenuAdmin {
     public static void mostrarMenuAdmin(Administrador admin) {
-
-    ArrayListGeneric<Ruta> rutas = new ArrayListGeneric<>();
     Scanner scanner = new Scanner(System.in);
     int opcion;
 
@@ -32,12 +30,27 @@ public class MenuAdmin {
         opcion = scanner.nextInt();
 
         switch (opcion) {
-            case 1 -> gestionarPerfil(admin);
-            case 2 -> mostrarMenuVuelo();
-            case 3 -> menuRutas();
-            case 4 -> menuFlota();
-            case 5 -> menuPersonal();
-            case 0 -> System.out.println("Sesión cerrada. Volviendo al menú principal...");
+            case 1 -> {
+                gestionarPerfil(admin);
+                pausarConTecla();
+            }
+            case 2 -> {
+                mostrarMenuVuelo();
+                pausarConTecla();
+            }
+            case 3 -> {
+                menuRutas();
+                pausarConTecla();
+            }
+            case 4 -> {
+                menuFlota();
+                pausarConTecla();
+            }
+            case 5 -> {
+                menuPersonal();
+                pausarConTecla();
+            }
+            case 0 -> System.out.println(" ");
             default -> System.out.println("Opción inválida. Intente nuevamente.");
         }
     } while (opcion != 0);

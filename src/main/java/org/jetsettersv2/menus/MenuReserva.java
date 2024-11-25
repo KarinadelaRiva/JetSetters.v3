@@ -14,7 +14,7 @@ import static org.jetsettersv2.utilities.JacksonUtil.*;
 
 public class MenuReserva {
 
-    private static Scanner scanner = new Scanner(System.in);
+    private static final Scanner scanner = new Scanner(System.in);
 
     public static void mostrarMenuReservas(UsuarioCliente usuarioLogueado) {
 

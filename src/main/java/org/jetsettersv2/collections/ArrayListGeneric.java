@@ -1,7 +1,5 @@
 package org.jetsettersv2.collections;
 
-import org.jetsettersv2.exceptions.ElementoNoEncontradoException;
-
 import java.util.ArrayList;
 
 public class ArrayListGeneric<T> extends ArrayList<T> {
@@ -28,14 +26,4 @@ public class ArrayListGeneric<T> extends ArrayList<T> {
         this.addAll(origen);
     }
 
-    public void eliminarElemento(T elemento, String mensajeException) throws ElementoNoEncontradoException {
-
-        for (int i = 0; i < this.lista.size(); i++) {
-            if (this.lista.get(i).equals(elemento)) {
-                this.lista.remove(elemento);
-                return;
-            }
-        }
-        throw new ElementoNoEncontradoException(mensajeException);
-    }
 }

@@ -1,6 +1,5 @@
 package org.jetsettersv2.menus;
 
-import org.controlsfx.control.tableview2.filter.filtereditor.SouthFilter;
 import org.jetsettersv2.collections.ArrayListGeneric;
 import org.jetsettersv2.exceptions.ElementoNoEncontradoException;
 import org.jetsettersv2.models.concrete.Reserva;
@@ -14,7 +13,7 @@ import static org.jetsettersv2.menus.MenuReserva.mostrarMenuReservas;
 import static org.jetsettersv2.utilities.JacksonUtil.*;
 
 public class menuUsuario{
-    private static Scanner scanner = new Scanner(System.in);
+    private static final Scanner scanner = new Scanner(System.in);
 
     public static void mostrarMenuUsuario(UsuarioCliente logueado) {
         Scanner scanner = new Scanner(System.in);

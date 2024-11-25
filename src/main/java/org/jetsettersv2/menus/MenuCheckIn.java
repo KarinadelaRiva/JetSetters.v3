@@ -1,12 +1,12 @@
 package org.jetsettersv2.menus;
 
 import org.jetsettersv2.collections.ArrayListGeneric;
-import org.jetsettersv2.models.abstracts.Persona;
 import org.jetsettersv2.models.concrete.*;
 import org.jetsettersv2.utilities.Fecha;
 
 import java.util.Scanner;
 
+import static org.jetsettersv2.menus.MenuLogin.pausarConTecla;
 import static org.jetsettersv2.utilities.JacksonUtil.*;
 
 public class MenuCheckIn {
@@ -26,7 +26,7 @@ public class MenuCheckIn {
             System.out.println("\n--- Submenú de Check-In ---");
             System.out.println("1. Realizar check-in");
             System.out.println("2. Mostrar estado del check-in");
-            System.out.println("3. Salir");
+            System.out.println("0. Volver");
 
             System.out.print("Elige una opción: ");
             int opcion = scanner.nextInt();
@@ -35,12 +35,14 @@ public class MenuCheckIn {
             switch (opcion) {
                 case 1:
                     realizarCheckIn(usuarioLogueado);
+                    pausarConTecla();
                     break;
                 case 2:
                     mostrarEstadoCheckIn(usuarioLogueado, reservas);
+                    pausarConTecla();
                     break;
-                case 3:
-                    System.out.println("Saliendo del submenú de check-in...");
+                case 0:
+                    System.out.println(" ");
                     return;
                 default:
                     System.out.println("Opción no válida. Inténtalo de nuevo.");

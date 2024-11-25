@@ -14,6 +14,23 @@ public class RegistroDeVuelo {
     private ArrayListGeneric<UsuarioCliente>registroPasajeros;
 
 
+    public void imprimirRegistroDeVuelo() {
+        System.out.println("Tripulación Técnica:");
+        for (TripulacionTecnica tripulante : getRegistroTripulacionTecnica()) {
+            System.out.println("Legajo: " + tripulante.getLegajo() + " - Nombre: " + tripulante.getNombre() + " - Tipo: " + tripulante.getTipoPersonal());
+        }
+
+        System.out.println("Tripulación de Cabina:");
+        for (TripulacionCabina tripulante : getRegistroTripulanteCabina()) {
+            System.out.println("Legajo: " + tripulante.getLegajo() + " - Nombre: " + tripulante.getNombre() + " - Tipo: " + tripulante.getTipoPersonal());
+        }
+
+        System.out.println("Pasajeros:");
+        for (UsuarioCliente pasajero : getRegistroPasajeros()) {
+            System.out.println("DNI: " + pasajero.getDni() + " - Nombre: " + pasajero.getNombre() + " - Apellido: " + pasajero.getApellido());
+        }
+    }
+
     //Constructor
     public RegistroDeVuelo() {
 
@@ -89,41 +106,4 @@ public class RegistroDeVuelo {
     public void setRegistroPasajeros(ArrayListGeneric<UsuarioCliente> registroPasajeros) {
         this.registroPasajeros = registroPasajeros;
     }
-
-    //--------------------------------------------------------------------
-
-    //Metodos propios
-
-    // Agregar tripulacion cabina
-    public void agregarTripulanteCabina(TripulacionCabina tripulante) throws CapacidadExcedidaException {
-        if (registroTripulanteCabina.getLista().size() < avion.getCapacidadTripulanteCabina()) {
-            registroTripulanteCabina.agregarElemento(tripulante);
-        } else {
-            throw new CapacidadExcedidaException("No se pueden agregar más tripulantes de cabina. Capacidad máxima alcanzada.");
-        }
-    }
-
-    // Agregar tripulacion tecnica
-    public void agregarTripulanteTecnico(TripulacionTecnica tripulante) throws CapacidadExcedidaException {
-        if (registroTripulacionTecnica.getLista().size() < avion.getCapacidadTripulanteTecnico()) {
-            registroTripulacionTecnica.agregarElemento(tripulante);
-        } else {
-            throw new CapacidadExcedidaException("No se pueden agregar más tripulantes técnicos. Capacidad máxima alcanzada.");
-        }
-    }
-
-    // Agregar pasajero
-    public void agregarPasajero(UsuarioCliente pasajero) throws CapacidadExcedidaException {
-        if (checkIn == null || !checkIn.getEstadoCheck()) {
-            throw new IllegalStateException("No se puede agregar el pasajero porque no ha realizado el check-in.");
-        }
-
-        if (registroPasajeros.getLista().size() >= avion.getCapacidadPasajeros()) {
-            throw new CapacidadExcedidaException("No se pueden agregar más pasajeros. Capacidad máxima alcanzada.");
-        }
-
-        registroPasajeros.agregarElemento(pasajero);
-        System.out.println("Pasajero agregado exitosamente.");
-    }
-    
 }

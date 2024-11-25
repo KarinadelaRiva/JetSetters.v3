@@ -7,7 +7,7 @@ import java.time.temporal.ChronoUnit;
 public class Hora {
     private LocalTime hora;
 
-    private static final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm:ss");
+    private static final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm");
 
     // Nuevo getter para Jackson
     public String getHora() {
@@ -17,11 +17,6 @@ public class Hora {
     // Constructor sin parámetros (hora actual)
     public Hora() {
         this.hora = LocalTime.now();
-    }
-
-    // Constructor con parámetros (hora, minuto, segundo)
-    public Hora(int hora, int minuto, int segundo) {
-        this.hora = LocalTime.of(hora, minuto, segundo);
     }
 
     // Constructor con cadena de texto

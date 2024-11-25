@@ -133,7 +133,7 @@ public class MenuRutas {
 
 
         // Ingresar y validar distancia
-        double distanciaKM = 0.0;
+        double distanciaKM;
         do {
             try {
                 System.out.print("Ingrese la distancia en kilómetros: ");
@@ -149,7 +149,7 @@ public class MenuRutas {
         nuevaRuta.setDistanciaKM(distanciaKM);
 
         // Ingresar y validar duración
-        long duracion = 0;
+        long duracion;
         do {
             try {
                 System.out.print("Ingrese la duración del vuelo en segundos: ");

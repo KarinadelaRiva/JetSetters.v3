@@ -19,16 +19,17 @@ import static org.jetsettersv2.utilities.JacksonUtil.*;
 
 public class MenuLogin {
     private static final Scanner scanner = new Scanner(System.in);
-    private static UsuarioCliente usuarioLogueado = new UsuarioCliente();
-    private static Administrador adminLogueado = new Administrador();
+
 
     public static void login() {
+
+        UsuarioCliente usuarioLogueado;
+        Administrador adminLogueado;
+
         ArrayListGeneric<UsuarioCliente> usuarios = new ArrayListGeneric<>();
         ArrayListGeneric<Administrador> empleados = new ArrayListGeneric<>();
         int opcion;
         do {
-            usuarioLogueado = null;
-            adminLogueado = null;
 
             System.out.println("\n      Bienvenid@ a JetSetters!\n");
             opcion = opcionesLogin();
@@ -63,11 +64,7 @@ public class MenuLogin {
                     pausarConTecla();
                     break;
                 case 0:
-                    if(usuarioLogueado != null || adminLogueado != null){
-                        System.out.println("\nAdios " + usuarioLogueado.getNombre() + "! Esperamos verte pronto!");
-                    } else {
-                        System.out.println("\nAdios! Esperamos verte pronto!");
-                    }
+                    System.out.println("\nAdios! Esperamos verte pronto!");
                     break;
                 default:
                     System.out.println("Opcion no valida");
@@ -98,7 +95,7 @@ public class MenuLogin {
     }
 
     public static UsuarioCliente inicioSesionUsuario(ArrayListGeneric<UsuarioCliente> usuarios) throws LoginException{
-        UsuarioCliente logueado = new UsuarioCliente();
+        UsuarioCliente logueado;
 
         try{
             usuarios.copiarLista(getJsonToList(PATH_RESOURCES + PATH_USUARIOSCLIENTE, UsuarioCliente.class));
@@ -151,7 +148,7 @@ public class MenuLogin {
     }
 
     public static void registrarUsuario(ArrayListGeneric<UsuarioCliente> usuarios){
-        UsuarioCliente nuevoUsuario = new UsuarioCliente();
+        UsuarioCliente nuevoUsuario;
         try{
             usuarios.copiarLista(getJsonToList(PATH_RESOURCES + PATH_USUARIOSCLIENTE, UsuarioCliente.class));
         } catch (Exception e) {
@@ -171,7 +168,7 @@ public class MenuLogin {
 
     public static UsuarioCliente registrarse() {
         UsuarioCliente nuevoUsuario = new UsuarioCliente();
-        int opcion = -1;
+        int opcion;
 
         System.out.println("\n----Registro de usuario----\n");
         nuevoUsuario.solicitarNombre();
@@ -245,7 +242,7 @@ public class MenuLogin {
     }
 
     public static Administrador inicioSesionAdmin(ArrayListGeneric<Administrador> admins) throws LoginException{
-        Administrador logueado = new Administrador();
+        Administrador logueado;
 
         try{
             admins.copiarLista(getJsonToList(PATH_RESOURCES + PATH_ADMINISTRADORES, Administrador.class));

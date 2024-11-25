@@ -53,7 +53,7 @@ public class MenuPersonal {
                     pausarConTecla();
                     break;
                 case 0:
-                    System.out.println("\n");
+                    System.out.println(" ");
 
                     break;
                 default:
@@ -166,7 +166,7 @@ public class MenuPersonal {
                     pausarConTecla();
                     break;
                 case 0:
-                    System.out.println("\n ");
+                    System.out.println("  ");
                     break;
                 default:
                     System.out.println("Opcion no valida");
@@ -227,7 +227,7 @@ public class MenuPersonal {
                     pausarConTecla();
                     break;
                 case 0:
-                    System.out.println("\n ");
+                    System.out.println("  ");
                     break;
                 default:
                     System.out.println("Opcion no valida");
@@ -288,7 +288,7 @@ public class MenuPersonal {
                     pausarConTecla();
                     break;
                 case 0:
-                    System.out.println("\n ");
+                    System.out.println("  ");
                     break;
                 default:
                     System.out.println("Opcion no valida");
@@ -520,7 +520,7 @@ public class MenuPersonal {
 
     public static void modificarAdmin(ArrayListGeneric<Administrador> admins){
         int numeroLegajo;
-        System.out.printf("Ingrese el NUMERO de legajo del Administrador a modificar: ");
+        System.out.println("Ingrese el NUMERO de legajo del Administrador a modificar: ");
         numeroLegajo = scanner.nextInt();
         scanner.nextLine(); // Consumir salto de línea
 
@@ -608,7 +608,7 @@ public class MenuPersonal {
                 return i;  // Retorna la posición del elemento si coincide el legajo
             }
         }
-        throw new ElementoNoEncontradoException("No se encontró un mpleado de Tripulación de Cabina con el legajo: " + legajo);
+        throw new ElementoNoEncontradoException("No se encontró un empleado de Tripulación de Cabina con el legajo: " + legajo);
     }
 
     public static void modificarTripulanteCabina(ArrayListGeneric<TripulacionCabina> tCabina){
@@ -839,7 +839,7 @@ public class MenuPersonal {
 
     public static void registrarNuevoAdmin(ArrayListGeneric<Administrador> admins) throws LeerJsonException {
         Administrador nuevoAdmin = new Administrador();
-        int opcion = -1;
+        int opcion;
 
         try{
             admins.copiarLista(getJsonToList(PATH_RESOURCES + PATH_ADMINISTRADORES, Administrador.class));
@@ -911,7 +911,7 @@ public class MenuPersonal {
 
     public static void registrarNuevoTCabina(ArrayListGeneric<TripulacionCabina> tCabina) throws LeerJsonException {
         TripulacionCabina nuevoTCabina = new TripulacionCabina();
-        int opcion = -1;
+        int opcion;
 
         try{
             tCabina.copiarLista(getJsonToList(PATH_RESOURCES + PATH_TRIPULACIONCABINA, TripulacionCabina.class));
@@ -983,7 +983,7 @@ public class MenuPersonal {
 
     public static void registrarNuevoTTecnica(ArrayListGeneric<TripulacionTecnica> tTecnica) throws LeerJsonException {
         TripulacionTecnica nuevoTTecnica = new TripulacionTecnica();
-        int opcion = -1;
+        int opcion;
 
         try{
             tTecnica.copiarLista(getJsonToList(PATH_RESOURCES + PATH_TRIPULACIONTECNICA, TripulacionTecnica.class));
