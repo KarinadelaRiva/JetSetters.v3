@@ -520,7 +520,7 @@ public class MenuPersonal {
 
     public static void modificarAdmin(ArrayListGeneric<Administrador> admins){
         int numeroLegajo;
-        System.out.print("Ingrese el NUMERO de legajo del Administrador a modificar: ");
+        System.out.printf("Ingrese el NUMERO de legajo del Administrador a modificar: ");
         numeroLegajo = scanner.nextInt();
         scanner.nextLine(); // Consumir salto de línea
 
