@@ -11,6 +11,9 @@ public class Vuelo {
     private Fecha fechaSalida;
     private Hora horaSalida;
     private RegistroDeVuelo registroDeVuelo;
+    private int capacidadDePasajeros;
+    private int capacidadTripulantesCabina;
+    private int capacidadTripulantesTecnicos;
 
     // <<<<<<<METODOS IMPRESION>>>>>>>
 
@@ -86,6 +89,18 @@ public class Vuelo {
         return registroDeVuelo;
     }
 
+    public int getCapacidadDePasajeros() {
+        return capacidadDePasajeros;
+    }
+
+    public int getCapacidadTripulantesCabina() {
+        return capacidadTripulantesCabina;
+    }
+
+    public int getCapacidadTripulantesTecnicos() {
+        return capacidadTripulantesTecnicos;
+    }
+
 
     // <<<<<<<SETTERS>>>>>>>
 
@@ -146,6 +161,21 @@ public class Vuelo {
         return this;
     }
 
+    public Vuelo setCapacidadDePasajeros(int capacidadDePasajeros) {
+        this.capacidadDePasajeros = capacidadDePasajeros;
+        return this;
+    }
+
+    public Vuelo setCapacidadTripulantesCabina(int capacidadTripulantesCabina) {
+        this.capacidadTripulantesCabina = capacidadTripulantesCabina;
+        return this;
+    }
+
+    public Vuelo setCapacidadTripulantesTecnicos(int capacidadTripulantesTecnicos) {
+        this.capacidadTripulantesTecnicos = capacidadTripulantesTecnicos;
+        return this;
+    }
+
 
     // <<<<<<<TO STRING>>>>>>>
 
@@ -178,6 +208,12 @@ public class Vuelo {
         return registroDeVuelo.equals(vuelo.registroDeVuelo);
     }
 
+
+    public void asignarCapacidades(){
+        this.capacidadDePasajeros= this.avion.getCapacidadPasajeros();
+        this.capacidadTripulantesCabina= this.avion.getCapacidadTripulanteCabina();
+        this.capacidadTripulantesTecnicos= this.avion.getCapacidadTripulanteTecnico();
+    }
 
     // <<<<<<<HASHCODE>>>>>>>
 

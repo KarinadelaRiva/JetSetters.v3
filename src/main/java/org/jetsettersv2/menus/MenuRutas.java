@@ -118,6 +118,8 @@ public class MenuRutas {
 
         }while (!flag2);
 
+        nuevaRuta.setIdRuta(nuevaRuta.getOrigen().getCodigo()+nuevaRuta.getDestino().getCodigo());
+
             // Verificamos si la ruta ya existe
         for (Ruta rutaExistente : rutas) {
             if (rutaExistente.getOrigen().getCodigo().equals(nuevaRuta.getOrigen().getCodigo()) &&
