@@ -10,6 +10,7 @@ import java.util.Scanner;
 
 import static org.jetsettersv2.utilities.Fecha.fechaActual;
 import static org.jetsettersv2.utilities.JacksonUtil.*;
+import static org.jetsettersv2.utilities.Tipografias.*;
 
 public class MenuReserva {
 
@@ -18,12 +19,12 @@ public class MenuReserva {
     public static void mostrarMenuReservas(UsuarioCliente usuarioLogueado) {
 
         while (true) {
-            System.out.println("\n--- Submenú de Reservas ---");
+            printTitulo("\n--- Submenú de Reservas ---", 30);
             System.out.println("1. Mostrar vuelos disponibles");
             System.out.println("2. Seleccionar vuelo y crear reserva");
             System.out.println("0. Volver");
 
-            System.out.print("Elige una opción: ");
+            printColoredTitle("Elige una opción: ");
             int opcion = scanner.nextInt();
             scanner.nextLine(); // Limpiar buffer
 

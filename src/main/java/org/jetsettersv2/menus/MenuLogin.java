@@ -15,6 +15,7 @@ import static org.jetsettersv2.menus.MenuAdmin.mostrarMenuAdmin;
 import static org.jetsettersv2.menus.menuUsuario.mostrarMenuUsuario;
 import static org.jetsettersv2.utilities.Fecha.fechaActual;
 import static org.jetsettersv2.utilities.JacksonUtil.*;
+import static org.jetsettersv2.utilities.Tipografias.*;
 
 
 public class MenuLogin {
@@ -31,7 +32,7 @@ public class MenuLogin {
         int opcion;
         do {
 
-            System.out.println("\n      Bienvenid@ a JetSetters!\n");
+            printTituloEstrella("\n      Bienvenid@ a JetSetters!\n");
             opcion = opcionesLogin();
             switch (opcion) {
                 case 1:
@@ -81,7 +82,7 @@ public class MenuLogin {
         System.out.println("4. Ingresar como Administrador");
         System.out.println("0. Salir\n");
 
-        System.out.print("Ingrese una opcion: ");
+        printColoredTitle("Ingrese una opcion: ");
         opcion = scanner.nextInt();
         scanner.nextLine(); // Consumir salto de línea
 
@@ -314,7 +315,7 @@ public class MenuLogin {
     }
 
     public static void pausarConTecla() {
-        System.out.println("\nPresione cualquier tecla para volver al menú anterior...");
+        printColoredTitle("\nPresione cualquier tecla para volver al menú anterior...");
         try {
             if (System.in.available() == 0) { // Verifica si hay entrada disponible
                 System.in.read(); // Captura una sola tecla

@@ -10,6 +10,7 @@ import java.util.Scanner;
 
 import static org.jetsettersv2.menus.MenuLogin.pausarConTecla;
 import static org.jetsettersv2.utilities.JacksonUtil.*;
+import static org.jetsettersv2.utilities.Tipografias.*;
 
 public class MenuPersonal {
     private static final Scanner scanner = new Scanner(System.in);
@@ -20,7 +21,7 @@ public class MenuPersonal {
         ArrayListGeneric<TripulacionCabina> tripCabina = new ArrayListGeneric<>();
         int opcion;
         do {
-            System.out.println("\n      Menu administración de personal\n");
+            printTitulo("\n      Menu administración de personal\n", 30);
             opcion = opcionesMenuPersonal();
             switch (opcion) {
                 case 1:
@@ -71,7 +72,7 @@ public class MenuPersonal {
         System.out.println("3. Modificar datos de un Empleado");
         System.out.println("4. Dar de baja/ recuperar un Empleado");
         System.out.println("0. Volver");
-        System.out.print("\nSeleccione una opción: ");
+        printColoredTitle("\nSeleccione una opción: ");
         opcion = scanner.nextInt();
         scanner.nextLine(); // Consumir salto de línea
         return opcion;

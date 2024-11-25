@@ -2,6 +2,7 @@ package org.jetsettersv2.utilities;
 
 import com.github.javafaker.Faker;
 import kotlin.collections.ArrayDeque;
+import org.jetsettersv2.mock.UsuarioClienteMock;
 import org.jetsettersv2.models.concrete.Direccion;
 import org.jetsettersv2.models.concrete.UsuarioCliente;
 
@@ -10,9 +11,10 @@ import java.util.*;
 import static org.jetsettersv2.utilities.Tipografias.printTitulo;
 
 public class CollectionTest {
+    private static final int DATA_SIZE = 10_000;
 
     public static void main(String[] args) {
-        int dataSize = 10_000; // Número de objetos a insertar
+        int dataSize = DATA_SIZE; // Número de objetos a insertar
 
         // Crear datos de prueba
         List<UsuarioCliente> usuarios = generateUsuarios(dataSize);
@@ -79,28 +81,9 @@ public class CollectionTest {
 //    }
 
     private static List<UsuarioCliente> generateUsuarios(int size) {
-        Faker faker = new Faker(); // Instancia de Faker
         List<UsuarioCliente> usuarios = new ArrayList<>();
-
         for (int i = 0; i < size; i++) {
-            Direccion direccion = new Direccion()
-                    .calle(faker.address().streetName())
-                    .numero(faker.number().numberBetween(1, 9999))
-                    .ciudad(faker.address().city())
-                    .codigoPostal(faker.address().zipCode())
-                    .pais(faker.address().country());
-
-            UsuarioCliente usuario = (UsuarioCliente) new UsuarioCliente()
-                    .nombre(faker.name().firstName())
-                    .apellido(faker.name().lastName())
-                    .dni(faker.idNumber().valid())
-                    .pasaporte(faker.idNumber().valid())
-                    .telefono(faker.phoneNumber().cellPhone())
-                    .direccion(direccion)
-                    .email(faker.internet().emailAddress())
-                    .password(faker.internet().password());
-
-            usuarios.add(usuario);
+            usuarios.add(UsuarioClienteMock.generarUsuarioAleatorio());
         }
         return usuarios;
     }
@@ -111,12 +94,12 @@ public class CollectionTest {
 
         // Tiempo de carga
         long loadTime = TimerUtil.measureTime(() -> list.addAll(usuarios));
-        System.out.println("Tiempo de Carga: " + loadTime / 10_000 + " ms");
+        System.out.println("Tiempo de Carga: " + loadTime / DATA_SIZE + " ms");
 
         // Tiempo de búsqueda
         UsuarioCliente last = usuarios.get(usuarios.size() - 1);
         long searchTime = TimerUtil.measureTime(() -> list.contains(last));
-        System.out.println("Tiempo de búsqueda del último elemento: " + searchTime / 10_000 + " ms");
+        System.out.println("Tiempo de búsqueda del último elemento: " + searchTime / DATA_SIZE + " ms");
     }
 
     // Test de conjuntos
@@ -125,12 +108,12 @@ public class CollectionTest {
 
         // Tiempo de carga
         long loadTime = TimerUtil.measureTime(() -> set.addAll(usuarios));
-        System.out.println("Tiempo de Carga: " + loadTime / 10_000 + " ms");
+        System.out.println("Tiempo de Carga: " + loadTime / DATA_SIZE + " ms");
 
         // Tiempo de búsqueda
         UsuarioCliente last = usuarios.get(usuarios.size() - 1);
         long searchTime = TimerUtil.measureTime(() -> set.contains(last));
-        System.out.println("Tiempo de búsqueda del último elemento: " + searchTime / 10_000 + " ms");
+        System.out.println("Tiempo de búsqueda del último elemento: " + searchTime / DATA_SIZE + " ms");
     }
 
     // Test de mapas
@@ -143,15 +126,13 @@ public class CollectionTest {
                 map.put(u.getIdPersona(), u);
             }
         });
-        System.out.println("Tiempo de Carga: " + loadTime / 10_000 + " ms");
+        System.out.println("Tiempo de Carga: " + loadTime / DATA_SIZE + " ms");
 
         // Tiempo de búsqueda
         UsuarioCliente last = usuarios.get(usuarios.size() - 1);
         long searchTime = TimerUtil.measureTime(() -> map.get(last.getIdPersona()));
-        System.out.println("Tiempo de búsqueda del último elemento: " + searchTime / 10_000 + " ms");
+        System.out.println("Tiempo de búsqueda del último elemento: " + searchTime / DATA_SIZE + " ms");
     }
-
-
 
 
 
