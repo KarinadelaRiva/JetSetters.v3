@@ -1,17 +1,18 @@
 package org.jetsettersv2.menus;
 import org.jetsettersv2.collections.ArrayListGeneric;
-import org.jetsettersv2.exceptions.CapacidadExcedidaException;
 import org.jetsettersv2.exceptions.ElementoNoEncontradoException;
 import org.jetsettersv2.exceptions.LeerJsonException;
-import org.jetsettersv2.exceptions.RutaDuplicadaException;
 import org.jetsettersv2.models.concrete.*;
 import org.jetsettersv2.utilities.Fecha;
 import org.jetsettersv2.utilities.Hora;
-
 import java.io.IOException;
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
+
 
 import static org.jetsettersv2.menus.MenuLogin.pausarConTecla;
 import static org.jetsettersv2.utilities.JacksonUtil.*;
@@ -19,6 +20,7 @@ import static org.jetsettersv2.utilities.JacksonUtil.*;
 public class MenuVuelo {
 
     private static final Scanner scanner = new Scanner(System.in);
+
     public static void mostrarMenuVuelo() {
         Scanner scanner = new Scanner(System.in);
 
@@ -36,8 +38,8 @@ public class MenuVuelo {
             scanner.nextLine(); // Consumir salto de línea
 
             switch (opcion) {
-                case 1 :
-                    try{
+                case 1:
+                    try {
                         programarVueloNuevo();
                     } catch (LeerJsonException e) {
                         System.err.println("Error al programar el vuelo: " + e.getMessage());
@@ -53,7 +55,7 @@ public class MenuVuelo {
                     pausarConTecla();
                     break;
                 case 3:
-                    //asignarTripulacion(scanner, admin);
+
                     pausarConTecla();
                     break;
                 case 4:
@@ -63,7 +65,7 @@ public class MenuVuelo {
                 case 5:
                     System.out.println(" ");
                     break;
-                default :
+                default:
                     System.out.println("Opción inválida. Intente nuevamente.");
             }
         } while (opcion != 5);
@@ -72,35 +74,145 @@ public class MenuVuelo {
 
     public static void programarVueloNuevo() throws LeerJsonException {
         Scanner scanner = new Scanner(System.in);
-        ArrayListGeneric<Vuelo> vuelos= new ArrayListGeneric<>();
+        ArrayListGeneric<Vuelo> vuelos = new ArrayListGeneric<>();
+        ArrayListGeneric<Avion> aviones = new ArrayListGeneric<>();
+        ArrayListGeneric<Ruta> rutas = new ArrayListGeneric<>();
+        Vuelo nuevoVuelo = new Vuelo();
 
-        try{
+        try {
             vuelos.copiarLista(getJsonToList(PATH_RESOURCES + PATH_VUELOS, Vuelo.class));
+        } catch (Exception e) {
+            throw new LeerJsonException("Error al leer el archivo JSON Vuelos");
+        }
+
+        try {
+            aviones.copiarLista(getJsonToList(PATH_RESOURCES + PATH_FLOTA, Avion.class));
+        } catch (Exception e) {
+            throw new LeerJsonException("Error al leer el archivo JSON Vuelos");
+        }
+
+        try {
+            rutas.copiarLista(getJsonToList(PATH_RESOURCES + PATH_RUTAS, Ruta.class));
         } catch (Exception e) {
             throw new LeerJsonException("Error al leer el archivo JSON Vuelos");
         }
 
         System.out.println("--- Programar Vuelo Nuevo ---");
         try {
+
             System.out.print("Ingrese el número de vuelo: ");
             String nroVuelo = scanner.nextLine();
+            nuevoVuelo.setNroVuelo(nroVuelo);
 
-            System.out.print("Ingrese un Avion para este vuelo: ");
-            String avion = scanner.nextLine();
+            boolean flag = true;
 
-            System.out.print("Ingrese la ruta: ");
-            String ruta = scanner.nextLine();
+            do {
+                System.out.print("Ingrese la matrícula del avión: ");
+                String matriculaAvion = scanner.nextLine();
+                flag = true; // Reinicia la bandera
 
-            System.out.print("Ingrese la fecha de salida (YYYY-MM-DD): ");
-            String fechaSalida = scanner.nextLine();
+                boolean encontrado = false;
+                for (Avion avion : aviones) {
+                    if (avion.getMatricula().equals(matriculaAvion)) {
+                        nuevoVuelo.setAvion(avion);
+                        encontrado = true;
+                        flag = false; // Salir del bucle si se encuentra el avión
+                        break;
+                    }
+                }
 
-            System.out.print("Ingrese la hora de salida (HH:MM): ");
-            String horaSalida = scanner.nextLine();
+                if (!encontrado) {
+                    System.out.println("Matrícula inválida. Intente de nuevo.");
+                }
+
+            } while (flag);
+
+            boolean flag2;
+            do {
+                System.out.print("Ingrese la ruta del avión (ID de la ruta): ");
+                if (scanner.hasNextLine()) {
+                    String idRuta = scanner.nextLine();
+                    flag2 = true; // Reinicia la bandera
+
+                    boolean encontrado = false;
+                    for (Ruta ruta : rutas) {
+                        if (ruta.getIdRuta().equals(idRuta)) {
+                            nuevoVuelo.setRuta(ruta);
+                            encontrado = true;
+                            flag2 = false; // Salir del bucle si se encuentra la ruta
+                            break;
+                        }
+                    }
+
+                    if (!encontrado) {
+                        System.out.println("La ruta es inválida. Intente de nuevo.");
+                    }
+                } else {
+                    System.out.println("Entrada inválida. Por favor, ingrese un número.");
+                    scanner.next(); // Limpia la entrada inválida
+                    flag2 = true;
+                }
+            } while (flag2);
+
+            String fechaSalida;
+            boolean fechaValida = false;
+
+            // Formateador de fecha estricto
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyyMMdd");
+
+            // Obtener fecha válida
+            do {
+                System.out.print("Ingrese la fecha de salida (YYYYMMDD): ");
+                fechaSalida = scanner.nextLine().trim(); // Usar trim() para evitar espacios adicionales
+
+                try {
+                    // Parsear la fecha
+                    LocalDate fecha = LocalDate.parse(fechaSalida, formatter);
+
+                    // Validar que la fecha no sea del pasado
+                    if (fecha.isBefore(LocalDate.now())) {
+                        System.out.println("La fecha ingresada ya pasó. Por favor, ingrese una fecha futura o actual.");
+                    } else {
+                        fechaValida = true; // Fecha válida
+                        System.out.println("Fecha válida ingresada: " + fecha);
+                    }
+                } catch (DateTimeParseException e) {
+                    System.out.println("Formato inválido. Por favor, ingrese la fecha en formato yyyyMMdd.");
+                }
+            } while (!fechaValida);
+
+            // Una vez validada, asignamos la fecha
+            Fecha fechaObj = new Fecha(fechaSalida);
+            nuevoVuelo.setFechaSalida(fechaObj);
+
+            System.out.println("Fecha de salida registrada: " + fechaSalida);
 
 
-            Vuelo nuevoVuelo = new Vuelo();
+
+            String horaSalida;
+            boolean horaValida = false;
+
+            do {
+                System.out.print("Ingrese la hora de salida (HH:MM): ");
+                horaSalida = scanner.nextLine();
+
+                // Intentamos parsear la hora usando LocalTime
+                try {
+                    LocalTime.parse(horaSalida, DateTimeFormatter.ofPattern("HH:mm"));
+                    horaValida = true; // Si no lanza excepción, la hora es válida
+                } catch (DateTimeParseException e) {
+                    System.out.println("Formato inválido. Por favor, ingrese la hora en formato HH:MM.");
+                }
+            } while (!horaValida);
+
+            // Una vez validada, asignamos la hora
+            Hora horaObj = new Hora(horaSalida); // Suponiendo que tienes una clase Hora
+            nuevoVuelo.setHoraSalida(horaObj);
+
+            System.out.println("Hora de salida registrada: " + horaSalida);
+
+
             vuelos.add(nuevoVuelo);
-
             System.out.println("¡Vuelo programado con éxito!");
         } catch (Exception e) {
             System.out.println("Error al programar el vuelo: " + e.getMessage());
@@ -108,13 +220,10 @@ public class MenuVuelo {
 
         try {
             writeListToJsonFile(vuelos, PATH_RESOURCES + PATH_VUELOS);
-            System.out.println("Vuelo programado con éxito.");
         } catch (Exception e) {
             System.err.println("Error al escribir el archivo JSON: " + e.getMessage());
         }
-
     }
-
 
     public static Vuelo reprogramarVueloExistente(Vuelo vuelo) {
         Scanner scanner = new Scanner(System.in);
@@ -148,7 +257,8 @@ public class MenuVuelo {
         return vueloModificado;
     }
 
-    public static ArrayListGeneric<Vuelo> cargarvuelosDesdeJson(ArrayListGeneric<Vuelo> vuelos) throws LeerJsonException {
+    public static ArrayListGeneric<Vuelo> cargarvuelosDesdeJson(ArrayListGeneric<Vuelo> vuelos) throws
+            LeerJsonException {
         ArrayListGeneric<Vuelo> vuelosCargados = new ArrayListGeneric<>();
 
         try {
@@ -166,7 +276,8 @@ public class MenuVuelo {
         return vuelosCargados;
     }
 
-    public static int buscarPosVueloPorNroVuelo(String nroVuelo, ArrayListGeneric<Vuelo> vuelo) throws ElementoNoEncontradoException {
+    public static int buscarPosVueloPorNroVuelo(String nroVuelo, ArrayListGeneric<Vuelo> vuelo) throws
+            ElementoNoEncontradoException {
         for (int i = 0; i < vuelo.size(); i++) {
             if (vuelo.get(i).getNroVuelo().equals(nroVuelo)) {
                 return i;  // Retorna la posición del elemento si coincide el nro de vuelo
@@ -175,11 +286,11 @@ public class MenuVuelo {
         throw new ElementoNoEncontradoException("No se encontró un Vuelo con el numero: " + nroVuelo);
     }
 
-    public static void subMenuModificarVuelo() throws LeerJsonException{
+    public static void subMenuModificarVuelo() throws LeerJsonException {
         String nroVueloBuscado;
-        ArrayListGeneric<Vuelo> vuelos= new ArrayListGeneric<>();
+        ArrayListGeneric<Vuelo> vuelos = new ArrayListGeneric<>();
 
-        try{
+        try {
             vuelos.copiarLista(getJsonToList(PATH_RESOURCES + PATH_VUELOS, Vuelo.class));
         } catch (Exception e) {
             throw new LeerJsonException("Error al leer el archivo JSON Vuelos");
@@ -191,8 +302,8 @@ public class MenuVuelo {
         System.out.println("Buscando vuelo numero: " + nroVueloBuscado);
 
         int posVuelo = -1;
-        try{
-            posVuelo = buscarPosVueloPorNroVuelo(nroVueloBuscado,vuelos);
+        try {
+            posVuelo = buscarPosVueloPorNroVuelo(nroVueloBuscado, vuelos);
             //vuelo.get(posVuelo).imprimir();
         } catch (Exception e) {
             System.err.println(e.getMessage());
@@ -225,7 +336,7 @@ public class MenuVuelo {
                 System.out.println("No hay vuelos disponibles.");
             } else {
                 System.out.println("\nListado de vuelos:");
-                for (Vuelo vuelo: vuelosCargados) {
+                for (Vuelo vuelo : vuelosCargados) {
                     vuelo.toString(); // Llama al método imprimir de la clase vuelo
                 }
             }
@@ -235,34 +346,5 @@ public class MenuVuelo {
             System.err.println("Se ha producido un error inesperado: " + e.getMessage());
         }
     }
-    public void agregarTripulantesDesdeJson(String pathJson) throws CapacidadExcedidaException, LeerJsonException {
-        try {
-            // Leer tripulantes desde el archivo JSON
-            List<RegistroDeVuelo> registroDeVuelos = getJsonToList(pathJson, RegistroDeVuelo.class);
-
-            // Verificar si la lista está vacía
-            if (registroDeVuelos == null || registroDeVuelos.isEmpty()) {
-                throw new LeerJsonException("El archivo JSON no contiene datos de tripulación.");
-            }
-
-            // Agregar cada tripulante de la lista
-            for (RegistroDeVuelo registroDeVuelo1 : registroDeVuelos) {
-//                if (avion.etLista().size() < avion.getCapacidadTripulanteCabina()) {
-//                    registroTripulanteCabina.agregarElemento(tripulante);
-//                    System.out.println("Tripulante " + tripulante.getNombre() + " agregado correctamente.");
-//                } else {
-//                    throw new CapacidadExcedidaException("No se pueden agregar más tripulantes de cabina. Capacidad máxima alcanzada.");
-//                }
-            }
-        } catch (Exception e) {
-//            throw new LeerJsonException("Error al leer o procesar el archivo JSON: " + e.getMessage(), e);
-        }
-    }
-
-
-
 
 }
-
-
-

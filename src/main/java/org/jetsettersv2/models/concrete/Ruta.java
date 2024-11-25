@@ -3,6 +3,7 @@ package org.jetsettersv2.models.concrete;
 import org.jetsettersv2.models.concrete.Aeropuerto;
 
 public class Ruta {
+    private String idRuta;
     private Aeropuerto origen;
     private Aeropuerto destino;
     private double distanciaKM;
@@ -11,7 +12,7 @@ public class Ruta {
     // <<<<<<<METODOS IMPRESION>>>>>>>
 
     public void imprimir() {
-        System.out.println("Ruta "+this.origen.getCodigo()+"-"+this.destino.getCodigo());
+        System.out.println("Ruta " + this.origen.getCodigo() + "-" + this.destino.getCodigo());
         System.out.println("Origen............................:" + this.origen.getCiudad());
         System.out.println("Aeropuerto............................:" + this.origen.getNombre());
         System.out.println("Destino............................:" + this.destino.getCiudad());
@@ -22,7 +23,7 @@ public class Ruta {
         long minutos = (duracion % 3600) / 60;
         long segundos = duracion % 60;
         System.out.println("Duración.............................: " + horas + " horas " + minutos + " minutos " + segundos + " segundos");
-        System.out.println("....................................."+ "\n");
+        System.out.println("....................................." + "\n");
     }
 
     // <<<<<<<CONSTRUCTORES>>>>>>>
@@ -54,6 +55,10 @@ public class Ruta {
     public long getDuracion() {
         return duracion; // retorna la duración en segundos
     }
+    public String getIdRuta() {
+        return idRuta;
+    }
+
 
     // <<<<<<<SETTERS>>>>>>>
 
@@ -72,6 +77,12 @@ public class Ruta {
     public void setDuracion(long duracion) {
         this.duracion = duracion;
     }
+
+    public Ruta setIdRuta(String idRuta) {
+        this.idRuta = idRuta;
+        return this;
+    }
+
 
     // <<<<<<<BUILDERS>>>>>>>
 
@@ -99,12 +110,12 @@ public class Ruta {
 
     @Override
     public String toString() {
-        return "....................................."+"\n"+
-                "Origen" +"\n"+ this.origen + "\n" +
-                "Destino" +"\n"+ this.destino + "\n" +
+        return "....................................." + "\n" +
+                "Origen" + "\n" + this.origen + "\n" +
+                "Destino" + "\n" + this.destino + "\n" +
                 "Distancia............................: " + distanciaKM + " km\n" +
-                "Duración.............................: " + duracion / 3600 + " horas " + (duracion % 3600) / 60 + " minutos " + duracion % 60 + " segundos\n"+
-                "....................................."+ "\n";
+                "Duración.............................: " + duracion / 3600 + " horas " + (duracion % 3600) / 60 + " minutos " + duracion % 60 + " segundos\n" +
+                "....................................." + "\n";
     }
 
     // <<<<<<<EQUALS>>>>>>>
@@ -135,4 +146,9 @@ public class Ruta {
         result = 31 * result + Long.hashCode(duracion);
         return result;
     }
+
 }
+
+
+
+
