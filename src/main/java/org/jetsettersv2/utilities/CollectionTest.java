@@ -11,7 +11,7 @@ import java.util.*;
 import static org.jetsettersv2.utilities.Tipografias.printTitulo;
 
 public class CollectionTest {
-    private static final int DATA_SIZE = 10_000;
+    private static final int DATA_SIZE = 170_000;
 
     public static void main(String[] args) {
         int dataSize = DATA_SIZE; // Número de objetos a insertar

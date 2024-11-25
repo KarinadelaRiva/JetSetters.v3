@@ -105,7 +105,6 @@ public class Reserva {
         System.out.println("DNI Pasajero.................: " + this.usuarioLogueado.getDni());
         System.out.println("Vuelo........................: " + this.vuelo.getNroVuelo());
         System.out.println("Numero de reserva............: " + this.numeroReserva);
-        System.out.println("CheckIn estado...............: " + this.checkIn.imprimirEstadoCheckIn());
     }
 
 

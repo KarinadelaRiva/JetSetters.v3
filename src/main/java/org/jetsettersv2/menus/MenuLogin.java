@@ -320,7 +320,7 @@ public class MenuLogin {
                 System.out.println("Vuelo: " + v.getNroVuelo());
                 System.out.println("Fecha de salida: " + v.getFechaSalida().obtenerFecha());
                 System.out.println("Hora de salida: " + v.getHoraSalida());
-                System.out.println("Ruta: " + v.getRuta().getOrigen() + " - " + v.getRuta().getDestino());
+                System.out.println("Ruta: " + v.getRuta().getOrigen().getCiudad() + " - " + v.getRuta().getDestino().getCiudad() + "\n");
             }
         }
     }
