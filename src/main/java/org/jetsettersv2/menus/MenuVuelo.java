@@ -30,7 +30,7 @@ public class MenuVuelo {
             System.out.println("2. Reprogramar vuelo existente");
             System.out.println("3. Asignar tripulación a vuelo");
             System.out.println("4. Ver vuelos");
-            System.out.println("0. volver");
+            System.out.println("0. Volver");
             System.out.print("Seleccione una opción: ");
             opcion = scanner.nextInt();
             scanner.nextLine(); // Consumir salto de línea

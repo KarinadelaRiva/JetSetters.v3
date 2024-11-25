@@ -1,1 +1,231 @@
-[  ]
+[ {
+  "nroVuelo" : "V00000001",
+  "avion" : {
+    "modelo" : "Boeing 787 Dreamliner",
+    "matricula" : "MN7890",
+    "capacidadTripulanteCabina" : 8,
+    "capacidadTripulanteTecnico" : 4,
+    "capacidadPasajeros" : 300,
+    "enMantenimiento" : false
+  },
+  "ruta" : {
+    "idRuta" : "BRCUSH",
+    "origen" : {
+      "codigo" : "BRC",
+      "nombre" : "Aeropuerto Internacional Teniente Luis Candelaria",
+      "ciudad" : "Bariloche"
+    },
+    "destino" : {
+      "codigo" : "USH",
+      "nombre" : "Aeropuerto Internacional Malvinas Argentinas",
+      "ciudad" : "Ushuaia"
+    },
+    "distanciaKM" : 1450.0,
+    "duracion" : 9000
+  },
+  "fechaSalida" : {
+    "fecha" : "2024-11-25"
+  },
+  "horaSalida" : {
+    "hora" : "15:15"
+  },
+  "registroDeVuelo" : {
+    "avion" : {
+      "modelo" : "Boeing 787 Dreamliner",
+      "matricula" : "MN7890",
+      "capacidadTripulanteCabina" : 8,
+      "capacidadTripulanteTecnico" : 4,
+      "capacidadPasajeros" : 300,
+      "enMantenimiento" : false
+    },
+    "registroTripulanteCabina" : [ {
+      "idPersona" : "5b166c11-8e1a-4e2f-bef3-97f7857cba88",
+      "nombre" : "Ana",
+      "apellido" : "Martínez",
+      "dni" : "65489500",
+      "pasaporte" : "N65279845",
+      "telefono" : "+5499404778827",
+      "direccion" : {
+        "calle" : "Belgrano",
+        "numero" : 8913,
+        "ciudad" : "Tucumán",
+        "codigoPostal" : "8942",
+        "pais" : "Arg"
+      },
+      "email" : "maría.lópez@example.com",
+      "password" : "María*6353",
+      "legajo" : "C0002",
+      "fechaAlta" : {
+        "fecha" : "2023-04-11"
+      },
+      "fechaBaja" : null,
+      "activo" : true,
+      "tipoPersonal" : "AZAFATA",
+      "horasVueloAcumuladas" : 235,
+      "desempeño" : "A Mejorar",
+      "certificaciones" : "Manejo de Emergencias, Seguridad en Vuelo"
+    }, {
+      "idPersona" : "d7ef9ce8-a4b8-4e51-84f4-d9ddc733dc81",
+      "nombre" : "Juan",
+      "apellido" : "Rodríguez",
+      "dni" : "18816538",
+      "pasaporte" : "C42839833",
+      "telefono" : "+5497732074721",
+      "direccion" : {
+        "calle" : "Belgrano",
+        "numero" : 950,
+        "ciudad" : "Rosario",
+        "codigoPostal" : "1112",
+        "pais" : "Arg"
+      },
+      "email" : "maría.lópez@example.com",
+      "password" : "María*7380",
+      "legajo" : "C0042",
+      "fechaAlta" : {
+        "fecha" : "2021-05-07"
+      },
+      "fechaBaja" : null,
+      "activo" : true,
+      "tipoPersonal" : "AZAFATA",
+      "horasVueloAcumuladas" : 2838,
+      "desempeño" : "Satisfactorio",
+      "certificaciones" : "Manejo de Emergencias, Seguridad en Vuelo, Instructor"
+    }, {
+      "idPersona" : "8772b034-2dcc-4a08-bb63-86ef7a63dbeb",
+      "nombre" : "Lucía",
+      "apellido" : "Martínez",
+      "dni" : "49925858",
+      "pasaporte" : "L71870042",
+      "telefono" : "+5493717094821",
+      "direccion" : {
+        "calle" : "Rivadavia",
+        "numero" : 6038,
+        "ciudad" : "Buenos Aires",
+        "codigoPostal" : "8607",
+        "pais" : "Arg"
+      },
+      "email" : "valentina.torres@example.com",
+      "password" : "Valentina*4933",
+      "legajo" : "C0030",
+      "fechaAlta" : {
+        "fecha" : "2020-09-09"
+      },
+      "fechaBaja" : null,
+      "activo" : true,
+      "tipoPersonal" : "AZAFATA",
+      "horasVueloAcumuladas" : 2400,
+      "desempeño" : "Muy Bueno",
+      "certificaciones" : "Seguridad en Vuelo, Servicio al Cliente, Primeros Auxilios"
+    } ],
+    "registroTripulacionTecnica" : [ {
+      "idPersona" : "b74ae0cc-adb8-498f-ac95-060758457752",
+      "nombre" : "Jorge",
+      "apellido" : "López",
+      "dni" : "63942585",
+      "pasaporte" : "L87700724",
+      "telefono" : "+542730831392",
+      "direccion" : {
+        "calle" : "Belgrano",
+        "numero" : 6258,
+        "ciudad" : "Buenos Aires",
+        "codigoPostal" : "4047",
+        "pais" : "Arg"
+      },
+      "email" : "tripulacion872@example.com",
+      "password" : "Pass@286",
+      "legajo" : "T0014",
+      "fechaAlta" : {
+        "fecha" : "2016-01-19"
+      },
+      "fechaBaja" : null,
+      "activo" : true,
+      "tipoPersonal" : "INGENIERO_DE_VUELO",
+      "horasVueloAcumuladas" : 150,
+      "nroLicencia" : 675948,
+      "especialidad" : "Mantenimiento",
+      "experiencia" : 37
+    }, {
+      "idPersona" : "957d2a13-e43d-40a3-a363-3c176504ea0e",
+      "nombre" : "Carlos",
+      "apellido" : "López",
+      "dni" : "60677327",
+      "pasaporte" : "A91561212",
+      "telefono" : "+545222768638",
+      "direccion" : {
+        "calle" : "Mitre",
+        "numero" : 4273,
+        "ciudad" : "La Plata",
+        "codigoPostal" : "7858",
+        "pais" : "Arg"
+      },
+      "email" : "tripulacion133@example.com",
+      "password" : "Pass@305",
+      "legajo" : "T0025",
+      "fechaAlta" : {
+        "fecha" : "2021-06-18"
+      },
+      "fechaBaja" : null,
+      "activo" : true,
+      "tipoPersonal" : "PILOTO",
+      "horasVueloAcumuladas" : 8206,
+      "nroLicencia" : 100697,
+      "especialidad" : "Aeronáutica",
+      "experiencia" : 29
+    }, {
+      "idPersona" : "36aab1c8-5697-4f2f-ba85-3071b19d4f61",
+      "nombre" : "Roberto",
+      "apellido" : "Fernández",
+      "dni" : "29752905",
+      "pasaporte" : "E42645186",
+      "telefono" : "+544501386740",
+      "direccion" : {
+        "calle" : "Belgrano",
+        "numero" : 5063,
+        "ciudad" : "Córdoba",
+        "codigoPostal" : "6991",
+        "pais" : "Arg"
+      },
+      "email" : "tripulacion752@example.com",
+      "password" : "Admin@585",
+      "legajo" : "T0005",
+      "fechaAlta" : {
+        "fecha" : "2008-03-25"
+      },
+      "fechaBaja" : null,
+      "activo" : true,
+      "tipoPersonal" : "PILOTO",
+      "horasVueloAcumuladas" : 6720,
+      "nroLicencia" : 547606,
+      "especialidad" : "Electrónica",
+      "experiencia" : 17
+    }, {
+      "idPersona" : "36aab1c8-5697-4f2f-ba85-3071b19d4f61",
+      "nombre" : "Roberto",
+      "apellido" : "Fernández",
+      "dni" : "29752905",
+      "pasaporte" : "E42645186",
+      "telefono" : "+544501386740",
+      "direccion" : {
+        "calle" : "Belgrano",
+        "numero" : 5063,
+        "ciudad" : "Córdoba",
+        "codigoPostal" : "6991",
+        "pais" : "Arg"
+      },
+      "email" : "tripulacion752@example.com",
+      "password" : "Admin@585",
+      "legajo" : "T0005",
+      "fechaAlta" : {
+        "fecha" : "2008-03-25"
+      },
+      "fechaBaja" : null,
+      "activo" : true,
+      "tipoPersonal" : "PILOTO",
+      "horasVueloAcumuladas" : 6720,
+      "nroLicencia" : 547606,
+      "especialidad" : "Electrónica",
+      "experiencia" : 17
+    } ],
+    "registroPasajeros" : [ ]
+  }
+} ]

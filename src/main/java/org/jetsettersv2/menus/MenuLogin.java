@@ -73,7 +73,7 @@ public class MenuLogin {
     }
 
     public static int opcionesLogin() {
-        int opcion = -1;
+        int opcion;
 
         System.out.println("1. Iniciar Sesion");
         System.out.println("2. Registrarse");
@@ -81,14 +81,10 @@ public class MenuLogin {
         System.out.println("4. Ingresar como Administrador");
         System.out.println("0. Salir\n");
 
-        while (opcion < 0 || opcion > 4) {
-            try {
-                System.out.print("Ingrese una opcion: ");
-                opcion = Integer.parseInt(scanner.nextLine());
-            } catch (NumberFormatException e) {
-                System.out.println("Opcion no valida");
-            }
-        }
+        System.out.print("Ingrese una opcion: ");
+        opcion = scanner.nextInt();
+        scanner.nextLine(); // Consumir salto de línea
+
         return opcion;
     }
 

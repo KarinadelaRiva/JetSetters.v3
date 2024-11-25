@@ -99,7 +99,6 @@ public class SubMenuAsignarTrip {
                     break;
                 case 5:
                     verTripulacionAsignada(vuelo);
-                    pausarConTecla();
                     break;
                 case 6:
                     vuelo = retirarTripulante(vuelo);
@@ -165,7 +164,9 @@ public class SubMenuAsignarTrip {
 
         } while (flag == 0);
 
-        if (flag == 1 && vuelo.getRegistroDeVuelo().getRegistroTripulacionTecnica().size() < vuelo.getAvion().getCapacidadTripulanteTecnico()) {
+        if(vuelo.getRegistroDeVuelo().getRegistroTripulacionTecnica().contains(pilotoAsignado)){
+            System.out.println("Tripulante ya asignado a este vuelo con anterioridad");
+        } else if (vuelo.getRegistroDeVuelo().getRegistroTripulacionTecnica().size() < vuelo.getAvion().getCapacidadTripulanteTecnico()) {
             // Si se encuentra el piloto y hay espacio, se asigna
             vuelo.getRegistroDeVuelo().getRegistroTripulacionTecnica().add(pilotoAsignado);
             System.out.println("Tripulante asignado correctamente.");
@@ -304,7 +305,7 @@ public class SubMenuAsignarTrip {
 
         // Mostrar tripulantes de cabina disponibles
         for (TripulacionCabina tripulacionCabina : tripCabina) {
-            if (!tripulacionCabina.getTipoPersonal().equals(TipoPersonalAereo.PILOTO)
+            if (!tripulacionCabina.getTipoPersonal().equals(TipoPersonalAereo.AZAFATA)
                     && !vuelo.getRegistroDeVuelo().getRegistroTripulanteCabina().contains(tripulacionCabina)) {
                 System.out.println("Legajo: " + tripulacionCabina.getLegajo() + " - Nombre: " + tripulacionCabina.getNombre()
                         + " " + tripulacionCabina.getApellido() + " - Tipo: " + tripulacionCabina.getTipoPersonal());
@@ -347,150 +348,6 @@ public class SubMenuAsignarTrip {
 
         return vuelo;
     }
-
-//    public static Vuelo asignarAzafata(Vuelo vuelo) throws LeerJsonException, CapacidadExcedidaException{
-//        TripulacionCabina azafataAsignada = new TripulacionCabina();
-//        ArrayListGeneric<TripulacionCabina> tripCabina = new ArrayListGeneric<>();
-//        try {
-//            tripCabina.copiarLista(getJsonToList(PATH_RESOURCES + PATH_TRIPULACIONCABINA, TripulacionCabina.class));
-//        } catch (Exception e) {
-//            System.out.println("Error al leer el archivo JSON Tripulacion Cabina");
-//        }
-//
-//        for (TripulacionCabina tripulacionCabina : tripCabina) {
-//            if (tripulacionCabina.getTipoPersonal().equals(TipoPersonalAereo.AZAFATA)
-//                    && !vuelo.getRegistroDeVuelo().getRegistroTripulanteCabina().contains(tripulacionCabina)) {
-//                System.out.println("Legajo: " + tripulacionCabina.getLegajo() + " - Nombre: " + tripulacionCabina.getNombre() + " " + tripulacionCabina.getApellido());
-//            }
-//        }
-//
-//        int flag = 0;
-//        do {
-//            System.out.println("Ingrese el número de legajo de la azafata a asignar: ");
-//            int numeroLegajo = scanner.nextInt();
-//            scanner.nextLine(); // Consumir salto de línea
-//            String legajo = String.format("C%04d", numeroLegajo);
-//
-//            for (TripulacionCabina tripulante : tripCabina) {
-//                if (tripulante.getLegajo().equals(legajo) && tripulante.getTipoPersonal().equals(TipoPersonalAereo.AZAFATA)) {
-//                    azafataAsignada = tripulante;
-//                    flag = 1;
-//                    break;
-//                } else if (vuelo.getRegistroDeVuelo().getRegistroTripulanteCabina().contains(tripulante)){
-//                    System.out.println("Tripulante ya asignado a este vuelo");
-//                    flag = 0;
-//                } else {
-//                    System.out.println("Legajo no encontrado entre las azafatas, intente nuevamente");
-//                    flag = 0;
-//                }
-//            }
-//        } while (flag == 0);
-//
-//        if (vuelo.getRegistroDeVuelo().getRegistroTripulacionTecnica().size() < vuelo.getAvion().getCapacidadTripulanteCabina()) {
-//            vuelo.getRegistroDeVuelo().getRegistroTripulanteCabina().add(azafataAsignada);
-//        } else {
-//            throw new CapacidadExcedidaException("Tripulación de Cabina Completada. No se puede agregar más tripulantes.");
-//        }
-//
-//        return vuelo;
-//    }
-//
-//
-//
-//    public static Vuelo asignarOtroTripulanteTecnico(Vuelo vuelo) throws LeerJsonException, CapacidadExcedidaException{
-//        TripulacionTecnica tripulanteAsignado = new TripulacionTecnica();
-//        ArrayListGeneric<TripulacionTecnica> tripTecnica = new ArrayListGeneric<>();
-//        try {
-//            tripTecnica.copiarLista(getJsonToList(PATH_RESOURCES + PATH_TRIPULACIONTECNICA, TripulacionTecnica.class));
-//        } catch (Exception e) {
-//            System.out.println("Error al leer el archivo JSON Tripulacion Tecnica");
-//        }
-//
-//        for (TripulacionTecnica tripulacionTecnica : tripTecnica) {
-//            if(tripulacionTecnica.getTipoPersonal().equals(TipoPersonalAereo.INGENIERO_DE_VUELO)
-//                    && !vuelo.getRegistroDeVuelo().getRegistroTripulacionTecnica().contains(tripulacionTecnica)) {
-//                System.out.println("Legajo: " + tripulacionTecnica.getLegajo() + " - Nombre: " + tripulacionTecnica.getNombre() + " " + tripulacionTecnica.getApellido() +" - Tipo: " + tripulacionTecnica.getTipoPersonal());
-//            }
-//        }
-//
-//        int flag = 0;
-//        do {
-//            System.out.println("Ingrese el número de legajo del tripulante tecnico a asignar: ");
-//            int numeroLegajo = scanner.nextInt();
-//            scanner.nextLine(); // Consumir salto de línea
-//            String legajo = String.format("T%04d", numeroLegajo);
-//
-//            for (TripulacionTecnica tripulante : tripTecnica) {
-//                if (tripulante.getLegajo().equals(legajo) && !vuelo.getRegistroDeVuelo().getRegistroTripulacionTecnica().contains(tripulante)) {
-//                    tripulanteAsignado = tripulante;
-//                    flag = 1;
-//                    break;
-//                } else if (vuelo.getRegistroDeVuelo().getRegistroTripulacionTecnica().contains(tripulante)){
-//                    System.out.println("Tripulante ya asignado a este vuelo");
-//                    flag = 0;
-//                } else {
-//                    System.out.println("Legajo no encontrado entre los tripulantes tecnicos, intente nuevamente");
-//                    flag = 0;
-//                }
-//            }
-//        } while (flag == 0);
-//
-//        if (vuelo.getRegistroDeVuelo().getRegistroTripulacionTecnica().size() < vuelo.getAvion().getCapacidadTripulanteTecnico()) {
-//            vuelo.getRegistroDeVuelo().getRegistroTripulacionTecnica().add(tripulanteAsignado);
-//        } else {
-//            System.out.println("Tripulación Tecnica Completada. No se puede agregar más tripulantes.");
-//        }
-//
-//        return vuelo;
-//    }
-//
-//    public static Vuelo asignarOtroTripulanteCabina(Vuelo vuelo) throws LeerJsonException, CapacidadExcedidaException{
-//        TripulacionCabina tripulanteAsignado = new TripulacionCabina();
-//        ArrayListGeneric<TripulacionCabina> tripCabina = new ArrayListGeneric<>();
-//        try {
-//            tripCabina.copiarLista(getJsonToList(PATH_RESOURCES + PATH_TRIPULACIONCABINA, TripulacionCabina.class));
-//        } catch (Exception e) {
-//            System.out.println("Error al leer el archivo JSON Tripulacion Cabina");
-//        }
-//
-//        for (TripulacionCabina tripulacionCabina : tripCabina) {
-//            if (!tripulacionCabina.getTipoPersonal().equals(TipoPersonalAereo.PILOTO)
-//                    && !vuelo.getRegistroDeVuelo().getRegistroTripulanteCabina().contains(tripulacionCabina)) {
-//                System.out.println("Legajo: " + tripulacionCabina.getLegajo() + " - Nombre: " + tripulacionCabina.getNombre() + " "+ tripulacionCabina.getApellido() + " - Tipo: " + tripulacionCabina.getTipoPersonal());
-//            }
-//        }
-//
-//        int flag = 0;
-//        do {
-//            System.out.println("Ingrese el número de legajo del tripulante de cabina a asignar: ");
-//            int numeroLegajo = scanner.nextInt();
-//            scanner.nextLine(); // Consumir salto de línea
-//            String legajo = String.format("C%04d", numeroLegajo);
-//
-//
-//            for (TripulacionCabina tripulante : tripCabina) {
-//                if (tripulante.getLegajo().equals(legajo) && !vuelo.getRegistroDeVuelo().getRegistroTripulanteCabina().contains(tripulante)) {
-//                    tripulanteAsignado = tripulante;
-//                    flag = 1;
-//                    break;
-//                } else if (vuelo.getRegistroDeVuelo().getRegistroTripulanteCabina().contains(tripulante)) {
-//                    System.out.println("Tripulante ya asignado a este vuelo");
-//                    flag = 0;
-//                } else {
-//                    System.out.println("Legajo no encontrado entre los tripulantes de cabina, intente nuevamente");
-//                    flag = 0;
-//                }
-//            }
-//        } while (flag == 0);
-//
-//        if (vuelo.getRegistroDeVuelo().getRegistroTripulanteCabina().size() < vuelo.getAvion().getCapacidadTripulanteCabina()) {
-//            vuelo.getRegistroDeVuelo().getRegistroTripulanteCabina().add(tripulanteAsignado);
-//        } else {
-//            System.out.println("Tripulación de Cabina Completada. No se puede agregar más tripulantes.");
-//        }
-//
-//        return vuelo;
-//    }
 
     public static void verTripulacionAsignada(Vuelo vuelo) {
         System.out.println("Tripulación Técnica:");
@@ -587,56 +444,10 @@ public class SubMenuAsignarTrip {
         return vuelo;
     }
 
-
-//    public static Vuelo retirarPiloto(Vuelo vuelo) {
-//        TripulacionTecnica pilotoRetirado;
-//        pilotoRetirado = null;
-//        ArrayListGeneric<TripulacionTecnica> tripTecnica = new ArrayListGeneric<>();
-//        try {
-//            tripTecnica.copiarLista(getJsonToList(PATH_RESOURCES + PATH_TRIPULACIONTECNICA, TripulacionTecnica.class));
-//        } catch (Exception e) {
-//            System.out.println("Error al leer el archivo JSON Tripulacion Tecnica");
-//        }
-//
-//        for (TripulacionTecnica tripulacionTecnica : vuelo.getRegistroDeVuelo().getRegistroTripulacionTecnica()) {
-//            if (tripulacionTecnica.getTipoPersonal().equals(TipoPersonalAereo.PILOTO)) {
-//                System.out.println("Legajo: " + tripulacionTecnica.getLegajo() + " - Nombre: " + tripulacionTecnica.getNombre());
-//            }
-//        }
-//
-//        int flag = 0;
-//        do {
-//            System.out.println("Ingrese el número de legajo del piloto a retirar: ");
-//            int numeroLegajo = scanner.nextInt();
-//            scanner.nextLine(); // Consumir salto de línea
-//            String legajo = String.format("T%04d", numeroLegajo);
-//
-//            for (TripulacionTecnica tripulante : tripTecnica) {
-//                if (tripulante.getLegajo().equals(legajo) && tripulante.getTipoPersonal().equals(TipoPersonalAereo.PILOTO)) {
-//                    pilotoRetirado = tripulante;
-//                    flag = 1;
-//                    break;
-//                } else {
-//                    System.out.println("Legajo no encontrado entre los pilotos, intente nuevamente");
-//                    flag = 0;
-//                }
-//            }
-//        } while (flag == 0);
-//
-//        vuelo.getRegistroDeVuelo().getRegistroTripulacionTecnica().remove(pilotoRetirado);
-//
-//        return vuelo;
-//    }
-
     public static Vuelo retirarAzafata(Vuelo vuelo) {
-        TripulacionCabina azafataRetirada = new TripulacionCabina();
-        ArrayListGeneric<TripulacionCabina> tripCabina = new ArrayListGeneric<>();
-        try {
-            tripCabina.copiarLista(getJsonToList(PATH_RESOURCES + PATH_TRIPULACIONCABINA, TripulacionCabina.class));
-        } catch (Exception e) {
-            System.out.println("Error al leer el archivo JSON Tripulacion Cabina");
-        }
+        TripulacionCabina azafataRetirada = null;
 
+        // Mostrar azafatas asignadas al vuelo
         for (TripulacionCabina tripulacionCabina : vuelo.getRegistroDeVuelo().getRegistroTripulanteCabina()) {
             if (tripulacionCabina.getTipoPersonal().equals(TipoPersonalAereo.AZAFATA)) {
                 System.out.println("Legajo: " + tripulacionCabina.getLegajo() + " - Nombre: " + tripulacionCabina.getNombre());
@@ -648,34 +459,38 @@ public class SubMenuAsignarTrip {
             System.out.println("Ingrese el número de legajo de la azafata a retirar: ");
             int numeroLegajo = scanner.nextInt();
             scanner.nextLine(); // Consumir salto de línea
-            String legajo = String.format("C%04d", numeroLegajo);
+            String legajoBuscado = String.format("C%04d", numeroLegajo);
 
-            for (TripulacionCabina tripulante : tripCabina) {
-                if (tripulante.getLegajo().equals(legajo) && tripulante.getTipoPersonal().equals(TipoPersonalAereo.AZAFATA)) {
+            boolean azafataEncontrada = false;
+            for (TripulacionCabina tripulante : vuelo.getRegistroDeVuelo().getRegistroTripulanteCabina()) {
+                if (tripulante.getLegajo().equals(legajoBuscado) && tripulante.getTipoPersonal().equals(TipoPersonalAereo.AZAFATA)) {
                     azafataRetirada = tripulante;
-                    flag = 1;
+                    azafataEncontrada = true;
+                    flag = 1; // Salir del bucle
                     break;
-                } else {
-                    System.out.println("Legajo no encontrado entre las azafatas, intente nuevamente");
-                    flag = 0;
                 }
             }
+
+            if (!azafataEncontrada) {
+                System.out.println("Legajo no encontrado entre las azafatas asignadas al vuelo, intente nuevamente");
+            }
+
         } while (flag == 0);
 
-        vuelo.getRegistroDeVuelo().getRegistroTripulanteCabina().remove(azafataRetirada);
+        // Retirar a la azafata si fue encontrada
+        if (azafataRetirada != null) {
+            vuelo.getRegistroDeVuelo().getRegistroTripulanteCabina().remove(azafataRetirada);
+            System.out.println("Azafata retirada correctamente del vuelo.");
+        }
 
         return vuelo;
     }
 
-    public static Vuelo retirarOtroTripulanteTecnico(Vuelo vuelo) {
-        TripulacionTecnica tripulanteRetirado = new TripulacionTecnica();
-        ArrayListGeneric<TripulacionTecnica> tripTecnica = new ArrayListGeneric<>();
-        try {
-            tripTecnica.copiarLista(getJsonToList(PATH_RESOURCES + PATH_TRIPULACIONTECNICA, TripulacionTecnica.class));
-        } catch (Exception e) {
-            System.out.println("Error al leer el archivo JSON Tripulacion Tecnica");
-        }
 
+    public static Vuelo retirarOtroTripulanteTecnico(Vuelo vuelo) {
+        TripulacionTecnica tripulanteRetirado = null;
+
+        // Mostrar tripulantes técnicos que no sean pilotos asignados al vuelo
         for (TripulacionTecnica tripulacionTecnica : vuelo.getRegistroDeVuelo().getRegistroTripulacionTecnica()) {
             if (!tripulacionTecnica.getTipoPersonal().equals(TipoPersonalAereo.PILOTO)) {
                 System.out.println("Legajo: " + tripulacionTecnica.getLegajo() + " - Nombre: " + tripulacionTecnica.getNombre() + " - Tipo: " + tripulacionTecnica.getTipoPersonal());
@@ -684,39 +499,43 @@ public class SubMenuAsignarTrip {
 
         int flag = 0;
         do {
-            System.out.println("Ingrese el número de legajo del tripulante tecnico a retirar: ");
+            System.out.println("Ingrese el número de legajo del tripulante técnico a retirar: ");
             int numeroLegajo = scanner.nextInt();
             scanner.nextLine(); // Consumir salto de línea
-            String legajo = String.format("T%04d", numeroLegajo);
+            String legajoBuscado = String.format("T%04d", numeroLegajo);
 
-            for (TripulacionTecnica tripulante : tripTecnica) {
-                if (tripulante.getLegajo().equals(legajo) && !tripulante.getTipoPersonal().equals(TipoPersonalAereo.PILOTO)) {
+            boolean tripulanteEncontrado = false;
+            for (TripulacionTecnica tripulante : vuelo.getRegistroDeVuelo().getRegistroTripulacionTecnica()) {
+                if (tripulante.getLegajo().equals(legajoBuscado) && !tripulante.getTipoPersonal().equals(TipoPersonalAereo.PILOTO)) {
                     tripulanteRetirado = tripulante;
-                    flag = 1;
+                    tripulanteEncontrado = true;
+                    flag = 1; // Salir del bucle
                     break;
-                } else {
-                    System.out.println("Legajo no encontrado entre los tripulantes tecnicos, intente nuevamente");
-                    flag = 0;
                 }
             }
+
+            if (!tripulanteEncontrado) {
+                System.out.println("Legajo no encontrado entre los tripulantes técnicos, intente nuevamente");
+            }
+
         } while (flag == 0);
 
-        vuelo.getRegistroDeVuelo().getRegistroTripulacionTecnica().remove(tripulanteRetirado);
+        // Retirar al tripulante si fue encontrado
+        if (tripulanteRetirado != null) {
+            vuelo.getRegistroDeVuelo().getRegistroTripulacionTecnica().remove(tripulanteRetirado);
+            System.out.println("Tripulante técnico retirado correctamente del vuelo.");
+        }
 
         return vuelo;
     }
 
-    public static Vuelo retirarOtroTripulanteCabina(Vuelo vuelo) {
-        TripulacionCabina tripulanteRetirado = new TripulacionCabina();
-        ArrayListGeneric<TripulacionCabina> tripCabina = new ArrayListGeneric<>();
-        try {
-            tripCabina.copiarLista(getJsonToList(PATH_RESOURCES + PATH_TRIPULACIONCABINA, TripulacionCabina.class));
-        } catch (Exception e) {
-            System.out.println("Error al leer el archivo JSON Tripulacion Cabina");
-        }
 
+    public static Vuelo retirarOtroTripulanteCabina(Vuelo vuelo) {
+        TripulacionCabina tripulanteRetirado = null;
+
+        // Mostrar tripulantes de cabina que no sean pilotos asignados al vuelo
         for (TripulacionCabina tripulacionCabina : vuelo.getRegistroDeVuelo().getRegistroTripulanteCabina()) {
-            if (!tripulacionCabina.getTipoPersonal().equals(TipoPersonalAereo.PILOTO)) {
+            if (!tripulacionCabina.getTipoPersonal().equals(TipoPersonalAereo.AZAFATA)) {
                 System.out.println("Legajo: " + tripulacionCabina.getLegajo() + " - Nombre: " + tripulacionCabina.getNombre() + " - Tipo: " + tripulacionCabina.getTipoPersonal());
             }
         }
@@ -726,24 +545,33 @@ public class SubMenuAsignarTrip {
             System.out.println("Ingrese el número de legajo del tripulante de cabina a retirar: ");
             int numeroLegajo = scanner.nextInt();
             scanner.nextLine(); // Consumir salto de línea
-            String legajo = String.format("C%04d", numeroLegajo);
+            String legajoBuscado = String.format("C%04d", numeroLegajo);
 
-            for (TripulacionCabina tripulante : tripCabina) {
-                if (tripulante.getLegajo().equals(legajo) && !tripulante.getTipoPersonal().equals(TipoPersonalAereo.PILOTO)) {
+            boolean tripulanteEncontrado = false;
+            for (TripulacionCabina tripulante : vuelo.getRegistroDeVuelo().getRegistroTripulanteCabina()) {
+                if (tripulante.getLegajo().equals(legajoBuscado) && !tripulante.getTipoPersonal().equals(TipoPersonalAereo.AZAFATA)) {
                     tripulanteRetirado = tripulante;
-                    flag = 1;
+                    tripulanteEncontrado = true;
+                    flag = 1; // Salir del bucle
                     break;
-                } else {
-                    System.out.println("Legajo no encontrado entre los tripulantes de cabina, intente nuevamente");
-                    flag = 0;
                 }
             }
+
+            if (!tripulanteEncontrado) {
+                System.out.println("Legajo no encontrado entre los tripulantes de cabina, intente nuevamente");
+            }
+
         } while (flag == 0);
 
-        vuelo.getRegistroDeVuelo().getRegistroTripulanteCabina().remove(tripulanteRetirado);
+        // Retirar al tripulante si fue encontrado
+        if (tripulanteRetirado != null) {
+            vuelo.getRegistroDeVuelo().getRegistroTripulanteCabina().remove(tripulanteRetirado);
+            System.out.println("Tripulante de cabina retirado correctamente del vuelo.");
+        }
 
         return vuelo;
     }
+
 
 }
 
