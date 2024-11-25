@@ -73,17 +73,24 @@ public class MenuLogin {
     }
 
     public static int opcionesLogin() {
-        int opcion;
+        int opcion = -1; // Inicializamos con un valor inválido
 
         System.out.println("1. Iniciar Sesion");
         System.out.println("2. Registrarse");
         System.out.println("3. Ver proximos vuelos");
         System.out.println("4. Ingresar como Administrador");
         System.out.println("0. Salir\n");
+        do {
+            System.out.print("Ingrese una opcion: ");
+            opcion = scanner.nextInt();
+            scanner.nextLine(); // Consumir salto de línea
 
-        System.out.print("Ingrese una opcion: ");
-        opcion = scanner.nextInt();
-        scanner.nextLine(); // Consumir salto de línea
+            if (opcion >= 0 && opcion <= 4) {
+                break; // Salimos del bucle si la opción está dentro del rango válido
+            } else {
+                System.out.println("Por favor, ingrese un número entre 0 y 4.");
+            }
+        }while (true);
 
         return opcion;
     }

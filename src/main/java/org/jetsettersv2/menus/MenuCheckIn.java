@@ -1,6 +1,7 @@
 package org.jetsettersv2.menus;
 
 import org.jetsettersv2.collections.ArrayListGeneric;
+import org.jetsettersv2.exceptions.LeerJsonException;
 import org.jetsettersv2.models.concrete.*;
 import org.jetsettersv2.utilities.Fecha;
 
@@ -38,7 +39,7 @@ public class MenuCheckIn {
                     pausarConTecla();
                     break;
                 case 2:
-                    mostrarEstadoCheckIn(usuarioLogueado, reservas);
+                    mostrarEstadoCheckIn(usuarioLogueado);
                     pausarConTecla();
                     break;
                 case 0:
@@ -149,12 +150,21 @@ public class MenuCheckIn {
         }
     }
 
-    private static void mostrarEstadoCheckIn(UsuarioCliente usuarioLogueado, ArrayListGeneric<Reserva> reservas) {
+    private static void mostrarEstadoCheckIn(UsuarioCliente usuarioLogueado) throws LeerJsonException {
+        ArrayListGeneric<Reserva> reservas = new ArrayListGeneric<>();
+
+        try {
+            reservas.copiarLista(getJsonToList(PATH_RESOURCES + PATH_RESERVAS, Reserva.class));
+        } catch (Exception e) {
+            System.err.println("Error al leer el archivo JSON: " + e.getMessage());
+            return;
+        }
+
         for (Reserva reserva : reservas) {
             if (reserva.getUsuarioLogueado().getIdPersona().equals(usuarioLogueado.getIdPersona())) {
                 CheckIn checkIn = reserva.getCheckIn();
                 if (checkIn != null) {
-                    System.out.println("Nro Vuelo: " + reserva.getVuelo().getNroVuelo() + " - Estado del Check-In: " + (checkIn.getEstadoCheck() ? "Realizado" : "Pendiente"));
+                    System.out.println("Nro Vuelo: " + reserva.getVuelo().getNroVuelo() + " - Estado del Check-In: " + checkIn.imprimirEstadoCheckIn());
                     if (checkIn.getEstadoCheck()) {
                         System.out.println("Fecha del Check-In: " + checkIn.getFechaCheck());
                     }
@@ -164,6 +174,5 @@ public class MenuCheckIn {
         }
         System.out.println("No se encontró una reserva para el usuario logueado.");
     }
-
 
 }
