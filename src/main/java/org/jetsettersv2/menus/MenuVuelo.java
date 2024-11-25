@@ -15,6 +15,7 @@ import java.util.Scanner;
 
 
 import static org.jetsettersv2.menus.MenuLogin.pausarConTecla;
+import static org.jetsettersv2.menus.SubMenuAsignarTrip.gestionarTripulacion;
 import static org.jetsettersv2.utilities.JacksonUtil.*;
 
 public class MenuVuelo {
@@ -55,7 +56,7 @@ public class MenuVuelo {
                     pausarConTecla();
                     break;
                 case 3:
-
+                    gestionarTripulacion();
                     pausarConTecla();
                     break;
                 case 4:
