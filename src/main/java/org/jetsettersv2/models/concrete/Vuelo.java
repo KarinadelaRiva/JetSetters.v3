@@ -26,33 +26,6 @@ public class Vuelo {
         System.out.println("Hora de salida.......................: " + this.horaSalida);
     }
 
-//    public void imprimirReservas(){
-//        System.out.println("Reservas.............................: ");
-//        for (Reserva reserva : this.reservas) {
-//            reserva.mostrar();
-//        }
-//    }
-
-    /*
-    public void imprimirCheckInsRealizados(){
-        System.out.println("CheckIn Realizados...................: ");
-        for (CheckIn checkIn : this.CheckIns) {
-            if(checkIn.getEstadoCheck().equals(EstadoCheck.REALIZADO)){
-                checkIn.mostrar();
-            }
-        }
-    }
-
-    public void imprimirCheckInsPendientes(){
-        System.out.println("CheckIn Pendientes...................: ");
-        for (CheckIn checkIn : this.CheckIns) {
-            if(checkIn.getEstadoCheck().equals(EstadoCheck.PENDIENTE)){
-                checkIn.mostrar();
-            }
-        }
-    }
-   */
-
     public void imprimirRegistroDeVuelo(){
         System.out.println("Registro de vuelo....................: ");
         //this.registroDeVuelo.mostrar();
@@ -176,6 +149,34 @@ public class Vuelo {
         return this;
     }
 
+    public void asignarCapacidades(){
+        this.capacidadDePasajeros= this.avion.getCapacidadPasajeros();
+        this.capacidadTripulantesCabina= this.avion.getCapacidadTripulanteCabina();
+        this.capacidadTripulantesTecnicos= this.avion.getCapacidadTripulanteTecnico();
+    }
+
+    public void asignarNroDeVuelo(ArrayListGeneric<Vuelo> vuelos) {
+        int maxNumero = 0;
+
+        // Encontrar el número más alto entre los legajos existentes
+        for (Vuelo vuelo : vuelos) {
+            if (vuelo != null && vuelo.getNroVuelo() != null) {
+                String nroVueloActual = vuelo.getNroVuelo();
+                if (nroVueloActual.charAt(0) == 'V') {
+                    int numero = Integer.parseInt(nroVueloActual.substring(1));
+                    if (numero > maxNumero) {
+                        maxNumero = numero;
+                    }
+                }
+            }
+        }
+        // Asignar el siguiente número disponible
+        int siguienteNumero = maxNumero + 1;
+        if (siguienteNumero > 99999999) {
+            throw new IllegalStateException("No hay números de vuelo disponibles, por favor contacte a soporte tecnico");
+        }
+        this.nroVuelo = String.format("%c%08d", 'V', siguienteNumero);
+    }
 
     // <<<<<<<TO STRING>>>>>>>
 
@@ -209,11 +210,7 @@ public class Vuelo {
     }
 
 
-    public void asignarCapacidades(){
-        this.capacidadDePasajeros= this.avion.getCapacidadPasajeros();
-        this.capacidadTripulantesCabina= this.avion.getCapacidadTripulanteCabina();
-        this.capacidadTripulantesTecnicos= this.avion.getCapacidadTripulanteTecnico();
-    }
+
 
     // <<<<<<<HASHCODE>>>>>>>
 

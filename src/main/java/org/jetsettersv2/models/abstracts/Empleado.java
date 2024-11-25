@@ -6,8 +6,6 @@ import org.jetsettersv2.models.concrete.TripulacionCabina;
 import org.jetsettersv2.models.concrete.TripulacionTecnica;
 import org.jetsettersv2.utilities.Fecha;
 
-import java.util.ArrayList;
-import java.util.List;
 
 public abstract class Empleado extends Persona{
 
@@ -21,22 +19,9 @@ public abstract class Empleado extends Persona{
 
     }
 
-    public Empleado legajo(char letraInicial, int numeroLegajo) {
-        if (numeroLegajo < 0 || numeroLegajo > 9999) {
-            throw new IllegalArgumentException("El número de legajo debe estar entre 0 y 9999.");
-        }
-        if (!Character.isLetter(letraInicial)) {
-            throw new IllegalArgumentException("La letra inicial debe ser un carácter alfabético.");
-        }
-        this.legajo = String.format("%c%04d", Character.toUpperCase(letraInicial), numeroLegajo);
-        return this;
-    }
-
-
     public String getLegajo() {
         return legajo;
     }
-
 
     public Fecha getFechaAlta() {
         return fechaAlta;

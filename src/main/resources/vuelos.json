@@ -1,5 +1,5 @@
 [ {
-  "nroVuelo" : "V001",
+  "nroVuelo" : "V00000001",
   "avion" : {
     "modelo" : "Airbus A320",
     "matricula" : "CD5678",

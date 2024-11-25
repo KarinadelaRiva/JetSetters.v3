@@ -111,8 +111,29 @@ public class Direccion {
 
     //Solicitar calle
     public void solicitarCalle() {
-        System.out.print("Ingrese la calle: ");
-        this.calle = scanner.nextLine().trim();
+        boolean esValido = false;
+
+        while (!esValido) {
+            System.out.print("Ingrese la calle: ");
+            String entrada = scanner.nextLine().trim();
+
+            // Validar que no esté vacío
+            if (entrada.isEmpty()) {
+                System.out.println("El nombre de la calle no puede estar vacío. Intente nuevamente.");
+                continue;
+            }
+
+            // Validar que contenga solo caracteres permitidos (letras, números, espacios, puntos y guiones)
+            if (!entrada.matches("[a-zA-ZáéíóúÁÉÍÓÚñÑ0-9 .-]+")) {
+                System.out.println("El nombre de la calle solo puede contener letras, números, espacios, puntos y guiones. Intente nuevamente.");
+                continue;
+            }
+
+            // Formatear el nombre de la calle con mayúscula inicial
+            this.calle = formatearString(entrada);
+            esValido = true;
+        }
+
     }
 
     //Solicitar numero
@@ -129,19 +150,109 @@ public class Direccion {
 
     //Solicitar ciudad
     public void solicitarCiudad() {
-        System.out.print("Ingrese la ciudad: ");
-        this.ciudad = scanner.nextLine().trim();
+        boolean esValido = false;
+
+        while (!esValido) {
+            System.out.print("Ingrese la ciudad: ");
+            String entrada = scanner.nextLine().trim();
+
+            // Validar que no esté vacío
+            if (entrada.isEmpty()) {
+                System.out.println("El nombre de la ciudad no puede estar vacío. Intente nuevamente.");
+                continue;
+            }
+
+            // Validar que no contenga números
+            if (entrada.matches(".*\\d.*")) {
+                System.out.println("El nombre de la ciudad no debe contener números. Intente nuevamente.");
+                continue;
+            }
+
+            // Validar que solo contenga letras y espacios
+            if (!entrada.matches("[a-zA-ZáéíóúÁÉÍÓÚñÑ ]+")) {
+                System.out.println("El nombre de la ciudad solo puede contener letras y espacios. Intente nuevamente.");
+                continue;
+            }
+
+            // Formatear el nombre de la ciudad con mayúscula inicial
+            this.ciudad = formatearString(entrada);
+            esValido = true;
+        }
     }
 
     //Solicitar codigo postal
     public void solicitarCodigoPostal() {
-        System.out.print("Ingrese el código postal: ");
-        this.codigoPostal = scanner.nextLine().trim();
+        boolean esValido = false;
+
+        while (!esValido) {
+            System.out.print("Ingrese el código postal: ");
+            String entrada = scanner.nextLine().trim();
+
+            // Verificar si está vacío
+            if (entrada.isEmpty()) {
+                System.out.println("El código postal no puede estar vacío. Intente nuevamente.");
+                continue;
+            }
+
+            // Verificar si contiene solo números
+            if (!entrada.matches("\\d+")) {
+                System.out.println("El código postal solo debe contener números. Intente nuevamente.");
+                continue;
+            }
+
+            // Verificar la longitud (por ejemplo, entre 4 y 6 dígitos)
+            if (entrada.length() < 4 || entrada.length() > 6) {
+                System.out.println("El código postal debe tener entre 4 y 6 dígitos. Intente nuevamente.");
+                continue;
+            }
+
+            // Si pasa todas las validaciones
+            this.codigoPostal = entrada;
+            esValido = true;
+        }
     }
 
     //Solicitar pais
+
     public void solicitarPais() {
-        System.out.print("Ingrese el país: ");
-        this.pais = scanner.nextLine().trim();
+        boolean esValido = false;
+
+        while (!esValido) {
+            System.out.print("Ingrese el país: ");
+            String entrada = scanner.nextLine().trim();
+
+            // Verificar que no contenga números
+            if (entrada.matches(".*\\d.*")) {
+                System.out.println("El nombre del país no debe contener números. Intente nuevamente.");
+                continue;
+            }
+
+            // Asegurar que no esté vacío
+            if (entrada.isEmpty()) {
+                System.out.println("El nombre del país no puede estar vacío. Intente nuevamente.");
+                continue;
+            }
+
+            // Formatear a formato "Primera Letra Mayúscula"
+            this.pais = formatearString(entrada);
+            esValido = true; // Salir del bucle si es válido
+        }
+    }
+
+    private String formatearString(String entrada) {
+        String[] palabras = entrada.split("\\s+");
+        StringBuilder resultado = new StringBuilder();
+
+        for (String palabra : palabras) {
+            if (palabra.length() > 0) {
+                resultado.append(Character.toUpperCase(palabra.charAt(0)));
+                if (palabra.length() > 1) {
+                    resultado.append(palabra.substring(1).toLowerCase());
+                }
+                resultado.append(" ");
+            }
+        }
+
+        return resultado.toString().trim();
     }
 }

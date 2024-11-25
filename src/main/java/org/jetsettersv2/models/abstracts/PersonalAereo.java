@@ -30,7 +30,7 @@ public abstract class PersonalAereo extends Empleado{
 
     public void imprimir()
     {
-//        super.imprimir();
+        super.imprimir();
         System.out.println("Tipo de personal.............:" + this.tipoPersonal);
         System.out.println("Horas de vuelo acumuladas:...:" + this.horasVueloAcumuladas);
     }

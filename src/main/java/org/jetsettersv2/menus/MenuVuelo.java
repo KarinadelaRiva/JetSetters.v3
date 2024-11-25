@@ -102,9 +102,8 @@ public class MenuVuelo {
         System.out.println("--- Programar Vuelo Nuevo ---");
         try {
 
-            System.out.print("Ingrese el número de vuelo: ");
-            String nroVuelo = scanner.nextLine();
-            nuevoVuelo.setNroVuelo(nroVuelo);
+            nuevoVuelo.asignarNroDeVuelo(vuelos);
+            System.out.println("Número de vuelo asignado: " + nuevoVuelo.getNroVuelo());
 
             boolean flag = true;
 

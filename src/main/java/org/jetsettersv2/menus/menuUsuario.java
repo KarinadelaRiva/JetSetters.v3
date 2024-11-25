@@ -3,11 +3,9 @@ package org.jetsettersv2.menus;
 import org.jetsettersv2.collections.ArrayListGeneric;
 import org.jetsettersv2.exceptions.ElementoNoEncontradoException;
 import org.jetsettersv2.models.concrete.Reserva;
-import org.jetsettersv2.models.concrete.TripulacionCabina;
 import org.jetsettersv2.models.concrete.UsuarioCliente;
 import org.jetsettersv2.utilities.Fecha;
 
-import java.util.ArrayList;
 import java.util.Scanner;
 
 import static org.jetsettersv2.menus.MenuCheckIn.mostrarSubmenuCheckIn;

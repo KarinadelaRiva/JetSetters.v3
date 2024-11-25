@@ -1,14 +1,10 @@
 package org.jetsettersv2.models.abstracts;
 
-import org.jetsettersv2.collections.ArrayListGeneric;
-import org.jetsettersv2.exceptions.LoginException;
 import org.jetsettersv2.models.concrete.Direccion;
-import org.jetsettersv2.utilities.JacksonUtil;
 
 import java.util.Scanner;
 import java.util.UUID;
 
-import static org.jetsettersv2.utilities.JacksonUtil.getJsonToList;
 
 public abstract class Persona {
 
@@ -144,7 +140,8 @@ public abstract class Persona {
         boolean nombreValido = false;
         while (!nombreValido) {
             System.out.print("Ingrese el nombre: ");
-            this.nombre = scanner.nextLine().trim();
+            String entrada = scanner.nextLine().trim();
+            this.nombre = formatearString(entrada);
 
             // Validar que el nombre solo contenga letras y espacios
             if (this.nombre.matches("[a-zA-ZÁÉÍÓÚáéíóúÑñ\\s]+")) {
@@ -159,7 +156,8 @@ public abstract class Persona {
         boolean apellidoValido = false;
         while (!apellidoValido) {
             System.out.print("Ingrese el apellido: ");
-            this.apellido = scanner.nextLine().trim();
+            String entrada = scanner.nextLine().trim();
+            this.apellido = formatearString(entrada);
 
             // Validar que el apellido solo contenga letras y espacios
             if (this.apellido.matches("[a-zA-ZÁÉÍÓÚáéíóúÑñ\\s]+")) {
@@ -245,7 +243,7 @@ public abstract class Persona {
             String input = scanner.nextLine();
 
             if (input.matches(regex)) {
-                this.email = input;
+                this.email = input.toLowerCase();
                 emailValido = true;
                 System.out.println("Email registrado correctamente.");
             } else {
@@ -273,39 +271,6 @@ public abstract class Persona {
                 System.out.println("Contraseña inválida. Por favor, asegúrese de cumplir los requisitos.");
             }
         }
-    }
-
-        // <<<<<<<INICIO DE SESION>>>>>>>
-
-    public static Persona iniciarSesion(ArrayListGeneric<Persona> personas) throws LoginException {
-
-        Scanner scanner = new Scanner(System.in);
-
-        System.out.print("Ingrese su email: ");
-        String email = scanner.nextLine().trim();
-
-        // Buscar persona por email
-        Persona personaEncontrada = null;
-        for (Persona p : personas) {
-            if (p.getEmail().equals(email)) {
-                personaEncontrada = p;
-                break;
-            }
-        }
-
-        if (personaEncontrada == null) {
-            throw new LoginException("El email ingresado no está registrado.");
-        }
-
-        System.out.print("Ingrese su contraseña: ");
-        String password = scanner.nextLine().trim();
-
-        if (!personaEncontrada.getPassword().equals(password)) {
-            throw new LoginException("La contraseña es incorrecta.");
-        }
-
-        System.out.println("Inicio de sesión exitoso. Bienvenido, " + personaEncontrada.getNombre() + "!");
-        return personaEncontrada; // Devuelve la persona logueada
     }
 
     // <<<<<<<MODIFICAR DATOS>>>>>>>
@@ -352,7 +317,21 @@ public abstract class Persona {
         }
     }
 
+    private String formatearString(String entrada) {
+        String[] palabras = entrada.split("\\s+");
+        StringBuilder resultado = new StringBuilder();
 
+        for (String palabra : palabras) {
+            if (palabra.length() > 0) {
+                resultado.append(Character.toUpperCase(palabra.charAt(0)));
+                if (palabra.length() > 1) {
+                    resultado.append(palabra.substring(1).toLowerCase());
+                }
+                resultado.append(" ");
+            }
+        }
 
+        return resultado.toString().trim();
+    }
 
 }
