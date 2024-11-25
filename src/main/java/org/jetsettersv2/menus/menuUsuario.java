@@ -212,8 +212,7 @@ public class menuUsuario{
         //mostrar vuelos pendientes de salida con el check in realizado
         for (Reserva reserva : reservas) {
             if ((reserva.getVuelo().getFechaSalida().esDespuesDe(hoy) || (reserva.getVuelo().getFechaSalida().esIgualA(hoy)))
-                    && (reserva.getUsuarioLogueado().getIdPersona().equals(logueado.getIdPersona()))
-                    && (reserva.getCheckIn().getEstadoCheck())) {
+                    && (reserva.getUsuarioLogueado().getIdPersona().equals(logueado.getIdPersona()))) {
                 System.out.println("\nVuelos pendientes de salida: ");
                 reserva.getVuelo().imprimirDatosVuelo();
             }
@@ -222,8 +221,7 @@ public class menuUsuario{
         //mostrar vuelos pasados con el check in realizado
         for (Reserva reserva : reservas) {
             if ((reserva.getVuelo().getFechaSalida().esAntesDe(hoy))
-                    && (reserva.getUsuarioLogueado().getIdPersona().equals(logueado.getIdPersona()))
-                    && (reserva.getCheckIn().getEstadoCheck())) {
+                    && (reserva.getUsuarioLogueado().getIdPersona().equals(logueado.getIdPersona()))) {
                 System.out.println("\nVuelos pasados: ");
                 reserva.mostrar();
             }
