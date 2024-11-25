@@ -52,16 +52,16 @@ public abstract class Empleado extends Persona{
 
     public void imprimir ()
     {
-        System.out.println("Legajo..................:" + this.legajo);
+        System.out.println("Legajo.......................:" + this.legajo);
         super.imprimir();
-        System.out.println("Fecha de alta...........:" + this.fechaAlta);
-        if(this.fechaBaja != null){
-            System.out.println("Fecha de baja...........:" + this.fechaBaja);
-        }
+        System.out.println("Fecha de alta................:" + this.fechaAlta);
         if(this.activo){
-            System.out.println("Situación...............: Activo");
+            System.out.println("Situación....................: Empleado Activo");
         }else{
-            System.out.println("Situación...............: Inactivo");
+            if(this.fechaBaja != null){
+                System.out.println("Fecha de baja................:" + this.fechaBaja);
+            }
+            System.out.println("Situación....................: Empleado Inactivo");
         }
         System.out.println();
     }

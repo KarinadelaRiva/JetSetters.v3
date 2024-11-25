@@ -11,7 +11,7 @@ public class UsuarioCliente extends Persona {
     private ArrayListGeneric<Reserva> misReservas;
 
     public UsuarioCliente() {
-        super();
+        this.misReservas = new ArrayListGeneric<>();
     }
 
     public void verPerfil(){

@@ -181,7 +181,7 @@ public class MenuVuelo {
             String horaSalida;
 
             do {
-                System.out.print("Ingrese la hora de salida (HH:mm): ");
+                System.out.print("Ingrese la hora de salida (HH.mm): ");
                 horaSalida = scanner.nextLine().trim();
 
                 try {
@@ -189,7 +189,7 @@ public class MenuVuelo {
                     System.out.println("Hora válida ingresada: " + hora.obtenerHora());
                     break; // Salimos del bucle si la hora es válida
                 } catch (Exception e) {
-                    System.out.println("Hora inválida. Por favor, ingrese una hora en el formato HH:mm.");
+                    System.out.println("Hora inválida. Por favor, ingrese una hora en el formato HH.mm");
                 }
             } while (true);
 
@@ -198,6 +198,8 @@ public class MenuVuelo {
             nuevoVuelo.setHoraSalida(hora);
 
             System.out.println("Hora de salida registrada: " + horaSalida);
+
+            nuevoVuelo.setRegistroDeVuelo(new RegistroDeVuelo());
 
 
             vuelos.add(nuevoVuelo);
@@ -233,7 +235,7 @@ public class MenuVuelo {
                     fechaNueva = scanner.nextLine();
                     vueloModificado.setFechaSalida(new Fecha(fechaNueva));
 
-                    System.out.println("Ingrese La nueva hora de salida (HH:MM)");
+                    System.out.println("Ingrese La nueva hora de salida (HH.MM)");
                     horaNueva = scanner.nextLine();
                     vueloModificado.setHoraSalida(new Hora(horaNueva));
                 }
@@ -273,7 +275,7 @@ public class MenuVuelo {
     }
 
     public static void subMenuModificarVuelo() throws LeerJsonException {
-        String nroVueloBuscado;
+        int nroVueloBuscado;
         ArrayListGeneric<Vuelo> vuelos = new ArrayListGeneric<>();
 
         try {
@@ -283,13 +285,15 @@ public class MenuVuelo {
         }
 
         System.out.print("Ingrese el NUMERO de vuelo a modificar: ");
-        nroVueloBuscado = scanner.nextLine(); // Consumir salto de línea
+        nroVueloBuscado = scanner.nextInt();
+        scanner.nextLine(); // Consumir salto de línea
 
+        String nroBuscado = String.format("V%08d", nroVueloBuscado);
         System.out.println("Buscando vuelo numero: " + nroVueloBuscado);
 
         int posVuelo = -1;
         try {
-            posVuelo = buscarPosVueloPorNroVuelo(nroVueloBuscado, vuelos);
+            posVuelo = buscarPosVueloPorNroVuelo(nroBuscado, vuelos);
             //vuelo.get(posVuelo).imprimir();
         } catch (Exception e) {
             System.err.println(e.getMessage());

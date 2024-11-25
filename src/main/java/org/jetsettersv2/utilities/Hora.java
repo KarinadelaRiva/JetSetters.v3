@@ -7,7 +7,7 @@ import java.time.temporal.ChronoUnit;
 public class Hora {
     private LocalTime hora;
 
-    private static final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm");
+    private static final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH.mm");
 
     // Nuevo getter para Jackson
     public String getHora() {

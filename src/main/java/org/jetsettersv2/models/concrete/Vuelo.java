@@ -16,16 +16,11 @@ public class Vuelo {
 
     public void imprimirDatosVuelo(){
         System.out.println("Número de vuelo......................: " + this.nroVuelo);
-        System.out.println("Avión................................: " + this.avion.getModelo());
-        System.out.println("Ruta.................................: ");
-        this.ruta.imprimir();
+        System.out.println("Avión................................: " + this.avion.getModelo() + " Matricula " + this.avion.getMatricula());
+        System.out.println("Ruta.................................: " + this.ruta.getOrigen() + " - " + this.ruta.getDestino());
         System.out.println("Fecha de salida......................: " + this.fechaSalida);
         System.out.println("Hora de salida.......................: " + this.horaSalida);
-    }
-
-    public void imprimirRegistroDeVuelo(){
-        System.out.println("Registro de vuelo....................: ");
-        //this.registroDeVuelo.mostrar();
+        System.out.println(" ");
     }
 
     // <<<<<<<CONSTRUCTORS>>>>>>>

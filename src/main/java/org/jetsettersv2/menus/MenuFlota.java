@@ -133,8 +133,7 @@ public class MenuFlota {
                 System.out.println("3. Modificar capacidad de tripulante de cabina");
                 System.out.println("4. Modificar capacidad de tripulante técnico");
                 System.out.println("5. Modificar capacidad de pasajeros");
-                System.out.println("6. Modificar capacidad de equipaje");
-                System.out.println("7. Modificar estado de mantenimiento");
+                System.out.println("6. Modificar estado de mantenimiento");
                 System.out.println("8. Mostrar datos nuevamente");
                 System.out.println("0. Guardar cambios y salir");
                 System.out.print("\nSeleccione una opción: ");
@@ -201,23 +200,6 @@ public class MenuFlota {
                         flota.get(posAvion).setCapacidadPasajeros(capacidadPasajeros);
                         scanner.nextLine(); // Consumir salto de línea
                         break;
-                    case 6:
-                        // Validación para capacidad de equipaje (número entero positivo)
-                        int capacidadEquipaje;
-                        do {
-                            System.out.print("Ingrese la nueva capacidad de equipaje: ");
-                            while (!scanner.hasNextInt()) {
-                                System.out.println("Error: debe ingresar un número entero.");
-                                scanner.next(); // Limpiar el buffer
-                            }
-                            capacidadEquipaje = scanner.nextInt();
-                            if (capacidadEquipaje < 0) {
-                                System.out.println("Error: la capacidad no puede ser negativa.");
-                            }
-                        } while (capacidadEquipaje < 0);
-                        flota.get(posAvion).setCapacidadEquipaje(capacidadEquipaje);
-                        scanner.nextLine(); // Consumir salto de línea
-                        break;
                     case 7:
                         // Validación para estado de mantenimiento (solo "s" o "n")
                         String enMantenimientoInput;
@@ -265,7 +247,6 @@ public class MenuFlota {
         int capacidadTripulantes = 0;
         int capacidadTripulanteTecnico = 0;
         int capacidadPasajeros = 0;
-        int capacidadEquipaje = 0;
         String entrada;
         boolean enMantenimiento = false;
 
@@ -343,26 +324,6 @@ public class MenuFlota {
         } while (!entradaValida);
 
         nuevoAvion.setCapacidadPasajeros(capacidadPasajeros);
-
-        // Validar capacidad de equipaje
-        do {
-            entradaValida = false;
-            try {
-                System.out.print("Capacidad de equipaje: ");
-                capacidadEquipaje = scanner.nextInt();
-                scanner.nextLine(); // Consumir salto de línea
-                if (capacidadEquipaje < 0) {
-                    System.out.println("La capacidad no puede ser un número negativo. Inténtelo nuevamente.");
-                } else {
-                    entradaValida = true;
-                }
-            } catch (InputMismatchException e) {
-                System.out.println("Debe ingresar un número válido. Inténtelo nuevamente.");
-                scanner.nextLine(); // Consumir el texto no válido
-            }
-        } while (!entradaValida);
-
-        nuevoAvion.setCapacidadEquipaje(capacidadEquipaje);
 
         do {
             entradaValida = true;

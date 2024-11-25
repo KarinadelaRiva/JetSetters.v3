@@ -33,7 +33,9 @@ public class RegistroDeVuelo {
 
     //Constructor
     public RegistroDeVuelo() {
-
+        this.registroTripulanteCabina = new ArrayListGeneric<>();
+        this.registroTripulacionTecnica = new ArrayListGeneric<>();
+        this.registroPasajeros = new ArrayListGeneric<>();
     }
 
     //Getters and setters

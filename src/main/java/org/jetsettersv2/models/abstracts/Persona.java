@@ -256,16 +256,16 @@ public abstract class Persona {
     public void solicitarPassword() {
         // Requisitos de la contraseña:
         // Al menos una letra mayúscula, una minúscula, un número, un carácter especial y longitud mínima de 8
-        String regex = "^(?=.*[A-Z])(?=.*[a-z])(?=.*\\d)(?=.*[-_*%#@$!%?&])[A-Za-z\\d-_*%#@$!%?&]{8,}$";
-        boolean contraseñaValida = false;
+        String regex = "^(?=.*[A-Z])(?=.*[a-z])(?=.*\\d)(?=.*[-_*%#@$!?&])[A-Za-z\\d-_*%#@$!?&]{8,}$";
+        boolean contraseniaValida = false;
 
-        while (!contraseñaValida) {
+        while (!contraseniaValida) {
             System.out.print("Ingrese una contraseña válida (mínimo 8 caracteres, al menos una mayúscula, una minúscula, un número y un carácter especial): ");
             String input = scanner.nextLine();
 
             if (input.matches(regex)) {
                 this.password = input;
-                contraseñaValida = true;
+                contraseniaValida = true;
                 System.out.println("Contraseña registrada correctamente.");
             } else {
                 System.out.println("Contraseña inválida. Por favor, asegúrese de cumplir los requisitos.");

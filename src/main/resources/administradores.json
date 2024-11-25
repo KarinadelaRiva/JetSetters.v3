@@ -3,7 +3,7 @@
   "nombre" : "SuperAdmin",
   "apellido" : "Administrador",
   "dni" : "22222222",
-  "pasaporte" : "111111111",
+  "pasaporte" : "AB999999999",
   "telefono" : "2231111111",
   "direccion" : {
     "calle" : "Corrientes",
@@ -12,157 +12,12 @@
     "codigoPostal" : "7600",
     "pais" : "Arg"
   },
-  "email" : "administrador@gmail.com",
+  "email" : "admin@gmail.com",
   "password" : "Admin*123",
   "legajo" : "A0001",
   "fechaAlta" : {
     "fecha" : "2023-01-02"
   },
   "fechaBaja" : null,
-  "activo" : true,
-  "gestionVuelos" : null,
-  "gestionReservas" : null,
-  "gestionUsuarios" : null,
-  "gestionPasajeros" : null,
-  "gestionRutas" : null
- }, {
-  "idPersona": "a1d3e8f2-4c6b-45df-ae87-8c2e3e76a4df",
-  "nombre": "Carlos",
-  "apellido": "Pérez",
-  "dni": "34567890",
-  "pasaporte": "C12345678",
-  "telefono": "+5491123456789",
-  "direccion": {
-    "calle": "Rivadavia",
-    "numero": 1234,
-    "ciudad": "Buenos Aires",
-    "codigoPostal": "1043",
-    "pais": "Arg"
-  },
-  "email": "carlos.perez@empresa.com",
-  "password": "Admin*2024",
-  "legajo": "A0002",
-  "fechaAlta": {
-    "fecha": "2023-05-01"
-  },
-  "fechaBaja": null,
-  "activo": true,
-  "gestionVuelos": null,
-  "gestionReservas": null,
-  "gestionUsuarios": null,
-  "gestionPasajeros": null,
-  "gestionRutas": null
-},
-  {
-    "idPersona": "d2f4e5b6-9b7c-4d1a-b6f7-9c4e5f1a2d3f",
-    "nombre": "María",
-    "apellido": "Gómez",
-    "dni": "45678901",
-    "pasaporte": "M98765432",
-    "telefono": "+5491167890123",
-    "direccion": {
-      "calle": "San Martín",
-      "numero": 987,
-      "ciudad": "Córdoba",
-      "codigoPostal": "5000",
-      "pais": "Arg"
-    },
-    "email": "maria.gomez@empresa.com",
-    "password": "Secure*2024",
-    "legajo": "A0003",
-    "fechaAlta": {
-      "fecha": "2023-06-15"
-    },
-    "fechaBaja": null,
-    "activo": true,
-    "gestionVuelos": null,
-    "gestionReservas": null,
-    "gestionUsuarios": null,
-    "gestionPasajeros": null,
-    "gestionRutas": null
-  },
-  {
-    "idPersona": "e6a9c4b2-7d8f-4e3b-9c5a-1f2d6e8b4a9c",
-    "nombre": "Jorge",
-    "apellido": "Ramírez",
-    "dni": "56789012",
-    "pasaporte": "J24680135",
-    "telefono": "+5492213456789",
-    "direccion": {
-      "calle": "Belgrano",
-      "numero": 567,
-      "ciudad": "Rosario",
-      "codigoPostal": "2000",
-      "pais": "Arg"
-    },
-    "email": "jorge.ramirez@empresa.com",
-    "password": "Admin#2468",
-    "legajo": "A0004",
-    "fechaAlta": {
-      "fecha": "2023-07-10"
-    },
-    "fechaBaja": null,
-    "activo": true,
-    "gestionVuelos": null,
-    "gestionReservas": null,
-    "gestionUsuarios": null,
-    "gestionPasajeros": null,
-    "gestionRutas": null
-  },
-  {
-    "idPersona": "c3f2a1b6-9d7e-4f8b-2a5c-1e9b3d4a6f7e",
-    "nombre": "Sofía",
-    "apellido": "López",
-    "dni": "67890123",
-    "pasaporte": "S34567890",
-    "telefono": "+5493814567890",
-    "direccion": {
-      "calle": "Mitre",
-      "numero": 789,
-      "ciudad": "Mendoza",
-      "codigoPostal": "5500",
-      "pais": "Arg"
-    },
-    "email": "sofia.lopez@empresa.com",
-    "password": "Pass*9012",
-    "legajo": "A0005",
-    "fechaAlta": {
-      "fecha": "2023-08-01"
-    },
-    "fechaBaja": null,
-    "activo": true,
-    "gestionVuelos": null,
-    "gestionReservas": null,
-    "gestionUsuarios": null,
-    "gestionPasajeros": null,
-    "gestionRutas": null
-  },
-  {
-    "idPersona": "f2a3d6e8-7b9c-4f1a-2e3b-9c4d5f7a1b6e",
-    "nombre": "Lucía",
-    "apellido": "Martínez",
-    "dni": "78901234",
-    "pasaporte": "L45678901",
-    "telefono": "+5492619876543",
-    "direccion": {
-      "calle": "Las Heras",
-      "numero": 654,
-      "ciudad": "Salta",
-      "codigoPostal": "4400",
-      "pais": "Arg"
-    },
-    "email": "lucia.martinez@empresa.com",
-    "password": "Admin@1234",
-    "legajo": "A0006",
-    "fechaAlta": {
-      "fecha": "2023-09-20"
-    },
-    "fechaBaja": null,
-    "activo": true,
-    "gestionVuelos": null,
-    "gestionReservas": null,
-    "gestionUsuarios": null,
-    "gestionPasajeros": null,
-    "gestionRutas": null
-  }
-]
+  "activo" : true
+} ]

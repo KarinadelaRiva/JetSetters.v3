@@ -72,6 +72,7 @@ private static void gestionarPerfil(Administrador admin) {
     int posAdmin = -1;
     try{
         posAdmin = buscarPosAdminElementoPorLegajo(legajo, admins);
+        System.out.println("\n----Datos registrados:----");
         admins.get(posAdmin).imprimir();
     } catch (Exception e) {
         System.err.println(e.getMessage());
